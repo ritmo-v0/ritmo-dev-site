@@ -22,6 +22,6 @@
 			"styles/*": ["./src/app/styles/*"],
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/layout.js", "src/app/page.js", "src/lib/providers.js", "src/lib/utils.js", "src/components/common/theme-toggle.jsx", "src/app/sitemap.js", "src/lib/cron-utils.js", "src/components/main/tools/emojis/emoji-group.jsx"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*.js", "src/**/*.jsx"],
 	"exclude": ["node_modules"]
 }

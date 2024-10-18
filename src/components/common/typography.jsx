@@ -14,7 +14,11 @@ export function MarkdownText({ className, children }) {
 			className={className}
 			remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
 			components={{
-                p: ({ node, ...props }) => <Twemoji options={{ className: "twemoji" }}>{props.children}</Twemoji>,
+                p: ({ ...props }) => (
+					<Twemoji options={{ className: "twemoji" }}>
+						{props.children}
+					</Twemoji>
+				),
             }}
 		>
 			{children}

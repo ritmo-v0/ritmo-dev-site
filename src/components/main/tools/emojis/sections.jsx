@@ -32,7 +32,7 @@ export function EmojiToolUtilSection({ useSubgroup, setUseSubgroup, ...props }) 
 			navigator.clipboard.writeText(preview);
 			toast(generateToastObject("info", "Copied to clipboard!"));
 		} catch (error) {
-			toast(generateToastObject("warning", "Copied to clipboard!"));
+			toast(generateToastObject("warning", error.message));
 		}
 	}
 
