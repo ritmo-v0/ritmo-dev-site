@@ -97,6 +97,16 @@ function EmojiVirtuosoList({ emojis }) {
 function EmojiButton({ emoji }) {
 	const addEmoji = usePreviewStore(state => state.addEmoji);
 
+	function handleClick(emoji) {
+		try {
+			addEmoji(emoji.emoji);
+			navigator.clipboard.writeText(emoji.emoji);
+			console.log(`您複製了 ${emoji.emoji}`);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
 	return (
 		<Tooltip delayDuration={500}>
 			<TooltipTrigger asChild>
@@ -104,7 +114,7 @@ function EmojiButton({ emoji }) {
 					className="transition ease-out-expo duration-500 active:scale-[0.8]"
 					variant="outline"
 					size="icon"
-					onClick={() => addEmoji(emoji.emoji)}
+					onClick={() => handleClick(emoji)}
 				>
 					<span className="text-[1.75rem]">{emoji.emoji}</span>
 				</Button>
