@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { kv } from "@vercel/kv";
 
-// Constants & Variables
-export const revalidate = 60 * 60 * 24 * 7;  // 1 week
+// Route Segment Config
+export const revalidate = 604800;  // 1 week (60 * 60 * 24 * 7)
 
 
 

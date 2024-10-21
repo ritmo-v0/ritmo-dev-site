@@ -5,6 +5,9 @@ import { kv } from "@vercel/kv";
 // Emoji Utils
 import { fetchEmojiTestFile, parseEmojis } from "@/lib/emoji-utils";
 
+// Route Segment Config
+export const dynamic = "force-dynamic";
+
 
 
 export async function GET(req) {
