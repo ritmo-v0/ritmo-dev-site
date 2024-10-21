@@ -77,7 +77,7 @@ export function parseEmojis(file) {
 
 		// # Handle emojis
 		if (!isComment(line) && currentSubgroup) {
-			const { status, emoji, version, name } = parseEmojiDataByLine(line);
+			const { status, emoji, name } = parseEmojiDataByLine(line);
 
 			// Only accept fully-qualified emojis
 			if (status !== EmojiStatus.FullyQualified && status !== EmojiStatus.Component) return;
@@ -131,7 +131,7 @@ export function parseEmojis(file) {
 
 function parseEmojiDataByLine(line) {
 	const [codePoints, details] = line.split(";", 2).map(part => part.trim());
-	const [status, _hashtag, emoji, version, ...nameParts] = details.split(/\s+/);
+	const [status, , emoji, version, ...nameParts] = details.split(/\s+/);
 	const name = nameParts.join(" ");
 
 	return { codePoints, status, emoji, version: version.replace(/E(\d+(\.\d+)?)/g, "$1"), name };
