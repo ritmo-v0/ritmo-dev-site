@@ -1,5 +1,5 @@
 // Components & UI
-import { MarkdownText } from "@/components/common/typography"
+import { MarkdownText } from "@/components/common/typography";
 
 // Constants & Variables
 export const ToastTitles = Object.freeze({

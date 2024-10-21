@@ -6,7 +6,7 @@ import { H1, H2, H3, H4, H5, H6 } from "./typography";
 
 // Constants & Variables
 const wrapperVariants = cva(
-	"grid grid-cols-1 mx-auto w-[min(calc(100%_-_3rem),_var(--width))] sm:w-[min(calc(100%_-_6rem),_var(--width))]",
+	"grid grid-cols-1 mx-auto w-[min(calc(100%_-_2rem),_var(--width))] sm:w-[min(calc(100%_-_4rem),_var(--width))]",
 	{
 		variants: {
 			size: {

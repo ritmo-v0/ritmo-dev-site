@@ -3,7 +3,7 @@ import { cronAuth } from "@/lib/cron-utils";
 import { kv } from "@vercel/kv";
 
 // Emoji Utils
-import { fetchEmojiTestFile, parseEmojiData } from "@/lib/emoji-utils";
+import { fetchEmojiTestFile, parseEmojis } from "@/lib/emoji-utils";
 
 
 
@@ -14,7 +14,7 @@ export async function GET(req) {
 		}
 
 		const emojiTestFile = await fetchEmojiTestFile();
-		const emojiData = parseEmojiData(emojiTestFile);
+		const emojiData = parseEmojis(emojiTestFile);
 
 		await kv.set("emoji_data", emojiData);
 
