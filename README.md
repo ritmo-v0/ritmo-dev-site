@@ -1,46 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Is this a pigeon 🫴🦋?
+This it the repo of my personal website, hosted on [ritmo.dev](https://ritmo.dev).
 
-## Getting Started
+## Sitemap
+### 🏠 [Homepage](https://ritmo.dev)
+There's nothing in here currently.
 
-First, run the development server:
+### 🛠️ [Tools](https://ritmo.dev/tools)
+A struct map will be added s♾️n ™️.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#### [Emoji Picker <img src="https://github.com/jdecked/twemoji/blob/main/assets/svg/1f609.svg" width="16">](https://ritmo.dev/tools/emojis)
+A tool that allows you to copy emojis by just one click; it also has a textarea that allows typing and previewing the looks along with the emojis copied into. Supports Twemoji and skin tone switching.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A cron job is written to periodically parse the [latest set of Unicode emojis](https://unicode.org/Public/emoji/latest/emoji-test.txt) and cached.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![Emoji Picker](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/tools/emojis/opengraph-image.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## License
+Emoji Powered by Twemoji, used under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/
 
-## Uses
-- axios
-- swr
-- shadcn
-- next-themes
-- geist
-- lucide icons
-
-- autoprefixer
-- postcss
-- Tailwind
-
-- --experimental-https
-
-
-## Todo
-- icon
-- apple-icon
-- opengraph-image
-- twitter-image
-- sitemap
-
-- css config in globals.css
-- layout.js
+Please contact me if you think something isn't listed in this section.
