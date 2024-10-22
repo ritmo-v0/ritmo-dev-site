@@ -30,7 +30,7 @@ export function EmojiToolPickerSection({ ...props }) {
 				<span>{error.message}</span>
 			) : isLoading ? (
 				<div className="grid gap-2">
-					{Array.from({ length: 5 }).map((_, index) => (
+					{Array.from({ length: 3 }).map((_, index) => (
 						<Skeleton key={index} className="w-full h-24" />
 					))}
 				</div>

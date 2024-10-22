@@ -7,10 +7,10 @@ const title = {
 };
 const description = "我之後再來想想副標內容。";  // TODO: Update description
 const url = "/tools";
-export const metadata = generateLocalMetadata({ title, description, url, robots: { index: false } });
+export const metadata = generateLocalMetadata({ title, description, url });
 
 
 
-export default function EmojiToolLayout({ children }) {
+export default function ToolsLayout({ children }) {
 	return children;
 }
