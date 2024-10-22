@@ -14,7 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function EmojiToolUtilSection({ ...props }) {
 	return (
-		<SectionLayout {...props}>
+		<SectionLayout titleAs="h3" {...props}>
 			<EmojiPickerToolbar />
 		</SectionLayout>
 	);

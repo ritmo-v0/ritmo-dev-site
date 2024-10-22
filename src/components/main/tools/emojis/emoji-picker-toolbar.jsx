@@ -43,8 +43,8 @@ export function EmojiPickerToolbar() {
 				<Textarea
 					id="emoji-preview"
 					value={preview}
-					className="text-lg"
-					placeholder="點選下方按鈕新增 emoji"
+					className="text-base"
+					placeholder="點選下方按鈕新增 emoji…"
 					onChange={(e) => setPreview(e.target.value)}
 				/>
 			</div>
@@ -54,7 +54,7 @@ export function EmojiPickerToolbar() {
 					<Toggle
 						pressed={useSubgroup}
 						onPressedChange={() => setUseSubgroup(!useSubgroup)}
-						aria-label="Toggle subgroup"
+						aria-label={`${useSubgroup ? "不" : ""}使用子分類`}
 					>
 						<ListTree className="size-4" />
 						<span className="hidden sm:block ml-2">子分類</span>
@@ -62,7 +62,7 @@ export function EmojiPickerToolbar() {
 					<Toggle
 						pressed={useTwemoji}
 						onPressedChange={() => setUseTwemoji(!useTwemoji)}
-						aria-label="Toggle twemoji"
+						aria-label={`${useTwemoji ? "不" : ""}使用 Twemoji`}
 					>
 						<PartyPopper className="size-4" />
 						<span className="hidden sm:block ml-2">Twemoji</span>
