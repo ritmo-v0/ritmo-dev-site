@@ -19,9 +19,17 @@
 		],
 		"paths": {
 			"@/*": ["./src/*"],
-			"styles/*": ["./src/app/styles/*"],
-		}
+			"styles/*": ["./src/app/styles/*"]
+		},
+		"target": "ES2017"
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*.js", "src/**/*.jsx"],
+	"include": [
+		"next-env.d.ts",
+		".next/types/**/*.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"src/**/*.js",
+		"src/**/*.jsx"
+	],
 	"exclude": ["node_modules"]
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 // Markdown
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-const Twemoji = dynamic(() => import("react-twemoji"), { ssr: false });
+const Twemoji = dynamic(() => import("react-twemoji"));
 
 
 

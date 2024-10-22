@@ -1,4 +1,11 @@
-const nextConfig = {
+import type { NextConfig } from "next";
+
+
+
+const nextConfig: NextConfig = {
+	devIndicators: {
+		buildActivityPosition: "top-right",
+	},
 	images: {
 		remotePatterns: [
 			// {
