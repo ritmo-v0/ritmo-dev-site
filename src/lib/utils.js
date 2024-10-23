@@ -33,20 +33,23 @@ export function generateLocalMetadata({
 	robots = { index: true, follow: true, nocache: true },
 	...props
 }) {
+	const isTitleObject = typeof title === "object";
+	const resolvedTitle = isTitleObject && title.absolute ? title.absolute : title;
+
 	return {
 		...(title && { title }),
 		...(description && { description }),
 		openGraph: {
-			...(title && { title }),
+			...(resolvedTitle && { title: resolvedTitle }),
 			...(description && { description }),
 			url,
-			siteName: title,
+			...(resolvedTitle && { siteName: resolvedTitle }),
 			type: "website",
 			locale: "zh_TW",
 		},
 		twitter: {
 			card: "summary_large_image",
-			...(title && { title }),
+			...(resolvedTitle && { title: resolvedTitle }),
 			...(description && { description }),
 			site: "@ritmo_v0",
 			siteId: "904003428262723584",
