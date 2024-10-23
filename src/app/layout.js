@@ -4,6 +4,7 @@ import { getBaseUrl } from "@/lib/utils";
 // CSS
 import "styles/globals.css";
 import Navbar from "@/components/common/navbar";
+import Footer from "@/components/common/footer";
 
 // Components & UI
 
@@ -78,6 +79,7 @@ export default function RootLayout({ children }) {
 				<Providers>
 					<Navbar />
 					{children}
+					<Footer />
 				</Providers>
 			</body>
 		</html>
