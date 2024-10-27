@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
 // Components & UI
@@ -18,7 +19,10 @@ const BUTTONS = [
 
 
 export function ThemeToggle() {
+	const [mounted, setMounted] = useState(false);
 	const { theme, setTheme } = useTheme();
+
+	useEffect(() => setMounted(true), []);
 
 	return (
 		<div className="flex items-center gap-0.5 border border-input rounded-full">
@@ -27,7 +31,7 @@ export function ThemeToggle() {
 					key={button.theme}
 					title={button.title}
 					variant="ghost"
-					className={`size-8 rounded-full ${button.theme === theme ? "bg-accent" : ""}`}
+					className={`size-8 rounded-full ${mounted && button.theme === theme ? "bg-accent" : ""}`}
 					onClick={() => setTheme(button.theme)}
 				>
 					{button.icon}
