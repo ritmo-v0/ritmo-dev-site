@@ -71,10 +71,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="zh-Hant-TW" suppressHydrationWarning>
-			<head>
-				<link rel="icon" href="/icon?<generated>" type="image/<generated>" sizes="<generated>" />
-				<link rel="apple-touch-icon" href="/apple-icon?<generated>" type="image/<generated>" sizes="<generated>" />
-			</head>
 			<body className={`${GeistSans.variable} ${GeistMono.variable} ${notoSansTC.variable}`}>
 				<Providers>
 					<Navbar />
