@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 
 
@@ -9,17 +10,32 @@ export const usePreviewStore = create(set => ({
 	clearPreview: () => set({ preview: "" }),
 }));
 
-export const useSubgroupStore = create(set => ({
-	useSubgroup: false,
-	setUseSubgroup: useSubgroup => set({ useSubgroup }),
-}));
+export const useSubgroupStore = create(
+	persist(
+		set => ({
+			useSubgroup: false,
+			setUseSubgroup: useSubgroup => set({ useSubgroup }),
+		}),
+		{ name: "emojis-useSubgroup" }
+	)
+);
 
-export const useSkinToneStore = create(set => ({
-	skinTone: "",
-	setSkinTone: skinTone => set({ skinTone }),
-}));
+export const useSkinToneStore = create(
+	persist(
+		set => ({
+			skinTone: "",
+			setSkinTone: skinTone => set({ skinTone }),
+		}),
+		{ name: "emojis-skinTone" }
+	)
+);
 
-export const useTwemojiStore = create(set => ({
-	useTwemoji: false,
-	setUseTwemoji: useTwemoji => set({ useTwemoji }),
-}));
+export const useTwemojiStore = create(
+	persist(
+		set => ({
+			useTwemoji: false,
+			setUseTwemoji: useTwemoji => set({ useTwemoji }),
+		}),
+		{ name: "emojis-useTwemoji" }
+	)
+);

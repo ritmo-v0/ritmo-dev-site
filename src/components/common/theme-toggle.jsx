@@ -21,7 +21,7 @@ export function ThemeToggle() {
 	const { theme, setTheme } = useTheme();
 
 	return (
-		<div className="flex items-center gap-0.5 border border-input rounded-full">
+		<div className="flex items-center gap-0.5 w-max border border-input rounded-full">
 			{BUTTONS.map(button => (
 				<Button
 					key={button.theme}
