@@ -19,9 +19,8 @@
 		],
 		"paths": {
 			"@/*": ["./src/*"],
-			"styles/*": ["./src/app/styles/*"]
 		},
-		"target": "ES2017"
+		"target": "ES2017",
 	},
 	"include": [
 		"next-env.d.ts",

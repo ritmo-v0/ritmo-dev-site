@@ -2,11 +2,11 @@ import Providers from "@/lib/providers";
 import { getBaseUrl } from "@/lib/utils";
 
 // CSS
-import "styles/globals.css";
-import Navbar from "@/components/common/navbar";
-import Footer from "@/components/common/footer";
+import "@/app/styles/globals.css";
 
 // Components & UI
+import Navbar from "@/components/common/navbar";
+import Footer from "@/components/common/footer";
 
 // Fonts
 import { GeistSans } from "geist/font/sans";
