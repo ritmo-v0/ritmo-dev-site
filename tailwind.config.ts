@@ -63,6 +63,7 @@ const config: Config = {
     		fontFamily: {
     			sans: ["var(--font-geist-sans)", "var(--font-noto-sans-tc)", ...defaultTheme.fontFamily.sans],
     			mono: ["var(--font-geist-mono)", ...defaultTheme.fontFamily.mono, "var(--font-noto-sans-tc)"],
+				serif: ["var(--font-noto-serif-tc)", ...defaultTheme.fontFamily.serif],
     		},
 			transitionTimingFunction: {
 				"out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
