@@ -1,26 +1,10 @@
 import { cva } from "class-variance-authority";
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 // Components & UI
 import { H1, H2, H3, H4, H5, H6 } from "./typography";
 
 // Constants & Variables
-const wrapperVariants = cva(
-	"grid grid-cols-1 mx-auto w-[min(calc(100%_-_2rem),_var(--width))] sm:w-[min(calc(100%_-_4rem),_var(--width))]",
-	{
-		variants: {
-			size: {
-				sm: "[--width:_1000px]",
-				md: "[--width:_1400px]",
-				lg: "[--width:_1800px]",
-			},
-		},
-		defaultVariants: {
-			size: "md",
-		},
-	}
-);
-
 const sectionVariants = cva(
 	"",
 	{
@@ -57,15 +41,15 @@ const HEADING_MAP = {
  * @param {Object} props - The props for the component.
  * @param {React.ReactNode} props.children - The content to be displayed inside the wrapper.
  * @param {string} [props.className] - Additional class names for custom styling.
- * @param {"sm" | "md" | "lg"} [props.size="md"] - Defines the width size of the wrapper. Options are:
- *  - "sm" for small (1000px),
- *  - "md" for medium (1400px),
- *  - "lg" for large (1800px).
+ * @param {number} [props.width=1400] - Defines the maximum width of the wrapper in pixels (default is 1400px).
  * @returns {JSX.Element} The rendered wrapper layout with responsive width.
  */
-export function WrapperLayout({ children, className, size = "md" }) {
+export function WrapperLayout({ children, className, width = 1400 }) {
 	return (
-		<div className={cn(wrapperVariants({ size, className }))}>
+		<div
+			style={{ "--wrapper-width": `${width}px` }}
+			className={cn("mx-auto [--wrapper-padding:_2rem] sm:[--wrapper-padding:_3rem] w-[min(calc(100%_-_var(--wrapper-padding)),_var(--wrapper-width))]", className)}
+		>
 			{children}
 		</div>
 	);

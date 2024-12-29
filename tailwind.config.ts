@@ -64,10 +64,6 @@ const config: Config = {
     			sans: ["var(--font-geist-sans)", "var(--font-noto-sans-tc)", ...defaultTheme.fontFamily.sans],
     			mono: ["var(--font-geist-mono)", ...defaultTheme.fontFamily.mono, "var(--font-noto-sans-tc)"],
     		},
-			spacing: {
-				0.5: "0.125rem",
-				18: "4.5rem",
-			},
 			transitionTimingFunction: {
 				"out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
 			},
