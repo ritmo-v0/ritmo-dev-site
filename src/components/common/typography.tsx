@@ -12,30 +12,30 @@ interface AnchorProps extends TypographyProps {
 }
 
 // Markdown
-import dynamic from "next/dynamic";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-const Twemoji = dynamic(() => import("react-twemoji"));
+// import dynamic from "next/dynamic";
+// import Markdown from "react-markdown";
+// import remarkGfm from "remark-gfm";
+// const Twemoji = dynamic(() => import("react-twemoji"));
 
 
 
-export function MarkdownText({ className, children }: TypographyProps) {
-	return (
-		<Markdown
-			className={className}
-			remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
-			components={{
-                p: ({ ...props }) => (
-					<Twemoji options={{ className: "twemoji" }}>
-						{props.children}
-					</Twemoji>
-				),
-            }}
-		>
-			{children}
-		</Markdown>
-	);
-}
+// export function MarkdownText({ className, children }: TypographyProps) {
+// 	return (
+// 		<Markdown
+// 			className={className}
+// 			remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
+// 			components={{
+//                 p: ({ ...props }) => (
+// 					<Twemoji options={{ className: "twemoji" }}>
+// 						{props.children}
+// 					</Twemoji>
+// 				),
+//             }}
+// 		>
+// 			{children}
+// 		</Markdown>
+// 	);
+// }
 
 export const H1: React.FC<TypographyProps> = ({ className, children }) => (
 	<h1 className={cn("scroll-m-20 text-3xl font-bold tracking-tight lg:text-4xl", className)}>
