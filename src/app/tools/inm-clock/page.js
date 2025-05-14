@@ -14,7 +14,7 @@ import { RefreshCw } from "lucide-react";
 // Constants & Variables
 import { ASCII_ART } from "@/lib/inm-clock/ascii-art";
 const TARGET_TIME = new Date("2025-05-14T17:14:19.810");
-const PRESICION = 10;  // ms
+const PRESICION = 19;  // ms
 
 
 
@@ -117,7 +117,7 @@ function InmQuote() {
 	const [delay, setDelay] = useState(1.5);
 
 	function handleClick() {
-		setDelay(0);
+		if (delay !== 0) setDelay(0);
 		setQuote(getRandomQuote());
 	}
 
@@ -127,8 +127,8 @@ function InmQuote() {
 			className="inline-flex items-center w-max text-sm text-muted-foreground"
 			initial="hidden" animate="visible"
 			variants={{
-				hidden: { opacity: 0, filter: "blur(4px)" },
-				visible: { opacity: 1, filter: "blur(0px)", transition: { type: "spring", stiffness: 500, damping: 100, delay } }
+				hidden: { opacity: 0 },
+				visible: { opacity: 1, transition: { type: "spring", stiffness: 500, damping: 100, delay } }
 			}}
 		>
 			{quote}
