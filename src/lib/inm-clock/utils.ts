@@ -18,7 +18,7 @@ export const INM_QUOTES: string[] = [
 	"這不是普通的時鐘，是ホモの時計。",
 	"時間停止了，但惡臭還在蔓延",
 	"已經等不及了，快端上來罷",
-	"すいません許してください！時間はもう進まないから！",
+	"すいません許してください！\n時間はもう進まないから！",
 	"この時計、なんだか臭くない？",
 	"迫真時鐘部．時停の裏技",
 	"這就是…時之野獸先輩嗎？",
@@ -34,12 +34,12 @@ export function formatTime(date: Date): string {
 	const year = (date.getFullYear() - 1911).toString();
 	const month = date.getMonth() + 1;
 	const day = pad(date.getDate());
-	const hours = (date.getHours()) % 12 || 12;
+	const hours = date.getHours();  // hours % 12 || 12 when having meridiem
 	const minutes = pad(date.getMinutes());
 	const seconds = pad(date.getSeconds());
 	const milliseconds = pad(date.getMilliseconds(), 3);
-	const meridiem = (date.getHours() >= 12) ? "PM" : "AM";
-	const formattedTime = `${year}/${month}/${day} ${hours}:${minutes}:${seconds}.${milliseconds} ${meridiem}`;
+	// const meridiem = (date.getHours() >= 12) ? "PM" : "AM";
+	const formattedTime = `${year}/${month}/${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
 	return formattedTime;
 }
 
