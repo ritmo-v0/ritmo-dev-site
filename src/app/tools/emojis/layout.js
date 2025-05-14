@@ -40,6 +40,11 @@ export const metadata = {
 	description,
 	keywords,
 	...generatePreviewMetadata({ title: `${title}｜Ritmo 里莫`, description, url }),
+	robots: {
+		index: true,
+		follow: true,
+		nocache: false,
+	},
 };
 
 

@@ -2,6 +2,9 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+// Types & Interfaces
+import type{ Metadata } from "next";
+
 
 
 export function cn(...inputs: ClassValue[]) {
@@ -17,7 +20,7 @@ export function getBaseUrl() {
 
 export function generatePreviewMetadata(
 	{ title, description = "", url }: { title: string; description?: string; url: string }
-) {
+): Partial<Metadata> {
 	return {
 		openGraph: {
 			title,

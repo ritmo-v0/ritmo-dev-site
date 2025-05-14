@@ -15,6 +15,11 @@ A cron job is written to periodically parse the [latest set of Unicode emojis](h
 
 ![Emoji Picker](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/tools/emojis/opengraph-image.png)
 
+#### [INM Clock](https://ritmo.dev/tools/inm-clock)
+A clock, giving off a terrible stench, that runs and then stops at exactly `2025-05-14T17:14:19.810`.
+
+![INM Clock](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/tools/inm-clock/opengraph-image.png)
+
 ## License
 Emoji Powered by Twemoji, used under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/
 

@@ -26,5 +26,11 @@ export default function sitemap() {
 			changeFrequency: "monthly",
 			priority: 0.9,
 		},
+		{
+			url: `${baseUrl}/tools/inm-clock`,
+			lastModified: new Date("2025-05-14T05:14:19.810"),
+			changeFrequency: "yearly",
+			priority: 0.114514,
+		},
 	];
 }
