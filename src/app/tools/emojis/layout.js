@@ -1,4 +1,4 @@
-import { generatePreviewMetadata } from "@/lib/utils";
+import { generatePreviewMetadata, getFullTitle } from "@/lib/utils";
 
 // Metadata
 const title = "Emoji 選擇器";
@@ -39,7 +39,7 @@ export const metadata = {
 	title,
 	description,
 	keywords,
-	...generatePreviewMetadata({ title: `${title}｜Ritmo 里莫`, description, url }),
+	...generatePreviewMetadata({ title: getFullTitle(title), description, url }),
 	robots: {
 		index: true,
 		follow: true,

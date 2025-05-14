@@ -18,6 +18,10 @@ export function getBaseUrl() {
 	return new URL(baseUrl);
 }
 
+export function getFullTitle(title: string): string {
+	return `${title}｜Ritmo 里莫`;
+}
+
 export function generatePreviewMetadata(
 	{ title, description = "", url }: { title: string; description?: string; url: string }
 ): Partial<Metadata> {

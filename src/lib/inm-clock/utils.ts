@@ -10,9 +10,10 @@ export const INM_QUOTES: string[] = [
 	"Homo 特有的前端技術",
 	"24 歲，是替代役",
 	"壓力 MAX 餒",
-	"好時間就要來臨力",
-	"這是什麼梗啊，求雷普",
+	"好時間，就要來臨力",
+	"這是什麼梗啊（求雷普",
 	"逸一時誤一世",
+	"いいよ！こいよ！",
 	"クロッ↑ク↓",
 	"這不是普通的時鐘，是ホモの時計。",
 	"時間停止了，但惡臭還在蔓延",
@@ -37,14 +38,14 @@ export function formatTime(date: Date): string {
 	const minutes = pad(date.getMinutes());
 	const seconds = pad(date.getSeconds());
 	const milliseconds = pad(date.getMilliseconds(), 3);
-	const meridiem = hours >= 12 ? "PM" : "AM";
+	const meridiem = (date.getHours() >= 12) ? "PM" : "AM";
 	const formattedTime = `${year}/${month}/${day} ${hours}:${minutes}:${seconds}.${milliseconds} ${meridiem}`;
 	return formattedTime;
 }
 
 export function formatTimeDiff(target: Date, now: Date): string {
 	const diff = target.getTime() - now.getTime();  // ms
-	if (diff < 0) return "好時間來臨力";
+	if (diff < 0) return "好時間，來臨力";
 
 	let remaining = Math.abs(diff);
 	const parts = [];

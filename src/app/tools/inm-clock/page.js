@@ -44,7 +44,7 @@ export default function InmPage() {
 		const diffInterval = setInterval(() => {
 			const now = new Date();
 			if (now < TARGET_TIME) setDiff(formatTimeDiff(TARGET_TIME, now));
-			else setDiff("好時間來臨力");
+			else setDiff("好時間，來臨力");
 		}, 1000);
 
 		return () => {
