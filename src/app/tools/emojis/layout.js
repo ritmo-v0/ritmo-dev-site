@@ -1,4 +1,4 @@
-import { generateLocalMetadata } from "@/lib/utils";
+import { generatePreviewMetadata } from "@/lib/utils";
 
 // Metadata
 const title = "Emoji 選擇器";
@@ -35,7 +35,12 @@ const keywords = [
 	// Additional
 	"小工具",
 ];
-export const metadata = generateLocalMetadata({ title, description, url, keywords });
+export const metadata = {
+	title,
+	description,
+	keywords,
+	...generatePreviewMetadata({ title: `${title}｜Ritmo 里莫`, description, url }),
+};
 
 
 

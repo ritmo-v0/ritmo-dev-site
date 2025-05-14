@@ -1,15 +1,12 @@
 "use client";
 import { useMemo } from "react";
-import { usePreviewStore, useSubgroupStore, useSkinToneStore, useTwemojiStore } from "./stores";
+import { usePreviewStore, useSubgroupStore, useSkinToneStore, useTwemojiStore } from "@/lib/store/emojis";
 import { Virtuoso, VirtuosoGrid } from "react-virtuoso";
 import { EmojiSkinTone } from "@/lib/emoji-utils";
 import Twemoji from "react-twemoji";
 
-// Toast
-import { useToast } from "@/hooks/use-toast";
-import { generateToastObject } from "@/lib/toast-utils";
-
 // Components & UI
+import { toast } from "sonner";
 import { SectionLayout } from "@/components/common/layouts";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -117,7 +114,6 @@ function EmojiVirtuosoGrid({ emojis }) {
 }
 
 function EmojiButton({ emoji }) {
-	const { toast } = useToast();
 	const addEmoji = usePreviewStore(state => state.addEmoji);
 	const useTwemoji = useTwemojiStore(state => state.useTwemoji);
 
@@ -128,12 +124,14 @@ function EmojiButton({ emoji }) {
 				await navigator.clipboard.writeText(emoji.emoji);
 			});
 		} catch (error) {
-			toast(generateToastObject("error", error.message));
+			toast.error("發生了一點🤏🌌小問題", {
+				description: error.message
+			});
 		}
 	}
 
 	return (
-		<Tooltip delayDuration={500}>
+		<Tooltip>
 			<TooltipTrigger asChild>
 				<Button
 					className="transition ease-out-expo duration-500 hover:z-[1] active:scale-[0.8]"

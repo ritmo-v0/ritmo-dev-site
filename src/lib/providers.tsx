@@ -1,11 +1,11 @@
 import { ThemeProvider } from "next-themes";
 
 // Components & UI
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner";
 
 
 
-export default function Providers({ children }) {
+export default function Providers({ children }: { children: React.ReactNode }) {
 	return (
 		<ThemeProvider
 			attribute="class"

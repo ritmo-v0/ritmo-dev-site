@@ -1,8 +1,8 @@
-import Providers from "@/lib/providers";
-import { getBaseUrl } from "@/lib/utils";
+// Styles
+import "@/app/globals.css";
 
-// CSS
-import "@/app/styles/globals.css";
+import Providers from "@/lib/providers";
+import { getBaseUrl, generatePreviewMetadata } from "@/lib/utils";
 
 // Components & UI
 import Navbar from "@/components/common/navbar";
@@ -12,7 +12,7 @@ import Footer from "@/components/common/footer";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Noto_Sans_TC } from "next/font/google";
-const notoSansTC = Noto_Sans_TC({
+const NotoSansTC = Noto_Sans_TC({
 	weight: "variable",
 	style: ["normal"],
 	display: "swap",
@@ -35,43 +35,30 @@ export const metadata = {
 	applicationName: title,
 	category: "Web Development",
 	keywords: ["Next.js", "React", "Tailwind CSS", "Geist UI"],
-	authors: [author],
+	authors: [{ name: author }],
 	creator: author,
 	publisher: author,
-    openGraph: {
-        title,
-        description,
-        url,
-		siteName: title,
-        type: "website",
-        locale: "zh_TW",
-		// publishedTime: "2021-10-20T00:00:00Z",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title,
-        description,
-        site: "@ritmo_v0",
-        siteId: "904003428262723584",
-        creator: "@ritmo_v0",
-        creatorId: "904003428262723584",
-    },
+    ...generatePreviewMetadata({ title, description, url }),
 	robots: {
 		index: true,
 		follow: true,
-		nocache: true,
+		nocache: false,
 	},
-	other: {
-		// "": "",
-	}
 };
 
 
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="zh-Hant-TW" suppressHydrationWarning>
-			<body className={`${GeistSans.variable} ${GeistMono.variable} ${notoSansTC.variable}`}>
+		<html
+			lang="zh-Hant-TW"
+			className={`${GeistSans.variable} ${GeistMono.variable} ${NotoSansTC.variable}`}
+			suppressHydrationWarning
+		>
+			{/* <head>
+				<script src="https://unpkg.com/react-scan/dist/auto.global.js" async />
+			</head> */}
+			<body>
 				<Providers>
 					<Navbar />
 					{children}

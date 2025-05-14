@@ -1,4 +1,4 @@
-import { generateNanoId } from "@/lib/utils";
+import { customAlphabet } from "nanoid";
 
 // Constants & Variables
 const VERSION_PREFIX = "# Version:";
@@ -8,7 +8,7 @@ const SUBGROUP_PREFIX = "# subgroup:";
 const PEOPLE_AND_BODY = "People & Body";
 
 export const EmojiStatus = Object.freeze({
-	Component: "component",                     // an Emoji_Component, excluding Regional_Indicators, ASCII, and non-Emoji.
+	Component: "component",                     // An Emoji_Component, excluding Regional_Indicators, ASCII, and non-Emoji.
 	FullyQualified: "fully-qualified",          // A fully-qualified emoji (see ED-18 in UTS #51), excluding Emoji_Component
 	MinimallyQualified: "minimally-qualified",  // A minimally-qualified emoji (see ED-18a in UTS #51)
 	Unqualified: "unqualified",                 // An unqualified emoji (See ED-19 in UTS #51)
@@ -24,6 +24,11 @@ export const EmojiSkinTone = Object.freeze({
 });
 
 
+
+function nanoid(length = 6) {
+	const customNanoId = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", length);
+	return customNanoId();
+}
 
 export async function fetchEmojiTestFile() {
 	try {
@@ -54,7 +59,7 @@ export function parseEmojis(file) {
 		// # Handle groups
 		if (isGroup(line)) {
 			currentGroup = {
-				id: generateNanoId(),
+				id: nanoid(),
 				title: line.replace(GROUP_PREFIX, "").trim(),
 				subgroups: [],
 			};
@@ -66,7 +71,7 @@ export function parseEmojis(file) {
 		// # Handle subgroups
 		if (isSubgroup(line)) {
 			currentSubgroup = {
-				id: generateNanoId(),
+				id: nanoid(),
 				title: line.replace(SUBGROUP_PREFIX, "").trim(),
 				emojis: [],
 			};

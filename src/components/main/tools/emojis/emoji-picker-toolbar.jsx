@@ -1,12 +1,9 @@
 "use client";
-import { usePreviewStore, useSubgroupStore, useSkinToneStore, useTwemojiStore } from "./stores";
+import { usePreviewStore, useSubgroupStore, useSkinToneStore, useTwemojiStore } from "@/lib/store/emojis";
 import { EmojiSkinTone } from "@/lib/emoji-utils";
 
-// Toast
-import { useToast } from "@/hooks/use-toast";
-import { generateToastObject } from "@/lib/toast-utils";
-
 // Components & UI
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -19,7 +16,6 @@ import { ListTree, PartyPopper } from "lucide-react";
 
 
 export function EmojiPickerToolbar() {
-	const { toast } = useToast();
 	const { preview, setPreview, clearPreview } = usePreviewStore();
 	const { useSubgroup, setUseSubgroup } = useSubgroupStore();
 	const { useTwemoji, setUseTwemoji } = useTwemojiStore();
@@ -29,10 +25,12 @@ export function EmojiPickerToolbar() {
 		try {
 			requestAnimationFrame(async () => {
 				await navigator.clipboard.writeText(preview);
-				toast(generateToastObject("info", "已複製到剪貼簿。"));
+				toast.success("已複製到剪貼簿。");
 			});
 		} catch (error) {
-			toast(generateToastObject("error", error.message));
+			toast.error("發生了一點🤏🌌小問題", {
+				description: error.message
+			});
 		}
 	}
 
@@ -43,7 +41,8 @@ export function EmojiPickerToolbar() {
 				<Textarea
 					id="emoji-preview"
 					value={preview}
-					className="text-base"
+					rows="5"
+					className="field-sizing-fixed"
 					placeholder="點選下方按鈕新增 emoji…"
 					onChange={(e) => setPreview(e.target.value)}
 				/>
@@ -56,16 +55,16 @@ export function EmojiPickerToolbar() {
 						onPressedChange={() => setUseSubgroup(!useSubgroup)}
 						aria-label={`${useSubgroup ? "不" : ""}使用子分類`}
 					>
-						<ListTree className="size-4" />
-						<span className="hidden sm:block ml-2">子分類</span>
+						<ListTree />
+						<span className="hidden sm:block">子分類</span>
 					</Toggle>
 					<Toggle
 						pressed={useTwemoji}
 						onPressedChange={() => setUseTwemoji(!useTwemoji)}
 						aria-label={`${useTwemoji ? "不" : ""}使用 Twemoji`}
 					>
-						<PartyPopper className="size-4" />
-						<span className="hidden sm:block ml-2">Twemoji</span>
+						<PartyPopper />
+						<span className="hidden sm:block">Twemoji</span>
 					</Toggle>
 					<Select value={skinTone} onValueChange={(value) => setSkinTone(value)}>
 						<SelectTrigger title="選擇膚色" className="w-36">

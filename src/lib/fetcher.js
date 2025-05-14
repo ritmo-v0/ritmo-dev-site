@@ -1,21 +1,10 @@
-import axios from "axios";
-
-const DEFAULT_ERROR_MESSAGE = "噢不。出事了阿伺";
-const NO_RESPONSE_MESSAGE = "噢不。阿伺你怎麼沒感覺";
-
+import axios from "redaxios";
+import { match } from "ts-pattern";
+import { ErrorMessage } from "./errors";
 
 
-const fetcher = async (
-	url,
-	{
-		baseUrl = "",
-		params = {},
-		method = "GET",
-		contentType = "application/json",
-		responseType = "json",
-		data = {}
-	} = {}
-) => {
+
+const fetcher = async (url, { baseUrl = "", params = {}, method = "GET", contentType = "application/json", data = {} } = {}) => {
 	const options = {
 		method,
 		url: baseUrl + url,
@@ -23,44 +12,27 @@ const fetcher = async (
 			"Content-Type": contentType,
 		},
 		params,
-		data,
-		responseType,
 	};
+
+	// Only include the body if the method is not GET or HEAD
+	if (method !== "GET" && method !== "HEAD") options.data = data;
 
 	try {
 		const response = await axios(options);
 		const { level, message } = response.data;
 		if (message) {
-			switch (level) {
-				case "error":
-					console.error(message);
-					break;
-				case "warning":
-					console.warn(message);
-					break;
-				case "info":
-				default:
-					console.log(message);
-					break;
-			}
+			match(level)
+				.with("error", () => console.error(message))
+				.with("warning", () => console.warn(message))
+				.with("info", () => console.log(message))
+				.otherwise(() => console.log(message));
 		}
 
 		return { ...response.data, status: response.status }
 	} catch (error) {
-		if (error.response) {
-			// Handle errors from the server
-			const status = error.response.status;
-			const message = error.response?.data?.message || DEFAULT_ERROR_MESSAGE;
-			throw new Error(`[${status}] ${message}`);
-		} else if (error.request) {
-			// Handle errors due to no response received
-			const status = 500;
-			throw new Error(`[${status}] ${NO_RESPONSE_MESSAGE}`);
-		} else {
-			// Handle other errors
-			const status = 0;
-			throw new Error(`[${status}] ${DEFAULT_ERROR_MESSAGE}`);
-		}
+		const status = error.status || 500;
+		const message = error?.data?.message || ErrorMessage.InternalServer;
+		throw new Error(`[${status}] ${message}`);
 	}
 };
 

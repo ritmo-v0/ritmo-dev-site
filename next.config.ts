@@ -2,20 +2,17 @@ import type { NextConfig } from "next";
 
 
 
-const nextConfig: NextConfig = {
+export default {
 	devIndicators: {
-		buildActivityPosition: "top-right",
+		position: "bottom-right",
 	},
 	images: {
 		remotePatterns: [
 			// {
 			// 	protocol: "https",
 			// 	hostname: "",
-			// 	port: "",
 			// 	pathname: "/**",
 			// },
 		]
 	}
-};
-
-export default nextConfig;
+} as NextConfig;
