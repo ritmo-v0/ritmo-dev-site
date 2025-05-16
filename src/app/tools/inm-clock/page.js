@@ -51,7 +51,7 @@ export default function InmPage() {
 			clearInterval(clockInterval);
 			clearInterval(diffInterval);
 		};
-	}, []);
+	}, [hasCelebrated]);
 
 	return (
 		<div className="relative overflow-clip isolate">

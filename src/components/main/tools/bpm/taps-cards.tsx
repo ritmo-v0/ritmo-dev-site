@@ -47,7 +47,7 @@ export function TapsCards({ className }: { className?: string }) {
 		const recentBpm = calculateRecentBpm(taps, recentTapCount);
 		setRecentBpm(recentBpm);
 		setRecentWholeBpm(Math.round(recentBpm));
-	}, [taps]);
+	}, [taps, recentTapCount]);
 
 	return (
 		<>
