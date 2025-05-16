@@ -10,8 +10,14 @@ import Footer from "@/components/common/footer";
 
 // Fonts
 import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import { Noto_Sans_TC } from "next/font/google";
+import { JetBrains_Mono, Noto_Sans_TC } from "next/font/google";
+const JetBrainsMono = JetBrains_Mono({
+	weight: "variable",
+	style: ["normal"],
+	display: "swap",
+	subsets: ["latin"],
+	variable: "--font-jetbrains-mono",
+});
 const NotoSansTC = Noto_Sans_TC({
 	weight: "variable",
 	style: ["normal"],
@@ -52,7 +58,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html
 			lang="zh-Hant-TW"
-			className={`${GeistSans.variable} ${GeistMono.variable} ${NotoSansTC.variable}`}
+			className={`${GeistSans.variable} ${JetBrainsMono.variable} ${NotoSansTC.variable}`}
 			suppressHydrationWarning
 		>
 			{/* <head>

@@ -43,7 +43,7 @@
 	--color-sidebar-ring: var(--sidebar-ring);
 
 	--font-sans: var(--font-geist-sans), var(--font-noto-sans-tc), sans-serif;
-	--font-mono: var(--font-geist-mono), monospace, var(--font-noto-sans-tc);
+	--font-mono: var(--font-jetbrains-mono), monospace, var(--font-noto-sans-tc);
 	--font-serif: var(--font-noto-serif-tc), sans-serif;
 }
 
@@ -117,6 +117,7 @@
 }
 
 @theme {
+	--breakpoint-xs: 32rem;
 	--ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
