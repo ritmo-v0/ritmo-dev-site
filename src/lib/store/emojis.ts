@@ -29,7 +29,7 @@ export const useSubgroupStore = create(
 	persist(
 		set => ({
 			useSubgroup: false,
-			setUseSubgroup: (useSubgroup: Boolean) => set({ useSubgroup }),
+			setUseSubgroup: (useSubgroup: boolean) => set({ useSubgroup }),
 		}),
 		{ name: "emojis-useSubgroup" }
 	)
@@ -39,7 +39,7 @@ export const useSkinToneStore = create(
 	persist(
 		set => ({
 			skinTone: "",
-			setSkinTone: (skinTone: Boolean) => set({ skinTone }),
+			setSkinTone: (skinTone: boolean) => set({ skinTone }),
 		}),
 		{ name: "emojis-skinTone" }
 	)
@@ -49,7 +49,7 @@ export const useTwemojiStore = create(
 	persist(
 		set => ({
 			useTwemoji: false,
-			setUseTwemoji: (useTwemoji: Boolean) => set({ useTwemoji }),
+			setUseTwemoji: (useTwemoji: boolean) => set({ useTwemoji }),
 		}),
 		{ name: "emojis-useTwemoji" }
 	)
