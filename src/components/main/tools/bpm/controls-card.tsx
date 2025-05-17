@@ -57,7 +57,9 @@ function AutoResetControls() {
 						onValueChange={(value) => setAutoResetDuration(value[0])}
 						disabled={!useAutoReset}
 					/>
-					<span className="font-mono text-sm">{autoResetDuration}s</span>
+					<span className={cn("font-mono text-sm transition-opacity", !useAutoReset && "opacity-50")}>
+						{autoResetDuration}s
+					</span>
 				</div>
 			</div>
 		</div>
@@ -85,7 +87,7 @@ function OtherControls() {
 					value={recentTapCount.toString()}
 					onValueChange={(value) => setRecentTapCount(Number.parseInt(value))}
 				>
-					<SelectTrigger className="w-16 !h-7">
+					<SelectTrigger className="w-18 !h-7">
 						<SelectValue placeholder="Count" />
 					</SelectTrigger>
 					<SelectContent>
@@ -126,13 +128,22 @@ function OtherControls() {
 						strokeLinejoin="round"
 						transition={{ type: "spring", stiffness: 250, damping: 25 }}
 						variants={{
-							normal: { rotate: "-40deg" },
-							hover: { rotate: "0deg" },
-							tap: { rotate: "140deg", transition: { type: "spring", stiffness: 1200, damping: 80 } },
+							normal: { rotate: "0deg" },
+							hover: { rotate: "50deg" },
+							tap: { rotate: "230deg", transition: { type: "spring", stiffness: 1200, damping: 80 } },
 						}}
+						// variants={{
+						// 	normal: { rotate: "-40deg" },
+						// 	hover: { rotate: "0deg" },
+						// 	tap: { rotate: "140deg", transition: { type: "spring", stiffness: 1200, damping: 80 } },
+						// }}
 					>
-						<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+						<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
 						<path d="M21 3v5h-5" />
+						<path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+						<path d="M8 16H3v5" />
+						{/* <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+						<path d="M21 3v5h-5" /> */}
 					</motion.svg>
 					Reset Taps
 				</motion.button>
