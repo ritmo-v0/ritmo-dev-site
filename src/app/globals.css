@@ -134,7 +134,7 @@
 	}
 
 	body {
-		@apply grid grid-rows-[auto_1fr_auto] min-h-svh;
+		@apply grid grid-rows-[auto_1fr_auto] min-w-[320px] min-h-svh;
 		@apply bg-background text-foreground font-sans antialiased;
 		scrollbar-gutter: stable both-edges;
 	}

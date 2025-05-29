@@ -1,5 +1,7 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ritmo-v0/ritmo-dev-site)
+
 # Is this a pigeon 🫴🦋?
-This it the repo of my personal website, hosted on [ritmo.dev](https://ritmo.dev).
+This is the repo of my personal website, hosted on [ritmo.dev](https://ritmo.dev).
 
 ## Sitemap
 ### 🏠 [Homepage](https://ritmo.dev)
