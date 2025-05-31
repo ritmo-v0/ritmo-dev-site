@@ -11,7 +11,7 @@ export default function NotFound() {
 		<WrapperLayout className="justify-items-center content-center gap-8 h-[calc(100svh_-_3.5rem)]">
 			<p className="font-bold text-5xl">畫一隻雞不存在</p>
 			<Button asChild>
-				<Link href="/" asChild>回到首頁</Link>
+				<Link href="/">回到首頁</Link>
 			</Button>
 		</WrapperLayout>
 	);
