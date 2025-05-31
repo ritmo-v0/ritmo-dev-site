@@ -42,6 +42,7 @@
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-ring: var(--sidebar-ring);
 
+	--font-heading: var(--font-plus-jakarta-sans), var(--font-noto-sans-tc), sans-serif;
 	--font-sans: var(--font-geist-sans), var(--font-noto-sans-tc), sans-serif;
 	--font-mono: var(--font-jetbrains-mono), monospace, var(--font-noto-sans-tc);
 	--font-serif: var(--font-noto-serif-tc), sans-serif;

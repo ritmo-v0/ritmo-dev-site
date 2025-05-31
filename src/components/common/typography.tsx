@@ -38,37 +38,37 @@ interface AnchorProps extends TypographyProps {
 // }
 
 export const H1: React.FC<TypographyProps> = ({ className, children }) => (
-	<h1 className={cn("scroll-m-20 text-3xl font-bold tracking-tight lg:text-4xl", className)}>
+	<h1 className={cn("scroll-m-20 font-heading text-3xl font-bold tracking-tight lg:text-4xl", className)}>
 		{children}
 	</h1>
 );
 
 export const H2: React.FC<TypographyProps> = ({ className, children }) => (
-	<h2 className={cn("scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0", className)}>
+	<h2 className={cn("scroll-m-20 font-heading border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0", className)}>
 		{children}
 	</h2>
 );
 
 export const H3: React.FC<TypographyProps> = ({ className, children }) => (
-	<h3 className={cn("scroll-m-20 text-xl font-semibold tracking-tight", className)}>
+	<h3 className={cn("scroll-m-20 font-heading text-xl font-semibold tracking-tight", className)}>
 		{children}
 	</h3>
 );
 
 export const H4: React.FC<TypographyProps> = ({ className, children }) => (
-	<h4 className={cn("scroll-m-20 text-lg font-semibold tracking-tight", className)}>
+	<h4 className={cn("scroll-m-20 font-heading text-lg font-semibold tracking-tight", className)}>
 		{children}
 	</h4>
 );
 
 export const H5: React.FC<TypographyProps> = ({ className, children }) => (
-	<h5 className={cn("scroll-m-20 text-base font-medium tracking-tight", className)}>
+	<h5 className={cn("scroll-m-20 font-heading text-base font-medium tracking-tight", className)}>
 		{children}
 	</h5>
 );
 
 export const H6: React.FC<TypographyProps> = ({ className, children }) => (
-	<h6 className={cn("scroll-m-20 text-sm font-medium tracking-tight", className)}>
+	<h6 className={cn("scroll-m-20 font-heading text-sm font-medium tracking-tight", className)}>
 		{children}
 	</h6>
 );
