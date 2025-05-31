@@ -8,11 +8,11 @@ export default {
 	},
 	images: {
 		remotePatterns: [
-			// {
-			// 	protocol: "https",
-			// 	hostname: "",
-			// 	pathname: "/**",
-			// },
+			{
+				protocol: "https",
+				hostname: "aaw2tslxqb.ufs.sh",
+				pathname: "/f/**",
+			},
 		]
 	}
 } as NextConfig;

@@ -1,17 +1,24 @@
-import { generatePreviewMetadata } from "@/lib/utils";
+import { meta } from "./meta";
+import { generatePreviewMetadata, getFullTitle } from "@/lib/utils";
 
 // Metadata
-const title = "小工具";
-const description = "我之後再來想想副標內容。";  // TODO: Update description
-const url = "/tools";
 export const metadata = {
 	title: {
-		default: title,
+		default: meta.title,
 		template: `%s｜Ritmo 里莫`,
 	},
-	description,
-
-	...generatePreviewMetadata({ title: `${title}｜Ritmo 里莫`, description, url }),
+	description: meta.description,
+	keywords: meta.keywords,
+	...generatePreviewMetadata({
+		title: getFullTitle(meta.title),
+		description: meta.description,
+		url: meta.url,
+	}),
+	robots: {
+		index: true,
+		follow: true,
+		nocache: false,
+	},
 };
 
 
