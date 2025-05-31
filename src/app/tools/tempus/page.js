@@ -1,20 +1,20 @@
 "use client";
 import { useEffect } from "react";
-import { useBPMStore } from "@/lib/store/bpm";
+import { useBPMStore } from "@/lib/store/tempus";
 import { match } from "ts-pattern";
 
 // Components & UI
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { WrapperLayout } from "@/components/common/layouts";
-import { TapArea } from "@/components/main/tools/bpm/tap-area";
-import { ControlsCard } from "@/components/main/tools/bpm/controls-card";
-import { MetronomeCard } from "@/components/main/tools/bpm/metronome-card";
-import { TapsCards } from "@/components/main/tools/bpm/taps-cards";
+import { TapArea } from "@/components/main/tools/tempus/tap-area";
+import { ControlsCard } from "@/components/main/tools/tempus/controls-card";
+import { MetronomeCard } from "@/components/main/tools/tempus/metronome-card";
+import { TapsCards } from "@/components/main/tools/tempus/taps-cards";
 // import { H2 } from "@/components/common/typography";
 
 
 
-export default function BpmPage() {
+export default function TempusPage() {
 	const { addTap, reset } = useBPMStore();
 
 	useEffect(() => {

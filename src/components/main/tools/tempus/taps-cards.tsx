@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useBPMStore } from "@/lib/store/bpm";
-import { calculateBpm, calculateRecentBpm } from "@/lib/bpm/utils";
+import { useBPMStore } from "@/lib/store/tempus";
+import { calculateBpm, calculateRecentBpm } from "@/lib/tempus/utils";
 import { cn } from "@/lib/utils";
 
 // Components & UI

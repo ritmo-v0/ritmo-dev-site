@@ -1,5 +1,5 @@
 "use client";
-import { useBPMStore } from "@/lib/store/bpm";
+import { useBPMStore } from "@/lib/store/tempus";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
