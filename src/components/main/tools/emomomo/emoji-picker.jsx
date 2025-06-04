@@ -198,11 +198,11 @@ function EmojiButton({ emojiEntry }) {
 				</Button>
 			</HoverCardTrigger>
 			<HoverCardContent
-				className="w-fit"
+				className="max-md:hidden w-fit"
 				side="top"
 				collisionPadding={16}
 			>
-				<div className="flex gap-4 w-fit">
+				<div className="flex gap-4">
 					<Twemoji options={{ className: "inline size-12" }}>{emoji}</Twemoji>
 					<div className="font-medium">
 						<p className="text-lg mb-1">
