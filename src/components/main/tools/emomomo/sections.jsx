@@ -12,7 +12,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 
 
-export function EmojiToolUtilSection({ ...props }) {
+export function EmomomoUtilSection({ ...props }) {
 	return (
 		<SectionLayout titleAs="h3" {...props}>
 			<EmojiPickerToolbar />
@@ -20,12 +20,12 @@ export function EmojiToolUtilSection({ ...props }) {
 	);
 }
 
-export function EmojiToolPickerSection({ ...props }) {
+export function EmomomoPickerSection({ ...props }) {
 	const { data, error, isLoading } = useSWRImmutable("/api/emojis", fetcher);
-	const emojiData = data?.data || [];
+	const emojiData = data?.data || {};
 
 	return (
-		<SectionLayout {...props}>
+		<SectionLayout titleAs="h3" {...props}>
 			{error ? (
 				<span>{error.message}</span>
 			) : isLoading ? (

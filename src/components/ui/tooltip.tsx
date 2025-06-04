@@ -37,6 +37,7 @@ function TooltipTrigger({
 function TooltipContent({
 	className,
 	sideOffset = 0,
+	collisionPadding = 16,
 	children,
 	...props
 }: React.ComponentProps<typeof TooltipPrimitive.Content>) {

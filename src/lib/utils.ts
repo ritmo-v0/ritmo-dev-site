@@ -3,7 +3,10 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 // Types & Interfaces
-import type{ Metadata } from "next";
+import type { Metadata } from "next";
+export type CopyResult =
+	| { success: true }
+	| { success: false; message: string };
 
 
 
@@ -44,4 +47,13 @@ export function generatePreviewMetadata(
 			creatorId: "904003428262723584",
 		},
 	};
+}
+
+export async function copyToClipboard(text: string): Promise<CopyResult> {
+	try {
+		await navigator.clipboard.writeText(text);
+		return { success: true };
+	} catch (error: any) {
+		return { success: false, message: error.message };
+	}
 }

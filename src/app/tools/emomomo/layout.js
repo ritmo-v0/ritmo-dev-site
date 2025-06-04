@@ -20,6 +20,6 @@ export const metadata = {
 
 
 
-export default function EmojiToolLayout({ children }) {
+export default function EmomomoLayout({ children }) {
 	return children;
 }

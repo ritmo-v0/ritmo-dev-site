@@ -1,19 +1,19 @@
 // Components & UI
 import { WrapperLayout } from "@/components/common/layouts";
-import { EmojiToolUtilSection, EmojiToolPickerSection } from "@/components/main/tools/emojis/sections";
+import { EmomomoUtilSection, EmomomoPickerSection } from "@/components/main/tools/emomomo/sections";
 
 
 
-export default function EmojiToolPage() {
+export default function EmomomoPage() {
 	return (
 		<main className="isolate">
 			<div className="sticky top-14 mx-auto bg-background z-10">
 				<WrapperLayout>
-					<EmojiToolUtilSection />
+					<EmomomoUtilSection />
 				</WrapperLayout>
 			</div>
 			<WrapperLayout>
-				<EmojiToolPickerSection />
+				<EmomomoPickerSection />
 			</WrapperLayout>
 		</main>
 	);

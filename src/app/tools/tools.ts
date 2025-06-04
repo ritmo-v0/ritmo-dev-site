@@ -1,4 +1,4 @@
-import { meta as emojiMeta } from "@/app/tools/emojis/meta";
+import { meta as emomomoMeta } from "@/app/tools/emomomo/meta";
 import { meta as tempusMeta } from "@/app/tools/tempus/meta";
 
 // Types & Interfaces
@@ -11,10 +11,10 @@ export type UppercaseAlphabet =
 
 export const TOOLS = {
 	E: {
-		id: emojiMeta.title.toLowerCase(),
+		id: emomomoMeta.title.toLowerCase(),
 		color: "#FFCC4D",
 		imageUrl: "https://aaw2tslxqb.ufs.sh/f/vQ66ADGRMise93dXMwzakeIbqDAPdLJ4rMG5g3oWuBfjRZ0O",
-		...emojiMeta,
+		...emomomoMeta,
 	},
 	T: {
 		id: tempusMeta.title.toLowerCase(),
