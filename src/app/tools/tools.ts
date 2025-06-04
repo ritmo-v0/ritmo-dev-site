@@ -13,7 +13,7 @@ export const TOOLS = {
 	E: {
 		id: emomomoMeta.title.toLowerCase(),
 		color: "#FFCC4D",
-		imageUrl: "https://aaw2tslxqb.ufs.sh/f/vQ66ADGRMise93dXMwzakeIbqDAPdLJ4rMG5g3oWuBfjRZ0O",
+		imageUrl: "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQkfPpIiMeUidzayDsoZlwWN436cLjA5v9KxHp",
 		...emomomoMeta,
 	},
 	T: {

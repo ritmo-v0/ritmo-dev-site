@@ -23,10 +23,10 @@ export function ToolListSection({ ...props }) {
 	return (
 		<SectionLayout {...props}>
 			<motion.div
+				className="grid @2xl:grid-cols-2 @6xl:grid-cols-3 gap-x-4 gap-y-6"
 				variants={CONTAINER_VARIANTS}
 				initial="hidden"
 				animate="visible"
-				className="grid @2xl:grid-cols-2 @6xl:grid-cols-3 gap-x-4 gap-y-6"
 			>
 				{ALPHABETS.map((letter) => {
 					const tool = TOOLS[letter];

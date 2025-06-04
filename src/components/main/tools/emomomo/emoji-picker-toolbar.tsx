@@ -145,7 +145,7 @@ function SkinToneSelect() {
 
 	return (
 		<Select value={skinTone} onValueChange={(value) => setSkinTone(value)}>
-			<SelectTrigger title="Select a skin tone" className="w-36">
+			<SelectTrigger title="Select a skin tone" className="w-42">
 				<SelectValue placeholder="Skin tone" />
 			</SelectTrigger>
 			<SelectContent>
@@ -201,26 +201,26 @@ function PreviewActionButtons() {
 				title="Copy preview text to clipboard"
 				variant="ghost"
 				size="lg"
-				className="max-sm:size-10"
+				className="max-md:size-10"
 				onClick={handleCopy}
 				disabled={preview === ""}
 				asChild
 			>
 				<CopyButton showIsCopied={showIsCopied}>
-					<span className="hidden sm:inline">Copy</span>
+					<span className="hidden md:inline">Copy</span>
 				</CopyButton>
 			</Button>
 			<Button
 				title="Clear preview text"
 				variant="destructive"
 				size="lg"
-				className="max-sm:size-10"
+				className="max-md:size-10"
 				onClick={clearPreview}
 				disabled={preview === ""}
 				asChild
 			>
 				<DeleteButton>
-					<span className="hidden sm:inline">Clear</span>
+					<span className="hidden md:inline">Clear</span>
 				</DeleteButton>
 			</Button>
 		</>

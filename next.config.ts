@@ -10,8 +10,13 @@ export default {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "aaw2tslxqb.ufs.sh",
+				hostname: "3b4o9rg98c.ufs.sh",
 				pathname: "/f/**",
+			},
+			{
+				protocol: "https",
+				hostname: "hackmd.io",
+				pathname: "/_uploads/**",
 			},
 		]
 	}

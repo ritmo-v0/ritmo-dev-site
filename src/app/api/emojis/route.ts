@@ -8,7 +8,8 @@ export const revalidate = 604800;  // 1 week (60 * 60 * 24 * 7)
 
 export async function GET() {
 	let data: any = {};
-	let message = "", status = 200;
+	let message: string = "";
+	let status: number = 200;
 
 	try {
 		const emojis = await kv.get("emoji_data");

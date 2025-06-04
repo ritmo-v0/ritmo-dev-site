@@ -10,7 +10,8 @@ import type { ToolMeta } from "@/types/meta";
 
 
 
-export function ToolCard({ className, id, color, imageUrl, title, description, url }: ToolMeta & { className?: string }) {
+export function ToolCard({ className, id, color, imageUrl: imgUrl, title, description, url }: ToolMeta & { className?: string }) {
+	const imageUrl = imgUrl || "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQRgPt9uBWlDj3kitow0r8z5VN42BInQgvEmGc";
 	return (
 		<Link
 			id={id}
@@ -18,7 +19,7 @@ export function ToolCard({ className, id, color, imageUrl, title, description, u
 			className={cn("flex flex-col rounded-xl transition-all hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50", className)}
 		>
 			<Image
-				src={imageUrl ?? "https://aaw2tslxqb.ufs.sh/f/vQ66ADGRMiseqeJhJ1RACkrLTaKutpynVljWwNvZ7DHYmfbe"}
+				src={imageUrl}
 				alt={`OG image of the ${title} tool`}
 				className="border rounded-xl object-cover"
 				width={960}

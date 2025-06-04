@@ -1,5 +1,5 @@
 "use client";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import {
 	useCOCStore,
 	usePreviewStore,
@@ -74,59 +74,47 @@ function EmojiGroup({ children, id, title, ...props }) {
 
 function EmojiGroupContent({ subgroups, supportsSkinTone }) {
 	const useSubgroup = useSubgroupStore(state => state.useSubgroup);
-	const skinTone = useSkinToneStore(state => state.skinTone);
+	const skinTone = useSkinToneStore(
+		supportsSkinTone ? state => state.skinTone : () => undefined
+	);
 
 	return useSubgroup ? (
 		<Virtuoso
 			useWindowScroll
 			totalCount={subgroups.length}
-			itemContent={index => (
-				<EmojiSubgroup
-					subgroup={subgroups[index]}
-					skinTone={skinTone}
-					supportsSkinTone={supportsSkinTone}
-				/>
-			)}
+			itemContent={index => <EmojiSubgroup subgroup={subgroups[index]} skinTone={skinTone} />}
 		/>
-	) : (
-		<EmojiSupergroup
-			subgroups={subgroups}
-			skinTone={skinTone}
-			supportsSkinTone={supportsSkinTone}
-		/>
-	);
+	) : <EmojiSupergroup subgroups={subgroups} skinTone={skinTone} />;
 }
 
-function EmojiSubgroup({ subgroup, skinTone, supportsSkinTone }) {
+const EmojiSubgroup = memo(function EmojiSubgroup({ subgroup, skinTone }) {
 	const title = getEmojiSubgroupTitle(subgroup.title);
 	const emojis = useMemo(() => {
-		return supportsSkinTone
-			? flatMapEmojis(subgroup, skinTone)
-			: subgroup.emojis;
-	}, [supportsSkinTone, subgroup, skinTone]);
+		return !skinTone
+			? subgroup.emojis
+			: flatMapEmojis(subgroup, skinTone);
+	}, [subgroup, skinTone]);
 
 	return (
 		<SectionLayout title={title} titleAs="h4">
 			<EmojiGrid emojis={emojis} />
 		</SectionLayout>
 	);
-}
+});
 
-function EmojiSupergroup({ subgroups, skinTone, supportsSkinTone }) {
+const EmojiSupergroup = memo(function EmojiSupergroup({ subgroups, skinTone }) {
 	const supergroup = useMemo(() => {
 		return subgroups.flatMap(subgroup => subgroup.emojis);
 	}, [subgroups]);
 
 	const emojis = useMemo(() => {
-		return supportsSkinTone
-			? flatMapEmojis({ emojis: supergroup }, skinTone)
-			: supergroup;
-	}, [supportsSkinTone, supergroup, skinTone]);
+		return !skinTone
+			? supergroup
+			: flatMapEmojis({ emojis: supergroup }, skinTone);
+	}, [supergroup, skinTone]);
 
-	return (
-		<EmojiGrid emojis={emojis} />
-	);
-}
+	return <EmojiGrid emojis={emojis} />;
+});
 
 function EmojiGrid({ emojis }) {
 	const EMOJIS_PER_LINE = 27;
@@ -136,9 +124,7 @@ function EmojiGrid({ emojis }) {
 		<EmojiVirtuosoGrid emojis={emojis} />
 	) : (
 		<div className="flex flex-wrap gap-1 py-2 overflow-x-hidden isolate">
-			{emojis.map((emoji, index) => (
-				<EmojiButton key={index} emojiEntry={emoji} />
-			))}
+			{emojis.map(emoji => <EmojiButton key={emoji.e} emojiEntry={emoji} />)}
 		</div>
 	);
 }
@@ -160,30 +146,17 @@ function EmojiVirtuosoGrid({ emojis }) {
 	);
 }
 
-function EmojiButton({ emojiEntry }) {
-	const useCOC = useCOCStore(state => state.useCOC);
+const EmojiButton = memo(function EmojiButton({ emojiEntry }) {
 	const addEmoji = usePreviewStore(state => state.addEmoji);
 
 	const { e: emoji, n: name } = emojiEntry;
+
 	const codePoints = useMemo(() => (
 		getEmojiCodePoints(emoji)
 	), [emoji]);
-
-	async function handleCopy() {
-		addEmoji(emoji);
-		if (useCOC) {
-			const copyResult = await copyToClipboard(emoji);
-			match(copyResult)
-				.with({ success: true }, () => {})
-				.with({ success: false }, ({ message }) => {
-					toast.error(
-						"A small 🤏🌌 issue occurred...",
-						{ description: message }
-					);
-				})
-				.exhaustive();
-		}
-	}
+	const capitalizedName = useMemo(() => (
+		name.charAt(0).toUpperCase() + name.slice(1)
+	), [name]);
 
 	return (
 		<HoverCard openDelay={600} closeDelay={100}>
@@ -192,7 +165,7 @@ function EmojiButton({ emojiEntry }) {
 					className="transition ease-out-expo duration-500 active:scale-[0.8] overflow-clip select-none"
 					variant="outline"
 					size="emoji"
-					onClick={handleCopy}
+					onClick={() => handleCopy(emoji, addEmoji)}
 				>
 					<Twemoji options={{ className: "inline size-7 pointer-events-none" }}>{emoji}</Twemoji>
 				</Button>
@@ -205,9 +178,7 @@ function EmojiButton({ emojiEntry }) {
 				<div className="flex gap-4">
 					<Twemoji options={{ className: "inline size-12" }}>{emoji}</Twemoji>
 					<div className="font-medium">
-						<p className="text-lg mb-1">
-							{name.charAt(0).toUpperCase() + name.slice(1)}
-						</p>
+						<p className="text-lg mb-1">{capitalizedName}</p>
 						<Muted className="font-mono whitespace-pre-wrap">
 							Unicode   <span className="font-light">{emoji}</span>
 						</Muted>
@@ -219,7 +190,7 @@ function EmojiButton({ emojiEntry }) {
 			</HoverCardContent>
 		</HoverCard>
 	)
-}
+});
 
 function flatMapEmojis(subgroup, skinTone) {
 	return subgroup.emojis.flatMap(emoji => {
@@ -241,4 +212,20 @@ function flatMapEmojis(subgroup, skinTone) {
 		}
 		return [emoji];
 	});
+}
+
+async function handleCopy(emoji, addEmoji) {
+	addEmoji(emoji);
+	if (useCOCStore.getState().useCOC) {
+		const copyResult = await copyToClipboard(emoji);
+		match(copyResult)
+			.with({ success: true }, () => {})
+			.with({ success: false }, ({ message }) => {
+				toast.error(
+					"A small 🤏🌌 issue occurred...",
+					{ description: message }
+				);
+			})
+			.exhaustive();
+	}
 }
