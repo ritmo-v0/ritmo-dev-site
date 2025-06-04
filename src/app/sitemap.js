@@ -13,16 +13,23 @@ export default function sitemap() {
 			changeFrequency: "monthly",
 			priority: 1,
 		},
+
 		// # tools/*
 		{
 			url: `${baseUrl}/tools`,
-			lastModified: new Date("2024-10-23"),
+			lastModified: new Date("2025-06-01"),
 			changeFrequency: "monthly",
 			priority: 0.6,
 		},
 		{
-			url: `${baseUrl}/tools/emojis`,
-			lastModified: new Date("2024-10-23"),
+			url: `${baseUrl}/tools/emomomo`,
+			lastModified: new Date("2025-06-04"),
+			changeFrequency: "monthly",
+			priority: 0.9,
+		},
+		{
+			url: `${baseUrl}/tools/tempus`,
+			lastModified: new Date("2025-06-04"),
 			changeFrequency: "monthly",
 			priority: 0.9,
 		},

@@ -32,16 +32,16 @@ export default function TempusPage() {
 	}, [addTap, reset]);
 
 	return (
-		<TooltipProvider>
-			<WrapperLayout className="grid gap-4 h-min mb-4">
-				{/* <H2>BPM Calculator</H2> */}
-				<TapArea className="max-md:order-1" />
+		<WrapperLayout className="grid gap-4 h-min mb-4">
+			{/* <H2>BPM Calculator</H2> */}
+			<TapArea className="max-md:order-1" />
+			<TooltipProvider>
 				<div className="grid grid-cols-2 gap-4">
 					<TapsCards className="max-md:order-1" />
 					<ControlsCard className="col-span-2 md:col-span-1" />
 					<MetronomeCard className="hidden md:flex" />
 				</div>
-			</WrapperLayout>
-		</TooltipProvider>
+			</TooltipProvider>
+		</WrapperLayout>
 	);
 }

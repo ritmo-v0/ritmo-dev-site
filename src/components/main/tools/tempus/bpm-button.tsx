@@ -1,81 +1,64 @@
 "use client";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
+import { useRef, useState } from "react";
+import { match } from "ts-pattern";
+import { cn, copyToClipboard } from "@/lib/utils";
 
 // Components & UI
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { CopyButton } from "@/components/common/motion-buttons";
 
 // Types & Interfaces
-interface BpmButtonProps {
+import type { MotionButtonProps } from "@/components/common/motion-buttons";
+interface BpmButtonProps extends MotionButtonProps {
 	bpm: number | string;
 	shouldMute?: boolean;
-}
+};
 
 
 
 export function BpmButton({ bpm, shouldMute = false }: BpmButtonProps) {
-	const inTransition = { type: "spring", stiffness: 300, damping: 20 };
-	const outTransition = { type: "spring", stiffness: 400, damping: 40 };
+	const [showIsCopied, setShowIsCopied] = useState(false);
+	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
 	const isMuted = shouldMute || bpm === 0 || bpm === "-";
 
-	async function copyToClipboard(text: string) {
-		try {
-			await navigator.clipboard.writeText(text);
-			toast.success("已複製到剪貼簿。");
-		} catch (error: any) {
-			toast.error("發生了一點🤏🌌小問題", {
-				description: error.message
-			});
-		}
+	async function handleCopy() {
+		const copyResult = await copyToClipboard(bpm.toString());
+		match(copyResult)
+			.with({ success: true }, () => {
+				if (timeoutRef.current) clearTimeout(timeoutRef.current);
+				setShowIsCopied(true);
+				timeoutRef.current = setTimeout(() => {
+					setShowIsCopied(false);
+					timeoutRef.current = null;
+				}, 3000);
+			})
+			.with({ success: false }, ({ message }) => {
+				toast.error(
+					"A small 🤏🌌 issue occurred...",
+					{ description: message }
+				);
+			})
+			.exhaustive();
 	}
 
 	return (
 		<Button
 			variant="nothing"
 			className={cn(
-				"md:gap-3 !p-0 font-mono font-bold text-xl xs:text-2xl md:text-3xl 2xl:text-4xl",
+				"md:gap-3 !p-0 font-mono font-bold text-xl xs:text-2xl md:text-3xl 2xl:text-4xl transition-opacity",
 				`${isMuted && "font-normal text-muted-foreground"}`
 			)}
-			onClick={() => copyToClipboard(bpm.toString())}
+			onClick={handleCopy}
 			disabled={isMuted}
 			asChild
 		>
-			<motion.button initial="normal" whileHover="animate" whileFocus="animate">
-				{bpm}
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width={24}
-					height={24}
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					strokeWidth="2"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					className="size-4 2xl:size-5"
-				>
-					<motion.rect
-						width="14"
-						height="14"
-						x="8"
-						y="8"
-						rx="2"
-						ry="2"
-						variants={{
-							normal: { translateY: 0, translateX: 0, transition: inTransition },
-							animate: { translateY: -3, translateX: -3, transition: outTransition },
-						}}
-					/>
-					<motion.path
-						d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-						variants={{
-							normal: { x: 0, y: 0, transition: inTransition },
-							animate: { x: 3, y: 3, transition: outTransition },
-						}}
-					/>
-				</svg>
-			</motion.button>
+			<CopyButton
+				svgClassName="2xl:size-5"
+				childrenBefore={<span>{bpm}</span>}
+				showIsCopied={showIsCopied}
+			/>
 		</Button>
 	);
 }

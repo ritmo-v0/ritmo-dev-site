@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Muted } from "@/components/common/typography";
 
 // Images & Icons
-import { CircleArrowOutUpLeft, CornerDownLeft, MousePointer, Space } from "lucide-react";
+import { CircleArrowOutUpLeft, CornerDownLeft, MousePointerClick, Pointer, Space } from "lucide-react";
 
 
 
@@ -19,7 +19,7 @@ export function TapArea({ className }: { className?: string }) {
 		<Card
 			className={cn(
 				"flex items-center justify-center gap-4 w-full max-h-96 p-8 bg-secondary hover:bg-secondary/80 focus-visible:bg-secondary/80",
-				"font-mono border-2 border-dashed aspect-square @3xl:aspect-square cursor-pointer select-none transition-all",
+				"font-mono text-secondary-foreground border-2 border-dashed aspect-square @3xl:aspect-square cursor-pointer select-none transition-all",
 				className,
 			)}
 			tabIndex={0}
@@ -28,16 +28,37 @@ export function TapArea({ className }: { className?: string }) {
 			<div className="space-y-1">
 				<Muted className="text-center">
 					{"Tap: "}
-					<Badge variant="outline" className="gap-2">Space<Space /></Badge>
-					{" "}<Badge variant="outline" className="gap-2">Enter<CornerDownLeft /></Badge>
-					{" "}<Badge variant="outline" className="gap-2">Click<MousePointer /></Badge>
+					<ShortcutKeyBadge>
+						<span className="hidden xs:inline">Click</span>
+						<MousePointerClick className="hidden xs:block" />
+						<Pointer className="xs:hidden" />
+					</ShortcutKeyBadge>{" "}
+					<ShortcutKeyBadge>
+						<span className="hidden xs:inline">Space</span>
+						<Space />
+					</ShortcutKeyBadge>{" "}
+					<ShortcutKeyBadge>
+						<span className="hidden xs:inline">Enter</span>
+						<CornerDownLeft />
+					</ShortcutKeyBadge>
 				</Muted>
 				<Muted className="text-center">
 					{"Reset: "}
-					<Badge variant="outline" className="gap-2">Esc<CircleArrowOutUpLeft /></Badge>
-					</Muted>
+					<ShortcutKeyBadge>
+						<span className="hidden xs:inline">Esc</span>
+						<CircleArrowOutUpLeft />
+					</ShortcutKeyBadge>
+				</Muted>
 			</div>
-			<Muted>Tap Count: {taps.length}</Muted>
+			<Muted>Taps: {taps.length}</Muted>
 		</Card>
+	);
+}
+
+function ShortcutKeyBadge({ children }: { children: React.ReactNode }) {
+	return (
+		<Badge variant="outline" className="gap-2 text-secondary-foreground">
+			{children}
+		</Badge>
 	);
 }
