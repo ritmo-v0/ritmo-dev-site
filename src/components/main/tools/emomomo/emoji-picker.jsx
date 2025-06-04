@@ -103,7 +103,7 @@ function EmojiSubgroup({ subgroup, skinTone, supportsSkinTone }) {
 		return supportsSkinTone
 			? flatMapEmojis(subgroup, skinTone)
 			: subgroup.emojis;
-	}, [subgroup, skinTone]);
+	}, [supportsSkinTone, subgroup, skinTone]);
 
 	return (
 		<SectionLayout title={title} titleAs="h4">
@@ -121,7 +121,7 @@ function EmojiSupergroup({ subgroups, skinTone, supportsSkinTone }) {
 		return supportsSkinTone
 			? flatMapEmojis({ emojis: supergroup }, skinTone)
 			: supergroup;
-	}, [supergroup, skinTone]);
+	}, [supportsSkinTone, supergroup, skinTone]);
 
 	return (
 		<EmojiGrid emojis={emojis} />

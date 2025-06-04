@@ -46,8 +46,8 @@ export function parseEmojis<C extends boolean = false>(
 	const compressed = options?.compressed ?? false as C;
 	type Entry = EmojiEntryByComp<C>;
 
+	const emojiGroups: EmojiGroup<Entry>[] = [];
 	let version = "";
-	let emojiGroups: EmojiGroup<Entry>[] = [];
 	let currentGroup: EmojiGroup<Entry> | null = null;
 	let currentSubgroup: EmojiSubgroup<Entry> | null = null;
 
@@ -181,8 +181,8 @@ function getEmojiInfoByName(name: string): { baseName: string; skinTones: SkinTo
 	const BASE_SEPARATOR = ": ";
 	const VARIANT_SEPARATOR = ", ";
 
-	let skinTones: SkinToneName[] = [];
-	let nonSkinToneVariants: string[] = [];
+	const skinTones: SkinToneName[] = [];
+	const nonSkinToneVariants: string[] = [];
 
 	const [base, variantString] = name.split(BASE_SEPARATOR).map(part => part.trim());
 	const variants = variantString ? variantString.split(VARIANT_SEPARATOR).map(v => v.trim()) : [];
