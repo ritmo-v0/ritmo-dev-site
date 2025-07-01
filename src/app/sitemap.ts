@@ -1,8 +1,11 @@
 import { getBaseUrl } from "@/lib/utils";
 
+// Types & Interfaces
+import type { MetadataRoute } from "next";
 
 
-export default function sitemap() {
+
+export default function sitemap(): MetadataRoute.Sitemap {
 	const baseUrl = getBaseUrl().href;
 
 	return [
@@ -33,8 +36,10 @@ export default function sitemap() {
 			changeFrequency: "monthly",
 			priority: 0.9,
 		},
+
+		// # (playground)/*
 		{
-			url: `${baseUrl}/tools/inm-clock`,
+			url: `${baseUrl}/inm-clock`,
 			lastModified: new Date("2025-05-14T19:19:00.810"),
 			changeFrequency: "yearly",
 			priority: 0.114514,
