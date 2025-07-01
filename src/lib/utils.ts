@@ -4,9 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-export type CopyResult =
-	| { success: true }
-	| { success: false; message: string };
+import type { Result } from "@/lib/fetch/response";
 
 
 
@@ -49,10 +47,10 @@ export function generatePreviewMetadata(
 	};
 }
 
-export async function copyToClipboard(text: string): Promise<CopyResult> {
+export async function copyToClipboard(text: string): Promise<Omit<Result, "data" | "level">> {
 	try {
 		await navigator.clipboard.writeText(text);
-		return { success: true };
+		return { success: true, message: "Text copied to clipboard successfully." };
 	} catch (error: any) {
 		return { success: false, message: error.message };
 	}

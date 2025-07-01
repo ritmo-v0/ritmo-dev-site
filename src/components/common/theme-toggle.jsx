@@ -11,9 +11,9 @@ import { MoonIcon } from "@radix-ui/react-icons";
 
 // Constants & Variables
 const BUTTONS = [
-	{ title: "切換至淺色模式", icon: <Sun />, theme: "light" },
-	{ title: "切換至系統主題", icon: <Monitor />, theme: "system" },
-	{ title: "切換至黑暗模式", icon: <MoonIcon />, theme: "dark" },
+	{ title: "Toggle light mode", icon: <Sun />, theme: "light" },
+	{ title: "Toggle system theme", icon: <Monitor />, theme: "system" },
+	{ title: "Toggle dark mode", icon: <MoonIcon />, theme: "dark" },
 ];
 
 

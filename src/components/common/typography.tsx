@@ -1,92 +1,139 @@
+import * as React from "react";
 import { cn } from "@/lib/utils";
+
+// Components & UI
 import Link from "next/link";
-
-// Types & Interfaces
-interface TypographyProps {
-	className?: string;
-	children: React.ReactNode;
-}
-
-interface AnchorProps extends TypographyProps {
-	href: string;
-}
+// import Image from "next/image";
+import { Slot as SlotPrimitive } from "radix-ui";
 
 // Markdown
-// import dynamic from "next/dynamic";
-// import Markdown from "react-markdown";
-// import remarkGfm from "remark-gfm";
-// const Twemoji = dynamic(() => import("react-twemoji"));
+
+// Types & Interfaces
+import type { AsChild } from "@/types";
 
 
 
-// export function MarkdownText({ className, children }: TypographyProps) {
-// 	return (
-// 		<Markdown
-// 			className={className}
-// 			remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
-// 			components={{
-//                 p: ({ ...props }) => (
-// 					<Twemoji options={{ className: "twemoji" }}>
-// 						{props.children}
-// 					</Twemoji>
-// 				),
-//             }}
-// 		>
-// 			{children}
-// 		</Markdown>
-// 	);
-// }
+function H1({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"h1"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "h1";
 
-export const H1: React.FC<TypographyProps> = ({ className, children }) => (
-	<h1 className={cn("scroll-m-20 font-heading text-3xl font-bold tracking-tight lg:text-4xl", className)}>
-		{children}
-	</h1>
-);
+	return <Comp className={cn("scroll-m-20 font-heading text-3xl font-bold tracking-tight", className)} {...props} />;
+}
 
-export const H2: React.FC<TypographyProps> = ({ className, children }) => (
-	<h2 className={cn("scroll-m-20 font-heading border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0", className)}>
-		{children}
-	</h2>
-);
+function H2({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"h2"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "h2";
 
-export const H3: React.FC<TypographyProps> = ({ className, children }) => (
-	<h3 className={cn("scroll-m-20 font-heading text-xl font-semibold tracking-tight", className)}>
-		{children}
-	</h3>
-);
+	return <Comp className={cn("mt-12 scroll-m-20 font-heading text-2xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-4", className)} {...props} />;
+}
 
-export const H4: React.FC<TypographyProps> = ({ className, children }) => (
-	<h4 className={cn("scroll-m-20 font-heading text-lg font-semibold tracking-tight", className)}>
-		{children}
-	</h4>
-);
+function H3({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"h3"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "h3";
 
-export const H5: React.FC<TypographyProps> = ({ className, children }) => (
-	<h5 className={cn("scroll-m-20 font-heading text-base font-medium tracking-tight", className)}>
-		{children}
-	</h5>
-);
+	return <Comp className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-2", className)} {...props} />;
+}
 
-export const H6: React.FC<TypographyProps> = ({ className, children }) => (
-	<h6 className={cn("scroll-m-20 font-heading text-sm font-medium tracking-tight", className)}>
-		{children}
-	</h6>
-);
+function H4({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"h4"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "h4";
 
-export const P: React.FC<TypographyProps> = ({ className, children }) => (
-	<p className={cn("leading-7 [&:not(:first-child)]:mt-4", className)}>
-		{children}
-	</p>
-);
+	return <Comp className={cn("scroll-m-20 font-heading text-lg font-semibold tracking-tight", className)} {...props} />;
+}
 
-export const Muted: React.FC<TypographyProps> = ({ className, children }) => (
-	<p className={cn("text-sm text-muted-foreground", className)}>
-		{children}
-	</p>
-);
+function H5({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"h5"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "h5";
 
-export const Anchor: React.FC<AnchorProps> = ({ className, children, href }) => (
-	<Link href={href} className={cn("font-medium text-primary underline underline-offset-4", className)}>
-		{children}
-	</Link>
-);
+	return <Comp className={cn("scroll-m-20 font-heading text-base font-medium tracking-tight", className)} {...props} />;
+}
+
+function H6({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"h6"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "h6";
+
+	return <Comp className={cn("scroll-m-20 font-heading text-sm font-medium tracking-tight", className)} {...props} />;
+}
+
+function P({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"p"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "p";
+
+	return <Comp className={cn("leading-relaxed [&:not(:first-child)]:mt-4 [word-break:break-word]", className)} {...props} />;
+}
+
+function Muted({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"p"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "p";
+
+	return <Comp className={cn("text-muted-foreground text-sm", className)} {...props} />;
+}
+
+function InlineCode({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"code"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "code";
+
+	return <Comp className={cn("bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm", className)} {...props} />;
+}
+
+function Blockquote({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"blockquote"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "blockquote";
+
+	return <Comp className={cn("border-[color-mix(in_oklch,_var(--primary),_white_10%)] border-l-3 pl-6 font-serif italic [&:not(:first-child)]:mt-4", className)} {...props} />;
+}
+
+function Anchor({
+	className,
+	href,
+	...props
+}: React.ComponentProps<"a"> & { href: string }) {
+	return (
+		<Link
+			href={href}
+			className={cn("font-medium text-primary hover:text- underline underline-offset-4", className)}
+			target={href.startsWith("https") ? "_blank" : undefined}
+			rel={href.startsWith("https") ? "noopener noreferrer" : undefined}
+			{...props}
+		/>
+	);
+}
+
+export {
+	H1, H2, H3, H4, H5, H6,
+	P,
+	Muted,
+	InlineCode,
+	Blockquote,
+	Anchor,
+};

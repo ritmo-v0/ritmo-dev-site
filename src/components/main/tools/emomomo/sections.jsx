@@ -2,7 +2,7 @@
 
 // SWR
 import useSWRImmutable from "swr/immutable";
-import fetcher from "@/lib/fetcher";
+import { fetcher } from "@/lib/fetch";
 
 // Components & UI
 import { EmojiPickerToolbar } from "./emoji-picker-toolbar";

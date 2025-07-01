@@ -2,8 +2,6 @@
 
 import { useTheme } from "next-themes"
 import { Toaster as Sonner, ToasterProps } from "sonner"
-
-// Images & Icons
 import { CircleAlert, CircleCheck, CircleX, Info, LoaderCircle } from "lucide-react"
 
 const Toaster = ({ ...props }: ToasterProps) => {

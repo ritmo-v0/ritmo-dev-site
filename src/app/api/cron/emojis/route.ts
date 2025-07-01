@@ -1,4 +1,5 @@
 import { kv } from "@vercel/kv";
+import { type Result, UnauthorizedError, ensureError } from "@/lib/fetch/response";
 import { fetchEmojiTestFile, parseEmojis } from "@/lib/emomomo/utils";
 
 // Route Segment Config
@@ -6,12 +7,12 @@ export const dynamic = "force-dynamic";
 
 
 
-export async function GET(req: Request) {
+export async function GET(req: Request): Promise<Response> {
 	try {
 		// Authorization
 		const authorization = req.headers.get("authorization");
 		if (authorization !== `Bearer ${process.env.CRON_SECRET}`) {
-			return new Response("Unauthorized", { status: 401 });
+			throw new UnauthorizedError();
 		}
 
 		// Fetch file from Unicode public route,
@@ -23,14 +24,24 @@ export async function GET(req: Request) {
 		await kv.set("emoji_data", emojiData);
 
 		return Response.json(
-			{ data: emojiData, message: "Emoji data updated successfully." },
+			{
+				success: true,
+				data: emojiData,
+				level: "info",
+				message: "Emoji data updated successfully."
+			} satisfies Result,
 			{ status: 200 }
 		);
-	} catch (error: any) {
+	} catch (err) {
+		const error = ensureError(err);
 		console.error(`ERR::EMOJI::UPDATE: ${error.message}`);
+
 		return Response.json(
-			{ message: `Failed to update emoji data: ${error.message}` },
-			{ status: 500 }
+			{
+				success: false,
+				message: `Failed to update emoji data: ${error.message}`,
+			} satisfies Result,
+			{ status: error.status }
 		);
 	}
 }

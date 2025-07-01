@@ -1,4 +1,5 @@
 {
+	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
 		"allowJs": true,
 		"esModuleInterop": true,
@@ -11,14 +12,12 @@
 		"moduleResolution": "bundler",
 		"noEmit": true,
 		"plugins": [
-			{
-				"name": "next"
-			}
+			{ "name": "next" }
 		],
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"target": "ESNext",
+		"target": "esnext",
 		"paths": {
 			"@/*": ["./src/*"],
 		},

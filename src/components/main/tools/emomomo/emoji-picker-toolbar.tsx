@@ -29,6 +29,9 @@ import { Toggle } from "@/components/ui/toggle";
 // Constants & Variables
 import { EmojiSkinToneOrder } from "@/lib/emomomo/constants";
 
+// Types & Interfaces
+import type { Transition } from "motion/react";
+
 // Images & Icons
 import { ListTree } from "lucide-react";
 
@@ -91,7 +94,7 @@ function UseSubgroupToggle() {
 function UseCOCToggle() {
 	const { useCOC, setUseCOC } = useCOCStore();
 
-	const transition = { type: "spring", stiffness: 400, damping: 40 };
+	const transition: Transition = { type: "spring", stiffness: 400, damping: 40 };
 	const CLICK_BLINKS = [
 		{ d: "m6 12-1.9 2" },
 		{ d: "m5.1 8-2.9-.8" },

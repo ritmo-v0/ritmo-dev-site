@@ -20,4 +20,4 @@ export default {
 			},
 		]
 	}
-} as NextConfig;
+} satisfies NextConfig;

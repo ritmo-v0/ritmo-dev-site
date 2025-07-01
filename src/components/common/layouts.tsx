@@ -1,8 +1,20 @@
+import * as React from "react"
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils"
 
 // Components & UI
+import { Slot as SlotPrimitive } from "radix-ui";
 import { H1, H2, H3, H4, H5, H6 } from "./typography";
+
+// Types & Interfaces
+import type { VariantProps } from "class-variance-authority";
+import type { AsChild } from "@/types";
+interface WrapperLayoutProps {
+	width?: number;
+}
+interface SectionLayoutProps {
+	title?: string;
+}
 
 // Constants & Variables
 const sectionVariants = cva(
@@ -33,53 +45,43 @@ const HEADING_MAP = {
 	h6: H6,
 } as const;
 
-// Types & Interfaces
-interface WrapperLayoutProps {
-	children: React.ReactNode;
-	className?: string;
-	width?: number;
-}
-
-interface SectionLayoutProps {
-	children: React.ReactNode;
-	className?: string;
-	title?: string;
-	titleAs?: keyof typeof HEADING_MAP;
-}
 
 
-
-export const WrapperLayout: React.FC<WrapperLayoutProps> = ({
+function WrapperLayout({
 	children,
 	className,
-	width = 1400,
-}) => {
+	width = 1440,
+	asChild = false,
+	...props
+}: React.ComponentProps<"div"> & WrapperLayoutProps & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "div";
+
 	return (
-		<div
-			style={{ "--wrapper-width": `${width}px` } as React.CSSProperties}
-			className={cn(
-				"@container mx-auto [--wrapper-padding:_2rem] sm:[--wrapper-padding:_4rem] w-[min(calc(100%_-_var(--wrapper-padding)),_var(--wrapper-width))]",
-				className
-			)}
+		<Comp
+			style={{ maxInlineSize: `${width}px` }}
+			className={cn("@container mx-auto px-4 md:px-8", className)}
+			{...props}
 		>
 			{children}
-		</div>
+		</Comp>
 	);
-};
+}
 
-
-export const SectionLayout: React.FC<SectionLayoutProps> = ({
+function SectionLayout({
 	children,
 	className,
 	title = "",
 	titleAs = "h2",
-}) => {
-	const TitleTag = HEADING_MAP[titleAs] || H2;
+	...props
+}: React.ComponentProps<"section"> & VariantProps<typeof sectionVariants> & SectionLayoutProps) {
+	const TitleComp = HEADING_MAP[titleAs || "h2"];
 
 	return (
-		<section className={cn(sectionVariants({ titleAs, className }))}>
-			{title && <TitleTag>{title}</TitleTag>}
+		<section className={cn(sectionVariants({ titleAs, className }))} {...props}>
+			{title && <TitleComp>{title}</TitleComp>}
 			{children}
 		</section>
 	);
-};
+}
+
+export { WrapperLayout, SectionLayout };
