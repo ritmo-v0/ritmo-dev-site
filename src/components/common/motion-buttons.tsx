@@ -3,6 +3,7 @@ import { motion, Variants } from "motion/react";
 import { cn } from "@/lib/utils";
 
 // Types & Interfaces
+import type { Transition } from "motion/react";
 export interface MotionButtonProps {
 	childrenBefore?: React.ReactNode;
 	children?: React.ReactNode;
@@ -10,6 +11,11 @@ export interface MotionButtonProps {
 }
 
 
+
+/*
+ * These components are intended to be used with the `Button` shadcn component.
+ * Use the asChild prop to pass the button props to the motion button.
+ */
 
 export function CopyButton(
 	{
@@ -40,8 +46,8 @@ export function CopyButton(
 			}
 		},
 	};
-	const inTransition = { type: "spring", stiffness: 300, damping: 20 };
-	const outTransition = { type: "spring", stiffness: 400, damping: 40 };
+	const inTransition: Transition = { type: "spring", stiffness: 300, damping: 20 };
+	const outTransition: Transition = { type: "spring", stiffness: 400, damping: 40 };
 
 	// Icons
 	const CopyIcon = (
@@ -122,9 +128,9 @@ export function CopyButton(
 export function DeleteButton(
 	{ childrenBefore, children, svgClassName, ...props }: MotionButtonProps
 ) {
-	const inTransition = { type: "spring", stiffness: 400, damping: 40 };
-	const outTransition = { type: "spring", stiffness: 500, damping: 30 };
-	const fallTransition = {
+	const inTransition: Transition = { type: "spring", stiffness: 400, damping: 40 };
+	const outTransition: Transition = { type: "spring", stiffness: 500, damping: 30 };
+	const fallTransition: Transition = {
 		y: inTransition,
 		opacity: inTransition,
 		rotateZ: { type: "spring", stiffness: 400, damping: 10 },
