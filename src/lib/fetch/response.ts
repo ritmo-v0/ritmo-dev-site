@@ -13,7 +13,7 @@ export const ErrorMessage = Object.freeze({
 });
 
 // Types & Interfaces
-export type SuccessLevel = "info" | "warning";
+type SuccessLevel = "info" | "warning";
 type JSONable =
 	| string | number | boolean | null | undefined
 	| readonly JSONable[]
@@ -130,6 +130,7 @@ export function ensureError(value: unknown): BaseError {
 	if (value instanceof BaseError) return value;
 	if (value instanceof Error) return new InternalServerError(value.message, { cause: value });
 
+	// Other Error
 	let stringified = "[Unable to stringify the thrown value]";
 	try {
 		stringified = JSON.stringify(value);
