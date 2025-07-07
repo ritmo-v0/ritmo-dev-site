@@ -3,15 +3,94 @@ import { cn } from "@/lib/utils";
 
 // Components & UI
 import Link from "next/link";
-// import Image from "next/image";
+import Image from "next/image";
+import { Code } from "./shiki-highlighter";
 import { Slot as SlotPrimitive } from "radix-ui";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/ui/table";
 
 // Markdown
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import remarkBreaks from "remark-breaks";
+import rehypeKatex from "rehype-katex";
 
 // Types & Interfaces
 import type { AsChild } from "@/types";
+export type MarkdownTextProps = {
+	renderH1?: boolean;
+}
 
 
+
+function MarkdownText({
+	renderH1 = true,
+	...props
+}: React.ComponentProps<typeof Markdown> & MarkdownTextProps) {
+	return (
+		<Markdown
+			remarkPlugins={[remarkMath, remarkBreaks, [remarkGfm, { singleTilde: false }]]}
+			rehypePlugins={[rehypeKatex]}
+			components={{
+				h1: ({ children, ...props }) => renderH1 ? <H1 id={extractId(children)} {...props}>{children}</H1> : null,
+				h2: ({ children, ...props }) => <H2 id={extractId(children)} {...props}>{children}</H2>,
+				h3: ({ children, ...props }) => <H3 id={extractId(children)} {...props}>{children}</H3>,
+				h4: ({ children, ...props }) => <H4 id={extractId(children)} {...props}>{children}</H4>,
+				h5: ({ children, ...props }) => <H5 id={extractId(children)} {...props}>{children}</H5>,
+				h6: ({ children, ...props }) => <H6 id={extractId(children)} {...props}>{children}</H6>,
+				ul: UL,
+				ol: OL,
+				li: LI,
+				p: P,
+				hr: ({ ...props }) => <hr className="mt-4 border-t" {...props} />,
+				pre: Code,
+				code: InlineCode,
+				blockquote: Blockquote,
+				a: ({ children, href, ...props }) => (
+					href
+						? <Anchor href={href} {...props}>{children}</Anchor>
+						: <span {...props}>{children}</span>
+				),
+				img: ({ src, alt, width, height, ...props }) => {
+					if (typeof src !== "string") return null;
+					return(
+						<Image
+							src={src}
+							alt={alt || ""}
+							width={Number(width) || 720}
+							height={Number(height) || 405}
+							className="mx-auto my-2 rounded-lg object-cover"
+							loading="lazy"
+							{...props}
+						/>
+					);
+				},
+				table: ({ children, ...props }) => <Table className="overflow-x-auto" {...props}>{children}</Table>,
+				thead: TableHeader,
+				tbody: TableBody,
+				tr: TableRow,
+				th: TableHead,
+				td: TableCell,
+            }}
+			{...props}
+		/>
+	);
+}
+
+function extractId(children: React.ReactNode): string | undefined {
+	if (typeof children === "string") {
+		return children.toString().toLowerCase().replace(/\s+/g, "-");
+	}
+
+	return undefined;
+}
 
 function H1({
 	className,
@@ -50,7 +129,7 @@ function H4({
 }: React.ComponentProps<"h4"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "h4";
 
-	return <Comp className={cn("scroll-m-20 font-heading text-lg font-semibold tracking-tight", className)} {...props} />;
+	return <Comp className={cn("mt-4 scroll-m-20 font-heading text-lg font-semibold tracking-tight [&+p]:!mt-2", className)} {...props} />;
 }
 
 function H5({
@@ -71,6 +150,36 @@ function H6({
 	const Comp = asChild ? SlotPrimitive.Slot : "h6";
 
 	return <Comp className={cn("scroll-m-20 font-heading text-sm font-medium tracking-tight", className)} {...props} />;
+}
+
+function UL({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"ul"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "ul";
+
+	return <Comp className={cn("list-disc list-outside [&:not(:first-child)]:mt-1 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
+}
+
+function OL({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"ol"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "ol";
+
+	return <Comp className={cn("list-decimal list-outside [&:not(:first-child)]:mt-1 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
+}
+
+function LI({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"li"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "li";
+
+	return <Comp className={cn("leading-relaxed my-1 pl-1 marker:text-sm", className)} {...props} />;
 }
 
 function P({
@@ -130,8 +239,9 @@ function Anchor({
 }
 
 export {
+	MarkdownText,
 	H1, H2, H3, H4, H5, H6,
-	P,
+	UL, OL, LI, P,
 	Muted,
 	InlineCode,
 	Blockquote,

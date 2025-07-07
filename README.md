@@ -7,6 +7,9 @@ This is the repo of my personal website, hosted on [ritmo.dev](https://ritmo.dev
 ### 🏠 [Homepage](https://ritmo.dev)
 There's nothing in here currently.
 
+### 📝 [Articles](https://ritmo.dev/articles)
+Yes, articles. My articles.
+
 ### 🛠️ [Tools](https://ritmo.dev/tools)
 
 #### [EMOMOMO <img src="https://github.com/jdecked/twemoji/blob/main/assets/svg/1f609.svg" width="16">](https://ritmo.dev/tools/emomomo)

@@ -1,6 +1,6 @@
 import ky, { HTTPError } from "ky";
 import { match } from "ts-pattern";
-import { ErrorMessage, ensureError } from "./response";
+import { ensureError } from "./response";
 
 // Types & Interfaces
 import type { Result } from "./response";
@@ -75,24 +75,26 @@ export async function fetcher(
 			status: 200
 		};
 	} catch (err) {
+		let status: number;
+		let msg: string;
+
 		if (err instanceof HTTPError) {
-			const status = err.response.status;
-			let msg: string = ErrorMessage.InternalServer;
+			status = err.response.status;
 
-			try {
-				const errorData = await err.response.json();
-				if (errorData.message) msg = errorData.message;
-			} catch (error) {
-				msg = ensureError(error).message;
-			}
-
-			const message = `[${status}] ${msg}`;
-			console.error("ERR::FETCHER:", message);
-			throw new Error(message);
+			const contentType = err.response.headers.get("content-type");
+			msg = await match(contentType ?? "")
+				.with("application/json", async () => {
+					const { message } = await err.response.json();
+					return message ?? err.message;
+				})
+				.otherwise(() => err.message);
+		} else {
+			const error = ensureError(err);
+			status = error.status;
+			msg = error.message;
 		}
 
-		const error = ensureError(err);
-		const message = `[${error.status}] ${error.message}`;
+		const message = `[${status}] ${msg}`;
 		console.error("ERR::FETCHER:", message);
 		throw new Error(message);
 	}

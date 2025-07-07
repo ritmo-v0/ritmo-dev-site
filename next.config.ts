@@ -10,7 +10,7 @@ export default {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "3b4o9rg98c.ufs.sh",
+				hostname: "3b4o9rg98c.ufs.sh",  // UploadThing (Images)
 				pathname: "/f/**",
 			},
 			{
@@ -19,5 +19,17 @@ export default {
 				pathname: "/_uploads/**",
 			},
 		]
-	}
+	},
+	turbopack: {
+		resolveAlias: {
+			"micromark-extension-math": "micromark-extension-llm-math",
+		},
+	},
+	webpack: (config) => {
+		config.resolve.alias = {
+			...config.resolve.alias,
+			"micromark-extension-math": "micromark-extension-llm-math",
+		};
+		return config;
+	},
 } satisfies NextConfig;

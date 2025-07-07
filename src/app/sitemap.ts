@@ -17,6 +17,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 1,
 		},
 
+		// # articles/*
+		{
+			url: `${baseUrl}/articles`,
+			lastModified: new Date("2025-07-08"),
+			changeFrequency: "monthly",
+			priority: 0.6,
+		},
+		// TODO: Add dynamic articles URLs
+
 		// # tools/*
 		{
 			url: `${baseUrl}/tools`,

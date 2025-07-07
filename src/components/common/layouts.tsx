@@ -59,7 +59,7 @@ function WrapperLayout({
 	return (
 		<Comp
 			style={{ maxInlineSize: `${width}px` }}
-			className={cn("@container mx-auto px-4 md:px-8", className)}
+			className={cn("@container w-full mx-auto px-4 md:px-8", className)}
 			{...props}
 		>
 			{children}
