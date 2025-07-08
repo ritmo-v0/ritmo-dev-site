@@ -32,6 +32,7 @@ export async function GET(
 		]);
 		const { viewcount, brief, ...restInfo } = info;
 		const { image } = metadata;
+		void viewcount; void brief;
 
 		return Response.json(
 			{

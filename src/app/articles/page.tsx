@@ -37,8 +37,8 @@ export default function ArticlesPage() {
 	const [animate, setAnimate] = useState(false);
 
 	useEffect(() => {
-		if (!isLoading && !error && articles.length > 0) setAnimate(true);
-	}, [isLoading, error, articles]);
+		if (!isLoading && !error) setAnimate(true);
+	}, [isLoading, error]);
 
 	return (
 		<WrapperLayout width={960}>
