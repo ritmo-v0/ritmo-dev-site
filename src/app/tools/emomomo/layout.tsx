@@ -1,8 +1,11 @@
 import { meta } from "./meta";
 import { generatePreviewMetadata, getFullTitle } from "@/lib/utils";
 
+// Types & Interfaces
+import type { Metadata } from "next";
+
 // Metadata
-export const metadata = {
+export const metadata: Metadata = {
 	title: meta.title,
 	description: meta.description,
 	keywords: meta.keywords,
@@ -20,6 +23,8 @@ export const metadata = {
 
 
 
-export default function TempusToolLayout({ children }) {
+export default function EmomomoLayout({
+	children,
+}: React.ComponentProps<"div">) {
 	return children;
 }

@@ -1,8 +1,8 @@
-// Styles
-import "@/app/globals.css";
-
 import Providers from "@/lib/providers";
 import { getBaseUrl, generatePreviewMetadata } from "@/lib/utils";
+
+// Styles
+import "@/app/globals.css";
 
 // Components & UI
 import Navbar from "@/components/common/navbar";
@@ -47,7 +47,7 @@ export const metadata = {
 	description,
 	applicationName: title,
 	category: "Web Development",
-	keywords: ["Next.js", "React", "Tailwind CSS", "Geist UI"],
+	keywords: ["Next.js", "React", "Tailwind CSS", "Geist UI"],  // TODO: Update keywords
 	authors: [{ name: author }],
 	creator: author,
 	publisher: author,
@@ -61,16 +61,22 @@ export const metadata = {
 
 
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+	children,
+}: React.ComponentProps<"div">) {
 	return (
 		<html
 			lang="zh-Hant-TW"
 			className={`${GeistSans.variable} ${JetBrainsMono.variable} ${NotoSansTC.variable} ${PlusJakartaSans.variable}`}
 			suppressHydrationWarning
 		>
-			{/* <head>
-				<script src="https://unpkg.com/react-scan/dist/auto.global.js" async />
-			</head> */}
+			<head>
+				{/* <script src="https://unpkg.com/react-scan/dist/auto.global.js" async /> */}
+				<link
+					rel="stylesheet"
+					href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
+				/>
+			</head>
 			<body>
 				<Providers>
 					<Navbar />

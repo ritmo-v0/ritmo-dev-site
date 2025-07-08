@@ -32,7 +32,7 @@ export default function TempusPage() {
 	}, [addTap, reset]);
 
 	return (
-		<WrapperLayout className="grid gap-4 w-full h-min mb-4">
+		<WrapperLayout className="grid gap-4 h-min mb-4">
 			{/* <H2>BPM Calculator</H2> */}
 			<TapArea className="max-md:order-1" />
 			<TooltipProvider>
