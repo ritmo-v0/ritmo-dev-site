@@ -46,12 +46,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 0.9,
 		},
 
-		// # (playground)/*
+		// # stuff/*
 		{
-			url: `${baseUrl}/inm-clock`,
+			url: `${baseUrl}/stuff/inm-clock`,
 			lastModified: new Date("2025-05-14T19:19:00.810"),
 			changeFrequency: "yearly",
 			priority: 0.114514,
+		},
+		{
+			url: `${baseUrl}/stuff/7sref4`,
+			lastModified: new Date("2025-07-16"),
+			changeFrequency: "yearly",
+			priority: 0.3,
 		},
 	];
 }

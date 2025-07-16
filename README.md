@@ -24,11 +24,14 @@ A cron job is written to periodically parse the [latest set of Unicode emojis](h
 
 ![Tempus](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/tools/tempus/opengraph-image.png)
 
-### Additional Pages
-#### [INM Clock](https://ritmo.dev/inm-clock)
+### Random Stuff
+#### [INM Clock](https://ritmo.dev/stuff/inm-clock)
 A clock, giving off a terrible stench, that runs and then stops at exactly `2025-05-14T19:19:00.810`.
 
-![INM Clock](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/tools/inm-clock/opengraph-image.png)
+![INM Clock](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/stuff/inm-clock/opengraph-image.png)
+
+#### [アシッド](https://ritmo.dev/stuff/7sref4)
+The message record with "アシッド" that appeared in maimai DX's RAG event (the last chapter of 7sRef and KALEIDXSCOPE) starting from 2025/07/11.
 
 ## License
 Emoji Powered by Twemoji, used under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/
