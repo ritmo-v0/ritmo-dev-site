@@ -230,7 +230,7 @@ function Anchor({
 	return (
 		<Link
 			href={href}
-			className={cn("font-medium text-primary hover:text- underline underline-offset-4", className)}
+			className={cn("font-medium text-primary underline underline-offset-4", className)}
 			target={href.startsWith("https") ? "_blank" : undefined}
 			rel={href.startsWith("https") ? "noopener noreferrer" : undefined}
 			{...props}
