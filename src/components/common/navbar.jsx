@@ -6,6 +6,7 @@ import { useThemeStore } from "@/lib/store/theme";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import { ThemePresetSelect } from "./theme-preset-select";
+import { WrapperLayout } from "@/components/common/layouts";
 
 
 
@@ -13,8 +14,8 @@ export default function Navbar() {
 	const { preset, setPreset } = useThemeStore();
 
 	return (
-		<nav className="sticky top-0 h-14 px-4 sm:px-8 bg-background z-50">
-			<div className="flex items-center justify-between gap-4 mx-auto max-w-[1400px] h-full">
+		<nav className="sticky top-0 h-14 bg-background z-50">
+			<WrapperLayout className="flex items-center justify-between gap-4 h-full">
 				<Link href="/" className="font-bold">Ritmo.</Link>
 				<div className="flex items-center gap-2">
 					<ThemePresetSelect
@@ -25,7 +26,7 @@ export default function Navbar() {
 					/>
 					<ThemeToggle />
 				</div>
-			</div>
+			</WrapperLayout>
 		</nav>
 	);
 }

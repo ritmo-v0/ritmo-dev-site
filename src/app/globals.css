@@ -151,10 +151,6 @@
 
 /* ---------------------------- STYLES ---------------------------- */
 @layer utilities {
-	.glassmorphism {
-		@apply bg-background/60 z-50 backdrop-blur-lg;
-	}
-
 	.twemoji {
 		@apply [--margin:_0.2em] inline size-[1.1em] mx-(--margin) align-[-0.2em];
 	}

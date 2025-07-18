@@ -15,6 +15,11 @@ export default {
 			},
 			{
 				protocol: "https",
+				hostname: "ywu5w3rxj7.ufs.sh",  // UploadThing (MyGO)
+				pathname: "/f/**",
+			},
+			{
+				protocol: "https",
 				hostname: "hackmd.io",
 				pathname: "/_uploads/**",
 			},

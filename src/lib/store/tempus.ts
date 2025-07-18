@@ -83,7 +83,7 @@ export const useBPMStore = create<BPMState>()(
 					set({ recentTapCount: count })
 				},
 			}), {
-				name: "bpm-storage", // Name of the storage (must be unique)
+				name: "bpm-storage",
 				partialize: (state) => ({
 					autoResetDuration: state.autoResetDuration,
 					recentTapCount: state.recentTapCount,
