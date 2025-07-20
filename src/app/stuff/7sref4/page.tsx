@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { use7sRef4Store } from "@/lib/store/7sref4";
 import { cn } from "@/lib/utils";
 
 // SWR
@@ -38,7 +38,7 @@ const RITMO_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQrTxR6l8TJnrEBN
 
 
 export default function SevensRef4Page() {
-	const [locale, setLocale] = useState<typeof LOCALES[number]>("ja");
+	const { locale } = use7sRef4Store();
 
 	const { data } = useSWR("/api/7sref4", fetcher);
 	const messages: SevensRefMessage[] = data?.success ? data.data : [];
@@ -52,11 +52,7 @@ export default function SevensRef4Page() {
 						萌々も
 					</Anchor>
 				</Muted>
-				<LocaleSelect
-				className="ml-auto"
-					defaultValue={locale}
-					onValueChange={setLocale}
-				/>
+				<LocaleSelect className="ml-auto" />
 			</div>
 			<MessageGroup>
 				{messages.map((message, index: number) => (
@@ -64,7 +60,7 @@ export default function SevensRef4Page() {
 						key={index}
 						message={message}
 						prevMessage={messages[index - 1]}
-						locale={locale}
+						locale={locale as typeof LOCALES[number]}
 					/>
 				))}
 			</MessageGroup>
@@ -120,18 +116,13 @@ function SevensRef4Message({
 	);
 }
 
-function LocaleSelect({
-	className,
-	defaultValue,
-	onValueChange,
-}: React.ComponentProps<typeof SelectTrigger> & {
-	defaultValue: typeof LOCALES[number];
-	onValueChange: (value: typeof LOCALES[number]) => void;
-}) {
+function LocaleSelect({ className }: React.ComponentProps<typeof SelectTrigger>) {
+	const { locale, setLocale } = use7sRef4Store();
+
 	return (
 		<Select
-			defaultValue={defaultValue}
-			onValueChange={onValueChange}
+			value={locale}
+			onValueChange={(value) => setLocale(value)}
 		>
 			<SelectTrigger className={cn("w-24", className)}>
 				<SelectValue />
