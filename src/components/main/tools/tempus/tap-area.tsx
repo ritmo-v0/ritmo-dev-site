@@ -1,5 +1,5 @@
 "use client";
-import { useBPMStore } from "@/lib/store/tempus";
+import { useTempusStore } from "@/lib/store/tempus";
 import { cn } from "@/lib/utils";
 
 // Components & UI
@@ -8,12 +8,18 @@ import { Card } from "@/components/ui/card";
 import { Muted } from "@/components/common/typography";
 
 // Images & Icons
-import { CircleArrowOutUpLeft, CornerDownLeft, MousePointerClick, Pointer, Space } from "lucide-react";
+import {
+	CircleArrowOutUpLeft,
+	CornerDownLeft,
+	MousePointerClick,
+	Pointer,
+	Space,
+} from "lucide-react";
 
 
 
-export function TapArea({ className }: { className?: string }) {
-	const { taps, addTap } = useBPMStore();
+export function TapArea({ className }: React.ComponentProps<typeof Card>) {
+	const addTap = useTempusStore(state => state.addTap);
 
 	return (
 		<Card
@@ -50,12 +56,18 @@ export function TapArea({ className }: { className?: string }) {
 					</ShortcutKeyBadge>
 				</Muted>
 			</div>
-			<Muted>Taps: {taps.length}</Muted>
+			<TapCount />
 		</Card>
 	);
 }
 
-function ShortcutKeyBadge({ children }: { children: React.ReactNode }) {
+function TapCount() {
+	const taps = useTempusStore(state => state.taps);
+
+	return <Muted>Taps: {taps.length}</Muted>;
+}
+
+function ShortcutKeyBadge({ children }: React.ComponentProps<typeof Badge>) {
 	return (
 		<Badge variant="outline" className="gap-2 text-secondary-foreground">
 			{children}
