@@ -24,7 +24,7 @@ import {
 import { WrapperLayout } from "@/components/common/layouts";
 
 // Types & Interfaces
-const LOCALES = ["ja", "zh-TW"] as const;
+const LOCALES = ["ja", "zh-TW", "en"] as const;
 type SevensRefMessage = {
 	role: "player" | "acid";
 	content: Record<typeof LOCALES[number], string>;
