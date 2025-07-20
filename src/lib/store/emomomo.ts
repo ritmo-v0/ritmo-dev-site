@@ -1,83 +1,79 @@
 import { create } from "zustand";
-import { persist, subscribeWithSelector } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 import { getSkinToneKey } from "@/lib/emomomo/utils";
 
-import { DEFAULT_SKIN_TONE } from "@/lib/emomomo/constants";
-
 // Types & Interfaces
-interface EmojiPreviewState {
+interface EmomomoState {
 	// States
+	textareaRef: HTMLTextAreaElement | null;
 	preview: string;
+	useCOC: boolean;
+	useSubgroup: boolean;
+	skinTone: string;
 
 	// Actions
 	addEmoji: (emoji: string) => void;
 	setPreview: (preview: string) => void;
 	clearPreview: () => void;
-}
 
-interface EmojiUseCOCState {
-	// States
-	useCOC: boolean;
-
-	// Actions
+	setTextareaRef: (textareaRef: HTMLTextAreaElement | null) => void;
 	setUseCOC: (useCOC: boolean) => void;
-}
-
-interface EmojiUseSubgroupState {
-	// States
-	useSubgroup: boolean;
-
-	// Actions
 	setUseSubgroup: (useSubgroup: boolean) => void;
-}
-
-interface EmojiUseSkinToneState {
-	// States
-	skinTone: string;
-
-	// Actions
 	setSkinTone: (skinTone: string) => void;
 }
 
+// Constants & Variables
+import { DEFAULT_SKIN_TONE } from "@/lib/emomomo/constants";
 
 
-export const usePreviewStore = create<EmojiPreviewState>()(
-	subscribeWithSelector(
-		set => ({
+
+export const useEmomomoStore = create<EmomomoState>()(
+	persist(
+		(set, get) => ({
+			// Initial states
+			textareaRef: null,
 			preview: "",
-			addEmoji: emoji => set(state => ({ preview: state.preview + emoji })),
-			setPreview: preview => set({ preview }),
-			clearPreview: () => set({ preview: "" }),
-		})
-	)
-);
-
-export const useCOCStore = create<EmojiUseCOCState>()(
-	persist(
-		set => ({
 			useCOC: true,
-			setUseCOC: (useCOC: boolean) => set({ useCOC }),
-		}),
-		{ name: "emomomo-useCOC" }
-	)
-);
-
-export const useSubgroupStore = create<EmojiUseSubgroupState>()(
-	persist(
-		set => ({
 			useSubgroup: false,
-			setUseSubgroup: (useSubgroup: boolean) => set({ useSubgroup }),
-		}),
-		{ name: "emomomo-useSubgroup" }
-	)
-);
-
-export const useSkinToneStore = create<EmojiUseSkinToneState>()(
-	persist(
-		set => ({
 			skinTone: getSkinToneKey(DEFAULT_SKIN_TONE),
-			setSkinTone: (skinTone: string) => set({ skinTone }),
-		}),
-		{ name: "emomomo-skinTone" }
+
+			// Actions
+			addEmoji: (emoji) => {
+				const textarea = get().textareaRef;
+				const preview = get().preview;
+
+				if (!textarea) {
+					set({ preview: preview + emoji });
+					return;
+				}
+
+				const start = textarea.selectionStart;
+				const end = textarea.selectionEnd;
+				const newPreview = preview.slice(0, start) + emoji + preview.slice(end);
+				set({ preview: newPreview });
+
+				requestAnimationFrame(() => {
+					textarea.focus();
+					textarea.setSelectionRange(
+						start + emoji.length,
+						start + emoji.length
+					);
+				});
+			},
+			setPreview: (preview) => set({ preview }),
+			clearPreview: () => set({ preview: "" }),
+
+			setTextareaRef: (textareaRef) => set({ textareaRef }),
+			setUseCOC: (useCOC) => set({ useCOC }),
+			setUseSubgroup: (useSubgroup) => set({ useSubgroup }),
+			setSkinTone: (skinTone) => set({ skinTone }),
+		}), {
+			name: "emomomo-store",
+			partialize: (state) => ({
+				useCOC: state.useCOC,
+				useSubgroup: state.useSubgroup,
+				skinTone: state.skinTone,
+			}),
+		}
 	)
 );

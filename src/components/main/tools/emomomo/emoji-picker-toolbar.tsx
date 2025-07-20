@@ -1,11 +1,6 @@
 "use client";
-import { useRef, useState } from "react";
-import {
-	useCOCStore,
-	usePreviewStore,
-	useSkinToneStore,
-	useSubgroupStore,
-} from "@/lib/store/emomomo";
+import { useEffect, useRef, useState } from "react";
+import { useEmomomoStore } from "@/lib/store/emomomo";
 import { match } from "ts-pattern";
 import { motion } from "motion/react";
 import { copyToClipboard } from "@/lib/utils";
@@ -26,14 +21,14 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Toggle } from "@/components/ui/toggle";
 
-// Constants & Variables
-import { EmojiSkinToneOrder } from "@/lib/emomomo/constants";
+// Images & Icons
+import { ListTree } from "lucide-react";
 
 // Types & Interfaces
 import type { Transition } from "motion/react";
 
-// Images & Icons
-import { ListTree } from "lucide-react";
+// Constants & Variables
+import { EmojiSkinToneOrder } from "@/lib/emomomo/constants";
 
 
 
@@ -59,12 +54,23 @@ export function EmojiPickerToolbar() {
 }
 
 function PreviewTextarea() {
-	const { preview, setPreview } = usePreviewStore();
+	const preview = useEmomomoStore(state => state.preview);
+	const setPreview = useEmomomoStore(state => state.setPreview);
+	const setTextareaRef = useEmomomoStore(state => state.setTextareaRef);
+
+	const ref = useRef<HTMLTextAreaElement | null>(null);
+	useEffect(() => {
+		const current = ref.current;
+		setTextareaRef(current);
+
+		return () => setTextareaRef(null);
+	}, [setTextareaRef]);
 
 	return (
 		<div className="grid gap-2">
 			<Label htmlFor="emoji-preview">Preview</Label>
 			<Textarea
+				ref={ref}
 				id="emoji-preview"
 				value={preview}
 				rows={3}
@@ -77,7 +83,8 @@ function PreviewTextarea() {
 }
 
 function UseSubgroupToggle() {
-	const { useSubgroup, setUseSubgroup } = useSubgroupStore();
+	const useSubgroup = useEmomomoStore(state => state.useSubgroup);
+	const setUseSubgroup = useEmomomoStore(state => state.setUseSubgroup);
 
 	return (
 		<Toggle
@@ -92,7 +99,8 @@ function UseSubgroupToggle() {
 }
 
 function UseCOCToggle() {
-	const { useCOC, setUseCOC } = useCOCStore();
+	const useCOC = useEmomomoStore(state => state.useCOC);
+	const setUseCOC = useEmomomoStore(state => state.setUseCOC);
 
 	const transition: Transition = { type: "spring", stiffness: 400, damping: 40 };
 	const CLICK_BLINKS = [
@@ -144,7 +152,8 @@ function UseCOCToggle() {
 }
 
 function SkinToneSelect() {
-	const { skinTone, setSkinTone } = useSkinToneStore();
+	const skinTone = useEmomomoStore(state => state.skinTone);
+	const setSkinTone = useEmomomoStore(state => state.setSkinTone);
 
 	return (
 		<Select value={skinTone} onValueChange={(value) => setSkinTone(value)}>
@@ -174,7 +183,9 @@ function SkinToneSelect() {
 }
 
 function PreviewActionButtons() {
-	const { preview, clearPreview } = usePreviewStore();
+	const preview = useEmomomoStore(state => state.preview);
+	const clearPreview = useEmomomoStore(state => state.clearPreview);
+
 	const [showIsCopied, setShowIsCopied] = useState(false);
 	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 

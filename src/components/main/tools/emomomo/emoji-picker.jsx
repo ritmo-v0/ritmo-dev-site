@@ -1,11 +1,6 @@
 "use client";
 import { memo, useMemo } from "react";
-import {
-	useCOCStore,
-	usePreviewStore,
-	useSkinToneStore,
-	useSubgroupStore,
-} from "@/lib/store/emomomo";
+import { useEmomomoStore } from "@/lib/store/emomomo";
 import { match } from "ts-pattern";
 import { copyToClipboard } from "@/lib/utils";
 import {
@@ -73,8 +68,8 @@ function EmojiGroup({ children, id, title, ...props }) {
 }
 
 function EmojiGroupContent({ subgroups, supportsSkinTone }) {
-	const useSubgroup = useSubgroupStore(state => state.useSubgroup);
-	const skinTone = useSkinToneStore(
+	const useSubgroup = useEmomomoStore(state => state.useSubgroup);
+	const skinTone = useEmomomoStore(
 		supportsSkinTone ? state => state.skinTone : () => undefined
 	);
 
@@ -147,7 +142,7 @@ function EmojiVirtuosoGrid({ emojis }) {
 }
 
 const EmojiButton = memo(function EmojiButton({ emojiEntry }) {
-	const addEmoji = usePreviewStore(state => state.addEmoji);
+	const addEmoji = useEmomomoStore(state => state.addEmoji);
 
 	const { e: emoji, n: name } = emojiEntry;
 
@@ -216,7 +211,7 @@ function flatMapEmojis(subgroup, skinTone) {
 
 async function handleCopy(emoji, addEmoji) {
 	addEmoji(emoji);
-	if (useCOCStore.getState().useCOC) {
+	if (useEmomomoStore.getState().useCOC) {
 		const copyResult = await copyToClipboard(emoji);
 		match(copyResult)
 			.with({ success: true }, () => {})
