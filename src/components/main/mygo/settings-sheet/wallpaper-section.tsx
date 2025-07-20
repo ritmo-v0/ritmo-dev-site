@@ -24,7 +24,7 @@ export function WallpaperSection() {
 		<SectionLayout title="Wallpaper" titleAs="h3">
 			<div className="mt-4 grid gap-6">
 				<ImageUrlInput />
-				<div>
+				<div className="space-y-1">
 					<Label htmlFor="mygo-blur">Blur</Label>
 					<div className="flex items-center gap-4">
 						<Slider
@@ -41,7 +41,7 @@ export function WallpaperSection() {
 						</Muted>
 					</div>
 				</div>
-				<div>
+				<div className="space-y-1">
 					<Label htmlFor="mygo-opacity">Opacity</Label>
 					<div className="flex items-center gap-4">
 						<Slider

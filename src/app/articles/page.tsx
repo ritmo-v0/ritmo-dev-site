@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion } from "motion/react";
 
 // SWR
 import useSWR from "swr";
@@ -23,7 +23,7 @@ const CONTAINER_VARIANTS: Variants = {
 	hidden: {},
 	visible: { transition: { staggerChildren: 0.75 * DELAY, delayChildren: DELAY } },
 };
-const ARTICLE_LINK_VARIANTS: Variants = {
+const CHILDREN_VARIANTS: Variants = {
 	hidden: { opacity: 0, x: -20 },
 	visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 200, damping: 25 } },
 };
@@ -62,7 +62,7 @@ export default function ArticlesPage() {
 						))
 					) : (
 						articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).map(article => (
-							<motion.li key={article.shortId} variants={ARTICLE_LINK_VARIANTS}>
+							<motion.li key={article.shortId} variants={CHILDREN_VARIANTS}>
 								<ArticleLink article={article} />
 							</motion.li>
 						))

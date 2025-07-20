@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useMyGOStore } from "@/lib/store/mygo";
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
 // Components & UI
 import Link from "next/link";
@@ -10,6 +10,7 @@ import { SettingsSheet } from "@/components/main/mygo/settings-sheet";
 import { WrapperLayout } from "@/components/common/layouts";
 
 // Types & Interfaces
+import type { Variants } from "motion/react";
 type Bookmark = {
 	id: string;
 	title: string;
@@ -30,6 +31,14 @@ const BOOKMARKS: Bookmark[] = [
 	{ id: "chatgpt", title: "ChatGPT", href: "https://chatgpt.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs10ZNkpZYmxTj5cmdVkoDGvCFWLOyHQ6RfzgAS" },
 	{ id: "pixiv", title: "PIXIV", href: "https://www.pixiv.net", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs18ySrmDGW4wLAeEmHVTRdPyDNvsZJn9YUfQ2I" },
 ];
+const CONTAINER_VARIANTS: Variants = {
+	hidden: {},
+	visible: { transition: { staggerChildren: 0.025 } },
+};
+const CHILDREN_VARIANTS: Variants = {
+	hidden: { opacity: 0, y: 20 },
+	visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } },
+};
 
 
 
@@ -39,11 +48,21 @@ export default function MyGoPage() {
 			<MyGoWallpaper />
 			<SettingsSheet className="absolute top-8 right-8 z-50" />
 			<WrapperLayout className="relative size-full content-center">
-				<div className="grid grid-cols-3 @4xl:grid-cols-5 justify-items-center gap-2 @4xl:gap-8 @6xl:gap-16">
+				<motion.div
+					className="grid grid-cols-3 @4xl:grid-cols-5 justify-items-center gap-2 @4xl:gap-8 @6xl:gap-16"
+					variants={CONTAINER_VARIANTS}
+					initial="hidden"
+					animate="visible"
+				>
 					{BOOKMARKS.map(bookmark => (
-						<Bookmark key={bookmark.id} bookmark={bookmark} />
+						<motion.div
+							key={bookmark.id}
+							variants={CHILDREN_VARIANTS}
+						>
+							<Bookmark bookmark={bookmark} />
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			</WrapperLayout>
 		</div>
 	);

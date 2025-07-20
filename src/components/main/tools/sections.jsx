@@ -12,7 +12,7 @@ const CONTAINER_VARIANTS = {
 	hidden: {},
 	visible: { transition: { staggerChildren: 0.1 } },
 };
-const TOOL_CARD_VARIANTS = {
+const CHILDREN_VARIANTS = {
 	hidden: { opacity: 0, y: 20 },
 	visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } },
 };
@@ -33,7 +33,7 @@ export function ToolListSection({ ...props }) {
 					return tool && (
 						<motion.div
 							key={tool.id}
-							variants={TOOL_CARD_VARIANTS}
+							variants={CHILDREN_VARIANTS}
 						>
 							<ToolCard className="h-full" {...tool} />
 						</motion.div>
