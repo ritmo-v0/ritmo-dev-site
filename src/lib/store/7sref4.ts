@@ -16,7 +16,7 @@ export const use7sRef4Store = create<SevensRefState>()(
 	persist(
 		set => ({
 			// Initial states
-			locale: "",
+			locale: "ja",
 
 			// Actions
 			setLocale: (locale) => set({ locale }),
