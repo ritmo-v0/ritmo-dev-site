@@ -22,14 +22,14 @@ export const useMyGOStore = create<MyGOState>()(
 			// Initial states
 			image: undefined,
 			blur: 0,
-			opacity: 100,
+			opacity: 1,
 
 			// Actions
 			setImage: (image: string | undefined) => set({ image }),
 			setBlur: (blur: number) => set({ blur }),
 			setOpacity: (opacity: number) => set({ opacity }),
 		}), {
-			name: "mygo-settings",
+			name: "mygo-store",
 			partialize: (state) => ({
 				image: state.image,
 				blur: state.blur,
