@@ -43,6 +43,10 @@ export function BpmButton({ bpm, shouldMute = false }: BpmButtonProps) {
 			.exhaustive();
 	}
 
+	function onDragStart(e: React.DragEvent<HTMLButtonElement>) {
+		e.dataTransfer.setData("text/plain", bpm.toString());
+	}
+
 	return (
 		<Button
 			variant="nothing"
@@ -52,6 +56,8 @@ export function BpmButton({ bpm, shouldMute = false }: BpmButtonProps) {
 			)}
 			onClick={handleCopy}
 			disabled={isMuted}
+			draggable
+			onDragStart={onDragStart}
 			asChild
 		>
 			<CopyButton

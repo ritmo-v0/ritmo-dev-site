@@ -10,7 +10,15 @@ import type { ToolMeta } from "@/types/meta";
 
 
 
-export function ToolCard({ className, id, color, imageUrl: imgUrl, title, description, url }: ToolMeta & { className?: string }) {
+export function ToolCard({
+	className,
+	id,
+	color,
+	imageUrl: imgUrl,
+	title,
+	description,
+	url,
+}: React.ComponentProps<typeof Link> & ToolMeta) {
 	const imageUrl = imgUrl || "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQRgPt9uBWlDj3kitow0r8z5VN42BInQgvEmGc";
 	return (
 		<Link

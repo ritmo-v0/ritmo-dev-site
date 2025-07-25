@@ -119,7 +119,7 @@ function OtherControls() {
 			<Button
 				variant="destructive"
 				className="size-full"
-				onClick={(e) => handleClick(e)}
+				onClick={handleClick}
 				asChild
 			>
 				<motion.button
