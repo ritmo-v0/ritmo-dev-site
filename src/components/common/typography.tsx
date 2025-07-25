@@ -21,6 +21,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkBreaks from "remark-breaks";
 import rehypeKatex from "rehype-katex";
+import rehypeRaw from "rehype-raw";
 
 // Types & Interfaces
 import type { AsChild } from "@/types";
@@ -37,7 +38,7 @@ function MarkdownText({
 	return (
 		<Markdown
 			remarkPlugins={[remarkMath, remarkBreaks, [remarkGfm, { singleTilde: false }]]}
-			rehypePlugins={[rehypeKatex]}
+			rehypePlugins={[rehypeKatex, rehypeRaw]}
 			components={{
 				h1: ({ children, ...props }) => renderH1 ? <H1 id={extractId(children)} {...props}>{children}</H1> : null,
 				h2: ({ children, ...props }) => <H2 id={extractId(children)} {...props}>{children}</H2>,
@@ -49,7 +50,7 @@ function MarkdownText({
 				ol: OL,
 				li: LI,
 				p: P,
-				hr: ({ ...props }) => <hr className="mt-4 border-t" {...props} />,
+				hr: HR,
 				pre: Code,
 				code: InlineCode,
 				blockquote: Blockquote,
@@ -192,6 +193,16 @@ function P({
 	return <Comp className={cn("leading-relaxed [&:not(:first-child)]:mt-4 [word-break:break-word]", className)} {...props} />;
 }
 
+function HR({
+	className,
+	asChild = false,
+	...props
+}: React.ComponentProps<"hr"> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "hr";
+
+	return <Comp className={cn("mt-4 border-t", className)} {...props} />;
+}
+
 function Muted({
 	className,
 	asChild = false,
@@ -241,7 +252,7 @@ function Anchor({
 export {
 	MarkdownText,
 	H1, H2, H3, H4, H5, H6,
-	UL, OL, LI, P,
+	UL, OL, LI, P, HR,
 	Muted,
 	InlineCode,
 	Blockquote,

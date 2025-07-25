@@ -33,6 +33,7 @@
 		"react-twemoji": "^0.6.0",
 		"react-virtuoso": "^4.13.0",
 		"rehype-katex": "^7.0.1",
+		"rehype-raw": "^7.0.0",
 		"remark-breaks": "^4.0.0",
 		"remark-gfm": "^4.0.1",
 		"remark-math": "^6.0.0",

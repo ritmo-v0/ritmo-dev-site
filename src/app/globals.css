@@ -9,7 +9,10 @@
 	--font-heading: var(--font-plus-jakarta-sans), var(--font-noto-sans-tc), sans-serif;
 	--font-sans: var(--font-geist-sans), var(--font-noto-sans-tc), sans-serif;
 	--font-mono: var(--font-jetbrains-mono), monospace, var(--font-noto-sans-tc);
+	--font-mono-7sref: var(--font-doto), monospace, var(--font-noto-sans-tc);
 	--font-serif: var(--font-noto-serif-tc), sans-serif;
+	--font-serif-7sref: var(--font-shippori-mincho), sans-serif;
+	--default-mono-font-variation-settings: "ROND" 100;
 
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
