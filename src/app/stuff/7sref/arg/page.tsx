@@ -1,5 +1,5 @@
 "use client";
-import { use7sRef4Store } from "@/lib/store/7sref4";
+import { use7sRefStore } from "@/lib/store/7sref";
 import { cn } from "@/lib/utils";
 
 // SWR
@@ -37,8 +37,8 @@ const RITMO_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQrTxR6l8TJnrEBN
 
 
 
-export default function SevensRef4Page() {
-	const { locale } = use7sRef4Store();
+export default function SevensRefArgPage() {
+	const { locale } = use7sRefStore();
 
 	const { data } = useSWR("/api/7sref4", fetcher);
 	const messages: SevensRefMessage[] = data?.success ? data.data : [];
@@ -117,7 +117,7 @@ function SevensRef4Message({
 }
 
 function LocaleSelect({ className }: React.ComponentProps<typeof SelectTrigger>) {
-	const { locale, setLocale } = use7sRef4Store();
+	const { locale, setLocale } = use7sRefStore();
 
 	return (
 		<Select

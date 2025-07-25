@@ -3,7 +3,7 @@ import { generatePreviewMetadata } from "@/lib/utils";
 // Metadata
 const title = "アシッド";
 const description = "8 億年ぶりに女の子とライン交換出来て泣いてる";
-const url = "/stuff/7sref4";
+const url = "/stuff/7sref/arg";
 const keywords = [
 	"maimai",
 	"7sRef",
@@ -23,6 +23,6 @@ export const metadata = {
 
 
 
-export default function SevensRef4Layout({ children }) {
+export default function SevensRefArgLayout({ children }) {
 	return children;
 }

@@ -12,7 +12,7 @@ interface SevensRefState {
 
 
 
-export const use7sRef4Store = create<SevensRefState>()(
+export const use7sRefStore = create<SevensRefState>()(
 	persist(
 		set => ({
 			// Initial states
@@ -21,6 +21,6 @@ export const use7sRef4Store = create<SevensRefState>()(
 			// Actions
 			setLocale: (locale) => set({ locale }),
 		}),
-		{ name: "7sRef4-store" }
+		{ name: "7sRef-store" }
 	)
 );

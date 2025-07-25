@@ -3,6 +3,15 @@ import type { NextConfig } from "next";
 
 
 export default {
+	async redirects() {
+		return [
+			{
+				source: "/stuff/7sref4",
+				destination: "/stuff/7sref",
+				permanent: true,
+			},
+		];
+	},
 	devIndicators: {
 		position: "bottom-right",
 	},
