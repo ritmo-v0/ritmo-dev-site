@@ -1,6 +1,5 @@
 "use client";
 import { useMemo } from "react";
-import { cn } from "@/lib/utils";
 import { getThemeColor } from "@/lib/theme/utils";
 
 // Components & UI
@@ -29,7 +28,7 @@ export function ThemePresetSelect({ className, presets, currentPreset, onPresetC
 
 	return (
 		<Select value={value} onValueChange={onPresetChange}>
-			<SelectTrigger className={cn("", className)}>
+			<SelectTrigger className={className}>
 				<SelectValue placeholder="Select a theme..." />
 			</SelectTrigger>
 			<SelectContent>

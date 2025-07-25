@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 
 // Components & UI
@@ -8,15 +9,19 @@ import { WrapperLayout } from "@/components/common/layouts";
 
 
 export default function HomePage() {
+	// TODO
+	function onLoadedData() {
+		return;
+	}
+
 	return (
 		<div>
 			<header className="relative grid content-center justify-items-center h-[calc(100svh_-_3.5rem)]">
 				<MuxVideo
 					className="absolute bottom-0 w-full h-svh object-cover pointer-events-none -z-1"
 					playbackId="y59sBUGIp00f9LNwFpbb5ikGzLfJLdOYT34dfHejsgjc"
-					autoPlay
-					muted
-					loop
+					autoPlay muted loop
+					onLoadedData={onLoadedData}
 				/>
 				<div className={cn(
 					"space-y-10 text-center text-white -translate-y-[1.75rem] select-none",
