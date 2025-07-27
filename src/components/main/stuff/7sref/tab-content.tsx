@@ -17,7 +17,7 @@ const RITMO_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQrTxR6l8TJnrEBN
 
 
 
-export function MessagesTabContent({ value, locale, messages }: {
+export function MessagesTabsContent({ value, locale, messages }: {
 	value: string,
 	locale: Locale,
 	messages: SevensRefMessage[],
