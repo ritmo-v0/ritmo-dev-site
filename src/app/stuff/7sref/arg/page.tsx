@@ -1,139 +1,73 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 import { use7sRefStore } from "@/lib/store/7sref";
-import { cn } from "@/lib/utils";
-
-// SWR
-import useSWR from "swr";
-import { fetcher } from "@/lib/fetch";
 
 // Components & UI
-import { Button } from "@/components/ui/button";
-import { Anchor, MarkdownText, Muted } from "@/components/common/typography";
-import {
-	Message,
-	MessageContent,
-	MessageGroup,
-} from "@/components/ui/message";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
+import { Anchor, Muted } from "@/components/common/typography";
+import { LocaleSelect } from "@/components/main/stuff/7sref/locale-select";
+import { MessagesTabContent } from "@/components/main/stuff/7sref/tab-content";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WrapperLayout } from "@/components/common/layouts";
 
 // Types & Interfaces
-const LOCALES = ["ja", "zh-TW", "en"] as const;
-type SevensRefMessage = {
-	role: "player" | "acid";
-	content: Record<typeof LOCALES[number], string>;
-	timestamp: string;
-};
-
 // Constants & Variables
-const ACID_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQltdYqm0qy59sg0zPLQXWFarBZVS14jb2e8vf";
-const RITMO_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQrTxR6l8TJnrEBNZlzcimWfebRjxC0t9DwYS5";
+import { SevensRefMessage, MESSAGE_TABS } from "@/types/7sref";
+
+// Messages
+import mainMessages from "./messages/main.json";
+import charactersMessages from "./messages/characters.json";
+import settingsMessages from "./messages/settings.json";
+const MAIN_MESSAGES = mainMessages as SevensRefMessage[];
+const CHARACTERS_MESSAGES = charactersMessages as SevensRefMessage[];
+const SETTINGS_MESSAGES = settingsMessages as SevensRefMessage[];
 
 
 
 export default function SevensRefArgPage() {
 	const { locale } = use7sRefStore();
+	const searchParams = useSearchParams();
+	const tabParam = searchParams.get("tab");
 
-	const { data } = useSWR("/api/7sref4", fetcher);
-	const messages: SevensRefMessage[] = data?.success ? data.data : [];
+	const targetTab = MESSAGE_TABS.find(t => t.id === tabParam)?.id ?? MESSAGE_TABS[0].id;
+	const activeTab = targetTab ?? MESSAGE_TABS[0].id;
 
 	return (
 		<WrapperLayout className="pb-8" width={960}>
-			<div className="sticky top-14 flex items-center mb-4 pt-2 pb-4 bg-background z-1">
-				<Muted>
-					Description Credit:{` `}
-					<Anchor href="https://x.com/NOTmoemoemo/status/1943984923129630856">
-						萌々も
-					</Anchor>
-				</Muted>
-				<LocaleSelect className="ml-auto" />
-			</div>
-			<MessageGroup>
-				{messages.map((message, index: number) => (
-					<SevensRef4Message
-						key={index}
-						message={message}
-						prevMessage={messages[index - 1]}
-						locale={locale as typeof LOCALES[number]}
-					/>
-				))}
-			</MessageGroup>
-		</WrapperLayout>
-	);
-}
-
-function SevensRef4Message({
-	message,
-	prevMessage,
-	locale,
-}: {
-	message: SevensRefMessage,
-	prevMessage: SevensRefMessage | undefined,
-	locale: typeof LOCALES[number]
-}) {
-	const content = message.content[locale];
-	const matches = [...content.matchAll(/\[([^\]]+)\]/g)].map(m => m[1]);  // [...][...][...]
-	const isOption = matches.length > 0 && content.startsWith("[") && content.endsWith("]");
-
-	return (
-		<Message
-			role={message.role}
-			side={message.role === "acid" ? "left" : "right"}
-			avatarSrc={message.role === "acid" ? ACID_AVATAR_URL : RITMO_AVATAR_URL}
-			showAvatar={message.role !== prevMessage?.role}
-			keepAvatarSpace
-		>
-			{isOption ? (
-				<div className="flex flex-wrap items-center gap-4 py-10">
-					{matches.map((match, idx) => (
-						<Button
-							key={idx}
-							variant="7sref"
-							className="h-auto"
-						>
-							<MarkdownText>{match}</MarkdownText>
-						</Button>
-					))}
+			<Tabs className="gap-8" defaultValue={activeTab}>
+				<div className="sticky top-14 py-2 space-y-2 bg-background z-1">
+					<div className="flex items-center gap-2">
+						<TabsList className="w-full">
+							{MESSAGE_TABS.map(tab => (
+								<TabsTrigger key={tab.id} value={tab.id}>
+									{tab.name[locale]}
+								</TabsTrigger>
+							))}
+						</TabsList>
+						<LocaleSelect className="shrink-0" />
+					</div>
+					<Muted className="text-right">
+						Page Description Credit:{` `}
+						<Anchor href="https://x.com/NOTmoemoemo/status/1943984923129630856">
+							萌々も
+						</Anchor>
+					</Muted>
 				</div>
-			) : (
-				<MessageContent
-					variant="bubble"
-					className={cn(
-						"@2xl/message-group:max-w-3/4",
-						message.role === "player" && "bg-primary text-primary-foreground",
-					)}
-				>
-					<MarkdownText>{message.content[locale]}</MarkdownText>
-				</MessageContent>
-			)}
-		</Message>
-	);
-}
-
-function LocaleSelect({ className }: React.ComponentProps<typeof SelectTrigger>) {
-	const { locale, setLocale } = use7sRefStore();
-
-	return (
-		<Select
-			value={locale}
-			onValueChange={(value) => setLocale(value)}
-		>
-			<SelectTrigger className={cn("w-24", className)}>
-				<SelectValue />
-			</SelectTrigger>
-			<SelectContent>
-				{LOCALES.map(locale => (
-					<SelectItem key={locale} value={locale}>
-						{locale.toUpperCase()}
-					</SelectItem>
-				))}
-			</SelectContent>
-		</Select>
+				<MessagesTabContent
+					value={MESSAGE_TABS[0].id}
+					locale={locale}
+					messages={MAIN_MESSAGES}
+				/>
+				<MessagesTabContent
+					value={MESSAGE_TABS[1].id}
+					locale={locale}
+					messages={CHARACTERS_MESSAGES}
+				/>
+				<MessagesTabContent
+					value={MESSAGE_TABS[2].id}
+					locale={locale}
+					messages={SETTINGS_MESSAGES}
+				/>
+			</Tabs>
+		</WrapperLayout>
 	);
 }

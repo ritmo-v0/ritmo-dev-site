@@ -1,0 +1,427 @@
+[
+	{
+		"role": "player",
+		"content": {
+			"ja": "7sRef / プリズムエリア",
+			"zh-TW": "7sRef / 稜鏡區域",
+			"en": "7sRef / PRiSM Area"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "7sRefは、白い塔が立ち並ぶ世界。\n\n7つの世界の中心にあって、「扉」を通じて別世界と繋がっていますわ。",
+			"zh-TW": "7sRef 是一個聳立著白色高塔的世界。\n\n它位於七個世界的中心，透過「門」與其他世界相連。",
+			"en": "7sRef is a world lined with towering white spires.\n\nIt sits at the center of seven worlds, connected to each through \"gates.\""
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "プリズムタワー / 水晶",
+			"zh-TW": "稜鏡之塔 / 水晶",
+			"en": "PRiSM Tower / Crystal"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "7sRefの中央にそびえる巨大な塔、プリズムタワー。\n\nその頂上に浮かぶ巨大な水晶は、7sRefそのものと言っていいですわ。",
+			"zh-TW": "屹立在 7sRef 中央的巨大高塔，名為稜鏡之塔。\n\n其頂端懸浮著的巨大水晶，幾乎可說就是 7sRef 的象徵。",
+			"en": "At the heart of 7sRef stands the massive Prism Tower.\n\nThe massive crystal floating at its peak is practically the core of 7sRef itself."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "扉",
+			"zh-TW": "門",
+			"en": "Gate"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "7sRefにある7つの扉は、それぞれ異なる世界へと繋がっています。\n\n扉よりはワープゲート、と言ったほうが分かりやすいかもしれないですわね。",
+			"zh-TW": "7sRef 中的七扇門，分別連接到不同的世界。\n\n與其說是「門」，稱作傳送門可能更容易理解。",
+			"en": "The seven gates in 7sRef each lead to a different world.\n\nCalling them warp gates might make more sense than just \"gates.\""
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "鍵",
+			"zh-TW": "鑰匙",
+			"en": "Key"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "扉には、それぞれの鍵があって、ゲートキーパーが管理していますわ。",
+			"zh-TW": "每一扇門，都有一把對應的鑰匙，而那些鑰匙是由守門人管理的。",
+			"en": "Each gate has its own key, managed by a Gatekeeper."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "ゲートキーパーがバグでシャットダウンしたことで、鍵も行方不明になっていたみたい。",
+			"zh-TW": "但因為守門人受到了錯誤影響而關機，鑰匙似乎也一起下落不明了。",
+			"en": "But since the Gatekeepers shut down due to Bugs, those keys have gone missing too."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "マスターキー",
+			"zh-TW": "主控鑰匙",
+			"en": "Master Key"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "マスターキーはその名の通り、すべての扉を開くことのできる鍵。\nでも、マスターキーの力はそれだけじゃない。",
+			"zh-TW": "主控鑰匙如其名，是能開啟所有門的鑰匙。\n但主控鑰匙的力量不只如此。",
+			"en": "The Master Key, as the name implies, can open every gate.\nBut its power doesn't end there."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "すべての世界のフラグメントを集めれば、マスターキーは本来の権限を大きく超えて力を行使することができる。\n7sRefのメインプログラムを直接書き換えることだって、ね。",
+			"zh-TW": "只要收集齊所有世界的碎片，主控鑰匙便能發揮超越原本權限的力量，\n甚至可以直接改寫 7sRef 的主程式。",
+			"en": "Once all world Fragments are gathered, the Master Key can exceed its intended authority —\ncapable even of rewriting 7sRef’s core program."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "私はその力を使って、リズを7sRefから解放しようとした。\nでも……どうしてかしらね、私の望みは叶えられなかった。",
+			"zh-TW": "我曾想用那股力量將莉茲從 7sRef 中解放。\n但……不知為何，我的願望最終還是無法實現。",
+			"en": "I tried using that power to free Ris from 7sRef…\nBut somehow, my wish never came true."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "流転者",
+			"zh-TW": "流轉者",
+			"en": "Wanderers"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "扉を通って世界をめぐる人たちの事をここでは流転者と呼んでますわ。\n\n彼らの旅の記憶はフラグメントとなって、この世界に蓄積されるの。",
+			"zh-TW": "在這裡，穿越各個世界之門的人被稱為「流轉者」。\n\n他們旅途中的記憶會化作碎片，累積在這個世界中。",
+			"en": "Here, we call those who travel between worlds through the gates \"Wanderers.\"\n\nTheir journey's memories become Fragments, accumulating within this world."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "あなたは普通の流転者とはどこか違うような……そんな気がしますわ。",
+			"zh-TW": "總覺得……你和一般的流轉者有些不同。",
+			"en": "You feel… different somehow from an ordinary Wanderer."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "いつか、あなたの話を聞かせてね。",
+			"zh-TW": "哪天再讓我聽聽你的故事吧。",
+			"en": "Someday, I'd like to hear your story."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "フラグメント",
+			"zh-TW": "碎片",
+			"en": "Fragments"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "フラグメントは、人々が持つ記憶や感情、想いが結晶化したもの。\n\nたくさんの想いが蓄積されている程、この世界では大きな力を持つの。",
+			"zh-TW": "碎片是人們的記憶、情感與思念結晶而成的存在。\n\n思念越強，碎片在這個世界中所擁有的力量也就越大。",
+			"en": "Fragments are crystalRised memories, emotions, and thoughts of people.\n\nThe more emotions it holds, the greater its power in this world."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "今、7sRefのすべてのフラグメントはプリズムの制御下にある。無策で彼女を止める事はできませんわ。",
+			"zh-TW": "現在，7sRef 的所有碎片都在稜鏡的掌控之下。沒有對策的話，根本無法阻止她。",
+			"en": "Right now, all of 7sRef's Fragments are under PRiSM's control. We can't stop her without a plan."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "彼女に立ち向かえるものがあるとしたら……それはきっと同じくらい強い想いの力",
+			"zh-TW": "若真有什麼能與她對抗的話，那一定是同等強烈的情感之力。",
+			"en": "If anything could stand against her… it would be a will just as strong."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "門番",
+			"zh-TW": "守門人",
+			"en": "Gatekeepers"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "扉にはゲートキーパーがいて、そこを通る流転者の管理をしているわ。",
+			"zh-TW": "每扇門都有守門人負責管理，掌握通過門的流轉者們。",
+			"en": "Each gate is watched by a Gatekeeper who oversees the Wanderers passing through."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "流転者の生殺与奪も許されてるって話だから、逆らわない方がいいわね。",
+			"zh-TW": "據說他們甚至擁有決定流轉者生死的權限……最好別惹他們。",
+			"en": "It's said they even have authority over a Wanderers' life and death… You'd best not cross them."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "フィラー / バグ",
+			"zh-TW": "填充者 / 錯誤",
+			"en": "Fillers / Bugs"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "7sRefで発生するバグはフィラーとなって世界を破壊するの。",
+			"zh-TW": "7sRef 所產生的錯誤會轉化為「填充者」，逐步侵蝕這個世界。",
+			"en": "Bugs in 7sRef manifest as Fillers that eat away at the world."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "プログラムが侵食される前にフィラーを消去するのもリズの役目の1つね。",
+			"zh-TW": "在系統被侵蝕之前，消除這些填充者是莉茲的工作之一。",
+			"en": "One of Ris' duties is to erase them before the program is compromised."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "ペンダント / 黒い水晶",
+			"zh-TW": "吊墜 / 黑水晶",
+			"en": "Pendant / Black Crystal"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "プリズムタワーの水晶によく似ていて、非なる物。……私が生まれた時から持っているものですわ。",
+			"zh-TW": "與稜鏡之塔的水晶極為相似，卻並非相同之物。……是我從出生起就擁有的東西。",
+			"en": "It resembles the crystal from PRiSM Tower, but it's something entirely different… Something I've had since I was born."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "希望",
+			"zh-TW": "希望",
+			"en": "Hope"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "7sRefや他の6つの世界を観測する限りでは、希望になりそうなものは見あたらない。\n最後の希望は一体どこに……？",
+			"zh-TW": "觀測了 7sRef 和其他六個世界之後，依然看不見任何能被稱為「希望」的東西。\n最後的希望，究竟藏在何方……？",
+			"en": "Even after observing 7sRef and the other six worlds, I can’t find anything that could be called \"hope.\"\nWhere could the final hope be…?"
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "正規の扉",
+			"zh-TW": "正規之門",
+			"en": "Regular Gates"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "世界の観測のために7sRefが用意した扉の事ですわね。\n旅を終えた流転者はこの扉を通って、7sRefへと還るの。",
+			"zh-TW": "是為了觀測世界而由 7sRef 所設立的正式之門。\n流轉者結束旅程後，會經由這扇門返回 7sRef。",
+			"en": "This refers to the official gates prepared by 7sRef for observing the worlds.\nWanderers return to 7sRef through them when their journey ends."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "ただ、正規の扉が破壊されるなんて、文明がまるごと吹き飛ぶような厄災でも起きない限りありえないはず……\n\n向こう側の世界でいったい何があったというの……？",
+			"zh-TW": "只不過，要摧毀正式之門，除非發生像是整個文明毀滅般的災厄……\n\n另一邊的世界，到底發生了什麼事？",
+			"en": "But for an official gate to be destroyed… it would take a calamity great enough to wipe out an entire civiRisation.\n\nWhat on earth happened in the world beyond?"
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "厄災",
+			"zh-TW": "厄災",
+			"en": "Calamity"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……そういえば\n昔、リズがあるおとぎ話を聞かせてくれた事がありましたわ。",
+			"zh-TW": "……說到這個，\n以前，莉茲曾經跟我講過一個童話故事。",
+			"en": "…Now that you mention it,\nRis once told me a fairy tale."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "──むかしむかし、ここではないどこか遠い世界\n\n人々が楽しく暮らす街の中に、淡く光る小さな箱が現れました。\n好奇心から箱を開けてみるとその瞬間、閉じ込められていた数多の厄災が解き放たれ、世界は深い闇に沈みました。",
+			"zh-TW": "──從前從前，在某個遙遠的世界裡，\n\n人們快樂地生活著。某一天，城鎮中出現了一個淡淡發光的小盒子。\n出於好奇，人們打開了盒子──就在那一瞬間，被封印其中的無數災厄傾巢而出，將世界吞沒進深沉的黑暗中。",
+			"en": "— Once upon a time, in a faraway world not here,\n\nin a town where people lived happily, a small, faintly glowing box appeared.\nOut of curiosity, they opened the box — and in that instant, countless calamities that had been sealed inside burst forth, plunging the world into darkness."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "それでも、希望を捨てなかった人々は厄災を打ち倒し、虹の橋を渡って新しい世界へ移り住みました。\n7色に輝く、新世界へと。",
+			"zh-TW": "即便如此，沒有放棄希望的人們擊退了災厄，踏上彩虹橋，搬遷到了全新的世界。\n那是一個閃耀著七彩光芒的新世界。",
+			"en": "Even so, those who didn't give up hope defeated the calamities and crossed a rainbow bridge to settle in a new world.\nA new world that shimmered in seven colors."
+		},
+		"timestamp": "2025-07-13T00:43:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "でも、これはただのおとぎ話。\nそうでしょう……？",
+			"zh-TW": "不過，這也只是個童話而已。\n對吧……？",
+			"en": "But it's just a fairy tale.\nIsn’t it…?"
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "maimai",
+			"zh-TW": "maimai",
+			"en": "maimai"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "へぇ、あなたたちはそう呼ぶのね。",
+			"zh-TW": "咦，原來你們是這麼稱呼它的啊。",
+			"en": "Ohh, so that's what you all call it."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "はじまりエリア",
+			"zh-TW": "初始區域",
+			"en": "Area of Beginnings"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "黄の扉。\nみんなが最初に訪れる場所。他の星にも通じてるみたい。",
+			"zh-TW": "黃之扉。\n大家旅程的起點，似乎也通往其他星球。",
+			"en": "Gate of Yellow.\nIt's where everyone's journey begins — looks like it leads to other stars too."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "終末エリア",
+			"zh-TW": "終末區域",
+			"en": "Area of Endings"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "黒の扉。\n人間が滅び、新人類や機械が暮らす世界。ちょっと親近感。",
+			"zh-TW": "黑之扉。\n人類滅亡後，由新人類與機械生活的世界。有點親切感呢。",
+			"en": "Gate of Black.\nA world where humanity has fallen, and new beings and machines live on. Kinda relatable."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "世界樹エリア",
+			"zh-TW": "世界樹區域",
+			"en": "Area of the World Tree"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "赤の扉。\n大きな樹の中に世界があるんですって！どれ位の大きさなのかしら？",
+			"zh-TW": "紅之扉。\n聽說那裡的世界存在於一棵巨樹之中！不知道它有多大呢？",
+			"en": "Gate of Red.\nThey say there's an entire world inside a massive tree! I wonder how big it is?"
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "黒薔薇エリア",
+			"zh-TW": "黑薔薇區域",
+			"en": "Area of BLACK ROSE"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "紫の扉。\n他とは違う文明が発達してる世界。……悪魔もいるって噂よ。",
+			"zh-TW": "紫之扉。\n是個擁有與眾不同文明發展的世界……據說裡面還有惡魔喔。",
+			"en": "Gate of Purple.\nA world with a very different civiRisation… Rumor has it, there are even demons."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "神様アリア",
+			"zh-TW": "神明區域",
+			"en": "Area of the Gods"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "白の扉。\n神々が住まう世界と言われていますわね。見てみたいですわ。",
+			"zh-TW": "白之扉。\n據說是眾神居住的世界呢。我好想看看。",
+			"en": "Gate of White.\nThey say it's a world where gods reside. I'd love to see it myself."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "青春エリア",
+			"zh-TW": "青春區域",
+			"en": "Area of Youth"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "青の扉。\n不思議な力を持った、子供たちの世界。どんな力なのかしら。",
+			"zh-TW": "藍之扉。\n擁有神秘力量的孩子們所居住的世界。那到底是什麼力量呢？",
+			"en": "Gate of Blue.\nA world of children with strange powers. I wonder what kind of powers they are…"
+		}
+	}
+]

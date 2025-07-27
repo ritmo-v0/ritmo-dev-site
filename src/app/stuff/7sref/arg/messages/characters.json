@@ -1,0 +1,218 @@
+[
+	{
+		"role": "player",
+		"content": {
+			"ja": "リズ / 観測者",
+			"zh-TW": "莉茲 / 觀測者",
+			"en": "Ris / Observer"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "リズは私の大切な存在。\n\n彼女の役目は、世界を観測し、流転者の持つ記憶―――「フラグメント」を集めること。",
+			"zh-TW": "莉茲對我來說是非常重要的存在。\n\n她的職責是觀測這個世界，並收集流轉者所持有的記憶——「碎片」。",
+			"en": "Ris is someone truly precious to me.\n\nHer role is to observe the world and gather the memories — \"Fragments\" — held by the Wanderers."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "けれどリズは自分のフラグメントを持つことすら許されていない。\n\n観測者として、この世界に囚われ続けているのですわ。",
+			"zh-TW": "然而莉茲甚至連擁有屬於自己的碎片都被禁止。\n\n作為觀測者，她被困在這個世界中無法離開。",
+			"en": "But Ris isn't even allowed to possess her own Fragments.\n\nAs an observer, she remains trapped within this world."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "リズを7sRefから解放して、一緒に広い世界を見てみたい。それだけが私の望み。",
+			"zh-TW": "我只希望能將莉茲從 7sRef 中解放，然後和她一起看看更廣闊的世界。",
+			"en": "All I wish for is to free Ris from 7sRef and explore the vast world together with her."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "プリズム",
+			"zh-TW": "稜鏡",
+			"en": "PRiSM"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "プリズムは7sRefを統べる管理者、そして……リズの本来の姿。\n\nプリズムとしての記憶を取り戻した今の彼女には、おそらくリズとしての意識は残っていない。",
+			"zh-TW": "稜鏡是統御 7sRef 的管理者──也是……莉茲真正的樣貌。\n\n現在的她已經恢復了作為稜鏡的記憶，恐怕「莉茲」的意識也早已不復存在了。",
+			"en": "PRiSM is the one who governs 7sRef — and… Ris's true form.\n\nNow that she's regained her memories as PRiSM, Ris's consciousness is likely gone."
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "「リズ」は7sRefの崩壊なんて望んでいない。\nなのに、この手で引き起こすことになるなんて、笑えないですわね……。",
+			"zh-TW": "「莉茲」從來都不希望 7sRef 崩壞。\n可如今卻親手造成這一切──真是讓人笑不出來呢……。",
+			"en": "\"Ris\" never wanted 7sRef to collapse.\nBut now she's the one bringing about its end — it's just too cruel…"
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "エーペルージュ / オーランジェット / フルーンシュピラー",
+			"zh-TW": "Eperouge / Orangette / Flotenspiele",
+			"en": "Eperouge / Orangette / Flotenspiele"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "リズの分身。そして彼女自身の鍵。\nフィラーや迷った流転者の対応もしてますわね。",
+			"zh-TW": "莉茲的分身，同時也是她自身的鑰匙。\n也會處理像是填充者或迷失的流轉者那些事務。",
+			"en": "Ris's avatar — and also her key.\nShe also handles Fillers and lost Wanderers."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "リヒティカイト",
+			"zh-TW": "Richtigkeit",
+			"en": "Richtigkeit"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "最も門番らしい。公平にフラグメントの審判をしてくれます。",
+			"zh-TW": "最有守門人風範的一位。總是以公平的態度來審判碎片。",
+			"en": "Probably the most gatekeeper-like of them all. Judges Fragments with complete fairness."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "シュトルツ",
+			"zh-TW": "Stolz",
+			"en": "Stolz"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "一見優し気に見える方が恐ろしい……試してみます？",
+			"zh-TW": "看起來很溫柔的人反而最可怕……你想試試看嗎？",
+			"en": "The ones who seem kind are the scariest… Want to find out?"
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "ゲルプテディ",
+			"zh-TW": "Gelbteddy",
+			"en": "Gelbteddy"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "キュートな見た目ですが、とっても紳士的ですのよ。",
+			"zh-TW": "雖然外表可愛，卻是非常紳士的一位喔。",
+			"en": "Cute on the outside, but a true gentleman underneath."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "シュヴァルツローゼ",
+			"zh-TW": "Schwarzrose",
+			"en": "Schwarzrose"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "ミステリアス。そう言えば、ちゃんと顔を見た事がないですわ。",
+			"zh-TW": "非常神祕。說起來，我好像從來沒看清過他的臉。",
+			"en": "Mysterious. Now that I think about it, I've never actually seen their face."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "ヘルブラオ",
+			"zh-TW": "Hellblau",
+			"en": "Hellblau"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "彼女は流転者の文化に興味津々ですわ。",
+			"zh-TW": "她對流轉者的文化非常感興趣呢。",
+			"en": "She's absolutely fascinated by Wanderer culture."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "ロートスカラ",
+			"zh-TW": "Rotskala",
+			"en": "Rotskala"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……あのムキムキ苦手ですわね。いつも燃えてますし。",
+			"zh-TW": "……我不太擅長應付那個肌肉猛男。他總是熱血得過頭。",
+			"en": "…I'm not great with that musclehead. He's always too fired up."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "W■K■Y■",
+			"zh-TW": "W■K■Y■",
+			"en": "W■K■Y■"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……あまりあいつの話はしたくないですわ。",
+			"zh-TW": "……我不太想提起那傢伙。",
+			"en": "…I'd rather not talk about that guy."
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "でらっくま",
+			"zh-TW": "迪拉熊",
+			"en": "Derakkuma"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "あのくま、コンセントが抜けているのにどうして動くのかしら？",
+			"zh-TW": "那隻熊，插頭都拔掉了，怎麼還能動呢？",
+			"en": "That bear — how is it moving even though the plug's not in?"
+		}
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "みるく / しゃま / 乙姫 / ラズ / シフォン / ソルト / カメ / タイ",
+			"zh-TW": "牛奶 / 夏瑪 / 乙姬 / 拉茲 / 雪紡 / 莎露朵 / 龜 / 鯛",
+			"en": "Milk / Shama / Otohime / Ras / Chiffon / Salt / Kame / Tai"
+		}
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "知らない筈だけど、なんだか親近感がある名前ですわ。",
+			"zh-TW": "應該是不認識的名字才對，但不知為何，總讓我有種熟悉的感覺。",
+			"en": "I'm sure I've never heard the name before, and yet… it feels strangely familiar."
+		}
+	}
+]

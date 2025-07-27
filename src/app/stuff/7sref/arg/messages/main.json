@@ -1,0 +1,803 @@
+[
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……え？",
+			"zh-TW": "……咦？",
+			"en": "…Huh?"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "あなたは……？",
+			"zh-TW": "你是……？",
+			"en": "You're…?"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[声をかける]",
+			"zh-TW": "[搭話]",
+			"en": "[Speak]"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "声をかける",
+			"zh-TW": "搭話",
+			"en": "Speak"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "え、うそ",
+			"zh-TW": "欸、騙人吧",
+			"en": "No way"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "本当に届くなんて……",
+			"zh-TW": "居然真的傳到了……",
+			"en": "I didn't think this would actually get through…"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "お願い！ここに辿りつけた、あなたの力が必要なの！\nこのままでは……7sRefが崩壊してしまう！",
+			"zh-TW": "拜託了！能夠抵達這裡的你，一定有你才辦得到的事！\n照這樣下去……7sRef 就要崩潰了！",
+			"en": "Please! You made it here — which means we need your help!\nIf things keep going like this… 7sRef will fall apart!"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[アシッドについて]",
+			"zh-TW": "[關於 Acid]",
+			"en": "[About Acid]"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "アシッド",
+			"zh-TW": "Acid",
+			"en": "Acid"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "──ごめんなさい。急にこんな話。\nちゃんと説明しますわね。",
+			"zh-TW": "──對不起，突然說這些。\n我會好好說明的。",
+			"en": "— I'm sorry. I just dropped that on you out of nowhere.\nLet me explain properly."
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "私はアシッド。\n実は、今の状況を引き起こしたのは……この私。",
+			"zh-TW": "我是 Acid。\n其實，現在的狀況會變成這樣……是我造成的。",
+			"en": "I'm Acid.\nAnd to be honest… I'm the one who caused all of this."
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "私はこの7sRefにバグを引き起こし、\n「マスターキー」を手に入れようとした。",
+			"zh-TW": "我在這個 7sRef 中引發了異常，\n是為了奪取「主控鑰匙」。",
+			"en": "I introduced a bug into 7sRef,\ntrying to get my hands on the \"Master Key.\""
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "世界の理すら変えられるマスターキーの力があれば、リズをこの世界から解放できると思った。それが……全てのはじまりでしたわ。",
+			"zh-TW": "只要擁有能夠改變世界法則的主控鑰匙，我就能將莉茲從這個世界中解放出來──我原本是這麼想的。那就是……一切的開始。",
+			"en": "With the power of the Master Key — something that can rewrite the very laws of this world — I thought I could free Ris from it. That… was where it all began."
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[現在の状況について]",
+			"zh-TW": "[關於現在的狀況]",
+			"en": "[About the current situation]"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "現在の状況",
+			"zh-TW": "現在的狀況？",
+			"en": "The current situation?"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "バグによる崩壊は私の予想よりずっと大きくて、世界を繋ぐ扉にまで及んでしまった。\n\nリズはそれを止めようとして、自らのプロテクトを解放したの。",
+			"zh-TW": "這次的異常遠比我想像得更嚴重，甚至波及到了連接世界的「門」。\n\n莉茲為了阻止這一切，解除了自身的防護機制。",
+			"en": "The collapse caused by the bug turned out to be far worse than I imagined — it's even affected the gates that connect our worlds.\n\nRis tried to stop it all by releasing her own protection protocols."
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "その結果、彼女は7sRefの管理プログラム「プリズム」として再起動してしまった。\n\nプリズムにとって今の7sRefは欠陥品でしかない。すべてのバグを取り除くために世界をまるごと破壊し、再構築しようとするでしょうね。",
+			"zh-TW": "結果，她作為 7sRef 的管理程式「稜鏡」重啟了。\n\n對稜鏡而言，現在的 7sRef 不過是個缺陷品。為了消除所有錯誤，她會試圖徹底摧毀這個世界，再從零開始重建。",
+			"en": "As a result, she rebooted — as PRiSM, the system administrator of 7sRef.\n\nTo PRiSM, the current state of 7sRef is nothing but a broken system. To eliminate every bug, she'll likely try to destroy the entire world and rebuild it from scratch."
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "あなたも見たのでしょう？\nあの青いスクリーンを\n世界が壊れる瞬間を",
+			"zh-TW": "你也看到了吧？\n那片藍色的畫面──\n世界崩壞的瞬間",
+			"en": "You saw it too, didn't you?\nThat blue screen —\\nThe exact moment the world began to fall apart."
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "このままだと7sRefも、扉の先の世界も全部消えてしまう。\nそれだけは絶対に阻止しないと！",
+			"zh-TW": "照這樣下去，不只是 7sRef，連門的另一端的世界也會一併消失。\n我們絕對不能讓這種事發生！",
+			"en": "If this keeps up, 7sRef and even the worlds beyond the gates — all of it will be erased.\nWe absolutely can't let that happen!"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[最後の希望]",
+			"zh-TW": "[最後的希望]",
+			"en": "[The Last Hope]"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "最後の希望",
+			"zh-TW": "最後的希望",
+			"en": "The Last Hope"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "「最後の希望」……？\nそう。あなたはそれを見て、ここにたどり着いたのね。",
+			"zh-TW": "「最後的希望」……？\n原來如此。你看到那個，才來到這裡的吧。",
+			"en": "\"The Last Hope\"…?\nI see — that's what led you here, isn't it?"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "システムに直接干渉してメッセージを届けるなんて、そんなことができるのはW■K■Y■くらいね。\n気に食わないけれど、あいつならこの状況を回避できる何かを残していてもおかしくないですわ。",
+			"zh-TW": "能夠直接干涉系統並傳送訊息，這種事恐怕也只有 W■K■Y■ 能做得到了。\n雖然我很不爽那傢伙，但他留下點什麼用來應對這種狀況也不奇怪。",
+			"en": "Directly interfering with the system to send a message — only someone like W■K■Y■ could pull that off.\nI don't like them, but it wouldn't surprise me if they left behind something to deal with this."
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "最後の希望を見つけられたなら、この絶望的な状況もなんとかできるかもしれない。",
+			"zh-TW": "如果你已經找到了最後的希望，也許這個絕望的局面真的還有一線生機。",
+			"en": "If you've found the Last Hope, then maybe — just maybe — there's still a way to turn this hopeless situation around."
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "都合がいいのはわかってますわ。\nでもどうか……リズと世界を元に戻すために、力を貸して！\n\n私にできる事なら、なんでも協力しますわ、知りたいことがあれば私に教えて。",
+			"zh-TW": "我知道這樣很任性。\n但拜託你──為了莉茲，為了這個世界，請幫幫我們！\n\n只要是我能做到的事，我一定配合你。有什麼想知道的，就問我吧。",
+			"en": "I know it sounds selfish.\nBut please… help us bring Ris — and this world — back!\n\nIf there's anything I can do to help, I'll do it. If there's something you want to know, just ask me."
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[アシッドと会話をしながら情報を集めてみましょう\n\n気になるワードを見つけたらアシッドに送ってみることをおすすめします]",
+			"zh-TW": "[一邊與 Acid 對話，一邊收集情報吧\n\n如果看到有趣的詞彙，不妨試著傳給 Acid 看看]",
+			"en": "[Talk with Acid and gather more information\n\nIf you find any intriguing keywords, try sending them to Acid]"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "すき",
+			"zh-TW": "喜歡",
+			"en": "like"
+		},
+		"timestamp": "2025-07-13T00:43:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "ごめんなさい、今私急がないと",
+			"zh-TW": "對不起，現在必須趕快了",
+			"en": "Sorry, we're in a hurry right now"
+		},
+		"timestamp": "2025-07-13T00:43:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "7つ目の扉",
+			"zh-TW": "第七扇門",
+			"en": "The Seventh Gate"
+		},
+		"timestamp": "2025-07-13T00:45:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……！\nたしかに、7つ目の扉の先になら……！",
+			"zh-TW": "……！\n如果是在第七扇門的彼端──也許……！",
+			"en": "…!\nIf it's beyond the Seventh Gate — maybe…!"
+		},
+		"timestamp": "2025-07-13T00:45:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "でも、どうしてあなたがそれを知っているの……？",
+			"zh-TW": "不過，你為什麼會知道那件事……？",
+			"en": "But how do you even know about that…?"
+		},
+		"timestamp": "2025-07-13T00:45:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "いえ、気づいてもおかしくはないですわね。\n\n『7つの世界に、7つの扉』\n\n7sRefと他の世界を繋ぐだけなら、扉は6枚で十分ですもの。",
+			"zh-TW": "不，能察覺也不奇怪呢。\n\n『七個世界，七扇門』\n\n如果只是連結 7sRef 和其他世界，其實六扇門就已經足夠了。",
+			"en": "No, I suppose it's not so strange you noticed.\n\n\"Seven worlds, seven gates.\"\n\nTo link 7sRef with the other worlds, six gates should've been enough."
+		},
+		"timestamp": "2025-07-13T00:45:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "そう、7sRefには一度も開かれたことのない「7つ目の扉」が存在するの。",
+			"zh-TW": "沒錯，7sRef 中確實存在一扇從未被打開過的「第七扇門」。",
+			"en": "That's right — 7sRef does indeed have a \"Seventh Gate\" that's never been opened."
+		},
+		"timestamp": "2025-07-13T00:45:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[7つ目の扉のこと]",
+			"zh-TW": "[關於第七扇門]",
+			"en": "[About the Seventh Gate]"
+		},
+		"timestamp": "2025-07-13T00:45:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "7つ目の扉のこと",
+			"zh-TW": "關於第七扇門",
+			"en": "About the Seventh Gate"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "7つ目の扉は確かに存在する。\nけれど、この扉は開けること自体禁じられているの。",
+			"zh-TW": "第七扇門確實存在。\n不過，這扇門是禁止開啟的。",
+			"en": "The Seventh Gate definitely exists.\nBut opening it is strictly forbidden."
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "今回の異変が起こる前から、7つ目の扉は閉ざされている。それに、私はこの扉が開いている所を一度も見たことがないですわ。\n\n扉の鍵や、ゲートキーパーが存在しているのかすらも分からない。",
+			"zh-TW": "即使在這次異變發生之前，它也一直是封閉狀態。而且，我從來沒見過這扇門開啟的模樣。\n\n甚至連這扇門的鑰匙是否存在、是否有守門人都不得而知。",
+			"en": "Even before this incident, it was always sealed shut. And I've never once seen it open.\n\nWe don’t even know if a key exists, or if it has a Gatekeeper."
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "でも、6つの扉の先に最後の希望が見つからない以上、7つ目の扉の先にある未知の世界に「最後の希望」がある可能性は高いと思うわ。\n\nでも、鍵がないのに扉を開けるなんてどうやって……。",
+			"zh-TW": "但若六扇門的彼端都找不到「最後的希望」，那麼在第七扇門彼端的未知世界中找到它的可能性就很高了。\n\n但問題是──沒有鑰匙，我們要怎麼打開那扇門……？",
+			"en": "But if we can't find the Last Hope beyond the other six, there's a good chance it's in the unknown world behind the Seventh.\n\nStill… without a key, how do we even open it…?"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[腕力で7つ目の扉を開ける][でらっくまで7つ目の扉を開ける][でらっくまで7つ目の扉を開ける]",
+			"zh-TW": "[用蠻力打開第七扇門][用迪拉熊打開第七扇門][用主控鑰匙打開第七扇門]",
+			"en": "[Open the Seventh Gate by brute force][Open the Seventh Gate with Derakkuma][Open the Seventh Gate with the Master Key]"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "腕力で7つ目の扉を開ける",
+			"zh-TW": "用蠻力打開第七扇門",
+			"en": "Open the Seventh Gate by brute force"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "それができれば苦労しないですわ……。",
+			"zh-TW": "要是那麼簡單就好了……。",
+			"en": "If only it were that easy…"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "でらっくまで7つ目の扉を開ける",
+			"zh-TW": "用でらっくま打開第七扇門",
+			"en": "Open the Seventh Gate with Derakkuma"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "しっぽのコンセントを鍵穴に挿し込んで～……",
+			"zh-TW": "把尾巴上的插頭插進鑰匙孔裡～……",
+			"en": "Just plug the tail into the keyhole and —"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……って何をさせますの！？",
+			"zh-TW": "……你想讓我做什麼啦！？",
+			"en": "…What are you trying to make me do!?"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "マスターキーで7つ目の扉を開ける",
+			"zh-TW": "用主控鑰匙打開第七扇門",
+			"en": "Open the Seventh Gate with the Master Key"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……！",
+			"zh-TW": "……！",
+			"en": "…!"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "たしかに、今私たちはマスターキーを持っている。これを使えば、7つ目の扉も開くことができる……？\n\n試してみる価値はありますわね。",
+			"zh-TW": "沒錯，現在我們手上確實有主控鑰匙。或許用它真的能打開第七扇門……？\n\n那就值得一試了。",
+			"en": "That's right — we do have the Master Key. If we use it, then maybe… we really can open the Seventh Gate?\n\nIt's worth a try."
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "でも、さっきも言った通り7つ目の扉は禁じられた扉。\n\nマスターキーで本当に扉が開くのかも、開いた後に私たちが無事でいられるかも保証できない。",
+			"zh-TW": "不過，就像我剛才說的，第七扇門是被禁止開啟的門。\n\n即使我們能用主控鑰匙打開它，也沒有人能保證，門打開之後，我們還能平安無事。",
+			"en": "But like I said before — the Seventh Gate is forbidden.\n\nEven if the Master Key does open it, there's no guarantee we'll come out of it unscathed."
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "それでもいい？\n覚悟ができたら教えて。",
+			"zh-TW": "即便如此──你也做好覺悟了嗎？\n如果準備好了，請告訴我。",
+			"en": "Are you really okay with that?\nIf you're ready, let me know."
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[覚悟ができた]",
+			"zh-TW": "[我已經準備好了]",
+			"en": "[I'm ready]"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "覚悟ができた",
+			"zh-TW": "我已經準備好了",
+			"en": "I'm ready"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……ありがとう。\n今からマスターキーを使って扉を開けますわ。",
+			"zh-TW": "……謝謝你。\n我現在就使用主控鑰匙來打開那扇門。",
+			"en": "…Thank you.\nI'll use the Master Key to open the gate now."
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……！これは……",
+			"zh-TW": "……！這是……",
+			"en": "…! What is this…?"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQ9SIUOZ67lszh5JYUGKw9v8Zt6coPqj1SVe2a)",
+			"zh-TW": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQ9SIUOZ67lszh5JYUGKw9v8Zt6coPqj1SVe2a)",
+			"en": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQ9SIUOZ67lszh5JYUGKw9v8Zt6coPqj1SVe2a)"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "扉は開いたけど……向こうの世界との接続が切れているみたい。\nこのままじゃ7つ目の扉を通ることはできない。",
+			"zh-TW": "門雖然打開了……但與對面世界的連線似乎斷開了。\n這樣一來，就無法通過第七扇門。",
+			"en": "The gate opened, but…it looks like the connection to the world beyond is broken.\nWe won't be able to pass through the Seventh Gate like this."
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "どうしたら繋がるの……？",
+			"zh-TW": "該怎麼做才能重新連上呢……？",
+			"en": "How can we reconnect…?"
+		},
+		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "バックドア",
+			"zh-TW": "後門",
+			"en": "Backdoor"
+		},
+		"timestamp": "2025-07-13T00:50:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "向こうの世界との接続が修復できたのね！",
+			"zh-TW": "你已經成功修復了與對面世界的連線了呢！",
+			"en": "You've repaired the connection to the other side!"
+		},
+		"timestamp": "2025-07-13T00:50:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "バックドアについては聞いた事がありますわ。\n\n7sRefにある「正規の扉」にトラブルが起きた時に、代わりの扉を用意することがあって、それをバックドアと呼んでいるの。",
+			"zh-TW": "關於「後門」，我確實有聽說過。\n\n當 7sRef 中的「正規之門」發生異常時，會臨時設置一扇替代用的門，那扇門就被稱為「後門」。",
+			"en": "I've heard of \"backdoors\" before.\n\nWhen a \"Regular Gate\" in 7sRef malfunctions, a replacement gate can be set up temporarily — they call it a backdoor."
+		},
+		"timestamp": "2025-07-13T00:50:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "バックドアは、各世界に元々ある扉を7sRefと一時的につなげて仮の通路とした物。\n\nだから間違ってこちらに迷い込まないように、少し特殊な開け方をする必要があって……。",
+			"zh-TW": "所謂的後門，是將各個世界原本存在的門，暫時連接到 7sRef，形成的臨時通道。\n\n正因如此，為了避免有人誤闖，這扇門需要用比較特殊的方式才能開啟……。",
+			"en": "A backdoor temporarily links an existing gate from another world to 7sRef.\n\nTo prevent anyone from wandering in by mistake, you need to use a special method to open it…"
+		},
+		"timestamp": "2025-07-13T00:50:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……ちょっと待って\n\nこの方法には、一つ大きな問題がありますわ。",
+			"zh-TW": "……等一下。\n\n這個方法，其實有個很大的問題。",
+			"en": "…Wait a moment. There's a big problem with this method."
+		},
+		"timestamp": "2025-07-13T00:50:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[大きな問題]",
+			"zh-TW": "[很大的問題？]",
+			"en": "[A big problem?]"
+		},
+		"timestamp": "2025-07-13T00:50:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "大きな問題",
+			"zh-TW": "很大的問題？",
+			"en": "A big problem?"
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "バックドアを開くためには\"両方の世界から同時に扉を開く\"必要があるの。\n\n7sRef側には私がいるから問題ないわ。でも、向こう側の世界から扉を開けられる人がいない。",
+			"zh-TW": "想要開啟後門，必須「從兩個世界同時打開門」才行。\n\n7sRef 這邊有我來處理，沒問題。但對面的世界──那邊卻沒有人能打開門。",
+			"en": "To open a backdoor, you need to \"open the gate from both worlds simultaneously\".\n\nI can handle things on the 7sRef side. But there's no one in the other world who can open it."
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "つまり、私たちは7つ目の扉を開けて未知の世界に行く前に、その未知の世界のどこかにある扉を見つけなきゃいけないの。",
+			"zh-TW": "也就是說，我們在進入第七扇門、前往未知世界之前，得先在那個未知世界中，找到那裡的門才行。",
+			"en": "That means, before we can go through the Seventh Gate to that unknown world, we have to find the gate on that side — the one that connects to ours."
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "そんなこと、できるわけないじゃない……！",
+			"zh-TW": "這種事……怎麼可能做得到啦……！",
+			"en": "But how are we supposed to do that…!?"
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "バックドアが使えないなら、出来る事はもう何も……何も思いつかない。\n\nもう少しで希望を掴みとれると思ったのに……。",
+			"zh-TW": "如果後門無法使用的話，我們就什麼也做不了……什麼辦法都想不到了。\n\n明明就快要抓住希望了，結果……。",
+			"en": "If the backdoor doesn't work, then we're out of options… I can't think of anything.\n\nWe were so close to reaching hope… and now this."
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[返事をする]",
+			"zh-TW": "[回覆]",
+			"en": "[Respond]"
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "開けられるかもしれない",
+			"zh-TW": "也許可以打開",
+			"en": "We might be able to open it"
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "え……？",
+			"zh-TW": "咦……？",
+			"en": "…Huh?"
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[返事をする]",
+			"zh-TW": "[回覆]",
+			"en": "[Respond]"
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "バックドアに選ばれる扉に条件はある？",
+			"zh-TW": "要成為後門的門，有什麼條件嗎？",
+			"en": "What makes a gate suitable to become a backdoor?"
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "え…っと、たしかフラグメントが生まれやすい場所。言い換えるなら、一番人々の思い出が集まっている場所にある扉が選ばれるはずよ。",
+			"zh-TW": "嗯……印象中是要在容易產生碎片的地方。換句話說，就是人們回憶最多的地方的門，才會被選為後門。",
+			"en": "Um… if I remember right, it's a place where Fragments are likely to form. In other words, it should be a gate located in a place full of people's memories."
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[返事をする]",
+			"zh-TW": "[回覆]",
+			"en": "[Respond]"
+		},
+		"timestamp": "2025-07-13T00:51:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "ありがとう。扉を開けに行ってくる",
+			"zh-TW": "謝謝你。我這就去打開那扇門。",
+			"en": "Thank you. I'll go open the gate."
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "ちょっと待って！あなたは",
+			"zh-TW": "等等！你是……",
+			"en": "Wait! You are —"
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "あなたは……扉の先の世界について知っているの……？",
+			"zh-TW": "你是……你對門的彼端的世界──有了解嗎……？",
+			"en": "You… do you know something about the world beyond that gate?"
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "[返事をする]",
+			"zh-TW": "[回覆]",
+			"en": "[Respond]"
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "忘れるわけがないよ。みんなの思い出がつまった場所だから",
+			"zh-TW": "我怎麼可能會忘記，那可是大家回憶滿載的地方啊",
+			"en": "Of course I do. It's the place filled with everyone's memories."
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "…………",
+			"zh-TW": "…………",
+			"en": "……"
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "……ずっと不思議に思ってた。\n流転者が持つフラグメントの中に、ときおり私とリズも知らない世界の記憶が映る事があるの。\n\nもしかして、あなたたちは……。",
+			"zh-TW": "……我一直都覺得很奇怪。\n在流轉者所持有的碎片當中，有時會浮現出我跟莉茲都不曾見過的記憶畫面。\n\n難道說，你們是……。",
+			"en": "…It's always puzzled me.\nSometimes, within the Fragments that Wanderers carry, I see memories of worlds that neither Ris nor I recognize.\n\nCould it be… you are…"
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "いえ、そんな話をしている場合じゃないわね。\n今はただ、あなたの事を信じますわ。",
+			"zh-TW": "不，現在不是說這些的時候。\n這個瞬間，我只想相信你。",
+			"en": "No — now's not the time for that.\nRight now, I choose to believe in you."
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "合図を決めましょう。バックドアを見つけたら『扉を7回ノック』して。\n\nそのあと、2人で一緒に扉を開くの。",
+			"zh-TW": "來決定暗號吧。當你找到後門，就「敲門七下」。\n\n接著，由我們兩人一同打開那扇門。",
+			"en": "Let's decide on a signal. When you find the backdoor, \"knock seven times\".\n\nThen, the two of us will open it together."
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "お願い、最後の扉を見つけ出して！",
+			"zh-TW": "拜託你了，一定要找到最後的那扇門！",
+			"en": "Please — find the final gate!"
+		},
+		"timestamp": "2025-07-13T00:52:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "希望の扉",
+			"zh-TW": "希望之扉",
+			"en": "The Gate of Hope"
+		},
+		"timestamp": "2025-07-13T01:35:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "まさか本当に向こう側の世界から扉を開くなんて……\nおかげで7つ目の世界へ行き来できるようになりましたわ。",
+			"zh-TW": "沒想到你真的從那頭的世界打開了那扇門……\n多虧了你，我們現在終於能夠來往第七個世界了。",
+			"en": "I can't believe you actually opened the gate from the other side…\nThanks to you, we're finally able to travel to the seventh world."
+		},
+		"timestamp": "2025-07-13T01:35:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "今まで開かれることのなかった7つ目の扉。\n……あなたは、ずっと前からあの世界の事を知っていたのかもしれないですわね。",
+			"zh-TW": "那扇至今從未被打開過的第七扇門。\n……也許，你早就對那個世界有所了解了吧。",
+			"en": "The Seventh Gate — one that had never been opened until now.\n…Maybe you've known about that world all along."
+		},
+		"timestamp": "2025-07-13T01:35:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "こんな私の事を信じて、手を貸してくれてありがとう。",
+			"zh-TW": "謝謝你願意相信像我這樣的我，並且伸出援手。",
+			"en": "Thank you for believing in someone like me, and for lending your strength."
+		},
+		"timestamp": "2025-07-13T01:35:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "一緒に行きましょう、\nすべての決着をつけに。",
+			"zh-TW": "我們一起走吧──\n去迎來最終的結局。",
+			"en": "Let's go together —\nto bring everything to an end."
+		},
+		"timestamp": "2025-07-13T01:35:00.000Z"
+	}
+]
