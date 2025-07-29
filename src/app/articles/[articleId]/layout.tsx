@@ -1,4 +1,4 @@
-import { generatePreviewMetadata, getFullTitle } from "@/lib/utils";
+import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 import { getMetadataUrl } from "@/lib/article/utils";
 
 // Types & Interfaces
@@ -19,7 +19,7 @@ export async function generateMetadata({
 		title: articleMetadata.title,
 		description: articleMetadata.description,
 		...generatePreviewMetadata({
-			title: getFullTitle(articleMetadata.title),
+			title: generatePageTitle({ title: articleMetadata.title }),
 			description: articleMetadata.description,
 			url,
 		}),
@@ -33,6 +33,8 @@ export async function generateMetadata({
 
 
 
-export default function ArticlesLayout({ children }: React.ComponentProps<"div">) {
+export default function ArticleLayout({
+	children,
+}: React.ComponentProps<"div">) {
 	return children;
 }

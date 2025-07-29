@@ -1,4 +1,4 @@
-import { generatePreviewMetadata } from "@/lib/utils";
+import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 
 // Fonts
 import { Doto, Shippori_Mincho } from "next/font/google";
@@ -22,7 +22,7 @@ const ShipporiMincho = Shippori_Mincho({
 import { WrapperLayout } from "@/components/common/layouts";
 
 // Metadata
-const title = "7sRef.exe";
+export const title = "7sRef.exe";
 const description = "Sevens Refraction";
 const url = "/stuff/7sref";
 const keywords = [
@@ -32,7 +32,7 @@ const keywords = [
 export const metadata = {
     title: {
         absolute: title,
-        template: `%s｜${title}`,
+        template: generatePageTitle({ suffix: title }),
     },
 	description: description,
 	keywords: keywords,

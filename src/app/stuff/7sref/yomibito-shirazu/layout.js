@@ -1,4 +1,7 @@
-import { generatePreviewMetadata } from "@/lib/utils";
+import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
+
+// Constants & Variables
+import { title as suffix } from "../layout";
 
 // Metadata
 const title = "ヨミビトシラズ";
@@ -17,7 +20,11 @@ export const metadata = {
 	title,
 	description: description,
 	keywords: keywords,
-	...generatePreviewMetadata({ title, description, url }),
+	...generatePreviewMetadata({
+		title: generatePageTitle({ title, suffix }),
+		description,
+		url,
+	}),
 	robots: {
 		index: true,
 		follow: true,

@@ -1,5 +1,5 @@
 import { meta } from "./meta";
-import { generatePreviewMetadata, getFullTitle } from "@/lib/utils";
+import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 	description: meta.description,
 	keywords: meta.keywords,
 	...generatePreviewMetadata({
-		title: getFullTitle(meta.title),
+		title: generatePageTitle({ title: meta.title }),
 		description: meta.description,
 		url: meta.url,
 	}),

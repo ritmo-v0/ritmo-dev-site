@@ -21,7 +21,7 @@ import { Article } from "@/lib/article/types";
 
 
 
-export default function ArticlesPage(props: { params: Promise<{ articleId: string }> }) {
+export default function ArticlePage(props: { params: Promise<{ articleId: string }> }) {
 	const params = use(props.params);
 	const articleId = params.articleId;
 

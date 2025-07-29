@@ -43,7 +43,7 @@ const CHILDREN_VARIANTS: Variants = {
 
 
 
-export default function MyGoPage() {
+export default function MyGOPage() {
 	return (
 		<div className="fixed inset-0 bg-background z-50 [&_img]:select-none [&_img]:touch-none [&_img]:pointer-events-none">
 			<MyGoWallpaper />

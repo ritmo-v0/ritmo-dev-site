@@ -1,4 +1,4 @@
-import { generatePreviewMetadata, getFullTitle } from "@/lib/utils";
+import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -10,11 +10,11 @@ const url = "/articles";
 export const metadata: Metadata = {
 	title: {
 		default: title,
-		template: `%s｜Ritmo 里莫`,
+		template: generatePageTitle(),
 	},
 	description: description,
 	...generatePreviewMetadata({
-		title: getFullTitle(title),
+		title: generatePageTitle({ title }),
 		description,
 		url,
 	}),
@@ -27,6 +27,8 @@ export const metadata: Metadata = {
 
 
 
-export default function ArticlesLayout({ children }: React.ComponentProps<"div">) {
+export default function ArticlesLayout({
+	children,
+}: React.ComponentProps<"div">) {
 	return children;
 }

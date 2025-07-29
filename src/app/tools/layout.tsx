@@ -1,4 +1,4 @@
-import { generatePreviewMetadata, getFullTitle } from "@/lib/utils";
+import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -11,12 +11,12 @@ const url = "/tools";
 export const metadata: Metadata = {
 	title: {
 		default: title,
-		template: `%s｜Ritmo 里莫`,
+		template: generatePageTitle(),
 	},
 	description,
 	// keywords,
 	...generatePreviewMetadata({
-		title: getFullTitle(title),
+		title: generatePageTitle({ title }),
 		description,
 		url,
 	}),

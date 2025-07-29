@@ -5,6 +5,13 @@ import { twMerge } from "tailwind-merge";
 // Types & Interfaces
 import type { Metadata } from "next";
 import type { Result } from "@/lib/fetch/response";
+type PageTitleProps = {
+	title?: string;
+	suffix?: string;
+};
+
+// Constants & Variables
+export const PAGE_TITLE_SUFFIX = "Ritmo 里莫";
 
 
 
@@ -19,8 +26,11 @@ export function getBaseUrl() {
 	return new URL(baseUrl);
 }
 
-export function getFullTitle(title: string): string {
-	return `${title}｜Ritmo 里莫`;
+export function generatePageTitle({
+	title = "%s",
+	suffix = PAGE_TITLE_SUFFIX
+}: Partial<PageTitleProps> = {}): string {
+	return `${title}｜${suffix}`;
 }
 
 export function generatePreviewMetadata(

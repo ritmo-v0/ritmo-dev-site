@@ -1,5 +1,10 @@
 import Providers from "@/lib/providers";
-import { getBaseUrl, generatePreviewMetadata } from "@/lib/utils";
+import {
+	PAGE_TITLE_SUFFIX,
+	getBaseUrl,
+	generatePageTitle,
+	generatePreviewMetadata,
+} from "@/lib/utils";
 
 // Styles
 import "@/app/globals.css";
@@ -34,15 +39,15 @@ const PlusJakartaSans = Plus_Jakarta_Sans({
 });
 
 // Metadata
-const title = "Ritmo 里莫";
-const description = "我之後再來想想副標內容。";  // TODO: Update description
+const title = PAGE_TITLE_SUFFIX;
+const description = "<PersonalWebsite />";
 const url = "/";
-const author = "Ritmo Hung";
+const author = "ritmo_v0";
 export const metadata = {
     metadataBase: getBaseUrl(),
     title: {
         default: title,
-        template: `%s｜${title}`,
+        template: generatePageTitle(),
     },
 	description,
 	applicationName: title,
