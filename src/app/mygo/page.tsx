@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useMyGOStore } from "@/lib/store/mygo";
 import { motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 // Components & UI
 import Link from "next/link";
@@ -49,7 +50,11 @@ export default function MyGoPage() {
 			<SettingsSheet className="absolute top-8 right-8 z-50" />
 			<WrapperLayout className="relative size-full content-center">
 				<motion.div
-					className="grid grid-cols-3 @4xl:grid-cols-5 justify-items-center gap-2 @4xl:gap-8 @6xl:gap-16"
+					className={cn(
+						"grid  justify-items-center",
+						"grid-cols-3 @2xl:grid-cols-4 @6xl:grid-cols-5",
+						"gap-2 @4xl:gap-8 @6xl:gap-12",
+					)}
 					variants={CONTAINER_VARIANTS}
 					initial="hidden"
 					animate="visible"
@@ -96,13 +101,20 @@ function MyGoWallpaper() {
 function Bookmark({ bookmark }: { bookmark: Bookmark }) {
 	return (
 		<Link
-			className="group flex flex-col items-center justify-center gap-3 @xl:gap-4 p-4"
+			className={cn(
+				"group flex flex-col items-center justify-center p-4",
+				"gap-3 @4xl:gap-4",
+			)}
 			href={bookmark.href}
 		>
 			<Image
 				src={bookmark.image}
 				alt={bookmark.title}
-				className="@max-sm:max-w-20 @max-xl:max-w-24 rounded-3xl @sm:rounded-4xl group-hover:ring-2 transition"
+				className={cn(
+					"group-hover:ring-2 transition",
+					"@max-md:max-w-20 @max-4xl:max-w-24",
+					"rounded-3xl @md:rounded-4xl",
+				)}
 				width={128} height={128}
 			/>
 			<span className="font-medium text-sm @xl:text-base @6xl:text-lg text-center truncate">{bookmark.title}</span>
