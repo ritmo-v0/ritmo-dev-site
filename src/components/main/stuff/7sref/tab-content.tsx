@@ -1,4 +1,5 @@
 "use client";
+import { match } from "ts-pattern";
 import { cn } from "@/lib/utils";
 
 // Components & UI
@@ -12,6 +13,7 @@ import type { Locale, SevensRefMessage } from "@/types/7sref";
 
 // Constants & Variables
 import { LOCALES } from "@/types/7sref";
+const MAIMAI_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQHq5MdZSkseSjTQcCutJRGYVBfAwKMo8h67Xx";
 const ACID_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQltdYqm0qy59sg0zPLQXWFarBZVS14jb2e8vf";
 const RITMO_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQrTxR6l8TJnrEBNZlzcimWfebRjxC0t9DwYS5";
 
@@ -62,8 +64,14 @@ function SevensRefMessage({
 			id={String(id)}
 			role={message.role}
 			className="scroll-m-12"
-			side={message.role === "acid" ? "left" : "right"}
-			avatarSrc={message.role === "acid" ? ACID_AVATAR_URL : RITMO_AVATAR_URL}
+			side={message.role !== "player" ? "left" : "right"}
+			avatarSrc={match(message.role)
+				.with("maimai", () => MAIMAI_AVATAR_URL)
+				.with("player", () => RITMO_AVATAR_URL)
+				.with("acid", () => ACID_AVATAR_URL)
+				.exhaustive()
+			}
+			avatarFallback={message.role.charAt(0).toUpperCase()}
 			showAvatar={message.role !== prevMessage?.role}
 			keepAvatarSpace
 		>

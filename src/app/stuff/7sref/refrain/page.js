@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { SectionLayout, WrapperLayout } from "@/components/common/layouts";
+import { SectionLayout } from "@/components/common/layouts";
 import { MarkdownText } from "@/components/common/typography";
 
 // Constants & Variables
@@ -181,7 +181,7 @@ const LYRICS = [
 
 export default function RefrainPage() {
 	return (
-		<WrapperLayout className="font-serif-7sref" width={960}>
+		<>
 			<iframe
 				className="w-full aspect-video rounded-xl"
 				src="https://www.youtube-nocookie.com/embed/-3wzWwhHW3g"
@@ -221,6 +221,6 @@ export default function RefrainPage() {
 					</SectionLayout>
 				))}
 			</SectionLayout>
-		</WrapperLayout>
+		</>
 	);
 }

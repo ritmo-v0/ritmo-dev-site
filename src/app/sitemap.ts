@@ -56,25 +56,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		// 7sRef
 		{
 			url: `${baseUrl}/stuff/7sref`,
-			lastModified: new Date("2025-07-16"),
+			lastModified: new Date("2025-07-30"),
 			changeFrequency: "yearly",
 			priority: 0.3,
 		},
 		{
 			url: `${baseUrl}/stuff/7sref/arg`,
-			lastModified: new Date("2025-07-26"),
+			lastModified: new Date("2025-07-30"),
 			changeFrequency: "yearly",
 			priority: 0.3,
 		},
 		{
 			url: `${baseUrl}/stuff/7sref/yomibito-shirazu`,
-			lastModified: new Date("2025-07-26"),
+			lastModified: new Date("2025-07-30"),
 			changeFrequency: "yearly",
 			priority: 0.3,
 		},
 		{
 			url: `${baseUrl}/stuff/7sref/refrain`,
-			lastModified: new Date("2025-07-26"),
+			lastModified: new Date("2025-07-30"),
 			changeFrequency: "yearly",
 			priority: 0.3,
 		},

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { SectionLayout, WrapperLayout } from "@/components/common/layouts";
+import { SectionLayout } from "@/components/common/layouts";
 import { HR, MarkdownText, P } from "@/components/common/typography";
 
 // Constants & Variables
@@ -260,7 +260,7 @@ const LYRICS = [
 
 export default function YomibitoShirazuPage() {
 	return (
-		<WrapperLayout className="font-serif-7sref" width={960}>
+		<>
 			<iframe
 				className="w-full aspect-video rounded-xl"
 				src="https://www.youtube-nocookie.com/embed/vEhZzJM-8DM"
@@ -313,7 +313,7 @@ export default function YomibitoShirazuPage() {
 					</MarkdownText>
 				</div>
 			</SectionLayout>
-		</WrapperLayout>
+		</>
 	);
 }
 

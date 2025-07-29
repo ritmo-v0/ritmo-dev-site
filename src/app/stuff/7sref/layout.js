@@ -18,6 +18,9 @@ const ShipporiMincho = Shippori_Mincho({
 	variable: "--font-shippori-mincho",
 });
 
+// Components & UI
+import { WrapperLayout } from "@/components/common/layouts";
+
 // Metadata
 const title = "7sRef.exe";
 const description = "Sevens Refraction";
@@ -45,8 +48,11 @@ export const metadata = {
 
 export default function SevensRefLayout({ children }) {
 	return (
-		<div className={`${DotoFont.variable} ${ShipporiMincho.variable}`}>
+		<WrapperLayout
+			className={`${DotoFont.variable} ${ShipporiMincho.variable} font-serif-7sref`}
+			width={960}
+		>
 			{children}
-		</div>
+		</WrapperLayout>
 	);
 }

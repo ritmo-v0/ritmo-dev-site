@@ -1,5 +1,41 @@
 [
 	{
+		"role": "player",
+		"content": {
+			"ja": "最後の希望",
+			"zh-TW": "最後的希望",
+			"en": "The Last Hope"
+		},
+		"timestamp": "2025-07-12T20:59:00.000Z"
+	},
+	{
+		"role": "maimai",
+		"content": {
+			"ja": "*&nbsp;Connecting to 7sRef world…\n[ ok ]",
+			"zh-TW": "*&nbsp;Connecting to 7sRef world…\n[ ok ]",
+			"en": "*&nbsp;Connecting to 7sRef world…\n[ ok ]"
+		},
+		"timestamp": "2025-07-12T20:59:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "unknown",
+			"zh-TW": "unknown",
+			"en": "unknown"
+		},
+		"timestamp": "2025-07-12T20:59:00.000Z"
+	},
+	{
+		"role": "maimai",
+		"content": {
+			"ja": "[プロフィールを見る]",
+			"zh-TW": "[查看個人資料]",
+			"en": "[View Profile]"
+		},
+		"timestamp": "2025-07-12T20:59:00.000Z"
+	},
+	{
 		"role": "acid",
 		"content": {
 			"ja": "……え？",

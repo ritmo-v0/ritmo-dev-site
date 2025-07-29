@@ -27,10 +27,16 @@ export default {
 				hostname: "ywu5w3rxj7.ufs.sh",  // UploadThing (MyGO)
 				pathname: "/f/**",
 			},
+			// Additional article image sources
 			{
 				protocol: "https",
 				hostname: "hackmd.io",
 				pathname: "/_uploads/**",
+			},
+			{
+				protocol: "https",
+				hostname: "maimai.sega.jp",
+				pathname: "/storage/area/region/**",
 			},
 		]
 	},

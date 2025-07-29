@@ -40,4 +40,6 @@ Stylized lyrics display of the songs (song names same as the page titles).
 ## License
 Emoji Powered by Twemoji, used under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/
 
+All credits of images under the `/stuff/7sref` route or used in the article `Hku-hdzwge` go to SEGA and the original artists, unless specified right under. The "Ritmo" player avatar is drawn and owned by myself.
+
 Please contact me if you think something isn't listed in this section.

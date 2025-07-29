@@ -37,7 +37,7 @@ export const MESSAGE_TABS: SevensRefMessageTab[] = [
 
 // Messages
 export type SevensRefMessage = {
-	role: "player" | "acid";
+	role: "acid" | "maimai" | "player";
 	content: Record<Locale, string>;
 	timestamp?: string;
 };
