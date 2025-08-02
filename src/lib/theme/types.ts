@@ -1,3 +1,12 @@
+import { PRESETS } from "./presets";
+
+export type PresetName = keyof typeof PRESETS;
+
+export type ThemeStyles = {
+	light: ThemeStyleProps;
+	dark: Partial<ThemeStyleProps>;
+};
+
 export type ThemeStyleProps = {
 	background: string;
 	foreground: string;
@@ -14,7 +23,6 @@ export type ThemeStyleProps = {
 	accent: string;
 	"accent-foreground": string;
 	destructive: string;
-	"destructive-foreground"?: string;
 	border: string;
 	input: string;
 	ring: string;
@@ -31,6 +39,7 @@ export type ThemeStyleProps = {
 	"sidebar-accent-foreground": string;
 	"sidebar-border": string;
 	"sidebar-ring": string;
+
 	"font-sans"?: string;
 	"font-serif"?: string;
 	"font-mono"?: string;
@@ -43,9 +52,4 @@ export type ThemeStyleProps = {
 	"shadow-offset-y"?: string;
 	"letter-spacing"?: string;
 	spacing?: string;
-};
-
-export type ThemeStyles = {
-	light: ThemeStyleProps;
-	dark: Partial<ThemeStyleProps>;
 };

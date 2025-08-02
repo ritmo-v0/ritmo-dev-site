@@ -1,13 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useEmomomoStore } from "@/lib/store/emomomo";
-import { match } from "ts-pattern";
+import { useCopy } from "@/hooks/use-copy";
 import { motion } from "motion/react";
-import { copyToClipboard } from "@/lib/utils";
 
 // Components & UI
 import Twemoji from "react-twemoji";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { CopyButton, DeleteButton } from "@/components/common/motion-buttons";
 import { Label } from "@/components/ui/label";
@@ -186,28 +184,7 @@ function PreviewActionButtons() {
 	const preview = useEmomomoStore(state => state.preview);
 	const clearPreview = useEmomomoStore(state => state.clearPreview);
 
-	const [showIsCopied, setShowIsCopied] = useState(false);
-	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-	async function handleCopy() {
-		const copyResult = await copyToClipboard(preview);
-		match(copyResult)
-			.with({ success: true }, () => {
-				if (timeoutRef.current) clearTimeout(timeoutRef.current);
-				setShowIsCopied(true);
-				timeoutRef.current = setTimeout(() => {
-					setShowIsCopied(false);
-					timeoutRef.current = null;
-				}, 3000);
-			})
-			.with({ success: false }, ({ message }) => {
-				toast.error(
-					"A small 🤏🌌 issue occurred...",
-					{ description: message }
-				);
-			})
-			.exhaustive();
-	}
+	const { copied, copy } = useCopy();
 
 	return (
 		<>
@@ -216,11 +193,11 @@ function PreviewActionButtons() {
 				variant="ghost"
 				size="lg"
 				className="max-md:size-10"
-				onClick={handleCopy}
+				onClick={async () => copy(preview)}
 				disabled={preview === ""}
 				asChild
 			>
-				<CopyButton showIsCopied={showIsCopied}>
+				<CopyButton showIsCopied={copied}>
 					<span className="hidden md:inline">Copy</span>
 				</CopyButton>
 			</Button>

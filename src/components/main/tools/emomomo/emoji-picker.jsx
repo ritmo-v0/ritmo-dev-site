@@ -1,8 +1,6 @@
 "use client";
 import { memo, useMemo } from "react";
 import { useEmomomoStore } from "@/lib/store/emomomo";
-import { match } from "ts-pattern";
-import { copyToClipboard } from "@/lib/utils";
 import {
 	getEmojiCodePoints,
 	getEmojiGroupId,
@@ -212,15 +210,15 @@ function flatMapEmojis(subgroup, skinTone) {
 async function handleCopy(emoji, addEmoji) {
 	addEmoji(emoji);
 	if (useEmomomoStore.getState().useCOC) {
-		const copyResult = await copyToClipboard(emoji);
-		match(copyResult)
-			.with({ success: true }, () => {})
-			.with({ success: false }, ({ message }) => {
-				toast.error(
-					"A small 🤏🌌 issue occurred...",
-					{ description: message }
-				);
-			})
-			.exhaustive();
+		try {
+			await navigator.clipboard.writeText(emoji);
+		} catch (err) {
+			const error = ensureError(err);
+			console.error("ERR::COPY:", error);
+			toast.error(
+				"A small 🤏🌌 issue occurred...",
+				{ description: "Failed to copy text to clipboard." }
+			);
+		}
 	}
 }

@@ -1,4 +1,5 @@
 import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 // Fonts
 import { Doto, Shippori_Mincho } from "next/font/google";
@@ -49,7 +50,11 @@ export const metadata = {
 export default function SevensRefLayout({ children }) {
 	return (
 		<WrapperLayout
-			className={`${DotoFont.variable} ${ShipporiMincho.variable} font-serif-7sref`}
+			className={cn(
+				"font-serif-7sref",
+				DotoFont.variable,
+				ShipporiMincho.variable,
+			)}
 			width={960}
 		>
 			{children}

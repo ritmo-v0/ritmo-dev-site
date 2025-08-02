@@ -19,6 +19,7 @@ export async function generateMetadata({
 		title: articleMetadata.title,
 		description: articleMetadata.description,
 		...generatePreviewMetadata({
+			type: "article",
 			title: generatePageTitle({ title: articleMetadata.title }),
 			description: articleMetadata.description,
 			url,
@@ -35,6 +36,6 @@ export async function generateMetadata({
 
 export default function ArticleLayout({
 	children,
-}: React.ComponentProps<"div">) {
+}: { children: React.ReactNode }) {
 	return children;
 }

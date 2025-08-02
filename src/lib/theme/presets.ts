@@ -1,8 +1,7 @@
 // Types & Interfaces
-import type { ThemeStyles, ThemeStyleProps } from "@/types/theme";
+import type { ThemeStyles, ThemeStyleProps } from "./types";
 
-
-
+// Constants & Variables
 export const COMMON_STYLES = [
 	"font-sans",
 	"font-serif",
@@ -17,11 +16,14 @@ export const COMMON_STYLES = [
 	"spacing",
 ] as const satisfies readonly (keyof ThemeStyleProps)[];
 
-export const DEFAULT_FONT_SANS = '"GeistSans", "GeistSans Fallback", "Noto Sans TC", "Noto Sans TC Fallback", sans-serif';
-export const DEFAULT_FONT_SERIF = '';
-export const DEFAULT_FONT_MONO = '"JetBrains Mono", "JetBrains Mono Fallback", "Noto Sans TC", "Noto Sans TC Fallback", monospace';
+export const DEFAULT_FONT_SANS =
+	'"GeistSans", "GeistSans Fallback", "Noto Sans TC", "Noto Sans TC Fallback", "Noto Sans JP", "Noto Sans JP Fallback", sans-serif';
+export const DEFAULT_FONT_SERIF =
+	'';
+export const DEFAULT_FONT_MONO =
+	'"JetBrains Mono", "JetBrains Mono Fallback", "Noto Sans TC", "Noto Sans TC Fallback", "Noto Sans JP", "Noto Sans JP Fallback", monospace';
 
-export const presets: Record<string, ThemeStyles> = {
+export const PRESETS = {
 	default: {
 		light: {
 			background: "oklch(1 0 0)",
@@ -344,7 +346,6 @@ export const presets: Record<string, ThemeStyles> = {
 			accent: "#f1c4e6",
 			"accent-foreground": "#77347c",
 			destructive: "#ab4347",
-			"destructive-foreground": "#ffffff",
 			border: "#efbdeb",
 			input: "#e7c1dc",
 			ring: "#db2777",
@@ -358,7 +359,7 @@ export const presets: Record<string, ThemeStyles> = {
 			"sidebar-primary": "#454554",
 			"sidebar-primary-foreground": "#faf1f7",
 			"sidebar-accent": "#f8f8f7",
-			"sidebar-accent-foreground": "#454554",
+			"sidebar-accent-foreground": "#ac1668",
 			"sidebar-border": "#eceae9",
 			"sidebar-ring": "#db2777",
 			radius: "0.5rem",
@@ -378,8 +379,7 @@ export const presets: Record<string, ThemeStyles> = {
 			"muted-foreground": "#c2b6cf",
 			accent: "#463753",
 			"accent-foreground": "#f8f1f5",
-			destructive: "#301015",
-			"destructive-foreground": "#ffffff",
+			destructive: "#9b174c",
 			border: "#3b3237",
 			input: "#3e343c",
 			ring: "#db2777",
@@ -393,7 +393,7 @@ export const presets: Record<string, ThemeStyles> = {
 			"sidebar-primary": "#1d4ed8",
 			"sidebar-primary-foreground": "#ffffff",
 			"sidebar-accent": "#261922",
-			"sidebar-accent-foreground": "#f4f4f5",
+			"sidebar-accent-foreground": "#e0cad6",
 			"sidebar-border": "#000000",
 			"sidebar-ring": "#db2777",
 		},
@@ -415,7 +415,6 @@ export const presets: Record<string, ThemeStyles> = {
 			accent: "#E3ECF6",
 			"accent-foreground": "#1e9df1",
 			destructive: "#f4212e",
-			"destructive-foreground": "#ffffff",
 			border: "#e1eaef",
 			input: "#f7f9fa",
 			ring: "#1da1f2",
@@ -459,7 +458,6 @@ export const presets: Record<string, ThemeStyles> = {
 			accent: "#061622",
 			"accent-foreground": "#1c9cf0",
 			destructive: "#f4212e",
-			"destructive-foreground": "#ffffff",
 			border: "#242628",
 			input: "#22303c",
 			ring: "#1da1f2",
@@ -496,7 +494,6 @@ export const presets: Record<string, ThemeStyles> = {
 			accent: "oklch(0.94 0 0)",
 			"accent-foreground": "oklch(0 0 0)",
 			destructive: "oklch(0.63 0.19 23.03)",
-			"destructive-foreground": "oklch(1.00 0 0)",
 			border: "oklch(0.92 0 0)",
 			input: "oklch(0.94 0 0)",
 			ring: "oklch(0 0 0)",
@@ -540,7 +537,6 @@ export const presets: Record<string, ThemeStyles> = {
 			accent: "oklch(0.32 0 0)",
 			"accent-foreground": "oklch(1.00 0 0)",
 			destructive: "oklch(0.69 0.20 23.91)",
-			"destructive-foreground": "oklch(0 0 0)",
 			border: "oklch(0.26 0 0)",
 			input: "oklch(0.32 0 0)",
 			ring: "oklch(0.72 0 0)",
@@ -562,4 +558,6 @@ export const presets: Record<string, ThemeStyles> = {
 			"font-mono": "Geist Mono, monospace",
 		},
 	},
-};
+} as const satisfies Record<string, ThemeStyles>;
+
+export const PRESET_NAMES = Object.keys(PRESETS) as Array<keyof typeof PRESETS>;

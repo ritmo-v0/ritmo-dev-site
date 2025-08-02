@@ -1,27 +1,38 @@
-import Providers from "@/lib/providers";
+import "@/app/globals.css";
 import {
 	PAGE_TITLE_SUFFIX,
 	getBaseUrl,
 	generatePageTitle,
 	generatePreviewMetadata,
 } from "@/lib/utils";
-
-// Styles
-import "@/app/globals.css";
+import { cn } from "@/lib/utils";
 
 // Components & UI
+import Providers from "@/lib/providers";
 import Navbar from "@/components/common/navbar";
 import Footer from "@/components/common/footer";
 
 // Fonts
 import { GeistSans } from "geist/font/sans";
-import { JetBrains_Mono, Noto_Sans_TC, Plus_Jakarta_Sans } from "next/font/google";
+import {
+	JetBrains_Mono,
+	Noto_Sans_JP,
+	Noto_Sans_TC,
+	Plus_Jakarta_Sans,
+} from "next/font/google";
 const JetBrainsMono = JetBrains_Mono({
 	weight: "variable",
 	style: ["normal"],
 	display: "swap",
 	subsets: ["latin"],
 	variable: "--font-jetbrains-mono",
+});
+const NotoSansJP = Noto_Sans_JP({
+	weight: "variable",
+	style: ["normal"],
+	display: "swap",
+	subsets: ["latin"],
+	variable: "--font-noto-sans-jp",
 });
 const NotoSansTC = Noto_Sans_TC({
 	weight: "variable",
@@ -68,11 +79,17 @@ export const metadata = {
 
 export default function RootLayout({
 	children,
-}: React.ComponentProps<"div">) {
+}: { children: React.ReactNode }) {
 	return (
 		<html
-			lang="zh-Hant-TW"
-			className={`${GeistSans.variable} ${JetBrainsMono.variable} ${NotoSansTC.variable} ${PlusJakartaSans.variable}`}
+			lang="en-US"
+			className={cn(
+				GeistSans.variable,
+				JetBrainsMono.variable,
+				NotoSansJP.variable,
+				NotoSansTC.variable,
+				PlusJakartaSans.variable,
+			)}
 			suppressHydrationWarning
 		>
 			<head>

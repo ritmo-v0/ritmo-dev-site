@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 // Components & UI
 import Link from "next/link";
 import Image from "next/image";
-import { Code } from "./shiki-highlighter";
+import { MarkdownPre } from "./shiki-highlighter";
 import { Slot as SlotPrimitive } from "radix-ui";
 import {
 	Table,
@@ -51,7 +51,7 @@ function MarkdownText({
 				li: LI,
 				p: P,
 				hr: HR,
-				pre: Code,
+				pre: MarkdownPre,
 				code: InlineCode,
 				blockquote: Blockquote,
 				a: ({ children, href, ...props }) => (

@@ -4,10 +4,16 @@ import { twMerge } from "tailwind-merge";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import type { Result } from "@/lib/fetch/response";
+import type { OpenGraphType } from "next/dist/lib/metadata/types/opengraph-types";
 type PageTitleProps = {
 	title?: string;
 	suffix?: string;
+};
+type PreviewMetadataProps = {
+	type?: OpenGraphType;
+	title: string;
+	description?: string;
+	url: string;
 };
 
 // Constants & Variables
@@ -15,10 +21,7 @@ export const PAGE_TITLE_SUFFIX = "Ritmo 里莫";
 
 
 
-export function cn(...inputs: ClassValue[]) {
-	return twMerge(clsx(inputs))
-}
-
+// # Metadata Functions
 export function getBaseUrl() {
 	const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
 		? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
@@ -33,17 +36,20 @@ export function generatePageTitle({
 	return `${title}｜${suffix}`;
 }
 
-export function generatePreviewMetadata(
-	{ title, description = "", url }: { title: string; description?: string; url: string }
-): Partial<Metadata> {
+export function generatePreviewMetadata({
+	type = "website",
+	title,
+	description = "",
+	url
+}: PreviewMetadataProps): Partial<Metadata> {
 	return {
 		openGraph: {
+			type,
 			title,
 			description,
 			url,
-			siteName: title,
-			type: "website",
-			locale: "zh_TW",
+			siteName: PAGE_TITLE_SUFFIX,
+			locale: "en_US",
 		},
 		twitter: {
 			card: "summary_large_image",
@@ -57,11 +63,7 @@ export function generatePreviewMetadata(
 	};
 }
 
-export async function copyToClipboard(text: string): Promise<Omit<Result, "data" | "level">> {
-	try {
-		await navigator.clipboard.writeText(text);
-		return { success: true, message: "Text copied to clipboard successfully." };
-	} catch (error: any) {
-		return { success: false, message: error.message };
-	}
+// # Utility Functions
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs))
 }

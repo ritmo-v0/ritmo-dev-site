@@ -18,7 +18,7 @@ const BUTTONS = [
 
 
 
-export function ThemeToggle() {
+export function ModeToggle() {
 	const [mounted, setMounted] = useState(false);
 	const { theme, setTheme } = useTheme();
 

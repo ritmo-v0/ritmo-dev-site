@@ -21,6 +21,6 @@ export const metadata: Metadata = {
 
 export default function MyGOLayout({
 	children,
-}: React.ComponentProps<"div">) {
+}: { children: React.ReactNode }) {
 	return children;
 }
