@@ -45,15 +45,15 @@ const CHILDREN_VARIANTS: Variants = {
 
 export default function MyGOPage() {
 	return (
-		<div className="fixed inset-0 bg-background z-50 [&_img]:select-none [&_img]:touch-none [&_img]:pointer-events-none">
+		<div className="fixed inset-0 bg-background [&_img]:select-none [&_img]:touch-none [&_img]:pointer-events-none">
 			<MyGoWallpaper />
-			<SettingsSheet className="absolute top-8 right-8 z-50" />
-			<WrapperLayout className="relative size-full content-center">
+			<SettingsSheet className="absolute top-8 right-8 z-1" />
+			<WrapperLayout className="relative size-full content-center lg:px-16">
 				<motion.div
 					className={cn(
-						"grid  justify-items-center",
+						"grid justify-items-center",
 						"grid-cols-3 @2xl:grid-cols-4 @6xl:grid-cols-5",
-						"gap-2 @4xl:gap-8 @6xl:gap-12",
+						"gap-2 @4xl:gap-8 @6xl:gap-y-12",
 					)}
 					variants={CONTAINER_VARIANTS}
 					initial="hidden"

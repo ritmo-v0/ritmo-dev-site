@@ -54,8 +54,8 @@ export default function InmPage() {
 	}, [hasCelebrated]);
 
 	return (
-		<div className="relative overflow-clip isolate">
-			<WrapperLayout className="grid justify-items-center items-end gap-8 py-16 h-full selection-inm">
+		<div className="relative overflow-clip selection:bg-[#114514] selection:text-background dark:selection:text-foreground isolate">
+			<WrapperLayout className="grid justify-items-center items-end gap-8 py-16 h-full">
 				{mounted && (time instanceof Date) && (
 					<>
 						<div className="grid justify-items-center gap-4">

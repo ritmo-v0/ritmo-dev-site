@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import "katex/dist/katex.min.css";
 import {
 	PAGE_TITLE_SUFFIX,
 	getBaseUrl,
@@ -92,13 +93,12 @@ export default function RootLayout({
 			)}
 			suppressHydrationWarning
 		>
-			<head>
-				{/* <script src="https://unpkg.com/react-scan/dist/auto.global.js" async /> */}
-				<link
-					rel="stylesheet"
-					href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
+			{/* <head>
+				<script
+					crossOrigin="anonymous"
+					src="https://unpkg.com/react-scan/dist/auto.global.js"
 				/>
-			</head>
+			</head> */}
 			<body>
 				<Providers>
 					<Navbar />

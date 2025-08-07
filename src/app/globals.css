@@ -155,18 +155,14 @@
 
 /* ---------------------------- STYLES ---------------------------- */
 @layer utilities {
+	.absolute-center {
+		@apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+	}
+
 	.twemoji {
 		@apply [--margin:_0.2em] inline size-[1.1em] mx-(--margin) align-[-0.2em];
 	}
 	.twemoji + .twemoji {
 		@apply ml-0;
 	}
-}
-
-.absolute-center {
-	@apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
-}
-
-.selection-inm {
-	@apply selection:bg-[#114514] selection:text-background dark:selection:text-foreground;
 }

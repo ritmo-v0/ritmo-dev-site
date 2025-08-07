@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-
-
 export default {
 	async redirects() {
 		return [
@@ -12,31 +10,29 @@ export default {
 			},
 		];
 	},
-	devIndicators: {
-		position: "bottom-right",
-	},
+	devIndicators: false,
 	images: {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "3b4o9rg98c.ufs.sh",  // UploadThing (Images)
+				hostname: "ywu5w3rxj7.ufs.sh",  // UploadThing (MyGO)
 				pathname: "/f/**",
 			},
 			{
 				protocol: "https",
-				hostname: "ywu5w3rxj7.ufs.sh",  // UploadThing (MyGO)
+				hostname: "y79ckzbnk6.ufs.sh",  // UploadThing (Articles)
+				pathname: "/f/**",
+			},
+			{
+				protocol: "https",
+				hostname: "3b4o9rg98c.ufs.sh",  // UploadThing (Tools & Stuff)
 				pathname: "/f/**",
 			},
 			// Additional article image sources
 			{
 				protocol: "https",
 				hostname: "hackmd.io",
-				pathname: "/_uploads/**",
-			},
-			{
-				protocol: "https",
-				hostname: "maimai.sega.jp",
-				pathname: "/storage/area/region/**",
+				pathname: "/_uploads/**",       // HackMD (OG images only)
 			},
 		]
 	},

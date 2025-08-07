@@ -7,9 +7,9 @@ import { ensureError } from "@/lib/fetch/response";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { SectionLayout } from "@/components/common/layouts";
 import { Slider } from "@/components/ui/slider";
-import { Label } from "@/components/ui/label";
 
 // Icons & Images
 import { Check } from "lucide-react";

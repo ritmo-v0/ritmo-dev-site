@@ -1,5 +1,6 @@
 "use client";
 import { useThemeStore } from "@/lib/store/theme";
+import { cn } from "@/lib/utils";
 
 // Shadcn Theme
 import { getThemeColor } from "@/lib/theme/utils";
@@ -21,7 +22,7 @@ export function ThemeSelect({ className }: React.ComponentProps<typeof SelectTri
 
 	return (
 		<Select value={preset} onValueChange={setPreset}>
-			<SelectTrigger className={className}>
+			<SelectTrigger className={cn("w-34 !h-8", className)}>
 				<SelectValue placeholder="Select a theme..." />
 			</SelectTrigger>
 			<SelectContent>
