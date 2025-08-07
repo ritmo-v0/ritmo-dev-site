@@ -1,29 +1,5 @@
 import confetti from "canvas-confetti";
 
-// Constants & Variables
-export const INM_QUOTES: string[] = [
-	"這麼惡臭的時鐘有存在的必要嗎（惱",
-	"數倒呦（便乗）",
-	"人人皆是 homo（暴論）",
-	"倒數不可避",
-	"有什麼倒數的必要嗎",
-	"Homo 特有的前端技術",
-	"24 歲，是替代役",
-	"壓力 MAX 餒",
-	"好時間，就要來臨力",
-	"這是什麼梗啊（求雷普",
-	"逸一時誤一世",
-	"いいよ！こいよ！",
-	"クロッ↑ク↓",
-	"這不是普通的時鐘，是ホモの時計。",
-	"時間停止了，但惡臭還在蔓延",
-	"已經等不及了，快端上來罷",
-	"すいません許してください！\n時間はもう進まないから！",
-	"この時計、なんだか臭くない？",
-	"迫真時鐘部．時停の裏技",
-	"這就是…時之野獸先輩嗎？",
-];
-
 
 
 export function formatTime(date: Date): string {
@@ -69,8 +45,8 @@ export function formatTimeDiff(target: Date, now: Date): string {
 	return (parts.length === 0) ? "好時間來臨力" : `剩餘 ${parts.join(" ")}`;
 }
 
-export function getRandomQuote(): string {
-	return INM_QUOTES[Math.floor(Math.random() * INM_QUOTES.length)];
+export function getRandomQuote<T>(quotes: Array<T>): T {
+	return quotes[Math.floor(Math.random() * quotes.length)];
 }
 
 export function celebrate() {
