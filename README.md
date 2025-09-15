@@ -33,8 +33,8 @@ A clock, giving off a terrible stench, that runs and then stops at exactly `2025
 #### [7sRef](https://ritmo.dev/stuff/7sref)
 ##### [アシッド](https://ritmo.dev/stuff/7sref/arg)
 The message record with "アシッド" that appeared in maimai DX's RAG event (the last chapter of 7sRef and KALEIDXSCOPE) starting from 2025/07/11.
-##### [ヨミビトシラズ](https://ritmo.dev/stuff/7sref/arg)
-##### [Ref:rain (for 7th Heaven)](https://ritmo.dev/stuff/7sref/arg)
+##### [ヨミビトシラズ](https://ritmo.dev/stuff/7sref/yomibito-shirazu)
+##### [Ref:rain (for 7th Heaven)](https://ritmo.dev/stuff/7sref/refrain)
 Stylized lyrics display of the songs (song names same as the page titles).
 
 ## License
