@@ -35,7 +35,7 @@ export async function generateMetadata({
 
 
 export default function ArticleLayout({
-	children,
-}: { children: React.ReactNode }) {
+	children
+}: LayoutProps<"/articles/[articleId]">) {
 	return children;
 }

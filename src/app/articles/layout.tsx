@@ -27,8 +27,6 @@ export const metadata: Metadata = {
 
 
 
-export default function ArticlesLayout({
-	children,
-}: { children: React.ReactNode }) {
+export default function ArticlesLayout({ children }: LayoutProps<"/articles">) {
 	return children;
 }

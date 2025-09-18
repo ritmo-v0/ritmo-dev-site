@@ -19,8 +19,6 @@ export const metadata: Metadata = {
 
 
 
-export default function MyGOLayout({
-	children,
-}: { children: React.ReactNode }) {
+export default function MyGOLayout({ children }: LayoutProps<"/mygo">) {
 	return children;
 }

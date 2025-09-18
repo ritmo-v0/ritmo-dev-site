@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 
 export default function TempusLayout({
-	children,
-}: { children: React.ReactNode }) {
+	children
+}: LayoutProps<"/tools/tempus">) {
 	return children;
 }

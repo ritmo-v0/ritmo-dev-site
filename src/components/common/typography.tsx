@@ -24,7 +24,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
 
 // Types & Interfaces
-import type { AsChild } from "@/types";
+import type { AsChild } from "./types";
 export type MarkdownTextProps = {
 	renderH1?: boolean;
 }
@@ -61,7 +61,7 @@ function MarkdownText({
 				),
 				img: ({ src, alt, width, height, ...props }) => {
 					if (typeof src !== "string") return null;
-					return(
+					return (
 						<Image
 							src={src}
 							alt={alt || ""}
@@ -79,7 +79,7 @@ function MarkdownText({
 				tr: TableRow,
 				th: TableHead,
 				td: TableCell,
-            }}
+			}}
 			{...props}
 		/>
 	);

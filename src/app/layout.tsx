@@ -56,11 +56,11 @@ const description = "<PersonalWebsite />";
 const url = "/";
 const author = "ritmo_v0";
 export const metadata = {
-    metadataBase: getBaseUrl(),
-    title: {
-        default: title,
-        template: generatePageTitle(),
-    },
+	metadataBase: getBaseUrl(),
+	title: {
+		default: title,
+		template: generatePageTitle(),
+	},
 	description,
 	applicationName: title,
 	category: "Web Development",
@@ -68,7 +68,7 @@ export const metadata = {
 	authors: [{ name: author }],
 	creator: author,
 	publisher: author,
-    ...generatePreviewMetadata({ title, description, url }),
+	...generatePreviewMetadata({ title, description, url }),
 	robots: {
 		index: true,
 		follow: true,
@@ -78,9 +78,7 @@ export const metadata = {
 
 
 
-export default function RootLayout({
-	children,
-}: { children: React.ReactNode }) {
+export default function RootLayout({ children }: LayoutProps<"/">) {
 	return (
 		<html
 			lang="en-US"

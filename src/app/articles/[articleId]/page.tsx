@@ -21,9 +21,8 @@ import { Article } from "@/lib/article/types";
 
 
 
-export default function ArticlePage(props: { params: Promise<{ articleId: string }> }) {
-	const params = use(props.params);
-	const articleId = params.articleId;
+export default function ArticlePage(props: PageProps<"/articles/[articleId]">) {
+	const articleId = use(props.params).articleId;
 
 	const { data, error, isLoading } = useSWRImmutable(`/api/articles/${articleId}`, fetcher);
 	const articleData: Article = data?.success ? data.data : {};

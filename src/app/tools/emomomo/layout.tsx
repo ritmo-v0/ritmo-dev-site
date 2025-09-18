@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 
 export default function EmomomoLayout({
-	children,
-}: { children: React.ReactNode }) {
+	children
+}: LayoutProps<"/tools/emomomo">) {
 	return children;
 }

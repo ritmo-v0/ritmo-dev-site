@@ -8,7 +8,7 @@ import { H1, H2, H3, H4, H5, H6 } from "./typography";
 
 // Types & Interfaces
 import type { VariantProps } from "class-variance-authority";
-import type { AsChild } from "@/types";
+import type { AsChild } from "./types";
 interface WrapperLayoutProps {
 	width?: number;
 }

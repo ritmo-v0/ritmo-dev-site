@@ -29,8 +29,6 @@ export const metadata: Metadata = {
 
 
 
-export default function ToolsLayout({
-	children,
-}: { children: React.ReactNode }) {
+export default function ToolsLayout({ children }: LayoutProps<"/tools">) {
 	return children;
 }
