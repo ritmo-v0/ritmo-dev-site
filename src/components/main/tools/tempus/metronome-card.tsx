@@ -28,7 +28,9 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 		fetch("https://aaw2tslxqb.ufs.sh/f/vQ66ADGRMiselntgRFEbZhtipnrSKAc8zy0eWVDCEoU4sa3m")
 			.then((response) => response.arrayBuffer())
 			.then((arrayBuffer) => {
-				audioContext.current?.decodeAudioData(arrayBuffer, (buffer) => sfx.current = buffer)
+				audioContext.current?.decodeAudioData(arrayBuffer, (buffer) => {
+					sfx.current = buffer;
+				})
 			});
 	}, []);
 
@@ -36,8 +38,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 		stop();
 		if (isPlaying) start();
 		return stop;
-	// TODO
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// TODO
 	}, [isPlaying, value]);
 
 	// Metronome
@@ -89,7 +90,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 		const bpm = e.dataTransfer.getData("text/plain");
 		if (bpm) {
 			const bpmValue = parseFloat(bpm);
-			if (!isNaN(bpmValue)) setValue(bpmValue);
+			if (!Number.isNaN(bpmValue)) setValue(bpmValue);
 		}
 	}
 

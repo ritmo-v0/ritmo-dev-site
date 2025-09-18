@@ -28,7 +28,7 @@ export function MessagesTabsContent({ value, locale, messages }: {
 		<TabsContent value={value}>
 			<MessageGroup>
 				{messages.map((message, index: number) => (
-					<SevensRefMessage
+					<SRMessage
 						id={index}
 						key={index}
 						message={message}
@@ -41,7 +41,7 @@ export function MessagesTabsContent({ value, locale, messages }: {
 	);
 }
 
-function SevensRefMessage({
+function SRMessage({
 	id,
 	message,
 	prevMessage,

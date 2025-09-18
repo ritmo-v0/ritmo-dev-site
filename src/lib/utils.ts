@@ -23,8 +23,9 @@ export const PAGE_TITLE_SUFFIX = "Ritmo 里莫";
 
 // # Metadata Functions
 export function getBaseUrl() {
-	const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-		? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+	const PRODUCTION_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+	const baseUrl = PRODUCTION_URL
+		? `https://${PRODUCTION_URL}`
 		: `https://localhost:${process.env.PORT || 3000}`;
 	return new URL(baseUrl);
 }

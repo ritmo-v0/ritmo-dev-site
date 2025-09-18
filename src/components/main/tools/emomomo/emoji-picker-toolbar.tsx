@@ -109,6 +109,9 @@ function UseCOCToggle() {
 	];
 	const MousePointerClickIcon = ({ pressed = false }: { pressed: boolean }) => (
 		<svg
+			key="mouse-pointer-click"
+			role="img"
+			aria-label="Mouse-Pointer-Click"
 			xmlns="http://www.w3.org/2000/svg"
 			width="24"
 			height="24"

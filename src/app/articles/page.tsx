@@ -9,7 +9,7 @@ import { fetcher } from "@/lib/fetch";
 // Components & UI
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { H5, InlineCode, Muted } from "@/components/common/typography";
+import { Code, H5, Muted } from "@/components/common/typography";
 import { Skeleton } from "@/components/ui/skeleton";
 import { WrapperLayout } from "@/components/common/layouts";
 
@@ -41,7 +41,7 @@ export default function ArticlesPage() {
 	}, [isLoading, error]);
 
 	return (
-		<WrapperLayout width={960}>
+		<WrapperLayout width={1080}>
 			<motion.ul
 				className="grid gap-1 lg:mt-16 py-6"
 				variants={CONTAINER_VARIANTS}
@@ -49,9 +49,9 @@ export default function ArticlesPage() {
 				animate={animate ? "visible" : "hidden"}
 			>
 				{error && (
-					<InlineCode className="w-fit">
+					<Code className="w-fit">
 						Unable to fetch articles. Please try refreshing the page.
-					</InlineCode>
+					</Code>
 				)}
 				<AnimatePresence>
 					{!error && isLoading ? (

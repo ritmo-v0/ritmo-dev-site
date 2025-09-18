@@ -11,8 +11,8 @@ import OneDarkPro from "@shikijs/themes/one-dark-pro";
 
 // Components & UI
 import { Button } from "@/components/ui/button";
-import { Muted } from "./typography";
 import { CopyButton } from "./motion-buttons";
+import { Muted } from "./typography";
 
 // Types & Interfaces
 export type CodeProps = {
@@ -34,7 +34,7 @@ export function MarkdownPre({
 		: null;
 
 	const rawCode = codeElement?.children ?? "";
-	const code = typeof rawCode === "string" ? rawCode.trim() : String(rawCode).trim();
+	const code = typeof rawCode === "string" ? rawCode.trimEnd() : String(rawCode).trimEnd();
 
 	const codeClassName = codeElement?.className ?? "";
 	const matchLang = codeClassName?.match(/language-(\w+)/);
@@ -43,18 +43,18 @@ export function MarkdownPre({
 	if (!isValidCodeElement) return null;
 
 	return (
-		<PRE
+		<Pre
 			className={cn("my-2", className)}
 			code={code}
 			language={language}
 			{...props}
 		>
 			{code}
-		</PRE>
+		</Pre>
 	);
 }
 
-export function PRE({
+export function Pre({
 	className,
 	code,
 	language = "plaintext",
@@ -62,22 +62,20 @@ export function PRE({
 	...props
 }: React.ComponentProps<"pre"> & CodeProps) {
 	const { highlighter, isHighlighterReady } = useShiki();
-
 	if (!isHighlighterReady || !highlighter) return null;
 
+	const isPlaintext = language === "plaintext";
+
 	return (
-		<div className={cn("group/code relative overflow-x-auto rounded-md isolate", className)}>
+		<div className={cn("group/code relative rounded-lg overflow-hidden isolate", className)}>
 			<div className={cn(
 				"flex items-center gap-2",
-				showLanguage
-					? "justify-between pl-4 pr-2 py-2 bg-muted text-muted-foreground"
+				(showLanguage && !isPlaintext)
+					? "justify-between pl-4 pr-2 py-2 bg-muted"
 					: "absolute top-2 right-2 opacity-20 group-hover/code:opacity-100 transition-opacity z-1",
 			)}>
-				{showLanguage && <Muted className="font-mono text-sm">{language}</Muted>}
-				<CodeCopyButton
-					className=""
-					code={code}
-				/>
+				{(showLanguage && !isPlaintext) && <Muted className="font-mono text-sm">{language}</Muted>}
+				<CodeCopyButton code={code} />
 			</div>
 			<ShikiHighlighter
 				highlighter={highlighter}
@@ -89,9 +87,9 @@ export function PRE({
 				as="div"
 				delay={100}
 				showLanguage={false}
-				showLineNumbers={language !== "plaintext"}
+				showLineNumbers={!isPlaintext}
 				tabindex={-1}
-				className="text-sm [&_pre]:p-0! [&_pre]:px-5! [&_pre]:py-1.5! [&_pre]:rounded-t-none! [&_pre]:rounded-b-md!"  // [&_pre]:whitespace-pre-wrap
+				className="text-sm [&_pre]:px-5! [&_pre]:py-3! [&_pre]:rounded-t-none! [&_pre]:rounded-b-md!"
 				{...props}
 			>
 				{code}
@@ -109,7 +107,7 @@ function CodeCopyButton({
 	return (
 		<Button
 			variant="ghost"
-			className={cn("size-6", className)}
+			className={cn("size-6 text-muted-foreground", className)}
 			onClick={async () => copy(code)}
 			asChild
 		>

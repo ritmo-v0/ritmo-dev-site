@@ -51,7 +51,7 @@ export function parseEmojis<C extends boolean = false>(
 	let currentGroup: EmojiGroup<Entry> | null = null;
 	let currentSubgroup: EmojiSubgroup<Entry> | null = null;
 
-	file.split("\n").map((line) => {
+	file.split("\n").forEach((line) => {
 		// # Skip empty lines or unrelated comments
 		if (isUnrelated(line)) return;
 
@@ -147,8 +147,6 @@ export function parseEmojis<C extends boolean = false>(
 				const emojiEntry = createEmojiEntry(emojiData, { compressed });
 				currentSubgroup.emojis.push(emojiEntry);
 			}
-
-			return;
 		}
 	});
 
@@ -293,7 +291,7 @@ export function getEmojiSubgroupTitle(title: string): string {
 export function getEmojiCodePoints(emoji: string): string {
 	const arr = [];
 	for (const symbol of [...emoji]) {
-		arr.push(symbol.codePointAt(0)!.toString(16).toUpperCase());
+		arr.push(symbol.codePointAt(0)?.toString(16).toUpperCase());
 	}
 	return arr.join("-");
 }

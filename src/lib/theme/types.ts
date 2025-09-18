@@ -1,4 +1,4 @@
-import { PRESETS } from "./presets";
+import type { PRESETS } from "./presets";
 
 export type PresetName = keyof typeof PRESETS;
 

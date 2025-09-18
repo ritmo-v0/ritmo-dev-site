@@ -1,5 +1,5 @@
 // Types & Interfaces
-import { SkinToneName } from "@/types/emoji";
+import type { SkinToneName } from "@/types/emoji";
 
 
 

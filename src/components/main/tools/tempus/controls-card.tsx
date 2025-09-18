@@ -1,6 +1,5 @@
 "use client";
 import { useTempusStore } from "@/lib/store/tempus";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 // Components & UI
@@ -13,6 +12,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { ResetButton } from "@/components/common/motion-buttons";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -97,7 +97,7 @@ function OtherControls() {
 				<Label>Recent Taps</Label>
 				<Select
 					value={recentTapCount.toString()}
-					onValueChange={(value) => setRecentTapCount(Number.parseInt(value))}
+					onValueChange={(value) => setRecentTapCount(Number.parseInt(value, 10))}
 				>
 					<SelectTrigger className="w-18 !h-7">
 						<SelectValue placeholder="Count" />
@@ -122,43 +122,9 @@ function OtherControls() {
 				onClick={handleClick}
 				asChild
 			>
-				<motion.button
-					initial="normal"
-					whileHover="hover"
-					whileFocus="hover"
-					whileTap="tap"
-				>
-					<motion.svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						strokeWidth="2"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						transition={{ type: "spring", stiffness: 250, damping: 25 }}
-						variants={{
-							normal: { rotate: "0deg" },
-							hover: { rotate: "50deg" },
-							tap: { rotate: "230deg", transition: { type: "spring", stiffness: 1200, damping: 80 } },
-						}}
-						// variants={{
-						// 	normal: { rotate: "-40deg" },
-						// 	hover: { rotate: "0deg" },
-						// 	tap: { rotate: "140deg", transition: { type: "spring", stiffness: 1200, damping: 80 } },
-						// }}
-					>
-						<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
-						<path d="M21 3v5h-5" />
-						<path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
-						<path d="M8 16H3v5" />
-						{/* <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
-						<path d="M21 3v5h-5" /> */}
-					</motion.svg>
+				<ResetButton>
 					Reset Taps
-				</motion.button>
+				</ResetButton>
 			</Button>
 		</div>
 	);

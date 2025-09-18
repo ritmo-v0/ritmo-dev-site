@@ -6,10 +6,9 @@ import useSWRImmutable from "swr/immutable";
 import { fetcher } from "@/lib/fetch";
 
 // Components & UI
-import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { H1, MarkdownText, Muted } from "@/components/common/typography";
+import { H1, Link, MarkdownText, Muted } from "@/components/common/typography";
 import { SectionLayout, WrapperLayout } from "@/components/common/layouts";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -17,7 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 
 // Types & Interfaces
-import { Article } from "@/lib/article/types";
+import type { Article } from "@/lib/article/types";
 
 
 
@@ -33,11 +32,11 @@ export default function ArticlePage(props: PageProps<"/articles/[articleId]">) {
 
 	return (
 		<div className="py-8">
-			<WrapperLayout width={960}>
+			<WrapperLayout width={1080}>
 				<header className="self-center h-min">
 					<div className="space-y-2">
 						<Button variant="ghost" asChild>
-							<Link href="/articles">
+							<Link href="/articles" variant="nothing">
 								<ArrowLeft />Back to Articles
 							</Link>
 						</Button>

@@ -37,7 +37,7 @@ Connecting to metaverse...                                                      
  * Playing the bass...                                                           [    ok    ]
  * Playing the keyboard...                                                       [    ok    ]
  * Singing with love...                                                          [    ok    ]
-`;
+`.trim();
 const CODE_OUTRO = `
 A problem has been detect and 7sRef.exe has been shut down to prevent damage
 to your world.
@@ -60,198 +60,198 @@ your world, select other song in this event, and do your best.
 Meta information:
 
 *** Limonène are kamome_sano and karuka_tsukishima <movie by hanaken>
-`;
+`.trim();
 const LYRICS = [
 	[
 		{
 			role: "リズ",
 			content: {
-				"ja": "（星を見て）この世にある思い出の粒が目に見えるとして、夜空の光とどちらが多いのだろう？",
+				ja: "（星を見て）この世にある思い出の粒が目に見えるとして、夜空の光とどちらが多いのだろう？",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			role: "アシッド",
 			content: {
-				"ja": "（ナレーション風に）ざわめき立つ明かりを逃れて夜風は静か。うまく話せないふたりは火を灯した──。",
+				ja: "（ナレーション風に）ざわめき立つ明かりを逃れて夜風は静か。うまく話せないふたりは火を灯した──。",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "なんてこうやって思い出して書き続けた",
+				ja: "なんてこうやって思い出して書き続けた",
 				"zh-tw": "",
-				"en": "",
-			}
-		},
-	],
-	[
-		{
-			content: {
-				"ja": "使い古されたメロディを手垢まみれの魔法で",
-				"zh-tw": "",
-				"en": "",
-			}
-		},
-		{
-			content: {
-				"ja": "捨てられると分かって歌うソドレミファミレド",
-				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 	],
 	[
 		{
 			content: {
-				"ja": "あそびつかれたらさよなら",
+				ja: "使い古されたメロディを手垢まみれの魔法で",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "やがてあきがきてさよなら",
+				ja: "捨てられると分かって歌うソドレミファミレド",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 	],
 	[
 		{
 			content: {
-				"ja": "ぼくらの資源は残酷にも有限だって",
+				ja: "あそびつかれたらさよなら",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "仕方ないって",
+				ja: "やがてあきがきてさよなら",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
+		},
+	],
+	[
+		{
+			content: {
+				ja: "ぼくらの資源は残酷にも有限だって",
+				"zh-tw": "",
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "わかってるよ",
+				ja: "仕方ないって",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "きっとすぐに",
+				ja: "わかってるよ",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "光は掠れて名前も忘れてしまうとして",
+				ja: "きっとすぐに",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "（それでもぼくら）ふたりだけで",
+				ja: "光は掠れて名前も忘れてしまうとして",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "片隅を照らす瞬きを永遠にしたいと思う",
+				ja: "（それでもぼくら）ふたりだけで",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
+		},
+		{
+			content: {
+				ja: "片隅を照らす瞬きを永遠にしたいと思う",
+				"zh-tw": "",
+				en: "",
+			},
 		},
 	],
 	[
 		{
 			showCursor: true,
 			content: {
-				"ja": "掃いて捨てるほどの<ruby>記録<rt>archive</rt></ruby>の上",
+				ja: "掃いて捨てるほどの<ruby>記録<rt>archive</rt></ruby>の上",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "半径25cmの窓で",
+				ja: "半径25cmの窓で",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "きみを見ている",
+				ja: "きみを見ている",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "まだ名前も何もない始まりも終わりもない距離感でいたい",
+				ja: "まだ名前も何もない始まりも終わりもない距離感でいたい",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 	],
 	[
 		{
 			content: {
-				"ja": "\`\`\`html\n<p class=\"hook\">\n	\"変わっていくよ\"\n	<br>\n	\"きみもぼくもすべては色褪せ\"\n	<br>\n	\"より強いキラキラが掻き消していって\"\n	<br>\n	<!--ふたりの断片-->\n	\"それでもいま夏風に揺れるこの星がいちばん眩しいと思う\"\n	<br>\n</p>",
+				ja: '```html\n<p class="hook">\n	"変わっていくよ"\n	<br>\n	"きみもぼくもすべては色褪せ"\n	<br>\n	"より強いキラキラが掻き消していって"\n	<br>\n	<!--ふたりの断片-->\n	"それでもいま夏風に揺れるこの星がいちばん眩しいと思う"\n	<br>\n</p>\n```',
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 	],
 	[
 		{
 			role: "〇舞台装置（早朝）",
 			content: {
-				"ja": "　すべての照明が消えていく。\n　消えていく書き割りの星空を創作物たち眺めている。",
+				ja: "　すべての照明が消えていく。\n　消えていく書き割りの星空を創作物たち眺めている。",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			role: "リズ",
 			isRoleSpoiler: true,
 			content: {
-				"ja": "静かに香る赤い赤い花火よ",
+				ja: "静かに香る赤い赤い花火よ",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			role: "アシッド",
 			isRoleSpoiler: true,
 			content: {
-				"ja": "どうかこのまま時間を止めて",
+				ja: "どうかこのまま時間を止めて",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 	],
 	[
 		{
 			content: {
-				"ja": "流れ行くように\n見失うように",
+				ja: "流れ行くように\n見失うように",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 		{
 			content: {
-				"ja": "いつかはぼくらも\nそっと消えてしまうのかな",
+				ja: "いつかはぼくらも\nそっと消えてしまうのかな",
 				"zh-tw": "",
-				"en": "",
-			}
+				en: "",
+			},
 		},
 	],
 ];
@@ -286,9 +286,9 @@ export default function YomibitoShirazuPage() {
 				{LYRICS.slice(1, -2).map((section, index) => (
 					<SectionLayout key={index}>
 						<MarkdownText>
-							{section.map(line => (
-								`${line.content.ja}`
-							)).join("\n\n")}
+							{section
+								.map((line) => `${line.content.ja}`)
+								.join("\n\n")}
 						</MarkdownText>
 					</SectionLayout>
 				))}
@@ -302,9 +302,9 @@ export default function YomibitoShirazuPage() {
 				<HR className="mb-4" />
 				<SectionLayout>
 					<MarkdownText>
-						{LYRICS[LYRICS.length - 1].map(line => (
-							`${line.content.ja}`
-						)).join("\n\n")}
+						{LYRICS[LYRICS.length - 1]
+							.map((line) => `${line.content.ja}`)
+							.join("\n\n")}
 					</MarkdownText>
 				</SectionLayout>
 				<div className="my-8">
@@ -333,16 +333,21 @@ function Serifu({ line }) {
 		<div className={cn("flex", isRoleLong && "flex-col")}>
 			{line.role && (
 				<span className="shrink-0 leading-relaxed">
-					<span
+					<button
+						type="button"
+						title="Show spoiler"
 						className={cn(
 							"relative before:transition-opacity before:ease-in-out before:duration-1500",
-							isRoleSpoiler && "before:absolute before:block before:content-[''] before:size-full before:bg-foreground cursor-pointer",
-							isRoleSpoiler && showRole && "before:opacity-0 cursor-default"
+							isRoleSpoiler &&
+								"before:absolute before:block before:content-[''] before:size-full before:bg-foreground cursor-pointer",
+							isRoleSpoiler &&
+								showRole &&
+								"before:opacity-0 cursor-default"
 						)}
 						onClick={handleRoleClick}
 					>
 						{line.role}
-					</span>
+					</button>
 					{PAD_LENGTH > 0 && <span>{"　".repeat(PAD_LENGTH)}</span>}
 				</span>
 			)}

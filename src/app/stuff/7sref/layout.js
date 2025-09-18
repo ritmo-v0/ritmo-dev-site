@@ -55,7 +55,7 @@ export default function SevensRefLayout({ children }) {
 				DotoFont.variable,
 				ShipporiMincho.variable,
 			)}
-			width={960}
+			width={1080}
 		>
 			{children}
 		</WrapperLayout>

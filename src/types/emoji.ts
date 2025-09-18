@@ -1,4 +1,4 @@
-import { EmojiSkinTone } from "@/lib/emomomo/constants";
+import type { EmojiSkinTone } from "@/lib/emomomo/constants";
 
 
 
@@ -13,23 +13,23 @@ export interface EmojiProps {
 	emoji: string;
 	version: string;
 	name: string;
-}
+};
 
 export interface CompEmojiSubEntry {
 	e: string;
 	v?: Partial<Record<SkinToneKey, CompEmojiSubEntry>>;
-}
+};
 export interface CompEmojiEntry extends CompEmojiSubEntry {
 	n: string;
-}
+};
 
 export interface FullEmojiSubEntry {
 	emoji: string;
 	variants?: Partial<Record<SkinToneKey, FullEmojiSubEntry>>;
-}
+};
 export interface FullEmojiEntry extends FullEmojiSubEntry {
 	name: string;
-}
+};
 
 export type EmojiEntry = CompEmojiEntry | FullEmojiEntry;
 export type EmojiSubEntry = CompEmojiSubEntry | FullEmojiSubEntry;
@@ -45,20 +45,20 @@ export interface EmojiSubgroup<T extends EmojiEntry> {
 	id?: string;
 	title: string;
 	emojis: T[];
-}
+};
 
 export interface EmojiGroup<T extends EmojiEntry> {
 	id?: string;
 	title: string;
 	emojis?: T[];
 	subgroups: EmojiSubgroup<T>[];
-}
+};
 export interface EmojiData<T extends EmojiEntry> {
 	version: string;
 	groups: EmojiGroup<T>[];
-}
+};
 
 // # Parse Options
 export interface ParseOptions {
 	compressed?: boolean;
-}
+};

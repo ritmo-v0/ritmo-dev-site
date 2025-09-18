@@ -39,7 +39,7 @@ Connecting to Player(s)...
  * Loading story chart...                       [    ok    ]
  * Simulating storyboard...                     [    ok    ]
  * Visualizing 7sRef as board game...           [    ok    ]
-`;
+`.trim();
 const LYRICS = [
 	[
 		{

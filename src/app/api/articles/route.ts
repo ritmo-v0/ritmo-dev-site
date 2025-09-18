@@ -2,7 +2,7 @@ import ky from "ky";
 import { type Result, ensureError } from "@/lib/fetch/response";
 
 // Types & Interfaces
-import { NoteOverview, OverviewResponse } from "@/lib/article/types";
+import type { NoteOverview, OverviewResponse } from "@/lib/article/types";
 
 // Constants & Variables
 import { ARTICLES_API_URL } from "@/lib/article/utils";

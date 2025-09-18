@@ -3,7 +3,7 @@ import { getMetadataUrl } from "@/lib/article/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import { ArticleParams, NoteMetadata } from "@/lib/article/types";
+import type { ArticleParams, NoteMetadata } from "@/lib/article/types";
 
 // Metadata
 const url = "/articles";

@@ -1,9 +1,10 @@
 import * as React from "react";
+import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import Link from "next/link";
 import Image from "next/image";
+import NextLink from "next/link";
 import { MarkdownPre } from "./shiki-highlighter";
 import { Slot as SlotPrimitive } from "radix-ui";
 import {
@@ -24,39 +25,39 @@ import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
 
 // Types & Interfaces
+import type { Route } from "next";
+import type { LinkProps } from "next/link";
+import type { VariantProps } from "class-variance-authority";
 import type { AsChild } from "./types";
-export type MarkdownTextProps = {
-	renderH1?: boolean;
-}
 
 
 
 function MarkdownText({
 	renderH1 = true,
 	...props
-}: React.ComponentProps<typeof Markdown> & MarkdownTextProps) {
+}: React.ComponentProps<typeof Markdown> & { renderH1?: boolean }) {
 	return (
 		<Markdown
 			remarkPlugins={[remarkMath, remarkBreaks, [remarkGfm, { singleTilde: false }]]}
 			rehypePlugins={[rehypeKatex, rehypeRaw]}
 			components={{
-				h1: ({ children, ...props }) => renderH1 ? <H1 id={extractId(children)} {...props}>{children}</H1> : null,
-				h2: ({ children, ...props }) => <H2 id={extractId(children)} {...props}>{children}</H2>,
-				h3: ({ children, ...props }) => <H3 id={extractId(children)} {...props}>{children}</H3>,
-				h4: ({ children, ...props }) => <H4 id={extractId(children)} {...props}>{children}</H4>,
-				h5: ({ children, ...props }) => <H5 id={extractId(children)} {...props}>{children}</H5>,
-				h6: ({ children, ...props }) => <H6 id={extractId(children)} {...props}>{children}</H6>,
+				h1: (props) => renderH1 ? <H1 {...props} /> : null,
+				h2: H2,
+				h3: H3,
+				h4: H4,
+				h5: H5,
+				h6: H6,
 				ul: UL,
 				ol: OL,
 				li: LI,
 				p: P,
 				hr: HR,
 				pre: MarkdownPre,
-				code: InlineCode,
+				code: Code,
 				blockquote: Blockquote,
 				a: ({ children, href, ...props }) => (
 					href
-						? <Anchor href={href} {...props}>{children}</Anchor>
+						? <Link href={href as Route} {...props}>{children}</Link>
 						: <span {...props}>{children}</span>
 				),
 				img: ({ src, alt, width, height, ...props }) => {
@@ -86,11 +87,9 @@ function MarkdownText({
 }
 
 function extractId(children: React.ReactNode): string | undefined {
-	if (typeof children === "string") {
-		return children.toString().toLowerCase().replace(/\s+/g, "-");
-	}
-
-	return undefined;
+	return typeof children === "string"
+		? children.toString().trim().toLowerCase().replace(/\s+/g, "-")
+		: undefined;
 }
 
 function H1({
@@ -100,7 +99,13 @@ function H1({
 }: React.ComponentProps<"h1"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "h1";
 
-	return <Comp className={cn("scroll-m-20 font-heading text-3xl font-bold tracking-tight", className)} {...props} />;
+	return (
+		<Comp
+			id={extractId(props.children)}
+			className={cn("mt-12 scroll-m-20 font-heading text-3xl font-bold tracking-tight first:mt-0 [&+p]:!mt-4", className)}
+			{...props}
+		/>
+	);
 }
 
 function H2({
@@ -110,7 +115,13 @@ function H2({
 }: React.ComponentProps<"h2"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "h2";
 
-	return <Comp className={cn("mt-12 scroll-m-20 font-heading text-2xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-4", className)} {...props} />;
+	return (
+		<Comp
+			id={extractId(props.children)}
+			className={cn("mt-12 scroll-m-20 font-heading text-2xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-4", className)}
+			{...props}
+		/>
+	);
 }
 
 function H3({
@@ -120,7 +131,13 @@ function H3({
 }: React.ComponentProps<"h3"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "h3";
 
-	return <Comp className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-2", className)} {...props} />;
+	return (
+		<Comp
+			id={extractId(props.children)}
+			className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			{...props}
+		/>
+	);
 }
 
 function H4({
@@ -130,7 +147,13 @@ function H4({
 }: React.ComponentProps<"h4"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "h4";
 
-	return <Comp className={cn("mt-4 scroll-m-20 font-heading text-lg font-semibold tracking-tight [&+p]:!mt-2", className)} {...props} />;
+	return (
+		<Comp
+			id={extractId(props.children)}
+			className={cn("mt-4 scroll-m-20 font-heading text-lg font-semibold tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			{...props}
+		/>
+	);
 }
 
 function H5({
@@ -140,7 +163,13 @@ function H5({
 }: React.ComponentProps<"h5"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "h5";
 
-	return <Comp className={cn("scroll-m-20 font-heading text-base font-medium tracking-tight", className)} {...props} />;
+	return (
+		<Comp
+			id={extractId(props.children)}
+			className={cn("mt-4 scroll-m-20 font-heading text-base font-medium tracking-tight first:mt-0", className)}
+			{...props}
+		/>
+	);
 }
 
 function H6({
@@ -150,7 +179,13 @@ function H6({
 }: React.ComponentProps<"h6"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "h6";
 
-	return <Comp className={cn("scroll-m-20 font-heading text-sm font-medium tracking-tight", className)} {...props} />;
+	return (
+		<Comp
+			id={extractId(props.children)}
+			className={cn("mt-4 scroll-m-20 font-heading text-sm font-medium tracking-tight first:mt-0", className)}
+			{...props}
+		/>
+	);
 }
 
 function UL({
@@ -173,7 +208,7 @@ function OL({
 	return <Comp className={cn("list-decimal list-outside [&:not(:first-child)]:mt-1 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
 }
 
-function LI({
+const LI = React.memo(function LI({
 	className,
 	asChild = false,
 	...props
@@ -181,9 +216,9 @@ function LI({
 	const Comp = asChild ? SlotPrimitive.Slot : "li";
 
 	return <Comp className={cn("leading-relaxed my-1 pl-1 marker:text-sm", className)} {...props} />;
-}
+}, (prev, next) => prev.children === next.children);
 
-function P({
+const P = React.memo(function P({
 	className,
 	asChild = false,
 	...props
@@ -191,7 +226,7 @@ function P({
 	const Comp = asChild ? SlotPrimitive.Slot : "p";
 
 	return <Comp className={cn("leading-relaxed [&:not(:first-child)]:mt-4 [word-break:break-word]", className)} {...props} />;
-}
+}, (prev, next) => prev.children === next.children);
 
 function HR({
 	className,
@@ -213,15 +248,15 @@ function Muted({
 	return <Comp className={cn("text-muted-foreground text-sm", className)} {...props} />;
 }
 
-function InlineCode({
+const Code = React.memo(function Code({
 	className,
 	asChild = false,
 	...props
 }: React.ComponentProps<"code"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "code";
 
-	return <Comp className={cn("bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm", className)} {...props} />;
-}
+	return <Comp className={cn("bg-muted relative rounded px-[0.3rem] py-[0.15rem] font-mono text-[0.875em]", className)} {...props} />;
+}, (prev, next) => prev.children === next.children);
 
 function Blockquote({
 	className,
@@ -233,17 +268,36 @@ function Blockquote({
 	return <Comp className={cn("border-[color-mix(in_oklch,_var(--primary),_white_10%)] border-l-3 pl-6 font-serif italic [&:not(:first-child)]:mt-4", className)} {...props} />;
 }
 
-function Anchor({
+const linkVariants = cva(
+	"rounded-md transition-all [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+	{
+		variants: {
+			variant: {
+				default: "font-medium text-primary underline-offset-4 underline",
+				hover: "font-medium text-primary underline-offset-4 hover:underline",
+				nothing: "",
+			},
+		},
+		defaultVariants: {
+			variant: "default",
+		},
+	}
+);
+
+function Link<R extends string>({
 	className,
+	variant,
 	href,
 	...props
-}: React.ComponentProps<"a"> & { href: string }) {
+}: LinkProps<R> & VariantProps<typeof linkVariants>) {
+	const isExternal = !(/^\/(?!\/)/.test(href.toString()));
+
 	return (
-		<Link
+		<NextLink
 			href={href}
-			className={cn("font-medium text-primary underline underline-offset-4", className)}
-			target={href.startsWith("https") ? "_blank" : undefined}
-			rel={href.startsWith("https") ? "noopener noreferrer" : undefined}
+			className={cn(linkVariants({ variant, className }))}
+			target={isExternal ? "_blank" : undefined}
+			rel={isExternal ? "noopener noreferrer" : undefined}
 			{...props}
 		/>
 	);
@@ -254,7 +308,7 @@ export {
 	H1, H2, H3, H4, H5, H6,
 	UL, OL, LI, P, HR,
 	Muted,
-	InlineCode,
+	Code,
 	Blockquote,
-	Anchor,
+	Link,
 };

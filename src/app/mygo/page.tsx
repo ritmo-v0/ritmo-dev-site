@@ -5,7 +5,6 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import Link from "next/link";
 import Image from "next/image";
 import { SettingsSheet } from "@/components/main/mygo/settings-sheet";
 import { WrapperLayout } from "@/components/common/layouts";
@@ -80,7 +79,6 @@ function MyGoWallpaper() {
 	return (
 		<motion.img
 			src={image}
-			alt="Background Image"
 			className="absolute inset-0 object-cover size-full scale-120 transition-all"
 			width={3840} height={2160}
 			variants={{
@@ -100,12 +98,13 @@ function MyGoWallpaper() {
 
 function Bookmark({ bookmark }: { bookmark: Bookmark }) {
 	return (
-		<Link
+		<a
+			href={bookmark.href}
+			rel="noopener noreferrer"
 			className={cn(
 				"group flex flex-col items-center justify-center p-4",
 				"gap-3 @4xl:gap-4",
 			)}
-			href={bookmark.href}
 		>
 			<Image
 				src={bookmark.image}
@@ -118,6 +117,6 @@ function Bookmark({ bookmark }: { bookmark: Bookmark }) {
 				width={128} height={128}
 			/>
 			<span className="font-medium text-sm @xl:text-base @6xl:text-lg text-center truncate">{bookmark.title}</span>
-		</Link>
+		</a>
 	);
 }

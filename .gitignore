@@ -14,10 +14,10 @@ yarn-error.log*
 *.pem
 
 # Next.js
-.next/
-out/
-build/
-certificates
+/.next/
+/out/
+/build/
+/certificates
 
 # Env files
 .env*

@@ -1,8 +1,9 @@
+// Zustand
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 // Types & Interfaces
-import { PresetName } from "@/lib/theme/types";
+import type { PresetName } from "@/lib/theme/types";
 interface ThemeStoreProps {
 	preset: PresetName;
 	setPreset: (preset: PresetName) => void;

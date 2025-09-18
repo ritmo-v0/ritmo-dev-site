@@ -1,11 +1,11 @@
 export type ArticleParams = {
 	params: Promise<{ articleId: string }>;
-}
+};
 
 export interface OverviewResponse {
 	user: Record<string, unknown>;
 	notes: NoteOverview[];
-}
+};
 
 export interface NoteOverview {
 	id: string;
@@ -16,12 +16,12 @@ export interface NoteOverview {
 	createdAt: string;
 	publishedAt: string;
 	shortId: string;
-}
+};
 
 export interface Article {
 	metadata: ArticleMetadata;
 	content: string;
-}
+};
 
 export type ArticleMetadata =
 	Omit<NoteInfo, "viewcount" | "brief"> &
@@ -34,13 +34,13 @@ export interface NoteInfo {
 	createtime: string;
 	updatetime: string;
 	brief: string;
-}
+};
 
 export interface NoteTag {
 	name: string;
 	createdAt: number;
 	lastUsedAt: number;
-}
+};
 
 export interface NoteMetadata {
 	title: string;
@@ -49,4 +49,4 @@ export interface NoteMetadata {
 	contributors: string;
 	image?: string;
 	breaks: string;
-}
+};

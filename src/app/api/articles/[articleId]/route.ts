@@ -8,7 +8,7 @@ import {
 } from "@/lib/article/utils";
 
 // Types & Interfaces
-import {
+import type {
 	Article,
 	NoteInfo,
 	NoteMetadata,

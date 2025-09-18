@@ -4,16 +4,15 @@ import { use7sRefStore } from "@/lib/store/7sref";
 
 // Components & UI
 import { Suspense } from "react";
-import { Anchor, Muted } from "@/components/common/typography";
+import { Link, Muted } from "@/components/common/typography";
 import { LocaleSelect } from "@/components/main/stuff/7sref/locale-select";
 import { MessagesTabsContent } from "@/components/main/stuff/7sref/tab-content";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Types & Interfaces
-// Constants & Variables
-import { SevensRefMessage, MESSAGE_TABS } from "@/types/7sref";
+import { type SevensRefMessage, MESSAGE_TABS } from "@/types/7sref";
 
-// Messages
+// Constants & Variables
 import mainMessages from "./messages/main.json";
 import charactersMessages from "./messages/characters.json";
 import settingsMessages from "./messages/settings.json";
@@ -56,9 +55,9 @@ function MessagesTabs() {
 				</div>
 				<Muted className="text-right">
 					Page Description Credit:{` `}
-					<Anchor href="https://x.com/NOTmoemoemo/status/1943984923129630856">
+					<Link href="https://x.com/NOTmoemoemo/status/1943984923129630856">
 						萌々も
-					</Anchor>
+					</Link>
 				</Muted>
 			</div>
 			<MessagesTabsContent

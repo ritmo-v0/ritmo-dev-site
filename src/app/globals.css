@@ -6,6 +6,10 @@
 
 /* ---------------------------- THEMES ---------------------------- */
 @theme inline {
+	/* Overrides */
+	--breakpoint-xs: 32rem;
+	--leading-relaxed: 1.75;
+	--ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 	--font-heading: var(--font-plus-jakarta-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
 	--font-sans: var(--font-geist-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
 	--font-mono: var(--font-jetbrains-mono), monospace, var(--font-noto-sans-tc), var(--font-noto-sans-jp);
@@ -119,16 +123,11 @@
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.552 0.016 285.938);
 
-	/* Shiki Syntax Highlighter */
-	& .shiki, & .shiki span {
+	& .shiki,
+	& .shiki span {
 		color: var(--shiki-dark) !important;
 		background-color: var(--shiki-dark-bg) !important;
 	}
-}
-
-@theme {
-	--breakpoint-xs: 32rem;
-	--ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 
@@ -157,12 +156,5 @@
 @layer utilities {
 	.absolute-center {
 		@apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
-	}
-
-	.twemoji {
-		@apply [--margin:_0.2em] inline size-[1.1em] mx-(--margin) align-[-0.2em];
-	}
-	.twemoji + .twemoji {
-		@apply ml-0;
 	}
 }
