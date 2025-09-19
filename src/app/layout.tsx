@@ -9,9 +9,10 @@ import {
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import Providers from "@/lib/providers";
 import Navbar from "@/components/common/navbar";
 import Footer from "@/components/common/footer";
+import { Providers } from "@/lib/providers";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Fonts
 import { GeistSans } from "geist/font/sans";
@@ -78,7 +79,9 @@ export const metadata = {
 
 
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+	children
+}: LayoutProps<typeof url>) {
 	return (
 		<html
 			lang="en-US"
@@ -102,6 +105,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 					<Navbar />
 					{children}
 					<Footer />
+					<SpeedInsights />
 				</Providers>
 			</body>
 		</html>
