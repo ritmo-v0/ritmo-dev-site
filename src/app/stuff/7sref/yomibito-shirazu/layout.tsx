@@ -10,30 +10,22 @@ const description = `
 ** Welcome to METAVERSE v3.0+1.0
 ** Presented by Limonène
 **********************************
-`;
+`.trim();
 const url = "/stuff/7sref/yomibito-shirazu";
-const keywords = [
-	"maimai",
-	"7sRef",
-];
 export const metadata = {
 	title,
-	description: description,
-	keywords: keywords,
+	description,
 	...generatePreviewMetadata({
 		title: generatePageTitle({ title, suffix }),
 		description,
 		url,
 	}),
-	robots: {
-		index: true,
-		follow: true,
-		nocache: false,
-	},
 };
 
 
 
-export default function YomibitoShirazuLayout({ children }) {
+export default function YomibitoShirazuLayout({
+	children
+}: LayoutProps<typeof url>) {
 	return children;
 }

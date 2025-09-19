@@ -235,7 +235,7 @@ function HR({
 }: React.ComponentProps<"hr"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "hr";
 
-	return <Comp className={cn("mt-4 border-t", className)} {...props} />;
+	return <Comp className={cn("mt-4 border-t has-[+h1]:mt-12 has-[+h2]:mt-12 has-[+h3]:mt-8", className)} {...props} />;
 }
 
 function Muted({

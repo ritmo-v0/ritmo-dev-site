@@ -9,7 +9,10 @@
 	/* Overrides */
 	--breakpoint-xs: 32rem;
 	--leading-relaxed: 1.75;
+	--ease-in-out: cubic-bezier(0.43, 0.01, 0.29, 1);
 	--ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+	--animate-blink: blink 1s steps(2, start) infinite;
+
 	--font-heading: var(--font-plus-jakarta-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
 	--font-sans: var(--font-geist-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
 	--font-mono: var(--font-jetbrains-mono), monospace, var(--font-noto-sans-tc), var(--font-noto-sans-jp);
@@ -148,13 +151,19 @@
 		@apply bg-background text-foreground font-sans antialiased;
 		scrollbar-gutter: stable both-edges;
 	}
+
+	button {
+		@apply cursor-pointer;
+	}
 }
 
 
 
 /* ---------------------------- STYLES ---------------------------- */
-@layer utilities {
-	.absolute-center {
-		@apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
-	}
+@keyframes blink {
+	to { visibility: hidden; }
+}
+
+@utility absolute-center {
+	@apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
 }

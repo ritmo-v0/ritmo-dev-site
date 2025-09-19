@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 
 // 7sRef
-import { type Locale, LOCALES } from "@/types/7sref";
+import { type Locale, LOCALES } from "@/lib/7sref/types";
 
 
 

@@ -1,5 +1,4 @@
-import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
-import { cn } from "@/lib/utils";
+import { cn, generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 
 // Fonts
 import { Doto, Shippori_Mincho } from "next/font/google";
@@ -12,7 +11,7 @@ const DotoFont = Doto({
 	variable: "--font-doto",
 });
 const ShipporiMincho = Shippori_Mincho({
-	weight: "400",
+	weight: ["400", "600"],
 	style: ["normal"],
 	display: "swap",
 	subsets: ["latin"],
@@ -29,12 +28,13 @@ const url = "/stuff/7sref";
 const keywords = [
 	"maimai",
 	"7sRef",
+	"7sRef 4",
 ];
 export const metadata = {
-    title: {
-        absolute: title,
-        template: generatePageTitle({ suffix: title }),
-    },
+	title: {
+		absolute: title,
+		template: generatePageTitle({ suffix: title }),
+	},
 	description: description,
 	keywords: keywords,
 	...generatePreviewMetadata({ title, description, url }),
@@ -47,11 +47,13 @@ export const metadata = {
 
 
 
-export default function SevensRefLayout({ children }) {
+export default function SevensRefLayout({
+	children
+}: LayoutProps<"/stuff/7sref">) {
 	return (
 		<WrapperLayout
 			className={cn(
-				"font-serif-7sref",
+				"mb-16 font-serif-7sref",
 				DotoFont.variable,
 				ShipporiMincho.variable,
 			)}

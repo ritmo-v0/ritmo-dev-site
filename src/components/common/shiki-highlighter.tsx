@@ -48,9 +48,7 @@ export function MarkdownPre({
 			code={code}
 			language={language}
 			{...props}
-		>
-			{code}
-		</Pre>
+		/>
 	);
 }
 

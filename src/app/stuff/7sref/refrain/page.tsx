@@ -1,12 +1,14 @@
-"use client";
 import { cn } from "@/lib/utils";
 
 // Components & UI
 import { SectionLayout } from "@/components/common/layouts";
 import { MarkdownText } from "@/components/common/typography";
 
+// Types & Interfaces
+import type { LyricLine } from "@/lib/7sref/types";
+
 // Constants & Variables
-const CODE_INTRO = `
+const CODE_INTRO = `\`\`\`
 C:¥7sRef¥SystemPRiSM>
 ******************************
 ** Welcome to KALEIDX_SCOPE **
@@ -39,62 +41,62 @@ Connecting to Player(s)...
  * Loading story chart...                       [    ok    ]
  * Simulating storyboard...                     [    ok    ]
  * Visualizing 7sRef as board game...           [    ok    ]
-`.trim();
-const LYRICS = [
+\`\`\``;
+const LYRICS: LyricLine[][] = [
 	[
 		{
 			content: {
 				"ja": "ソッ　　　　ト",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "<ruby>ス<rt>s</rt></ruby>レ違イ",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "<ruby>触<rt>f</rt></ruby>レヨウ　　ト",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "<ruby>シ<rt>sh</rt></ruby>テイタ",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "<ruby>ツ　キ<rt>月/尽き</rt></ruby>　ヘ　ト",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "宝石　ガ　消エ",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "凍エ切ッタ未明",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "音デ満タシテヨ",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
@@ -103,7 +105,7 @@ const LYRICS = [
 		{
 			content: {
 				"ja": "この画に飽きても",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
@@ -112,28 +114,28 @@ const LYRICS = [
 		{
 			content: {
 				"ja": "探してきた　何を探しているのかも",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "判らぬまま　何もかもを",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "光求め　やがて眩んだ目は慣れ",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "忘れてしまう　光の速さで",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
@@ -142,35 +144,35 @@ const LYRICS = [
 		{
 			content: {
 				"ja": "繋がりたい　けれど優れていたい",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "離れはじめたかつてのパンゲア",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "集め続け　すべていずれは崩れて",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "ただそれだけ",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
 		{
 			content: {
 				"ja": "知られないまま　腐った<ruby>得点<rt>score</rt></ruby>",
-				"zh-tw": "",
+				"zh-TW": "",
 				"en": "",
 			}
 		},
@@ -181,16 +183,18 @@ const LYRICS = [
 
 export default function RefrainPage() {
 	return (
-		<>
-			<iframe
-				className="w-full aspect-video rounded-xl"
-				src="https://www.youtube-nocookie.com/embed/-3wzWwhHW3g"
-				title="Ref:rain (for 7th Heaven) - カモメサノエレクトリックオーケストラ include Limonène [maimai でらっくす]"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				referrerPolicy="strict-origin-when-cross-origin"
-				allowFullScreen
-			/>
-			<SectionLayout>
+		<main>
+			<header className="mb-6">
+				<iframe
+					className="w-full aspect-video rounded-xl"
+					src="https://www.youtube-nocookie.com/embed/-3wzWwhHW3g"
+					title="Ref:rain (for 7th Heaven) - カモメサノエレクトリックオーケストラ include Limonène [maimai でらっくす]"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerPolicy="strict-origin-when-cross-origin"
+					allowFullScreen
+				/>
+			</header>
+			<article>
 				{/* Intro */}
 				{LYRICS.slice(0, 2).map((section, index) => (
 					<SectionLayout
@@ -205,9 +209,7 @@ export default function RefrainPage() {
 					</SectionLayout>
 				))}
 				<div className="my-8 [&_pre]:font-black [&_pre]:text-lg [&_pre]:tracking-[0.2em] [&_code]:font-mono-7sref!">
-					<MarkdownText>
-						{`\`\`\`plaintext\n${CODE_INTRO}\n\`\`\``}
-					</MarkdownText>
+					<MarkdownText>{CODE_INTRO}</MarkdownText>
 				</div>
 
 				{/* Main lyrics */}
@@ -220,7 +222,7 @@ export default function RefrainPage() {
 						</MarkdownText>
 					</SectionLayout>
 				))}
-			</SectionLayout>
-		</>
+			</article>
+		</main>
 	);
 }

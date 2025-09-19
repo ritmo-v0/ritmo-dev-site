@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 // Types & Interfaces
-import { type Locale, LOCALES } from "@/types/7sref";
+import type { Locale } from "@/lib/7sref/types";
 interface SevensRefState {
 	// States
 	locale: Locale;
@@ -17,7 +17,7 @@ export const use7sRefStore = create<SevensRefState>()(
 	persist(
 		set => ({
 			// Initial states
-			locale: LOCALES[0],
+			locale: "ja",
 
 			// Actions
 			setLocale: (locale) => set({ locale }),

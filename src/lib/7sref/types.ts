@@ -3,7 +3,7 @@ export type Locale = (typeof LOCALES)[number];
 
 
 
-// Tabs
+// # Tabs
 export type SevensRefMessageTab = {
 	id: string;
 	name: Record<Locale, string>;
@@ -35,9 +35,16 @@ export const MESSAGE_TABS: SevensRefMessageTab[] = [
 	},
 ] as const;
 
-// Messages
+// # Messages
 export type SevensRefMessage = {
 	role: "acid" | "maimai" | "player";
 	content: Record<Locale, string>;
 	timestamp?: string;
+};
+
+// # Lyrics
+export type LyricLine = {
+	role?: "リズ" | "アシッド" | (string & {});
+	isRoleSpoiler?: boolean;
+	content: Record<Locale, string>;
 };

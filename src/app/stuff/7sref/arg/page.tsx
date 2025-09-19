@@ -10,7 +10,7 @@ import { MessagesTabsContent } from "@/components/main/stuff/7sref/tab-content";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Types & Interfaces
-import { type SevensRefMessage, MESSAGE_TABS } from "@/types/7sref";
+import { type SevensRefMessage, MESSAGE_TABS } from "@/lib/7sref/types";
 
 // Constants & Variables
 import mainMessages from "./messages/main.json";
