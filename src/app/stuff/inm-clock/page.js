@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
 
 // Constants & Variables
+import { TRANSITION_200_25 } from "@/lib/transitions";
 import { ASCII_ART } from "@/lib/inm-clock/ascii-art";
 const TARGET_TIME = new Date("2025-05-14T19:19:00.810");
 const PRESICION = 19;  // ms
@@ -114,7 +115,7 @@ function Clock({ time }) {
 					className="w-[1ch]"
 					variants={{
 						hidden: { opacity: 0, y: "1ch", filter: "blur(4px)" },
-						visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { type: "spring", stiffness: 200, damping: 25 } }
+						visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: TRANSITION_200_25 }
 					}}
 				>
 					{char}
@@ -131,7 +132,7 @@ function TimeDiff({ timeDiff }) {
 			initial="hidden" animate="visible"
 			variants={{
 				hidden: { opacity: 0, filter: "blur(4px)" },
-				visible: { opacity: 1, filter: "blur(0px)", transition: { type: "spring", stiffness: 200, damping: 25, delay: 0.4 } }
+				visible: { opacity: 1, filter: "blur(0px)", transition: { ...TRANSITION_200_25, delay: 0.4 } }
 			}}
 		>
 			{timeDiff}

@@ -18,6 +18,7 @@ import type { Variants } from "motion/react";
 import type { NoteOverview } from "@/lib/article/types";
 
 // Constants & Variables
+import { TRANSITION_200_25 } from "@/lib/transitions";
 const DELAY = 0.1;
 const CONTAINER_VARIANTS: Variants = {
 	hidden: {},
@@ -25,7 +26,7 @@ const CONTAINER_VARIANTS: Variants = {
 };
 const CHILDREN_VARIANTS: Variants = {
 	hidden: { opacity: 0, x: -20 },
-	visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 200, damping: 25 } },
+	visible: { opacity: 1, x: 0, transition: TRANSITION_200_25 },
 };
 
 

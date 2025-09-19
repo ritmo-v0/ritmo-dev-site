@@ -13,6 +13,7 @@ import { WrapperLayout } from "@/components/common/layouts";
 import { RefreshCw } from "lucide-react";
 
 // Constants & Variables
+import { TRANSITION_200_25 } from "@/lib/transitions";
 import { ASCII_ART } from "./ascii-art";
 const QUOTES = [
 	{ id: "S117002", text: "樂穎是老大，今天是她生日" },
@@ -82,7 +83,7 @@ function Title({ text }) {
 					className="w-[1.75ch]"
 					variants={{
 						hidden: { opacity: 0, y: "1ch", filter: "blur(4px)" },
-						visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { type: "spring", stiffness: 200, damping: 25 } }
+						visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: TRANSITION_200_25 }
 					}}
 				>
 					{char}
@@ -99,7 +100,7 @@ function Subtitle({ text }) {
 			initial="hidden" animate="visible"
 			variants={{
 				hidden: { opacity: 0, filter: "blur(4px)" },
-				visible: { opacity: 1, filter: "blur(0px)", transition: { type: "spring", stiffness: 200, damping: 25, delay: 0.4 } }
+				visible: { opacity: 1, filter: "blur(0px)", transition: { ...TRANSITION_200_25, delay: 0.4 } }
 			}}
 		>
 			{text}

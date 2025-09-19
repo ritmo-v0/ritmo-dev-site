@@ -7,6 +7,7 @@ import { ToolCard } from "./tool-card";
 
 // Constants & Variables
 import { TOOLS } from "@/app/tools/tools";
+import { TRANSITION_200_25 } from "@/lib/transitions";
 const ALPHABETS = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
 const CONTAINER_VARIANTS = {
 	hidden: {},
@@ -14,7 +15,7 @@ const CONTAINER_VARIANTS = {
 };
 const CHILDREN_VARIANTS = {
 	hidden: { opacity: 0, y: 20 },
-	visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } },
+	visible: { opacity: 1, y: 0, transition: TRANSITION_200_25 },
 };
 
 

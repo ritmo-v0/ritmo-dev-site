@@ -19,6 +19,7 @@ type Bookmark = {
 };
 
 // Constants & Variables
+import { TRANSITION_200_25 } from "@/lib/transitions";
 const BOOKMARKS: Bookmark[] = [
 	{ id: "facebook", title: "Facebook", href: "https://www.facebook.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs1aij2TURjkKsgrZX5932Si8FNHcyhYTz6Gbqt" },
 	{ id: "messenger", title: "Messenger", href: "https://www.facebook.com/messages/t", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs18IlgXqXGW4wLAeEmHVTRdPyDNvsZJn9YUfQ2" },
@@ -37,7 +38,7 @@ const CONTAINER_VARIANTS: Variants = {
 };
 const CHILDREN_VARIANTS: Variants = {
 	hidden: { opacity: 0, y: 20 },
-	visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } },
+	visible: { opacity: 1, y: 0, transition: TRANSITION_200_25 },
 };
 
 
@@ -86,7 +87,7 @@ function MyGoWallpaper() {
 				visible: {
 					opacity,
 					filter: `blur(${blur}px)`,
-					transition: { type: "spring", stiffness: 200, damping: 25 }
+					transition: TRANSITION_200_25
 				},
 			}}
 			initial="hidden"
