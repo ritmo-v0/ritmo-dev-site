@@ -1,0 +1,73 @@
+"use client";
+import * as React from "react";
+import { parse } from "@twemoji/parser";
+import { cn } from "@/lib/utils";
+
+// Types & Interfaces
+import type { ParsingOptions } from "@twemoji/parser";
+export type TwemojiParsingOptions = {
+	className?: string;
+} & ParsingOptions;
+
+
+
+export function Twemoji({
+	children,
+	...props
+}: TwemojiParsingOptions & { children?: React.ReactNode }) {
+	return <>{parseChildren(children, props)}</>;
+}
+
+function parseChildren(
+	children?: React.ReactNode,
+	options?: TwemojiParsingOptions
+): React.ReactNode {
+	if (typeof children === "string") return parseString(children, options);
+	if (Array.isArray(children)) {
+		return children.map((child, index) => (
+			<React.Fragment key={index}>
+				{parseChildren(child, options)}
+			</React.Fragment>
+		))
+	}
+
+	return children;
+}
+
+function parseString(
+	string: string,
+	options?: TwemojiParsingOptions
+): React.ReactNode {
+	const entities = parse(string, options);
+	const nodes: React.ReactNode[] = [];
+
+	let lastIndex = 0;
+	for (const entity of entities) {
+		const { text, url, indices } = entity;
+
+		if (indices[0] > lastIndex) {
+			nodes.push(string.slice(lastIndex, indices[0]));
+		}
+
+		nodes.push(
+			<img
+				key={indices[0]}
+				src={url}
+				alt={text}
+				draggable={false}
+				className={cn(
+					"inline size-[1.1em] mx-[0.15em] align-[-0.2em]",
+					options?.className,
+				)}
+			/>
+		);
+
+		lastIndex = indices[1];
+	}
+
+	if (lastIndex < string.length) {
+		nodes.push(string.slice(lastIndex));
+	}
+
+	return nodes;
+}

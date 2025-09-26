@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 // Components & UI
 import Image from "next/image";
 import NextLink from "next/link";
+import { Twemoji } from "./twemoji";
 import { MarkdownPre } from "./shiki-highlighter";
 import { Slot as SlotPrimitive } from "radix-ui";
 import {
@@ -60,21 +61,20 @@ function MarkdownText({
 						? <Link href={href as Route} {...props}>{children}</Link>
 						: <span {...props}>{children}</span>
 				),
-				img: ({ src, alt, width, height, ...props }) => {
-					if (typeof src !== "string") return null;
-					return (
+				img: ({ src, alt, width, height, ...props }) => (
+					typeof src !== "string" ? null : (
 						<Image
 							src={src}
 							alt={alt || ""}
-							width={Number(width) || 720}
-							height={Number(height) || 405}
-							className="mx-auto my-2 rounded-lg object-cover"
+							width={Number(width) || 768}
+							height={Number(height) || 432}
+							className="mx-auto my-2 w-full max-w-3xl h-auto rounded-lg shadow-lg object-cover first:mt-0"
 							loading="lazy"
 							{...props}
 						/>
-					);
-				},
-				table: ({ children, ...props }) => <Table className="overflow-x-auto" {...props}>{children}</Table>,
+					)
+				),
+				table: (props) => <Table className="mt-2" {...props} />,
 				thead: TableHeader,
 				tbody: TableBody,
 				tr: TableRow,
@@ -94,6 +94,7 @@ function extractId(children: React.ReactNode): string | undefined {
 
 function H1({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"h1"> & AsChild) {
@@ -101,15 +102,18 @@ function H1({
 
 	return (
 		<Comp
-			id={extractId(props.children)}
-			className={cn("mt-12 scroll-m-20 font-heading text-3xl font-bold tracking-tight first:mt-0 [&+p]:!mt-4", className)}
+			id={extractId(children)}
+			className={cn("mt-12 scroll-m-20 font-heading text-3xl font-bold tracking-tight first:mt-0", className)}
 			{...props}
-		/>
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
 	);
 }
 
 function H2({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"h2"> & AsChild) {
@@ -117,15 +121,18 @@ function H2({
 
 	return (
 		<Comp
-			id={extractId(props.children)}
+			id={extractId(children)}
 			className={cn("mt-12 scroll-m-20 font-heading text-2xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-4", className)}
 			{...props}
-		/>
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
 	);
 }
 
 function H3({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"h3"> & AsChild) {
@@ -133,15 +140,18 @@ function H3({
 
 	return (
 		<Comp
-			id={extractId(props.children)}
-			className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			id={extractId(children)}
+			className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-4", className)}
 			{...props}
-		/>
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
 	);
 }
 
 function H4({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"h4"> & AsChild) {
@@ -149,15 +159,18 @@ function H4({
 
 	return (
 		<Comp
-			id={extractId(props.children)}
-			className={cn("mt-4 scroll-m-20 font-heading text-lg font-semibold tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			id={extractId(children)}
+			className={cn("mt-8 scroll-m-20 font-heading text-lg font-semibold tracking-tight first:mt-0 [&+p]:!mt-2", className)}
 			{...props}
-		/>
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
 	);
 }
 
 function H5({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"h5"> & AsChild) {
@@ -165,15 +178,18 @@ function H5({
 
 	return (
 		<Comp
-			id={extractId(props.children)}
-			className={cn("mt-4 scroll-m-20 font-heading text-base font-medium tracking-tight first:mt-0", className)}
+			id={extractId(children)}
+			className={cn("mt-8 scroll-m-20 font-heading text-base font-medium tracking-tight first:mt-0 [&+p]:!mt-2", className)}
 			{...props}
-		/>
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
 	);
 }
 
 function H6({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"h6"> & AsChild) {
@@ -181,10 +197,12 @@ function H6({
 
 	return (
 		<Comp
-			id={extractId(props.children)}
-			className={cn("mt-4 scroll-m-20 font-heading text-sm font-medium tracking-tight first:mt-0", className)}
+			id={extractId(children)}
+			className={cn("mt-8 scroll-m-20 font-heading font-medium tracking-tight first:mt-0 [&+p]:!mt-2", className)}
 			{...props}
-		/>
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
 	);
 }
 
@@ -195,7 +213,7 @@ function UL({
 }: React.ComponentProps<"ul"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "ul";
 
-	return <Comp className={cn("list-disc list-outside [&:not(:first-child)]:mt-1 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
+	return <Comp className={cn("list-disc list-outside [&:not(:first-child)]:mt-2 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
 }
 
 function OL({
@@ -205,27 +223,43 @@ function OL({
 }: React.ComponentProps<"ol"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "ol";
 
-	return <Comp className={cn("list-decimal list-outside [&:not(:first-child)]:mt-1 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
+	return <Comp className={cn("list-decimal list-outside [&:not(:first-child)]:mt-2 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
 }
 
 const LI = React.memo(function LI({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"li"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "li";
 
-	return <Comp className={cn("leading-relaxed my-1 pl-1 marker:text-sm", className)} {...props} />;
+	return (
+		<Comp
+			className={cn("leading-relaxed my-1 pl-1", className)}
+			{...props}
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
+	);
 }, (prev, next) => prev.children === next.children);
 
 const P = React.memo(function P({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"p"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "p";
 
-	return <Comp className={cn("leading-relaxed [&:not(:first-child)]:mt-4 [word-break:break-word]", className)} {...props} />;
+	return (
+		<Comp
+			className={cn("leading-relaxed [&:not(:first-child)]:mt-8 [word-break:break-word] [&+p]:!mt-4", className)}
+			{...props}
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
+	);
 }, (prev, next) => prev.children === next.children);
 
 function HR({
@@ -235,38 +269,62 @@ function HR({
 }: React.ComponentProps<"hr"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "hr";
 
-	return <Comp className={cn("mt-4 border-t has-[+h1]:mt-12 has-[+h2]:mt-12 has-[+h3]:mt-8", className)} {...props} />;
+	return <Comp className={cn("mt-8 border-t has-[+h1]:mt-12 has-[+h2]:mt-12 has-[+h3]:mt-8", className)} {...props} />;
 }
 
 function Muted({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"p"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "p";
 
-	return <Comp className={cn("text-muted-foreground text-sm", className)} {...props} />;
+	return (
+		<Comp
+			className={cn("text-muted-foreground text-sm", className)}
+			{...props}
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
+	);
 }
 
 const Code = React.memo(function Code({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"code"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "code";
 
-	return <Comp className={cn("bg-muted relative rounded px-[0.3rem] py-[0.15rem] font-mono text-[0.875em]", className)} {...props} />;
+	return (
+		<Comp
+			className={cn("bg-muted px-[0.3rem] py-[0.15rem] font-mono text-[0.875em] rounded", className)}
+			{...props}
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
+	);
 }, (prev, next) => prev.children === next.children);
 
-function Blockquote({
+const Blockquote = React.memo(function Blockquote({
 	className,
+	children,
 	asChild = false,
 	...props
 }: React.ComponentProps<"blockquote"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "blockquote";
 
-	return <Comp className={cn("border-[color-mix(in_oklch,_var(--primary),_white_10%)] border-l-3 pl-6 font-serif italic [&:not(:first-child)]:mt-4", className)} {...props} />;
-}
+	return (
+		<Comp
+			className={cn("border-[color-mix(in_oklch,_var(--primary),_white_10%)] border-l-3 pl-6 font-serif italic not-first:mt-8", className)}
+			{...props}
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
+	);
+}, (prev, next) => prev.children === next.children);
 
 const linkVariants = cva(
 	"rounded-md transition-all [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",

@@ -65,7 +65,7 @@ export function Pre({
 	const isPlaintext = language === "plaintext";
 
 	return (
-		<div className={cn("group/code relative rounded-lg overflow-hidden isolate", className)}>
+		<div className={cn("group/code relative border rounded-lg overflow-hidden isolate", className)}>
 			<div className={cn(
 				"flex items-center gap-2",
 				(showLanguage && !isPlaintext)
