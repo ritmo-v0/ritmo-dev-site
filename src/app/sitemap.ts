@@ -1,5 +1,5 @@
 import { getBaseUrl } from "@/lib/utils";
-import { getArticles } from "@/lib/article/actions";
+import { getArticles } from "@/lib/article/utils";
 
 // Types & Interfaces
 import type { MetadataRoute } from "next";

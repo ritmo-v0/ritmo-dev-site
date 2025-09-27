@@ -1,5 +1,5 @@
 import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
-import { getArticleMetadata } from "@/lib/article/actions";
+import { getArticles, getArticleMetadata } from "@/lib/article/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -34,7 +34,12 @@ export async function generateMetadata({
 
 // Route Segment Config
 export const dynamic = "force-static";
-export const revalidate = 3600;  // 1 hour (60 * 60)
+export const revalidate = 900;  // 15 min (60 * 15)
+export const dynamicParams = false;
+export async function generateStaticParams() {
+	const articles = await getArticles();
+	return articles.map(article => ({ articleId: article.shortId }));
+}
 
 
 
