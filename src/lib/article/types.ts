@@ -1,7 +1,3 @@
-export type ArticleParams = {
-	params: Promise<{ articleId: string }>;
-};
-
 export interface OverviewResponse {
 	user: Record<string, unknown>;
 	notes: NoteOverview[];
@@ -10,22 +6,13 @@ export interface OverviewResponse {
 export interface NoteOverview {
 	id: string;
 	title: string;
-	content: string;
+	content: string;  // description
 	tags: string[];
 	lastchangeAt: string;
 	createdAt: string;
 	publishedAt: string;
 	shortId: string;
 };
-
-export interface Article {
-	metadata: ArticleMetadata;
-	content: string;
-};
-
-export type ArticleMetadata =
-	Omit<NoteInfo, "viewcount" | "brief"> &
-	{ tags: NoteTag[]; image?: string; };
 
 export interface NoteInfo {
 	title: string;
@@ -36,12 +23,6 @@ export interface NoteInfo {
 	brief: string;
 };
 
-export interface NoteTag {
-	name: string;
-	createdAt: number;
-	lastUsedAt: number;
-};
-
 export interface NoteMetadata {
 	title: string;
 	lang?: string;
@@ -50,3 +31,21 @@ export interface NoteMetadata {
 	image?: string;
 	breaks: string;
 };
+
+export interface NoteTag {
+	name: string;
+	createdAt: number;
+	lastUsedAt: number;
+};
+
+export interface Article {
+	metadata: ArticleMetadata;
+	content: string;
+};
+
+export type ArticleMetadata = {
+	tags: string[];
+	image?: string;
+	createdAt: string;
+	updatedAt: string;
+} & Pick<NoteInfo, "title" | "description">;

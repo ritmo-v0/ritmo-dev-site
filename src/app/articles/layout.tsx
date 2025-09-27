@@ -27,6 +27,12 @@ export const metadata: Metadata = {
 
 
 
-export default function ArticlesLayout({ children }: LayoutProps<"/articles">) {
-	return children;
+export default function ArticlesLayout({
+	children
+}: LayoutProps<typeof url>) {
+	return (
+		<div className="mb-16">
+			{children}
+		</div>
+	);
 }

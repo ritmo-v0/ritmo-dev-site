@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 
 // SWR
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetch";
+import { getArticles } from "@/lib/article/actions";
 
 // Components & UI
 import Link from "next/link";
+import { AnimatePresence, motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Code, H5, Muted } from "@/components/common/typography";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -15,15 +15,11 @@ import { WrapperLayout } from "@/components/common/layouts";
 
 // Types & Interfaces
 import type { Variants } from "motion/react";
-import type { NoteOverview } from "@/lib/article/types";
 
 // Constants & Variables
-import { TRANSITION_200_25 } from "@/lib/transitions";
+import { TRANSITION_200_25, getContainerVariants } from "@/lib/transitions";
 const DELAY = 0.1;
-const CONTAINER_VARIANTS: Variants = {
-	hidden: {},
-	visible: { transition: { staggerChildren: 0.75 * DELAY, delayChildren: DELAY } },
-};
+const CONTAINER_VARIANTS = getContainerVariants(0.05, DELAY);
 const CHILDREN_VARIANTS: Variants = {
 	hidden: { opacity: 0, x: -20 },
 	visible: { opacity: 1, x: 0, transition: TRANSITION_200_25 },
@@ -32,41 +28,45 @@ const CHILDREN_VARIANTS: Variants = {
 
 
 export default function ArticlesPage() {
-	const { data, error, isLoading } = useSWR("/api/articles", fetcher);
-	const articles: NoteOverview[] = data?.success ? data.data : [];
+	const { data, error, isLoading } = useSWR("articles", () => getArticles());
+	const articles = data || [];
 
 	const [animate, setAnimate] = useState(false);
 
 	useEffect(() => {
-		if (!isLoading && !error) setAnimate(true);
-	}, [isLoading, error]);
+		setAnimate(!error && !isLoading);
+	}, [error, isLoading]);
 
 	return (
-		<WrapperLayout width={1080}>
+		<WrapperLayout className="mt-12 lg:mt-24" width={1080}>
+			{error && <Code>{error.message}</Code>}
 			<motion.ul
-				className="grid gap-1 lg:mt-16 py-6"
+				className="grid gap-1"
 				variants={CONTAINER_VARIANTS}
 				initial="hidden"
 				animate={animate ? "visible" : "hidden"}
 			>
-				{error && (
-					<Code className="w-fit">
-						Unable to fetch articles. Please try refreshing the page.
-					</Code>
-				)}
 				<AnimatePresence>
-					{!error && isLoading ? (
-						Array.from({ length: 5 }).map((_, index) => (
-							<motion.li key={index} exit={{ opacity: 0, transition: { duration: DELAY } }}>
-								<Skeleton className="w-full h-17" />
-							</motion.li>
-						))
-					) : (
-						articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).map(article => (
-							<motion.li key={article.shortId} variants={CHILDREN_VARIANTS}>
-								<ArticleLink article={article} />
-							</motion.li>
-						))
+					{!error && (
+						isLoading ? (
+							Array.from({ length: 5 }).map((_, index) => (
+								<motion.li
+									key={index}
+									exit={{ opacity: 0, transition: { duration: DELAY } }}
+								>
+									<Skeleton className="w-full h-17" />
+								</motion.li>
+							))
+						) : (
+							articles.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).map(article => (
+								<motion.li
+									key={article.shortId}
+									variants={CHILDREN_VARIANTS}
+								>
+									<ArticleLink article={article} />
+								</motion.li>
+							))
+						)
 					)}
 				</AnimatePresence>
 			</motion.ul>
@@ -74,7 +74,9 @@ export default function ArticlesPage() {
 	);
 }
 
-function ArticleLink({ article }: { article: NoteOverview }) {
+function ArticleLink({
+	article
+}: { article: Awaited<ReturnType<typeof getArticles>>[number] }) {
 	const publishedAt = new Date(article.publishedAt);
 	const year = publishedAt.getFullYear();
 	const month = publishedAt.toLocaleString("en-US", { month: "short" }).toUpperCase();
@@ -82,7 +84,7 @@ function ArticleLink({ article }: { article: NoteOverview }) {
 	return (
 		<Link
 			href={`/articles/${article.shortId}`}
-			className="flex items-center justify-between gap-4 p-4 rounded-md transition-all hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50"
+			className="flex items-center justify-between gap-4 p-4 rounded-md hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50"
 		>
 			<div className="max-md:grow-1 flex items-center justify-between gap-2">
 				<H5 className="text-balance" asChild><h2>{article.title}</h2></H5>

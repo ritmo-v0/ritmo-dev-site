@@ -14,6 +14,7 @@ type PreviewMetadataProps = {
 	title: string;
 	description?: string;
 	url: string;
+	image?: string;
 };
 
 // Constants & Variables
@@ -41,7 +42,8 @@ export function generatePreviewMetadata({
 	type = "website",
 	title,
 	description = "",
-	url
+	url,
+	image,
 }: PreviewMetadataProps): Partial<Metadata> {
 	return {
 		openGraph: {
@@ -49,6 +51,7 @@ export function generatePreviewMetadata({
 			title,
 			description,
 			url,
+			images: image,
 			siteName: PAGE_TITLE_SUFFIX,
 			locale: "en_US",
 		},
@@ -56,6 +59,7 @@ export function generatePreviewMetadata({
 			card: "summary_large_image",
 			title,
 			description,
+			images: image,
 			site: "@ritmo_v0",
 			siteId: "904003428262723584",
 			creator: "@ritmo_v0",

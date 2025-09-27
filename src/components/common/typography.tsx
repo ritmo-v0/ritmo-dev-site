@@ -103,7 +103,7 @@ function H1({
 	return (
 		<Comp
 			id={extractId(children)}
-			className={cn("mt-12 scroll-m-20 font-heading text-3xl font-bold tracking-tight first:mt-0", className)}
+			className={cn("mt-12 scroll-m-20 font-heading text-3xl font-bold !leading-tight tracking-tight first:mt-0", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -122,7 +122,7 @@ function H2({
 	return (
 		<Comp
 			id={extractId(children)}
-			className={cn("mt-12 scroll-m-20 font-heading text-2xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-4", className)}
+			className={cn("mt-12 scroll-m-20 font-heading text-2xl font-semibold leading-tight tracking-tight first:mt-0 [&+p]:!mt-4", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -141,7 +141,7 @@ function H3({
 	return (
 		<Comp
 			id={extractId(children)}
-			className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold tracking-tight first:mt-0 [&+p]:!mt-4", className)}
+			className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold leading-tight tracking-tight first:mt-0 [&+p]:!mt-4", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -160,7 +160,7 @@ function H4({
 	return (
 		<Comp
 			id={extractId(children)}
-			className={cn("mt-8 scroll-m-20 font-heading text-lg font-semibold tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			className={cn("mt-8 scroll-m-20 font-heading text-lg font-semibold leading-tight tracking-tight first:mt-0 [&+p]:!mt-2", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -179,7 +179,7 @@ function H5({
 	return (
 		<Comp
 			id={extractId(children)}
-			className={cn("mt-8 scroll-m-20 font-heading text-base font-medium tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			className={cn("mt-8 scroll-m-20 font-heading text-base font-medium leading-tight tracking-tight first:mt-0 [&+p]:!mt-2", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -198,7 +198,7 @@ function H6({
 	return (
 		<Comp
 			id={extractId(children)}
-			className={cn("mt-8 scroll-m-20 font-heading font-medium tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			className={cn("mt-8 scroll-m-20 font-heading font-medium leading-tight tracking-tight first:mt-0 [&+p]:!mt-2", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -318,7 +318,7 @@ const Blockquote = React.memo(function Blockquote({
 
 	return (
 		<Comp
-			className={cn("border-[color-mix(in_oklch,_var(--primary),_white_10%)] border-l-3 pl-6 font-serif italic not-first:mt-8", className)}
+			className={cn("border-[color-mix(in_oklch,_var(--primary),_white_10%)] border-l-3 pl-6 font-serif font-medium italic not-first:mt-8", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}

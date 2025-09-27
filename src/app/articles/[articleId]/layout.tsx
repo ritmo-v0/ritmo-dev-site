@@ -1,41 +1,45 @@
 import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
-import { getMetadataUrl } from "@/lib/article/utils";
+import { getArticleMetadata } from "@/lib/article/actions";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import type { ArticleParams, NoteMetadata } from "@/lib/article/types";
 
 // Metadata
-const url = "/articles";
+const url = "/articles/[articleId]";
 export async function generateMetadata({
 	params
-}: ArticleParams): Promise<Metadata> {
-	const articleId = (await params).articleId;
-	const articleMetadata: NoteMetadata = await fetch(getMetadataUrl(articleId))
-		.then(res => res.json())
-		.catch(() => null);
+}: LayoutProps<typeof url>): Promise<Metadata> {
+	try {
+		const articleId = (await params).articleId;
+		const articleMetadata = await getArticleMetadata(articleId);
+		const title = articleMetadata.title;
+		const description = articleMetadata.description;
 
-	return articleMetadata ? {
-		title: articleMetadata.title,
-		description: articleMetadata.description,
-		...generatePreviewMetadata({
-			type: "article",
-			title: generatePageTitle({ title: articleMetadata.title }),
-			description: articleMetadata.description,
-			url,
-		}),
-		robots: {
-			index: true,
-			follow: true,
-			nocache: false,
-		},
-	} : {};
+		return {
+			title,
+			description,
+			keywords: articleMetadata.tags,
+			...generatePreviewMetadata({
+				type: "article",
+				title: generatePageTitle({ title }),
+				description,
+				url: `/articles/${articleId}`,
+				image: articleMetadata.image
+			}),
+		};
+	} catch {
+		return {};
+	}
 }
+
+// Route Segment Config
+export const dynamic = "force-static";
+export const revalidate = 3600;  // 1 hour (60 * 60)
 
 
 
 export default function ArticleLayout({
 	children
-}: LayoutProps<"/articles/[articleId]">) {
+}: LayoutProps<typeof url>) {
 	return children;
 }

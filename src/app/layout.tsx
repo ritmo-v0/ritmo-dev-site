@@ -20,6 +20,7 @@ import {
 	JetBrains_Mono,
 	Noto_Sans_JP,
 	Noto_Sans_TC,
+	Noto_Serif_TC,
 	Plus_Jakarta_Sans,
 } from "next/font/google";
 const JetBrainsMono = JetBrains_Mono({
@@ -42,6 +43,13 @@ const NotoSansTC = Noto_Sans_TC({
 	display: "swap",
 	subsets: ["latin"],
 	variable: "--font-noto-sans-tc",
+});
+const NotoSerifTC = Noto_Serif_TC({
+	weight: "variable",
+	style: ["normal"],
+	display: "swap",
+	subsets: ["latin"],
+	variable: "--font-noto-serif-tc",
 });
 const PlusJakartaSans = Plus_Jakarta_Sans({
 	weight: "variable",
@@ -90,6 +98,7 @@ export default function RootLayout({
 				JetBrainsMono.variable,
 				NotoSansJP.variable,
 				NotoSansTC.variable,
+				NotoSerifTC.variable,
 				PlusJakartaSans.variable,
 			)}
 			suppressHydrationWarning
