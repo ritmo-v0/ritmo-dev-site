@@ -114,8 +114,8 @@ export default function RootLayout({
 					<Navbar />
 					{children}
 					<Footer />
-					<SpeedInsights />
 				</Providers>
+				<SpeedInsights />
 			</body>
 		</html>
 	);
