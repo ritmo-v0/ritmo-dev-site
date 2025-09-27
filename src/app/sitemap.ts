@@ -1,30 +1,39 @@
 import { getBaseUrl } from "@/lib/utils";
+import { getArticles } from "@/lib/article/actions";
 
 // Types & Interfaces
 import type { MetadataRoute } from "next";
 
 
 
-export default function sitemap(): MetadataRoute.Sitemap {
-	const baseUrl = getBaseUrl().href;
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+	const baseUrl = getBaseUrl().origin;
+
+	const articles = await getArticles();
+	const articleUrls = articles.map(article => ({
+		url: `${baseUrl}/articles/${article.shortId}`,
+		lastModified: new Date(article.lastchangeAt),
+		changeFrequency: "yearly" as const,
+		priority: 0.9,
+	}));
 
 	return [
 		// # Homepage
 		{
 			url: `${baseUrl}/`,
-			lastModified: new Date("2024-10-19"),
-			changeFrequency: "monthly",
+			lastModified: new Date("2025-06-20"),
+			changeFrequency: "yearly",
 			priority: 1,
 		},
 
 		// # articles/*
 		{
 			url: `${baseUrl}/articles`,
-			lastModified: new Date("2025-07-08"),
+			lastModified: new Date("2025-09-27"),
 			changeFrequency: "monthly",
 			priority: 0.6,
 		},
-		// TODO: Add dynamic articles URLs
+		...articleUrls,
 
 		// # tools/*
 		{
@@ -35,13 +44,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		},
 		{
 			url: `${baseUrl}/tools/emomomo`,
-			lastModified: new Date("2025-06-04"),
+			lastModified: new Date("2025-06-20"),
 			changeFrequency: "monthly",
 			priority: 0.9,
 		},
 		{
 			url: `${baseUrl}/tools/tempus`,
-			lastModified: new Date("2025-06-04"),
+			lastModified: new Date("2025-06-21"),
 			changeFrequency: "monthly",
 			priority: 0.9,
 		},
