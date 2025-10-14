@@ -1,6 +1,9 @@
-import { kv } from "@vercel/kv";
+import { RedisRW } from "@/lib/db/redis";
 import { type Result, UnauthorizedError, ensureError } from "@/lib/fetch/response";
 import { fetchEmojiTestFile, parseEmojis } from "@/lib/emomomo/utils";
+
+// Constants & Variables
+import { EMOJI_DATA_REDIS_KEY } from "@/lib/emomomo/constants";
 
 // Route Segment Config
 export const dynamic = "force-dynamic";
@@ -20,8 +23,7 @@ export async function GET(req: Request): Promise<Response> {
 		const emojiTestFile = await fetchEmojiTestFile();
 		const emojiData = parseEmojis(emojiTestFile, { compressed: true });
 
-		// Store in Vercel KV
-		await kv.set("emoji_data", emojiData);
+		await RedisRW.set(EMOJI_DATA_REDIS_KEY, emojiData);
 
 		return Response.json(
 			{

@@ -3,6 +3,8 @@ import type { SkinToneName } from "@/types/emoji";
 
 
 
+export const EMOJI_DATA_REDIS_KEY = "emomomo";
+
 export const VERSION_PREFIX = "# Version:";
 export const GROUP_PREFIX = "# group:";
 export const SUBGROUP_PREFIX = "# subgroup:";
