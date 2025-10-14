@@ -29,16 +29,6 @@ import type {
 
 
 // # Emoji Parsing
-export async function fetchEmojiTestFile() {
-	try {
-		const file = await fetch(process.env.EMOJI_TEST_URL as string).then(res => res.text())
-		return file;
-	} catch (error: any) {
-		console.error(`ERR::EMOJI::FETCH: ${error.message}`);
-		throw error;
-	}
-}
-
 export function parseEmojis<C extends boolean = false>(
 	file: string,
 	options?: ParseOptions & { compressed?: C }

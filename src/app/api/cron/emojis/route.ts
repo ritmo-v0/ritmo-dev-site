@@ -1,12 +1,10 @@
 import { RedisRW } from "@/lib/db/redis";
-import { type Result, UnauthorizedError, ensureError } from "@/lib/fetch/response";
-import { fetchEmojiTestFile, parseEmojis } from "@/lib/emomomo/utils";
+import { parseEmojis } from "@/lib/emomomo/utils";
+import { UnauthorizedError, ensureError } from "@/lib/fetch/response";
 
 // Constants & Variables
 import { EMOJI_DATA_REDIS_KEY } from "@/lib/emomomo/constants";
-
-// Route Segment Config
-export const dynamic = "force-dynamic";
+const EMOJI_TEST_DATA_URL = process.env.EMOJI_TEST_DATA_URL as string;
 
 
 
@@ -18,32 +16,17 @@ export async function GET(req: Request): Promise<Response> {
 			throw new UnauthorizedError();
 		}
 
-		// Fetch file from Unicode public route,
-		// then parse into JSON with compressed key names
-		const emojiTestFile = await fetchEmojiTestFile();
-		const emojiData = parseEmojis(emojiTestFile, { compressed: true });
+		const emojiTestData = await fetch(EMOJI_TEST_DATA_URL).then(res => res.text());
+		const emojiData = parseEmojis(emojiTestData, { compressed: true });
 
 		await RedisRW.set(EMOJI_DATA_REDIS_KEY, emojiData);
 
-		return Response.json(
-			{
-				success: true,
-				data: emojiData,
-				level: "info",
-				message: "Emoji data updated successfully."
-			} satisfies Result,
-			{ status: 200 }
-		);
+		return Response.json(emojiData, { status: 200 });
 	} catch (err) {
 		const error = ensureError(err);
-		console.error(`ERR::EMOJI::UPDATE: ${error.message}`);
+		const message = `ERR::EMOJIS::UPDATE: ${error.message}`
+		console.error(message);
 
-		return Response.json(
-			{
-				success: false,
-				message: `Failed to update emoji data: ${error.message}`,
-			} satisfies Result,
-			{ status: error.status }
-		);
+		return Response.json({ message }, { status: 500 });
 	}
 }

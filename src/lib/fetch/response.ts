@@ -13,7 +13,6 @@ export const ErrorMessage = Object.freeze({
 });
 
 // Types & Interfaces
-type SuccessLevel = "info" | "warning";
 type JSONable =
 	| string | number | boolean | null | undefined
 	| readonly JSONable[]
@@ -25,10 +24,6 @@ type BaseErrorOptions = {
 	status?: number;
 };
 type HttpErrorOptions = Omit<BaseErrorOptions, "status">;
-
-export type Result<T = any, E extends BaseError = BaseError> =
-	| { success: true; data: T; level: SuccessLevel; message: string }
-	| { success: false; message: E["message"] };
 
 export class BaseError extends Error {
 	public readonly context?: JSONable;

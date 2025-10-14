@@ -1,43 +1,26 @@
 import ky, { HTTPError } from "ky";
-import { match } from "ts-pattern";
-import { type Result, ensureError } from "./response";
+import { ensureError } from "./response";
 
-
-
-export async function fetcher(url: string): Promise<Result> {
-    try {
-        const response: Result = await ky.get(url, {}).json();
-        const { message } = response;
-
-        match(response)
-			.with({ success: false }, () => console.error(message))
-			.with({ success: true, level: "info" }, () => console.log(message))
-			.with({ success: true, level: "warning" }, () => console.warn(message))
-			.exhaustive();
-
-        return response;
-    } catch (err) {
-		let status: number;
+export async function fetcher<T>(url: string): Promise<T> {
+	try {
+		const data = await ky.get(url, { prefixUrl: "/api" }).json<T>();
+		return data;
+	} catch (err) {
 		let msg: string;
+		let status: number;
 
 		if (err instanceof HTTPError) {
+			const { message } = await err.response.json();
+			msg = message ?? err.message;
 			status = err.response.status;
-
-			const contentType = err.response.headers.get("content-type");
-			msg = await match(contentType ?? "")
-				.with("application/json", async () => {
-					const { message } = await err.response.json();
-					return message ?? err.message;
-				})
-				.otherwise(() => err.message);
 		} else {
 			const error = ensureError(err);
-			status = error.status;
 			msg = error.message;
+			status = error.status;
 		}
 
 		const message = `[${status}] ${msg}`;
-		console.error("ERR::FETCHER:", message);
+		console.error("ERR::FETCH:", message);
 		throw new Error(message);
 	}
 }
