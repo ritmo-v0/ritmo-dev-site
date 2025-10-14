@@ -3,7 +3,7 @@ import { Link } from "./typography";
 import { Button } from "@/components/ui/button";
 
 // Images & Icons
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { GithubLogoIcon } from "@phosphor-icons/react/ssr";
 
 
 
@@ -20,7 +20,7 @@ export default function Footer() {
 						href="https://github.com/ritmoHung/ritmo-dev-site"
 						variant="hover"
 					>
-						<GitHubLogoIcon />GitHub
+						<GithubLogoIcon weight="bold" />GitHub
 					</Link>
 				</Button>
 			</div>

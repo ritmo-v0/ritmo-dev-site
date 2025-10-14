@@ -6,15 +6,14 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
 // Images & Icons
-import { Monitor, Sun } from "lucide-react";
-import { MoonIcon } from "@radix-ui/react-icons";
+import { DesktopIcon, MoonStarsIcon, SunIcon } from "@phosphor-icons/react";
 
 // Constants & Variables
 const BUTTONS = [
-	{ title: "Toggle light mode", icon: <Sun />, theme: "light" },
-	{ title: "Toggle system theme", icon: <Monitor />, theme: "system" },
-	{ title: "Toggle dark mode", icon: <MoonIcon />, theme: "dark" },
-];
+	{ theme: "light", title: "Toggle light mode", icon: SunIcon, },
+	{ theme: "system", title: "Toggle system theme", icon: DesktopIcon },
+	{ theme: "dark", title: "Toggle dark mode", icon: MoonStarsIcon },
+] as const;
 
 
 
@@ -25,16 +24,18 @@ export function ModeToggle() {
 	useEffect(() => setMounted(true), []);
 
 	return (
-		<div className="flex items-center gap-0.5 w-max border border-input rounded-full">
+		<div className="flex flex-nowrap items-center border border-input rounded-full">
 			{BUTTONS.map(button => (
 				<Button
 					key={button.theme}
 					title={button.title}
 					variant="ghost"
-					className={`size-8 rounded-full ${mounted && button.theme === theme ? "bg-accent" : ""}`}
+					className="size-8 rounded-full"
 					onClick={() => setTheme(button.theme)}
 				>
-					{button.icon}
+					<button.icon
+						weight={mounted && button.theme === theme ? "fill" : "regular"}
+					/>
 				</Button>
 			))}
 		</div>
