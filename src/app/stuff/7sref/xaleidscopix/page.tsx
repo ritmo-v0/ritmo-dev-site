@@ -1,6 +1,5 @@
 // Components & UI
-import { SectionLayout } from "@/components/common/layouts";
-import { HR, MarkdownText, P } from "@/components/common/typography";
+import { HR, MarkdownText, P, Section } from "@/components/common/typography";
 
 // Constants & Variables
 const TEXT = `
@@ -93,7 +92,7 @@ export default function XaleidscopiXPage() {
 					allowFullScreen
 				/>
 			</header>
-			<SectionLayout className="font-sans">
+			<Section className="font-sans">
 				<P className="text-center">
 					All colors eventually return to one plane
 				</P>
@@ -109,7 +108,7 @@ export default function XaleidscopiXPage() {
 					<br />Eventually, a rain of jewels began to fall, and each kaleidoscope reflected it.
 					<br />Please take a look at the next world and extra track woven by them who have overcome everything.
 				</P>
-			</SectionLayout>
+			</Section>
 		</main>
 	);
 }

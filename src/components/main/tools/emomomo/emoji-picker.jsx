@@ -23,8 +23,7 @@ import {
 	HoverCardContent,
 	HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { Muted } from "@/components/common/typography";
-import { SectionLayout } from "@/components/common/layouts";
+import { H4, Muted, Section } from "@/components/common/typography";
 import { Virtuoso, VirtuosoGrid } from "react-virtuoso";
 
 // Constants & Variables
@@ -89,9 +88,10 @@ const EmojiSubgroup = memo(function EmojiSubgroup({ subgroup, skinTone }) {
 	}, [subgroup, skinTone]);
 
 	return (
-		<SectionLayout title={title} titleAs="h4">
+		<Section>
+			<H4>{title}</H4>
 			<EmojiGrid emojis={emojis} />
-		</SectionLayout>
+		</Section>
 	);
 });
 

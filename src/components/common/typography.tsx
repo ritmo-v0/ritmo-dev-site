@@ -68,7 +68,10 @@ function MarkdownText({
 							alt={alt || ""}
 							width={Number(width) || 768}
 							height={Number(height) || 432}
-							className="mx-auto my-2 w-full max-w-3xl h-auto rounded-lg shadow-lg object-cover first:mt-0"
+							className={cn(
+								"mx-auto my-2 w-full max-w-3xl h-auto rounded-lg shadow-lg object-cover first:mt-0",
+								"[&+br]:hidden [&+br+span]:block [&+br+span]:text-center [&+br+span]:text-sm [&+br+span]:text-muted-foreground",
+							)}
 							loading="lazy"
 							{...props}
 						/>
@@ -254,7 +257,7 @@ const P = React.memo(function P({
 
 	return (
 		<Comp
-			className={cn("leading-relaxed [&:not(:first-child)]:mt-8 [word-break:break-word] [&+p]:!mt-4", className)}
+			className={cn("leading-relaxed [&:not(:first-child)]:mt-8 wrap-break-word [&+p]:!mt-4", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -361,6 +364,26 @@ function Link<R extends string>({
 	);
 }
 
+function Section({
+	className,
+	...props
+}: React.ComponentProps<"section">) {
+	return (
+		<section
+			className={cn(
+				"py-6",
+				"has-[:first-child:is(h1)]:py-8",
+				"has-[:first-child:is(h2)]:py-6",
+				"has-[:first-child:is(h3)]:py-3",
+				"has-[:first-child:is(h4)]:py-2",
+				"has-[:first-child:is(h5,h6)]:py-1",
+				className,
+			)}
+			{...props}
+		/>
+	);
+}
+
 export {
 	MarkdownText,
 	H1, H2, H3, H4, H5, H6,
@@ -369,4 +392,5 @@ export {
 	Code,
 	Blockquote,
 	Link,
+	Section,
 };

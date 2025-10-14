@@ -4,8 +4,7 @@ import { use7sRefStore } from "@/lib/store/7sref";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { SectionLayout } from "@/components/common/layouts";
-import { HR, MarkdownText, P } from "@/components/common/typography";
+import { HR, MarkdownText, P, Section } from "@/components/common/typography";
 
 // Types & Interfaces
 import type { Locale, LyricLine } from "@/lib/7sref/types";
@@ -302,19 +301,19 @@ export default function YomibitoShirazuPage() {
 
 function renderSections(sections: LyricLine[][], locale: Locale) {
 	return sections.map((section, index) => (
-		<SectionLayout key={index}>
+		<Section key={index}>
 			<MarkdownText>
 				{section
 					.map(line => line.content[locale] || line.content.ja)
 					.join("\n\n")}
 			</MarkdownText>
-		</SectionLayout>
+		</Section>
 	));
 }
 
 function renderSerifuList(section: LyricLine[], locale: Locale) {
 	return (
-		<SectionLayout className="space-y-4">
+		<Section className="space-y-4">
 			{section.map(line => (
 				<Serifu
 					key={line.content.ja}
@@ -322,7 +321,7 @@ function renderSerifuList(section: LyricLine[], locale: Locale) {
 					locale={locale}
 				/>
 			))}
-		</SectionLayout>
+		</Section>
 	);
 }
 

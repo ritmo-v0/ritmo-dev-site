@@ -3,7 +3,8 @@ import { RedisRO } from "@/lib/db/redis";
 // Components & UI
 import { EmojiPicker } from "@/components/main/tools/emomomo/emoji-picker";
 import { EmojiPickerToolbar } from "@/components/main/tools/emomomo/emoji-picker-toolbar";
-import { SectionLayout, WrapperLayout } from "@/components/common/layouts";
+import { WrapperLayout } from "@/components/common/layouts";
+import { Section } from "@/components/common/typography";
 
 // Types & Interfaces
 import type { EmojiData, CompEmojiEntry } from "@/types/emoji";
@@ -24,15 +25,15 @@ export default async function EmomomoPage() {
 		<main className="isolate">
 			<div className="sticky top-14 mx-auto bg-background z-10">
 				<WrapperLayout>
-					<SectionLayout titleAs="h3">
+					<Section className="py-3">
 						<EmojiPickerToolbar />
-					</SectionLayout>
+					</Section>
 				</WrapperLayout>
 			</div>
 			<WrapperLayout>
-				<SectionLayout titleAs="h3">
+				<Section>
 					{emojiData && <EmojiPicker emojiData={emojiData} />}
-				</SectionLayout>
+				</Section>
 			</WrapperLayout>
 		</main>
 	);

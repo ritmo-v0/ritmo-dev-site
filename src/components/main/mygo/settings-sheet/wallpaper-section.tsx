@@ -8,8 +8,8 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SectionLayout } from "@/components/common/layouts";
 import { Slider } from "@/components/ui/slider";
+import { H3, Section } from "@/components/common/typography";
 
 // Icons & Images
 import { Check } from "lucide-react";
@@ -21,7 +21,8 @@ export function WallpaperSection() {
 	const { blur, opacity, setBlur, setOpacity } = useMyGOStore();
 
 	return (
-		<SectionLayout title="Wallpaper" titleAs="h3">
+		<Section>
+			<H3>Wallpaper</H3>
 			<div className="mt-4 grid gap-6">
 				<ImageUrlInput />
 				<div className="space-y-1">
@@ -59,7 +60,7 @@ export function WallpaperSection() {
 					</div>
 				</div>
 			</div>
-		</SectionLayout>
+		</Section>
 	);
 }
 

@@ -2,7 +2,7 @@
 // import { useMyGOStore } from "@/lib/store/mygo";
 
 // Components & UI
-import { SectionLayout } from "@/components/common/layouts";
+import { H3, Section } from "@/components/common/typography";
 
 
 
@@ -10,10 +10,11 @@ export function BookmarksSection() {
 	// const { ... } = useMyGOStore();
 
 	return (
-		<SectionLayout title="Bookmarks" titleAs="h3">
+		<Section title="Bookmarks">
+			<H3>Bookmarks</H3>
 			<div className="mt-4 grid gap-6">
 				Coming soon...
 			</div>
-		</SectionLayout>
+		</Section>
 	);
 }

@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-
 // Components & UI
 import Image from "next/image";
 import { Link, Muted } from "@/components/common/typography";
@@ -10,22 +8,19 @@ import type { ToolMeta } from "@/types/meta";
 
 
 export function ToolCard({
-	className,
 	id,
 	color,
-	imageUrl: imgUrl,
+	imageUrl = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQRgPt9uBWlDj3kitow0r8z5VN42BInQgvEmGc",
 	title,
 	description,
 	url,
-}: React.ComponentProps<typeof Link> & ToolMeta) {
-	const imageUrl = imgUrl || "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQRgPt9uBWlDj3kitow0r8z5VN42BInQgvEmGc";
-
+}: ToolMeta) {
 	return (
 		<Link
 			id={id}
 			href={url}
 			variant="nothing"
-			className={cn("flex flex-col rounded-xl transition-all hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50", className)}
+			className="flex flex-col size-full rounded-xl transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50"
 		>
 			<Image
 				src={imageUrl}

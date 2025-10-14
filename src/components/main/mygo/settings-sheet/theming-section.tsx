@@ -3,13 +3,14 @@ import { ThemeSelect } from "@/components/common/theme-select";
 
 // Components & UI
 import { Label } from "@/components/ui/label";
-import { SectionLayout } from "@/components/common/layouts";
+import { H3, Section } from "@/components/common/typography";
 
 
 
 export function ThemingSection() {
 	return (
-		<SectionLayout title="Theming" titleAs="h3">
+		<Section>
+			<H3>Theming</H3>
 			<div className="mt-4 grid gap-2">
 				<div className="flex items-center justify-between gap-2">
 					<Label>Theme</Label>
@@ -20,6 +21,6 @@ export function ThemingSection() {
 					<ModeToggle />
 				</div>
 			</div>
-		</SectionLayout>
+		</Section>
 	);
 }

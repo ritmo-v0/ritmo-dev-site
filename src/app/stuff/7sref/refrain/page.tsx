@@ -1,8 +1,7 @@
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { SectionLayout } from "@/components/common/layouts";
-import { MarkdownText } from "@/components/common/typography";
+import { MarkdownText, Section } from "@/components/common/typography";
 
 // Types & Interfaces
 import type { LyricLine } from "@/lib/7sref/types";
@@ -197,7 +196,7 @@ export default function RefrainPage() {
 			<article>
 				{/* Intro */}
 				{LYRICS.slice(0, 2).map((section, index) => (
-					<SectionLayout
+					<Section
 						key={index}
 						className={cn(index === 0 && "font-sans")}
 					>
@@ -206,7 +205,7 @@ export default function RefrainPage() {
 								`${line.content.ja}`
 							)).join("\n\n")}
 						</MarkdownText>
-					</SectionLayout>
+					</Section>
 				))}
 				<div className="my-8 [&_pre]:font-black [&_pre]:text-lg [&_pre]:tracking-[0.2em] [&_code]:font-mono-7sref!">
 					<MarkdownText>{CODE_INTRO}</MarkdownText>
@@ -214,13 +213,13 @@ export default function RefrainPage() {
 
 				{/* Main lyrics */}
 				{LYRICS.slice(2).map((section, index) => (
-					<SectionLayout key={index}>
+					<Section key={index}>
 						<MarkdownText>
 							{section.map(line => (
 								`${line.content.ja}`
 							)).join("\n\n")}
 						</MarkdownText>
-					</SectionLayout>
+					</Section>
 				))}
 			</article>
 		</main>
