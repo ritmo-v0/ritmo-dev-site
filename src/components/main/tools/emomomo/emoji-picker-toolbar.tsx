@@ -5,8 +5,8 @@ import { useCopy } from "@/hooks/use-copy";
 import { motion } from "motion/react";
 
 // Components & UI
-import Twemoji from "react-twemoji";
 import { Button } from "@/components/ui/button";
+import { Twemoji } from "@/components/common/twemoji";
 import { CopyButton, DeleteButton } from "@/components/common/motion-buttons";
 import { Label } from "@/components/ui/label";
 import {
@@ -164,7 +164,7 @@ function SkinToneSelect() {
 			<SelectContent>
 				{EmojiSkinToneOrder.map((value, index) => (
 					<SelectItem key={index} value={index.toString()} className="flex items-center gap-3">
-						<Twemoji options={{ className: "size-4" }}>
+						<Twemoji className="size-4">
 							{index !== 0
 								? String.fromCodePoint(0x1F3FA + index)
 								: String.fromCodePoint(0x1F9B2)

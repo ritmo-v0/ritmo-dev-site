@@ -9,7 +9,6 @@ import {
 } from "@/lib/emomomo/utils";
 
 // Components & UI
-import Twemoji from "react-twemoji";
 import { toast } from "sonner";
 import {
 	Accordion,
@@ -18,6 +17,7 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { Twemoji } from "@/components/common/twemoji";
 import {
 	HoverCard,
 	HoverCardContent,
@@ -155,12 +155,14 @@ const EmojiButton = memo(function EmojiButton({ emojiEntry }) {
 		<HoverCard openDelay={600} closeDelay={100}>
 			<HoverCardTrigger asChild>
 				<Button
-					className="transition ease-out-expo duration-500 active:scale-[0.8] overflow-clip select-none"
+					className="gap-0 transition ease-out-expo duration-500 active:scale-[0.8] overflow-clip select-none"
 					variant="outline"
 					size="emoji"
 					onClick={() => handleCopy(emoji, addEmoji)}
 				>
-					<Twemoji options={{ className: "inline size-7 pointer-events-none" }}>{emoji}</Twemoji>
+					<Twemoji className="inline size-7 pointer-events-none">
+						{emoji}
+					</Twemoji>
 				</Button>
 			</HoverCardTrigger>
 			<HoverCardContent
@@ -169,7 +171,9 @@ const EmojiButton = memo(function EmojiButton({ emojiEntry }) {
 				collisionPadding={16}
 			>
 				<div className="flex gap-4">
-					<Twemoji options={{ className: "inline size-12" }}>{emoji}</Twemoji>
+					<Twemoji className="inline size-12">
+						{emoji}
+					</Twemoji>
 					<div className="font-medium">
 						<p className="text-lg mb-1">{capitalizedName}</p>
 						<Muted className="font-mono whitespace-pre-wrap">
