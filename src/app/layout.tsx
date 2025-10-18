@@ -105,8 +105,8 @@ export default function RootLayout({
 		>
 			{/* <head>
 				<script
-					crossOrigin="anonymous"
-					src="https://unpkg.com/react-scan/dist/auto.global.js"
+					src="//unpkg.com/react-scan/dist/auto.global.js"
+					crossOrigin="anonymous" async
 				/>
 			</head> */}
 			<body>
