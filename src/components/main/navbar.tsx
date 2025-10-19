@@ -16,6 +16,7 @@ import {
 
 // Images & Icons
 import { ArchiveIcon, CubeIcon, NotebookIcon } from "@phosphor-icons/react/ssr";
+import { RitmoIcon } from "@/components/common/icons";
 
 // Types & Interfaces
 import type { Route } from "next";
@@ -59,40 +60,17 @@ export default function Navbar() {
 		<div className="fixed top-0 w-screen px-4 py-3 z-50 pointer-events-none">
 			<NavigationMenu
 				className={cn(
-					"gap-4 xs:gap-8 mx-auto py-2 h-9 pointer-events-auto",
+					"gap-4 xs:gap-8 mx-auto py-2 h-10 pointer-events-auto",
 					"bg-background/50 border rounded-full backdrop-blur-sm",
 				)}
 			>
 				<Button
 					variant="ghost"
-					className="max-xs:size-9 rounded-full"
+					className="max-xs:size-9.5 h-9.5 rounded-full"
 					asChild
 				>
 					<Link href="/">
-						<svg
-							key="Ritmo."
-							role="img"
-							aria-label="Ritmo."
-							xmlns="http://www.w3.org/2000/svg"
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							strokeWidth="2"
-							strokeLinecap="square"
-							strokeLinejoin="miter"
-							className="size-[1em]"
-						>
-
-							<line x1="1" y1="23" x2="1" y2="1" />
-							<path d="m1,1h15c3.87,0,7,3.13,7,7c0,3.87-3.13,7-7,7H8c-3.87,0-7-3.13-7-7V1Z" />
-							<polygon
-								fill="currentColor"
-								stroke="none"
-								points="0 0 2.75 0 24 24 21.25 24 0 0"
-							/>
-						</svg>
+						<RitmoIcon className="size-[1em]" />
 						<span className="max-xs:hidden">Ritmo.</span>
 					</Link>
 				</Button>
@@ -118,7 +96,7 @@ function NavLinkItem({ icon, title, href }: LinkItem) {
 				render={(
 					<Button
 						variant="ghost"
-						className="rounded-full [&>svg]:max-xs:hidden"
+						className="h-9.5 rounded-full [&>svg]:max-xs:hidden"
 						asChild
 					>
 						<Link href={href}>
@@ -135,7 +113,7 @@ function NavLinkItem({ icon, title, href }: LinkItem) {
 function NavMenuItem({ icon, title, items }: MenuItem) {
 	return (
 		<NavigationMenuItem key={title}>
-			<NavigationMenuTrigger className="rounded-full [&>svg]:max-xs:hidden">
+			<NavigationMenuTrigger className="h-9.5 rounded-full [&>svg]:max-xs:hidden">
 				{icon}
 				{title}
 			</NavigationMenuTrigger>

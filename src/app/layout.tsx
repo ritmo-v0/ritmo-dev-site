@@ -59,12 +59,15 @@ const PlusJakartaSans = Plus_Jakarta_Sans({
 	variable: "--font-plus-jakarta-sans",
 });
 
+// Types & Interfaces
+import type { Metadata } from "next";
+
 // Metadata
 const title = PAGE_TITLE_SUFFIX;
 const description = "<PersonalWebsite />";
 const url = "/";
 const author = "ritmo_v0";
-export const metadata = {
+export const metadata: Metadata = {
 	metadataBase: getBaseUrl(),
 	title: {
 		default: title,

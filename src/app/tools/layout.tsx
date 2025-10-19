@@ -29,6 +29,12 @@ export const metadata: Metadata = {
 
 
 
-export default function ToolsLayout({ children }: LayoutProps<"/tools">) {
-	return children;
+export default function ToolsLayout({
+	children
+}: LayoutProps<typeof url>) {
+	return (
+		<div className="my-16">
+			{children}
+		</div>
+	);
 }

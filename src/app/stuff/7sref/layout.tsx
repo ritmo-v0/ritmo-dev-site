@@ -53,11 +53,11 @@ export default function SevensRefLayout({
 	return (
 		<WrapperLayout
 			className={cn(
-				"mb-16 font-serif-7sref",
+				"my-16 font-serif-7sref",
 				DotoFont.variable,
 				ShipporiMincho.variable,
 			)}
-			width={1080}
+			width={960}
 		>
 			{children}
 		</WrapperLayout>

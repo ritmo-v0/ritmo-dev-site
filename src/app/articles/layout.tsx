@@ -31,7 +31,7 @@ export default function ArticlesLayout({
 	children
 }: LayoutProps<typeof url>) {
 	return (
-		<div className="mb-16">
+		<div className="my-16">
 			{children}
 		</div>
 	);

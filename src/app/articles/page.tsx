@@ -13,7 +13,7 @@ export default async function ArticlesPage() {
 	const articles = data || [];
 
 	return (
-		<WrapperLayout className="mt-12 lg:mt-24" width={1080}>
+		<WrapperLayout className="mt-12 lg:mt-24" width={760}>
 			{error
 				? <Code>{error.message}</Code>
 				: <ArticleList articles={articles} />}

@@ -21,7 +21,8 @@ type SevensRefRoute = {
 };
 
 // Constants & Variables
-import { TRANSITION_200_25 } from "@/lib/transitions";
+import { TRANSITION_200_25, getContainerVariants } from "@/lib/transitions";
+const CONTAINER_VARIANTS = getContainerVariants(0.1);
 const FINAL_MESSAGE: Record<Locale, string> = {
 	ja: `このメッセージが、最後の希望にたどり着いたあの者たちに届くことを願う。
 
@@ -131,10 +132,7 @@ export default function SevensRefPage() {
 			</header>
 			<motion.ul
 				className="grid @2xl:grid-cols-2 @4xl:grid-cols-4 gap-4"
-				variants={{
-					hidden: {},
-					visible: { transition: { staggerChildren: 0.1 } },
-				}}
+				variants={CONTAINER_VARIANTS}
 				initial="hidden"
 				animate="visible"
 			>

@@ -20,7 +20,7 @@ export function ArticleHeader({ metadata }: { metadata?: ArticleMetadata }) {
 		? new Date(metadata.updatedAt).toLocaleDateString() : "…?";
 
 	return (
-		<header className="mt-4 flex max-lg:flex-col-reverse lg:items-center justify-between gap-x-12 gap-y-6 font-heading">
+		<header className="flex max-lg:flex-col-reverse lg:items-center justify-between gap-x-12 gap-y-6 font-heading">
 			<div>
 				<H1 className="lg:text-5xl lg:text-balance">{title}</H1>
 				<div className="mt-4 lg:mt-6 space-y-2 lg:space-y-4">

@@ -48,7 +48,7 @@ const QUOTES = [
 
 export default function InmPage() {
 	const [mounted, setMounted] = useState(false);
-	const [time, setTime] = useState("");
+	const [time, setTime] = useState<Date | null>(null);
 	const [diff, setDiff] = useState("");
 	const [hasCelebrated, setHasCelebrated] = useState(false);
 
@@ -84,7 +84,7 @@ export default function InmPage() {
 	return (
 		<div className="relative overflow-clip selection:bg-[#114514] selection:text-background dark:selection:text-foreground isolate">
 			<WrapperLayout className="grid justify-items-center items-end gap-8 py-16 h-full">
-				{mounted && (time instanceof Date) && (
+				{mounted && time && (
 					<>
 						<div className="grid justify-items-center gap-4">
 							<Clock time={time} />
@@ -102,7 +102,7 @@ export default function InmPage() {
 	);
 }
 
-function Clock({ time }) {
+function Clock({ time }: { time: Date }) {
 	return (
 		<motion.span
 			className="inline-flex w-max font-mono font-bold text-2xl @md:text-3xl @3xl:text-5xl @5xl:text-7xl"
@@ -125,7 +125,7 @@ function Clock({ time }) {
 	);
 }
 
-function TimeDiff({ timeDiff }) {
+function TimeDiff({ timeDiff }: { timeDiff: string }) {
 	return (
 		<motion.span
 			className="text-sm @3xl:text-lg text-muted-foreground"
@@ -146,7 +146,7 @@ function InmQuote() {
 
 	function handleClick() {
 		if (delay !== 0) setDelay(0);
-		let newQuote;
+		let newQuote: string;
 		do {
 			newQuote = getRandomQuote(QUOTES);
 		} while (newQuote === quote);

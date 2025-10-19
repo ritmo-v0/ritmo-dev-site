@@ -30,7 +30,7 @@ function NavigationMenu({
 			{children}
 			<NavigationMenuBase.Portal>
 				<NavigationMenuPositioner sideOffset={8} collisionPadding={8}>
-					<NavigationMenuPopup>
+					<NavigationMenuPopup className="z-50">
 						<NavigationMenuViewport />
 					</NavigationMenuPopup>
 				</NavigationMenuPositioner>

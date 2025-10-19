@@ -19,6 +19,8 @@ export const metadata: Metadata = {
 
 
 
-export default function MyGOLayout({ children }: LayoutProps<"/mygo">) {
+export default function MyGOLayout({
+	children
+}: LayoutProps<typeof url>) {
 	return children;
 }

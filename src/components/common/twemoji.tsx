@@ -49,18 +49,20 @@ function parseString(
 			nodes.push(string.slice(lastIndex, indices[0]));
 		}
 
-		nodes.push(
-			<img
-				key={indices[0]}
-				src={url}
-				alt={text}
-				draggable={false}
-				className={cn(
-					"inline size-[1.1em] mx-[0.15em] align-[-0.2em]",
-					options?.className,
-				)}
-			/>
-		);
+		if (url) {
+			nodes.push(
+				<img
+					key={indices[0]}
+					src={url}
+					alt={text}
+					draggable={false}
+					className={cn(
+						"inline size-[1.1em] mx-[0.15em] align-[-0.2em]",
+						options?.className,
+					)}
+				/>
+			);
+		}
 
 		lastIndex = indices[1];
 	}

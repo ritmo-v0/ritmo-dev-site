@@ -334,8 +334,8 @@ const linkVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "font-medium text-primary underline-offset-4 underline",
-				hover: "font-medium text-primary underline-offset-4 hover:underline",
+				default: "w-max font-medium text-primary underline-offset-4 underline",
+				hover: "w-max font-medium text-primary underline-offset-4 hover:underline",
 				nothing: "",
 			},
 		},

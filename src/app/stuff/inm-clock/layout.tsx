@@ -1,5 +1,8 @@
 import { generatePreviewMetadata } from "@/lib/utils";
 
+// Types & Interfaces
+import type { Metadata } from "next";
+
 // Metadata
 const title = "迫真時鐘部．時停の裏技";
 const description = "這麼惡臭的時鐘有存在的必要嗎（惱";
@@ -27,7 +30,7 @@ const keywords = [
 	"homo",
 	"ホモ",
 ];
-export const metadata = {
+export const metadata: Metadata = {
 	title: { absolute: title },
 	description: description,
 	keywords: keywords,
@@ -41,6 +44,8 @@ export const metadata = {
 
 
 
-export default function InmClockLayout({ children }) {
+export default function InmClockLayout({
+	children
+}: LayoutProps<typeof url>) {
 	return children;
 }

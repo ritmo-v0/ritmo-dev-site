@@ -10,7 +10,6 @@ import { SettingsSheet } from "@/components/main/mygo/settings-sheet";
 import { WrapperLayout } from "@/components/common/layouts";
 
 // Types & Interfaces
-import type { Variants } from "motion/react";
 type Bookmark = {
 	id: string;
 	title: string;
@@ -19,7 +18,8 @@ type Bookmark = {
 };
 
 // Constants & Variables
-import { TRANSITION_200_25 } from "@/lib/transitions";
+import { TRANSITION_200_25, getContainerVariants } from "@/lib/transitions";
+const CONTAINER_VARIANTS = getContainerVariants(0.025);
 const BOOKMARKS: Bookmark[] = [
 	{ id: "facebook", title: "Facebook", href: "https://www.facebook.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs1aij2TURjkKsgrZX5932Si8FNHcyhYTz6Gbqt" },
 	{ id: "messenger", title: "Messenger", href: "https://www.facebook.com/messages/t", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs18IlgXqXGW4wLAeEmHVTRdPyDNvsZJn9YUfQ2" },
@@ -32,58 +32,54 @@ const BOOKMARKS: Bookmark[] = [
 	{ id: "chatgpt", title: "ChatGPT", href: "https://chatgpt.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs10ZNkpZYmxTj5cmdVkoDGvCFWLOyHQ6RfzgAS" },
 	{ id: "pixiv", title: "PIXIV", href: "https://www.pixiv.net", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs18ySrmDGW4wLAeEmHVTRdPyDNvsZJn9YUfQ2I" },
 ];
-const CONTAINER_VARIANTS: Variants = {
-	hidden: {},
-	visible: { transition: { staggerChildren: 0.025 } },
-};
-const CHILDREN_VARIANTS: Variants = {
-	hidden: { opacity: 0, y: 20 },
-	visible: { opacity: 1, y: 0, transition: TRANSITION_200_25 },
-};
 
 
 
 export default function MyGOPage() {
 	return (
-		<div className="fixed inset-0 bg-background [&_img]:select-none [&_img]:touch-none [&_img]:pointer-events-none">
-			<MyGoWallpaper />
-			<SettingsSheet className="absolute top-8 right-8 z-1" />
-			<WrapperLayout className="relative size-full content-center lg:px-16">
-				<motion.div
-					className={cn(
-						"grid justify-items-center",
-						"grid-cols-3 @2xl:grid-cols-4 @6xl:grid-cols-5",
-						"gap-2 @4xl:gap-8 @6xl:gap-y-12",
-					)}
-					variants={CONTAINER_VARIANTS}
-					initial="hidden"
-					animate="visible"
-				>
-					{BOOKMARKS.map(bookmark => (
-						<motion.div
-							key={bookmark.id}
-							variants={CHILDREN_VARIANTS}
-						>
-							<Bookmark bookmark={bookmark} />
-						</motion.div>
-					))}
-				</motion.div>
-			</WrapperLayout>
-		</div>
+		<>
+			<div />
+			<div className={cn(
+				"fixed inset-0 bg-background z-10",
+				"[&_img]:select-none [&_img]:touch-none [&_img]:pointer-events-none",
+			)}>
+				<MyGOWallpaper />
+				<SettingsSheet className="absolute top-8 right-8" />
+				<WrapperLayout className="relative size-full content-center lg:px-16 py-16">
+					<motion.ul
+						className={cn(
+							"grid justify-items-center",
+							"grid-cols-3 @2xl:grid-cols-4 @6xl:grid-cols-5",
+							"gap-2 @4xl:gap-8 @6xl:gap-y-12",
+						)}
+						variants={CONTAINER_VARIANTS}
+						initial="hidden"
+						animate="visible"
+					>
+						{BOOKMARKS.map(bookmark => (
+							<Bookmark
+								key={bookmark.id}
+								bookmark={bookmark}
+							/>
+						))}
+					</motion.ul>
+				</WrapperLayout>
+			</div>
+		</>
 	);
 }
 
-function MyGoWallpaper() {
+function MyGOWallpaper() {
 	const { image, blur, opacity } = useMyGOStore();
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	return (
 		<motion.img
 			src={image}
-			className="absolute inset-0 object-cover size-full scale-120 transition-all"
+			className="absolute size-full object-cover scale-110"
 			width={3840} height={2160}
 			variants={{
-				hidden: { opacity: 0, filter: `blur(0px)` },
+				hidden: { opacity: 0, filter: `blur(${blur / 2}px)` },
 				visible: {
 					opacity,
 					filter: `blur(${blur}px)`,
@@ -99,25 +95,35 @@ function MyGoWallpaper() {
 
 function Bookmark({ bookmark }: { bookmark: Bookmark }) {
 	return (
-		<a
-			href={bookmark.href}
-			rel="noopener noreferrer"
-			className={cn(
-				"group flex flex-col items-center justify-center p-4",
-				"gap-3 @4xl:gap-4",
-			)}
+		<motion.li
+			key={bookmark.id}
+			variants={{
+				hidden: { opacity: 0, y: 20 },
+				visible: { opacity: 1, y: 0, transition: TRANSITION_200_25 },
+			}}
 		>
-			<Image
-				src={bookmark.image}
-				alt={bookmark.title}
+			<a
+				href={bookmark.href}
+				rel="noopener noreferrer"
 				className={cn(
-					"group-hover:ring-2 transition",
-					"@max-md:max-w-20 @max-4xl:max-w-24",
-					"rounded-3xl @md:rounded-4xl",
+					"group flex flex-col items-center justify-center p-4",
+					"gap-3 @4xl:gap-4",
 				)}
-				width={128} height={128}
-			/>
-			<span className="font-medium text-sm @xl:text-base @6xl:text-lg text-center truncate">{bookmark.title}</span>
-		</a>
+			>
+				<Image
+					src={bookmark.image}
+					alt={bookmark.title}
+					className={cn(
+						"group-hover:ring-2 transition",
+						"@max-md:max-w-20 @max-4xl:max-w-24",
+						"rounded-3xl @md:rounded-4xl",
+					)}
+					width={128} height={128}
+				/>
+				<span className="font-medium text-sm @xl:text-base @6xl:text-lg text-center truncate">
+					{bookmark.title}
+				</span>
+			</a>
+		</motion.li>
 	);
 }
