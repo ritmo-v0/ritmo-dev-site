@@ -42,7 +42,7 @@ function MessagesTabs() {
 
 	return (
 		<Tabs className="gap-8" defaultValue={activeTab}>
-			<div className="sticky top-14 py-2 space-y-2 bg-background z-1">
+			<div className="sticky top-15 py-2 space-y-2 bg-background z-1">
 				<div className="flex items-center gap-2">
 					<TabsList className="w-full">
 						{MESSAGE_TABS.map(tab => (

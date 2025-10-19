@@ -24,13 +24,13 @@ export function ModeToggle() {
 	useEffect(() => setMounted(true), []);
 
 	return (
-		<div className="flex flex-nowrap items-center border border-input rounded-full">
+		<div className="flex flex-nowrap items-center w-max border border-input rounded-full">
 			{BUTTONS.map(button => (
 				<Button
 					key={button.theme}
 					title={button.title}
 					variant="ghost"
-					className="size-8 rounded-full"
+					className="size-8 rounded-full not-first:-ml-1"
 					onClick={() => setTheme(button.theme)}
 				>
 					<button.icon

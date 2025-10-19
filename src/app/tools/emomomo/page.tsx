@@ -23,7 +23,7 @@ export default async function EmomomoPage() {
 
 	return (
 		<main className="isolate">
-			<div className="sticky top-14 mx-auto bg-background z-10">
+			<div className="sticky top-15 mx-auto bg-background z-10">
 				<WrapperLayout>
 					<Section className="py-3">
 						<EmojiPickerToolbar />

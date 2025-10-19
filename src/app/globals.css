@@ -9,6 +9,7 @@
 	/* Overrides */
 	--breakpoint-xs: 32rem;
 	--leading-relaxed: 1.75;
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 	--ease-in-out: cubic-bezier(0.43, 0.01, 0.29, 1);
 	--ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 	--animate-blink: blink 1s steps(2, start) infinite;
@@ -147,7 +148,7 @@
 	}
 
 	body {
-		@apply grid grid-rows-[auto_1fr_auto] min-w-[320px] min-h-svh;
+		@apply grid grid-rows-[1fr_auto] min-w-[320px] min-h-svh;
 		@apply bg-background text-foreground font-sans antialiased;
 		scrollbar-gutter: stable both-edges;
 	}

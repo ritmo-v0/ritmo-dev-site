@@ -9,8 +9,8 @@ import {
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import Navbar from "@/components/common/navbar";
-import Footer from "@/components/common/footer";
+import Navbar from "@/components/main/navbar";
+import Footer from "@/components/main/footer";
 import { Providers } from "@/lib/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
