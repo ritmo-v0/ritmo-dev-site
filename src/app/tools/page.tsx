@@ -1,7 +1,6 @@
 // Components & UI
 import { ToolListSection } from "@/components/main/tools/sections";
-import { WrapperLayout } from "@/components/common/layouts";
-import { H1, Link } from "@/components/common/typography";
+import { H1, Link, Wrapper } from "@/components/common/typography";
 
 // Constants & Variables
 const NUANCED_HREF = "https://github.com/nuance-dev#-im-building-26-native-macos-apps-one-for-each-letter-of-the-alphabet" as const;
@@ -10,7 +9,7 @@ const NUANCED_HREF = "https://github.com/nuance-dev#-im-building-26-native-macos
 
 export default function ToolsPage() {
 	return (
-		<WrapperLayout>
+		<Wrapper>
 			<header className="self-center h-min">
 				<div className="space-y-2">
 					<H1 className="whitespace-pre-wrap">Project α</H1>
@@ -23,6 +22,6 @@ export default function ToolsPage() {
 			<main className="py-4">
 				<ToolListSection />
 			</main>
-		</WrapperLayout>
+		</Wrapper>
 	);
 }

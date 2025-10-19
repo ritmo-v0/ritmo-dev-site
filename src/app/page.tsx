@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils";
 
 // Components & UI
 import MuxVideo from "@mux/mux-video-react";
-import { H1, Muted } from "@/components/common/typography";
-import { WrapperLayout } from "@/components/common/layouts";
+import { H1, Muted, Wrapper } from "@/components/common/typography";
 
 // Icons & Images
 // import { RitmoIcon } from "@/components/common/icons";
@@ -40,10 +39,10 @@ export default function HomePage() {
 					</div>
 				</div>
 			</header>
-			<WrapperLayout asChild>
+			<Wrapper asChild>
 				<main>
 				</main>
-			</WrapperLayout>
+			</Wrapper>
 		</div>
 	);
 }

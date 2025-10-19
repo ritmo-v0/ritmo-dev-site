@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useMyGOStore } from "@/lib/store/mygo";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 // Components & UI
 import Image from "next/image";
+import { motion } from "motion/react";
+import { Wrapper } from "@/components/common/typography";
 import { SettingsSheet } from "@/components/main/mygo/settings-sheet";
-import { WrapperLayout } from "@/components/common/layouts";
 
 // Types & Interfaces
 type Bookmark = {
@@ -45,7 +45,7 @@ export default function MyGOPage() {
 			)}>
 				<MyGOWallpaper />
 				<SettingsSheet className="absolute top-8 right-8" />
-				<WrapperLayout className="relative size-full content-center lg:px-16 py-16">
+				<Wrapper className="relative size-full content-center lg:px-16 py-16">
 					<motion.ul
 						className={cn(
 							"grid justify-items-center",
@@ -63,7 +63,7 @@ export default function MyGOPage() {
 							/>
 						))}
 					</motion.ul>
-				</WrapperLayout>
+				</Wrapper>
 			</div>
 		</>
 	);

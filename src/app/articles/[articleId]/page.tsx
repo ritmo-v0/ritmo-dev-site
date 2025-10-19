@@ -3,8 +3,7 @@ import { getArticle } from "@/lib/article/utils";
 
 // Components & UI
 import { ArticleContent, ArticleHeader } from "@/components/main/articles/article";
-import { Code } from "@/components/common/typography";
-import { WrapperLayout } from "@/components/common/layouts";
+import { Code, Wrapper } from "@/components/common/typography";
 
 
 
@@ -15,16 +14,16 @@ export default async function ArticlePage(props: PageProps<"/articles/[articleId
 
 	return (
 		<>
-			<WrapperLayout className="pb-12 lg:pt-6">
+			<Wrapper className="pb-12 lg:pt-6">
 				<ArticleHeader metadata={metadata} />
-			</WrapperLayout>
-			<WrapperLayout width={760}>
+			</Wrapper>
+			<Wrapper width={760}>
 				<main>
 					{error
 						? <Code>{error.message}</Code>
 						: <ArticleContent content={content} />}
 				</main>
-			</WrapperLayout>
+			</Wrapper>
 		</>
 	);
 }

@@ -33,6 +33,43 @@ import type { AsChild } from "./types";
 
 
 
+function Wrapper({
+	className,
+	width = 1440,
+	asChild = false,
+	...props
+}: React.ComponentProps<"div"> & AsChild & { width?: number }) {
+	const Comp = asChild ? SlotPrimitive.Slot : "div";
+
+	return (
+		<Comp
+			style={{ maxInlineSize: `${width}px` }}
+			className={cn("@container w-full mx-auto px-4 md:px-8", className)}
+			{...props}
+		/>
+	);
+}
+
+function Section({
+	className,
+	...props
+}: React.ComponentProps<"section">) {
+	return (
+		<section
+			className={cn(
+				"py-6",
+				"has-[:first-child:is(h1)]:py-8",
+				"has-[:first-child:is(h2)]:py-6",
+				"has-[:first-child:is(h3)]:py-3",
+				"has-[:first-child:is(h4)]:py-2",
+				"has-[:first-child:is(h5,h6)]:py-1",
+				className,
+			)}
+			{...props}
+		/>
+	);
+}
+
 function MarkdownText({
 	renderH1 = true,
 	...props
@@ -364,27 +401,8 @@ function Link<R extends string>({
 	);
 }
 
-function Section({
-	className,
-	...props
-}: React.ComponentProps<"section">) {
-	return (
-		<section
-			className={cn(
-				"py-6",
-				"has-[:first-child:is(h1)]:py-8",
-				"has-[:first-child:is(h2)]:py-6",
-				"has-[:first-child:is(h3)]:py-3",
-				"has-[:first-child:is(h4)]:py-2",
-				"has-[:first-child:is(h5,h6)]:py-1",
-				className,
-			)}
-			{...props}
-		/>
-	);
-}
-
 export {
+	Wrapper, Section,
 	MarkdownText,
 	H1, H2, H3, H4, H5, H6,
 	UL, OL, LI, P, HR,
@@ -392,5 +410,4 @@ export {
 	Code,
 	Blockquote,
 	Link,
-	Section,
 };

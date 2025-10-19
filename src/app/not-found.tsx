@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils";
 // Components & UI
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { MarkdownText } from "@/components/common/typography";
-import { WrapperLayout } from "@/components/common/layouts";
+import { MarkdownText, Wrapper } from "@/components/common/typography";
 
 // Icons & Images
 import { ArrowLeft } from "lucide-react";
@@ -20,7 +19,7 @@ type BeatDiceProps = {
 
 export default function NotFound() {
 	return (
-		<WrapperLayout className="justify-items-center content-center space-y-8">
+		<Wrapper className="justify-items-center content-center space-y-8">
 			<div className="text-2xl">
 				<MarkdownText>
 					{`\\[ \\not\\exists p \\in P \\;:\\; p = p_{\\text{requested}} \\]`}
@@ -38,7 +37,7 @@ export default function NotFound() {
 					Back to Home
 				</Link></Button>
 			</div>
-		</WrapperLayout>
+		</Wrapper>
 	);
 }
 

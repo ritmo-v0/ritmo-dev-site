@@ -9,7 +9,7 @@ import { MetronomeCard } from "@/components/main/tools/tempus/metronome-card";
 import { TapArea } from "@/components/main/tools/tempus/tap-area";
 import { AllTapsCard, RecentTapsCard } from "@/components/main/tools/tempus/taps-cards";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { WrapperLayout } from "@/components/common/layouts";
+import { Wrapper } from "@/components/common/typography";
 
 
 
@@ -31,7 +31,7 @@ export default function TempusPage() {
 	}, [addTap, reset]);
 
 	return (
-		<WrapperLayout className="grid gap-4 h-min mb-4">
+		<Wrapper className="grid gap-4 h-min mb-4">
 			<TapArea className="max-md:order-1" />
 			<TooltipProvider>
 				<div className="grid grid-cols-2 gap-4">
@@ -41,6 +41,6 @@ export default function TempusPage() {
 					<MetronomeCard className="hidden md:flex" />
 				</div>
 			</TooltipProvider>
-		</WrapperLayout>
+		</Wrapper>
 	);
 }
