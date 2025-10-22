@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 // Components & UI
 import { Button } from "@/components/ui/button";
-import { MarkdownText } from "@/components/common/typography";
+import { Markdown } from "@/components/common/markdown";
 import { Message, MessageContent, MessageGroup } from "@/components/ui/message";
 import { TabsContent } from "@/components/ui/tabs";
 
@@ -84,7 +84,7 @@ function SRMessage({
 							variant="7sref"
 							className="shrink h-auto"
 						>
-							<MarkdownText>{match}</MarkdownText>
+							<Markdown>{match}</Markdown>
 						</Button>
 					))}
 				</div>
@@ -96,7 +96,7 @@ function SRMessage({
 						message.role === "player" && "bg-primary text-primary-foreground",
 					)}
 				>
-					<MarkdownText>{content}</MarkdownText>
+					<Markdown>{content}</Markdown>
 				</MessageContent>
 			)}
 		</Message>

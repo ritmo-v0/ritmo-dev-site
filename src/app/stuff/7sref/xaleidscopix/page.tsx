@@ -1,5 +1,6 @@
 // Components & UI
-import { HR, MarkdownText, P, Section } from "@/components/common/typography";
+import { Markdown } from "@/components/common/markdown";
+import { HR, P, Section } from "@/components/common/typography";
 
 // Constants & Variables
 const TEXT = `
@@ -98,9 +99,9 @@ export default function XaleidscopiXPage() {
 				</P>
 				<HR className="my-12" />
 				<div className="[&_p]:italic">
-					<MarkdownText>
+					<Markdown>
 						{TEXT}
-					</MarkdownText>
+					</Markdown>
 				</div>
 				<HR className="my-12" />
 				<P className="text-center">

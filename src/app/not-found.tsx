@@ -2,7 +2,8 @@
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { ButtonLink, MarkdownText, Wrapper } from "@/components/common/typography";
+import { Markdown } from "@/components/common/markdown";
+import { ButtonLink, Wrapper } from "@/components/common/typography";
 
 // Icons & Images
 import { ArrowLeft } from "lucide-react";
@@ -20,9 +21,9 @@ export default function NotFound() {
 	return (
 		<Wrapper className="justify-items-center content-center space-y-8">
 			<div className="text-2xl">
-				<MarkdownText>
+				<Markdown>
 					{`\\[ \\not\\exists p \\in P \\;:\\; p = p_{\\text{requested}} \\]`}
-				</MarkdownText>
+				</Markdown>
 			</div>
 			<div className="flex items-center gap-4">
 				<BeatDice className="bg-chart-1" pattern={[1, 1, 1]} currentBeat={2} isActive />

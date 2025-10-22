@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { MarkdownText, Section } from "@/components/common/typography";
+import { Markdown } from "@/components/common/markdown";
+import { Section } from "@/components/common/typography";
 
 // Types & Interfaces
 import type { LyricLine } from "@/lib/7sref/types";
@@ -200,25 +201,25 @@ export default function RefrainPage() {
 						key={index}
 						className={cn(index === 0 && "font-sans")}
 					>
-						<MarkdownText>
+						<Markdown>
 							{section.map(line => (
 								`${line.content.ja}`
 							)).join("\n\n")}
-						</MarkdownText>
+						</Markdown>
 					</Section>
 				))}
 				<div className="my-8 [&_pre]:font-black [&_pre]:text-lg [&_pre]:tracking-[0.2em] [&_code]:font-mono-7sref!">
-					<MarkdownText>{CODE_INTRO}</MarkdownText>
+					<Markdown>{CODE_INTRO}</Markdown>
 				</div>
 
 				{/* Main lyrics */}
 				{LYRICS.slice(2).map((section, index) => (
 					<Section key={index}>
-						<MarkdownText>
+						<Markdown>
 							{section.map(line => (
 								`${line.content.ja}`
 							)).join("\n\n")}
-						</MarkdownText>
+						</Markdown>
 					</Section>
 				))}
 			</article>

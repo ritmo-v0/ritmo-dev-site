@@ -4,8 +4,9 @@ import { cn } from "@/lib/utils";
 
 // Components & UI
 import { motion } from "motion/react";
+import { Link } from "@/components/common/typography";
+import { Markdown } from "@/components/common/markdown";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link, MarkdownText } from "@/components/common/typography";
 
 // Icons & Images
 import { Droplets, Hexagon, Sparkles, MessagesSquare } from "lucide-react";
@@ -119,9 +120,9 @@ export default function SevensRefPage() {
 						"bg-[url('https://info-maimai.sega.jp/wp-content/uploads/2025/07/42b7a401b347a390ac8e16a95ad86045.jpg')]",
 					)}>
 						<CardContent className="not-dark:text-white">
-							<MarkdownText>
+							<Markdown>
 								{FINAL_MESSAGE[locale] || FINAL_MESSAGE.ja}
-							</MarkdownText>
+							</Markdown>
 						</CardContent>
 						<div className={cn(
 							"absolute inset-0 @4xl:right-1/3 backdrop-blur-3xl backdrop-brightness-90 backdrop-saturate-200",

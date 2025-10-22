@@ -2,7 +2,8 @@
 
 // Components & UI
 import Image from "next/image";
-import { H1, MarkdownText, Muted } from "@/components/common/typography";
+import { Markdown } from "@/components/common/markdown";
+import { H1, Muted } from "@/components/common/typography";
 
 // Icons & Images
 import { Calendar } from "lucide-react";
@@ -48,9 +49,9 @@ export function ArticleHeader({ metadata }: { metadata?: ArticleMetadata }) {
 export function ArticleContent({ content }: { content?: string }) {
 	return (
 		<article>
-			<MarkdownText renderH1={false}>
+			<Markdown renderH1={false}>
 				{content || ""}
-			</MarkdownText>
+			</Markdown>
 		</article>
 	);
 }

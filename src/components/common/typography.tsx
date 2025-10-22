@@ -1,33 +1,14 @@
-import * as React from "react";
+import { memo } from "react";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import Image from "next/image";
 import NextLink from "next/link";
 import { Twemoji } from "./twemoji";
-import { MarkdownPre } from "./shiki-highlighter";
 import { Slot as SlotPrimitive } from "radix-ui";
 import { Button } from "@/components/ui/button";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from "@/components/ui/table";
-
-// Markdown
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import remarkBreaks from "remark-breaks";
-import rehypeKatex from "rehype-katex";
-import rehypeRaw from "rehype-raw";
 
 // Types & Interfaces
-import type { Route } from "next";
 import type { LinkProps } from "next/link";
 import type { VariantProps } from "class-variance-authority";
 import type { AsChild } from "./types";
@@ -66,62 +47,6 @@ function Section({
 				"has-[:first-child:is(h5,h6)]:py-1",
 				className,
 			)}
-			{...props}
-		/>
-	);
-}
-
-function MarkdownText({
-	renderH1 = true,
-	...props
-}: React.ComponentProps<typeof Markdown> & { renderH1?: boolean }) {
-	return (
-		<Markdown
-			remarkPlugins={[remarkMath, remarkBreaks, [remarkGfm, { singleTilde: false }]]}
-			rehypePlugins={[rehypeKatex, rehypeRaw]}
-			components={{
-				h1: (props) => renderH1 ? <H1 {...props} /> : null,
-				h2: H2,
-				h3: H3,
-				h4: H4,
-				h5: H5,
-				h6: H6,
-				ul: UL,
-				ol: OL,
-				li: LI,
-				p: P,
-				hr: HR,
-				pre: MarkdownPre,
-				code: Code,
-				blockquote: Blockquote,
-				a: ({ children, href, ...props }) => (
-					href
-						? <Link href={href as Route} {...props}>{children}</Link>
-						: <span {...props}>{children}</span>
-				),
-				img: ({ src, alt, width, height, ...props }) => (
-					typeof src !== "string" ? null : (
-						<Image
-							src={src}
-							alt={alt || ""}
-							width={Number(width) || 768}
-							height={Number(height) || 432}
-							className={cn(
-								"mx-auto my-2 w-full max-w-3xl h-auto rounded-lg shadow-lg object-cover first:mt-0",
-								"[&+br]:hidden [&+br+span]:block [&+br+span]:text-center [&+br+span]:text-sm [&+br+span]:text-muted-foreground",
-							)}
-							loading="lazy"
-							{...props}
-						/>
-					)
-				),
-				table: (props) => <Table className="mt-2" {...props} />,
-				thead: TableHeader,
-				tbody: TableBody,
-				tr: TableRow,
-				th: TableHead,
-				td: TableCell,
-			}}
 			{...props}
 		/>
 	);
@@ -267,7 +192,7 @@ function OL({
 	return <Comp className={cn("list-decimal list-outside [&:not(:first-child)]:mt-2 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
 }
 
-const LI = React.memo(function LI({
+const LI = memo(function LI({
 	className,
 	children,
 	asChild = false,
@@ -285,7 +210,7 @@ const LI = React.memo(function LI({
 	);
 }, (prev, next) => prev.children === next.children);
 
-const P = React.memo(function P({
+const P = memo(function P({
 	className,
 	children,
 	asChild = false,
@@ -331,7 +256,7 @@ function Muted({
 	);
 }
 
-const Code = React.memo(function Code({
+const Code = memo(function Code({
 	className,
 	children,
 	asChild = false,
@@ -349,7 +274,7 @@ const Code = React.memo(function Code({
 	);
 }, (prev, next) => prev.children === next.children);
 
-const Blockquote = React.memo(function Blockquote({
+const Blockquote = memo(function Blockquote({
 	className,
 	children,
 	asChild = false,
@@ -426,7 +351,6 @@ function ButtonLink<R extends string>({
 
 export {
 	Wrapper, Section,
-	MarkdownText,
 	H1, H2, H3, H4, H5, H6,
 	UL, OL, LI, P, HR,
 	Muted,

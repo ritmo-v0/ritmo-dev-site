@@ -23,35 +23,6 @@ export type CodeProps = {
 
 
 
-export function MarkdownPre({
-	className,
-	children,
-	...props
-}: React.ComponentProps<"pre">) {
-	const isValidCodeElement = React.isValidElement(children);
-	const codeElement = isValidCodeElement
-		? children.props as React.ComponentProps<"code">
-		: null;
-
-	const rawCode = codeElement?.children ?? "";
-	const code = typeof rawCode === "string" ? rawCode.trimEnd() : String(rawCode).trimEnd();
-
-	const codeClassName = codeElement?.className ?? "";
-	const matchLang = codeClassName?.match(/language-(\w+)/);
-	const language = matchLang ? matchLang[1] : "plaintext";
-
-	if (!isValidCodeElement) return null;
-
-	return (
-		<Pre
-			className={cn("my-2", className)}
-			code={code}
-			language={language}
-			{...props}
-		/>
-	);
-}
-
 export function Pre({
 	className,
 	code,
