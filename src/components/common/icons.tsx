@@ -1,12 +1,5 @@
-import type * as React from "react";
-import { cn } from "@/lib/utils";
 
-
-
-export function RitmoIcon({
-	className,
-	...props
-}: React.SVGProps<SVGSVGElement>) {
+export function RitmoIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			key="Ritmo."
@@ -21,16 +14,15 @@ export function RitmoIcon({
 			strokeWidth="2"
 			strokeLinecap="square"
 			strokeLinejoin="miter"
-			className={cn("size-4", className)}
 			{...props}
 		>
 
-			<line x1="1" y1="23" x2="1" y2="1" />
-			<path d="m1,1h15c3.87,0,7,3.13,7,7c0,3.87-3.13,7-7,7H8c-3.87,0-7-3.13-7-7V1Z" />
+			<line x1="4" y1="20" x2="4" y2="4" />
+			<path d="m4,4h11c2.76,0,5,2.24,5,5c0,2.76-2.24,5-5,5h-6c-2.76,0-5-2.24-5-5v-5Z" />
 			<polygon
 				fill="currentColor"
 				stroke="none"
-				points="0 0 2.75 0 24 24 21.25 24 0 0"
+				points="3 3 5.63 3 21 21 18.37 21 3 3"
 			/>
 		</svg>
 	);

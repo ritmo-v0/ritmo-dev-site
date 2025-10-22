@@ -66,8 +66,8 @@ export default function Navbar() {
 						variant="ghost"
 						className="max-xs:size-9 rounded-full"
 					>
-						<RitmoIcon className="size-[1em]" />
-						<span className="max-xs:hidden font-light">Ritmo.</span>
+						<RitmoIcon />
+						<span className="max-xs:hidden">Ritmo.</span>
 					</ButtonLink>
 					{NAV_ITEMS.map(item => "items" in item
 						? <NavMenuItem key={item.title} {...item} />
