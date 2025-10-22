@@ -1,10 +1,10 @@
-import { meta } from "./meta";
 import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
 
 // Metadata
+import { meta } from "./meta";
 export const metadata: Metadata = {
 	title: meta.title,
 	description: meta.description,

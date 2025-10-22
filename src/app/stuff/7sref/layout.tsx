@@ -22,22 +22,19 @@ const ShipporiMincho = Shippori_Mincho({
 import { Wrapper } from "@/components/common/typography";
 
 // Metadata
-export const title = "7sRef.exe";
-const description = "Sevens Refraction";
-const url = "/stuff/7sref";
-const keywords = [
-	"maimai",
-	"7sRef",
-	"7sRef 4",
-];
+import { meta } from "./meta";
 export const metadata = {
 	title: {
-		absolute: title,
-		template: generatePageTitle({ suffix: title }),
+		absolute: meta.title,
+		template: generatePageTitle({ suffix: meta.title }),
 	},
-	description: description,
-	keywords: keywords,
-	...generatePreviewMetadata({ title, description, url }),
+	description: meta.description,
+	keywords: meta.keywords,
+	...generatePreviewMetadata({
+		title: meta.title,
+		description: meta.description,
+		url: meta.url,
+	}),
 	robots: {
 		index: true,
 		follow: true,
@@ -57,7 +54,7 @@ export default function SevensRefLayout({
 				DotoFont.variable,
 				ShipporiMincho.variable,
 			)}
-			width={960}
+			width={1000}
 		>
 			{children}
 		</Wrapper>

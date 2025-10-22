@@ -1,8 +1,7 @@
 // Components & UI
-import { Link } from "../common/typography";
-import { ModeToggle } from "../common/mode-toggle";
-import { ThemeSelect } from "../common/theme-select";
-import { Button } from "@/components/ui/button";
+import { Link } from "@/components/common/typography";
+import { ModeToggle } from "@/components/common/mode-toggle";
+import { ThemeSelect } from "@/components/common/theme-select";
 
 // Images & Icons
 import { GithubLogoIcon } from "@phosphor-icons/react/ssr";
@@ -13,18 +12,12 @@ export default function Footer() {
 	return (
 		<footer className="p-6 sm:px-8 border-t border-input">
 			<div className="grid sm:grid-cols-2 gap-8 mx-auto max-w-5xl">
-				<Button
-					variant="nothing"
-					className="text-muted-foreground"
-					asChild
+				<Link
+					variant="hover"
+					href="https://github.com/ritmoHung/ritmo-dev-site"
 				>
-					<Link
-						href="https://github.com/ritmoHung/ritmo-dev-site"
-						variant="hover"
-					>
-						<GithubLogoIcon weight="bold" />GitHub
-					</Link>
-				</Button>
+					<GithubLogoIcon weight="bold" />GitHub
+				</Link>
 				<div className="flex items-center justify-center-safe sm:justify-end-safe gap-2">
 					<ThemeSelect />
 					<ModeToggle />

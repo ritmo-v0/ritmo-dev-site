@@ -8,6 +8,7 @@ import NextLink from "next/link";
 import { Twemoji } from "./twemoji";
 import { MarkdownPre } from "./shiki-highlighter";
 import { Slot as SlotPrimitive } from "radix-ui";
+import { Button } from "@/components/ui/button";
 import {
 	Table,
 	TableBody,
@@ -367,12 +368,13 @@ const Blockquote = React.memo(function Blockquote({
 }, (prev, next) => prev.children === next.children);
 
 const linkVariants = cva(
-	"rounded-md transition-all [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+	"rounded-xs transition-all",
 	{
 		variants: {
 			variant: {
-				default: "w-max font-medium text-primary underline-offset-4 underline",
-				hover: "w-max font-medium text-primary underline-offset-4 hover:underline",
+				default: "font-medium text-primary underline-offset-4 underline hover:text-primary/60 outline-offset-4",
+				hover: "inline-flex items-center justify-center gap-2 w-max font-medium text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-offset-4",
+				ghost: "focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground",
 				nothing: "",
 			},
 		},
@@ -401,6 +403,27 @@ function Link<R extends string>({
 	);
 }
 
+function ButtonLink<R extends string>({
+	className,
+	children,
+	variant,
+	size,
+	...props
+}: Pick<React.ComponentProps<typeof Button>, "variant" | "size"> & LinkProps<R>) {
+	return (
+		<Button
+			variant={variant}
+			size={size}
+			className={cn(className)}
+			asChild
+		>
+			<Link variant="nothing" {...props}>
+				{children}
+			</Link>
+		</Button>
+	);
+}
+
 export {
 	Wrapper, Section,
 	MarkdownText,
@@ -409,5 +432,5 @@ export {
 	Muted,
 	Code,
 	Blockquote,
-	Link,
+	Link, ButtonLink,
 };

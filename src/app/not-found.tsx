@@ -1,9 +1,8 @@
+"use client";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { MarkdownText, Wrapper } from "@/components/common/typography";
+import { ButtonLink, MarkdownText, Wrapper } from "@/components/common/typography";
 
 // Icons & Images
 import { ArrowLeft } from "lucide-react";
@@ -32,10 +31,10 @@ export default function NotFound() {
 				<BeatDice className="bg-chart-5" />
 			</div>
 			<div>
-				<Button asChild><Link href="/">
+				<ButtonLink href="/">
 					<ArrowLeft />
 					Back to Home
-				</Link></Button>
+				</ButtonLink>
 			</div>
 		</Wrapper>
 	);

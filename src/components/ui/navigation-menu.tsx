@@ -169,7 +169,7 @@ function NavigationMenuPopup({
 		<NavigationMenuBase.Popup
 			data-slot="navigation-menu-popup"
 			className={cn(
-				"relative w-(--popup-width) h-(--popup-height) bg-popover text-popover-foreground border rounded-md shadow",
+				"relative w-(--popup-width) h-(--popup-height) bg-popover text-popover-foreground border rounded-lg shadow",
 				"transition-all origin-top duration-300 ease-in-out",
 				"data-[starting-style]:scale-90 data-[starting-style]:opacity-0 data-[ending-style]:ease-out data-[ending-style]:duration-150 data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
 				// "transition-[opacity,transform,width,height,scale,translate]",

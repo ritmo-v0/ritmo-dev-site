@@ -1,9 +1,7 @@
 import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 
-// Constants & Variables
-import { title as suffix } from "../layout";
-
 // Metadata
+import { meta } from "@/app/stuff/7sref/meta";
 const title = "Xaleid◆scopiX";
 const description = `
 Acid saved Ris who had gone out of control, and crossed the seven doors and worlds.
@@ -15,7 +13,7 @@ export const metadata = {
 	title,
 	description,
 	...generatePreviewMetadata({
-		title: generatePageTitle({ title, suffix }),
+		title: generatePageTitle({ title, suffix: meta.title }),
 		description,
 		url,
 	}),

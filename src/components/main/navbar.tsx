@@ -3,8 +3,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { ButtonLink, Link, Muted } from "@/components/common/typography";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -23,10 +22,11 @@ import type { Route } from "next";
 type BaseItem = { icon: React.ReactElement, title: string };
 type LinkItem = BaseItem & { href: Route };
 type MenuItem = BaseItem & {
-	items: { icon?: React.ReactElement; title: string; href: Route; }[];
+	items: Array<Omit<LinkItem, "icon"> & { description: string }>;
 };
 
 // Constants & Variables
+import { STUFF } from "@/app/stuff/stuff";
 const NAV_ITEMS: Array<LinkItem | MenuItem> = [
 	{
 		icon: <NotebookIcon />,
@@ -41,15 +41,11 @@ const NAV_ITEMS: Array<LinkItem | MenuItem> = [
 	{
 		icon: <ArchiveIcon />,
 		title: "Stuff",
-		items: [
-			{
-				title: "7sRef.exe",
-				href: "/stuff/7sref",
-			}, {
-				title: "INM Clock",
-				href: "/stuff/inm-clock",
-			}
-		],
+		items: STUFF.map(stuff => ({
+			title: stuff.title,
+			description: stuff.description,
+			href: stuff.url,
+		})),
 	}
 ];
 
@@ -60,21 +56,19 @@ export default function Navbar() {
 		<div className="fixed top-0 w-screen px-4 py-3 z-50 pointer-events-none">
 			<NavigationMenu
 				className={cn(
-					"gap-4 xs:gap-8 mx-auto py-2 h-10 pointer-events-auto",
-					"bg-background/50 border rounded-full backdrop-blur-sm",
+					"mx-auto h-10 px-0.25 pointer-events-auto",
+					"bg-background/40 border rounded-full backdrop-blur-sm",
 				)}
 			>
-				<Button
-					variant="ghost"
-					className="max-xs:size-9.5 h-9.5 rounded-full"
-					asChild
-				>
-					<Link href="/">
-						<RitmoIcon className="size-[1em]" />
-						<span className="max-xs:hidden">Ritmo.</span>
-					</Link>
-				</Button>
 				<NavigationMenuList className="gap-0">
+					<ButtonLink
+						href="/"
+						variant="ghost"
+						className="max-xs:size-9 rounded-full"
+					>
+						<RitmoIcon className="size-[1em]" />
+						<span className="max-xs:hidden font-light">Ritmo.</span>
+					</ButtonLink>
 					{NAV_ITEMS.map(item => "items" in item
 						? <NavMenuItem key={item.title} {...item} />
 						: <NavLinkItem key={item.title} {...item} />
@@ -91,19 +85,16 @@ function NavLinkItem({ icon, title, href }: LinkItem) {
 	return (
 		<NavigationMenuItem key={title}>
 			<NavigationMenuLink
-				href={href}
 				active={pathname.startsWith(href)}
 				render={(
-					<Button
+					<ButtonLink
+						href={href}
 						variant="ghost"
-						className="h-9.5 rounded-full [&>svg]:max-xs:hidden"
-						asChild
+						className="rounded-full [&>svg]:max-xs:hidden"
 					>
-						<Link href={href}>
-							{icon}
-							{title}
-						</Link>
-					</Button>
+						{icon}
+						{title}
+					</ButtonLink>
 				)}
 			/>
 		</NavigationMenuItem>
@@ -113,7 +104,7 @@ function NavLinkItem({ icon, title, href }: LinkItem) {
 function NavMenuItem({ icon, title, items }: MenuItem) {
 	return (
 		<NavigationMenuItem key={title}>
-			<NavigationMenuTrigger className="h-9.5 rounded-full [&>svg]:max-xs:hidden">
+			<NavigationMenuTrigger className="rounded-full [&>svg]:max-xs:hidden">
 				{icon}
 				{title}
 			</NavigationMenuTrigger>
@@ -121,10 +112,21 @@ function NavMenuItem({ icon, title, items }: MenuItem) {
 				<ul className="grid gap-2">
 					{items.map(item => (
 						<li key={item.title}>
-							<Link href={item.href}>
-								{item.icon && item.icon}
-								{item.title}
-							</Link>
+							<NavigationMenuLink
+								closeOnClick={true}
+								render={
+									<Link
+										href={item.href}
+										variant="ghost"
+										className="grid gap-1 p-2 rounded-sm"
+									>
+										<h3 className="font-heading font-semibold">
+											{item.title}
+										</h3>
+										<Muted>{item.description}</Muted>
+									</Link>
+								}
+							/>
 						</li>
 					))}
 				</ul>

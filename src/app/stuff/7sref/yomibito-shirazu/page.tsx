@@ -292,7 +292,7 @@ export default function YomibitoShirazuPage() {
 				<HR className="mb-4" />
 				{renderSections([LYRICS[LYRICS.length - 1]], locale)}
 				<div className="bg-[#0100FF] mt-8 [&_*]:bg-transparent! [&_span]:text-white!">
-					<Pre code={CODE_OUTRO} />
+					<Pre code={CODE_OUTRO} className="border-none" />
 				</div>
 			</article>
 		</main>

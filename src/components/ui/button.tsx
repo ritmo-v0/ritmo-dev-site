@@ -28,7 +28,9 @@ const buttonVariants = cva(
 				sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
 				lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
 				icon: "size-9",
-				emoji: "size-10 xs:size-12 not-focus-visible:focus:border-primary not-focus-visible:focus:border-[3px]",
+				"icon-sm": "size-8",
+				"icon-lg": "size-10",
+				emoji: "size-10 xs:size-12 not-focus-visible:focus:border-primary not-focus-visible:focus:border-[3px] will-change-transform",
 			},
 		},
 		defaultVariants: {
