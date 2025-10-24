@@ -39,7 +39,7 @@ export default function Boss3Page() {
 		setMounted(true);
 
 		let count = 0;
-		let timeoutId;
+		let timeoutId: NodeJS.Timeout;
 		function celebrate3() {
 			if (count < 3) {
 				celebrate();
@@ -69,7 +69,7 @@ export default function Boss3Page() {
 	);
 }
 
-function Title({ text }) {
+function Title({ text }: { text: string }) {
 	return (
 		<motion.span
 			className="inline-flex w-max font-mono font-bold text-2xl @md:text-3xl @3xl:text-5xl @5xl:text-7xl"
@@ -92,7 +92,7 @@ function Title({ text }) {
 	);
 }
 
-function Subtitle({ text }) {
+function Subtitle({ text }: { text: string }) {
 	return (
 		<motion.span
 			className="text-sm @3xl:text-lg text-muted-foreground"
@@ -113,7 +113,7 @@ function Boss3Quote() {
 
 	function handleClick() {
 		if (delay !== 0) setDelay(0);
-		let newQuote;
+		let newQuote: { id: string, text: string } = { id: "", text: "" };
 		do {
 			newQuote = getRandomQuote(QUOTES)
 		} while (newQuote.id === quote.id);
@@ -122,7 +122,7 @@ function Boss3Quote() {
 
 	return (
 		<Tooltip>
-			<TooltipTrigger asChild>
+			<TooltipTrigger render={
 				<motion.span
 					key={quote.id}
 					className="inline-flex items-center w-max text-sm text-muted-foreground text-center whitespace-pre-line cursor-pointer"
@@ -133,11 +133,16 @@ function Boss3Quote() {
 					}}
 				>
 					{quote.text}
-					<Button className="size-9 ml-2" variant="ghost" onClick={handleClick}>
+					<Button
+						variant="ghost"
+						size="icon"
+						className="ml-2"
+						onClick={handleClick}
+					>
 						<RefreshCw className="size-3.5" />
 					</Button>
 				</motion.span>
-			</TooltipTrigger>
+			} />
 			<TooltipContent>
 				<span className="font-mono">{quote.id}</span>
 			</TooltipContent>

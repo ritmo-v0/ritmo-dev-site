@@ -114,7 +114,7 @@ function TapsCard({
 							<Info className="size-4 text-primary" />
 						</TooltipTrigger>
 						<TooltipContent>
-							<span className="text-sm">{tooltip}</span>
+							{tooltip}
 						</TooltipContent>
 					</Tooltip>
 				</CardTitle>

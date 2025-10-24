@@ -7,6 +7,7 @@ import {
 	getEmojiSubgroupTitle,
 	getSkinToneKey,
 } from "@/lib/emomomo/utils";
+import { ensureError } from "@/lib/fetch/response";
 
 // Components & UI
 import { toast } from "sonner";
@@ -18,13 +19,16 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Twemoji } from "@/components/common/twemoji";
-import {
-	HoverCard,
-	HoverCardContent,
-	HoverCardTrigger,
-} from "@/components/ui/hover-card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { H4, Muted, Section } from "@/components/common/typography";
 import { Virtuoso, VirtuosoGrid } from "react-virtuoso";
+
+// Types & Interfaces
+import type {
+	EmojiData,
+	EmojiSubgroup,
+	CompEmojiEntry,
+} from "@/types/emoji";
 
 // Constants & Variables
 import {
@@ -34,37 +38,47 @@ import {
 
 
 
-export function EmojiPicker({ emojiData }) {
+export function EmojiPicker({ emojiData }: { emojiData: EmojiData<CompEmojiEntry> }) {
 	const defaultValue = emojiData.groups.map(group => getEmojiGroupId(group.title));
 
 	return (
-		<Accordion type="multiple" defaultValue={defaultValue}>
-			{emojiData.groups.map(group => (
-				<EmojiGroup
-					id={getEmojiGroupId(group.title)}
-					key={group.title}
-					title={group.title}
-				>
-					<EmojiGroupContent
-						subgroups={group.subgroups}
-						supportsSkinTone={group.title === PEOPLE_AND_BODY}
-					/>
-				</EmojiGroup>
-			))}
-		</Accordion>
+		<TooltipProvider>
+			<Accordion type="multiple" defaultValue={defaultValue}>
+				{emojiData.groups.map(group => (
+					<EmojiGroup
+						value={getEmojiGroupId(group.title)}
+						key={group.title}
+						title={group.title}
+					>
+						<EmojiGroupContent
+							subgroups={group.subgroups}
+							supportsSkinTone={group.title === PEOPLE_AND_BODY}
+						/>
+					</EmojiGroup>
+				))}
+			</Accordion>
+		</TooltipProvider>
 	);
 }
 
-function EmojiGroup({ children, id, title, ...props }) {
+function EmojiGroup({
+	children,
+	value,
+	title,
+	...props
+}: React.ComponentProps<typeof AccordionItem>) {
 	return (
-		<AccordionItem id={id} value={id} className="scroll-mt-32" {...props}>
+		<AccordionItem id={value} value={value} className="scroll-mt-32" {...props}>
 			<AccordionTrigger className="font-semibold text-xl">{title}</AccordionTrigger>
 			<AccordionContent>{children}</AccordionContent>
 		</AccordionItem>
 	);
 }
 
-function EmojiGroupContent({ subgroups, supportsSkinTone }) {
+function EmojiGroupContent({ subgroups, supportsSkinTone }: {
+	subgroups: EmojiSubgroup<CompEmojiEntry>[];
+	supportsSkinTone: boolean;
+}) {
 	const useSubgroup = useEmomomoStore(state => state.useSubgroup);
 	const skinTone = useEmomomoStore(
 		supportsSkinTone ? state => state.skinTone : () => undefined
@@ -74,12 +88,15 @@ function EmojiGroupContent({ subgroups, supportsSkinTone }) {
 		<Virtuoso
 			useWindowScroll
 			totalCount={subgroups.length}
-			itemContent={index => <EmojiSubgroup subgroup={subgroups[index]} skinTone={skinTone} />}
+			itemContent={index => <EmojisSubgroup subgroup={subgroups[index]} skinTone={skinTone} />}
 		/>
 	) : <EmojiSupergroup subgroups={subgroups} skinTone={skinTone} />;
 }
 
-const EmojiSubgroup = memo(function EmojiSubgroup({ subgroup, skinTone }) {
+const EmojisSubgroup = memo(function EmojiSubgroup({ subgroup, skinTone }: {
+	subgroup: EmojiSubgroup<CompEmojiEntry>;
+	skinTone?: string;
+}) {
 	const title = getEmojiSubgroupTitle(subgroup.title);
 	const emojis = useMemo(() => {
 		return !skinTone
@@ -95,7 +112,10 @@ const EmojiSubgroup = memo(function EmojiSubgroup({ subgroup, skinTone }) {
 	);
 });
 
-const EmojiSupergroup = memo(function EmojiSupergroup({ subgroups, skinTone }) {
+const EmojiSupergroup = memo(function EmojiSupergroup({ subgroups, skinTone }: {
+	subgroups: EmojiSubgroup<CompEmojiEntry>[];
+	skinTone?: string;
+}) {
 	const supergroup = useMemo(() => {
 		return subgroups.flatMap(subgroup => subgroup.emojis);
 	}, [subgroups]);
@@ -109,7 +129,7 @@ const EmojiSupergroup = memo(function EmojiSupergroup({ subgroups, skinTone }) {
 	return <EmojiGrid emojis={emojis} />;
 });
 
-function EmojiGrid({ emojis }) {
+function EmojiGrid({ emojis }: { emojis: CompEmojiEntry[] }) {
 	const EMOJIS_PER_LINE = 27;
 	const LINE_THRESHOLD = 8;  // 5
 
@@ -122,7 +142,7 @@ function EmojiGrid({ emojis }) {
 	);
 }
 
-function EmojiVirtuosoGrid({ emojis }) {
+function EmojiVirtuosoGrid({ emojis }: { emojis: CompEmojiEntry[] }) {
 	const EMOJI_BUTTON_SIZE = 3;
 	const GAP_SIZE = 0.25;
 	const height = 4 * (EMOJI_BUTTON_SIZE + GAP_SIZE) + EMOJI_BUTTON_SIZE;
@@ -139,7 +159,7 @@ function EmojiVirtuosoGrid({ emojis }) {
 	);
 }
 
-const EmojiButton = memo(function EmojiButton({ emojiEntry }) {
+const EmojiButton = memo(function EmojiButton({ emojiEntry }: { emojiEntry: CompEmojiEntry }) {
 	const addEmoji = useEmomomoStore(state => state.addEmoji);
 
 	const { e: emoji, n: name } = emojiEntry;
@@ -152,10 +172,10 @@ const EmojiButton = memo(function EmojiButton({ emojiEntry }) {
 	), [name]);
 
 	return (
-		<HoverCard openDelay={600} closeDelay={100}>
-			<HoverCardTrigger asChild>
+		<Tooltip>
+			<TooltipTrigger render={
 				<Button
-					className="gap-0 transition ease-out-expo duration-500 active:scale-[0.8] overflow-clip select-none"
+					className="gap-0 ease-out-expo duration-500 active:scale-[0.8] overflow-clip select-none"
 					variant="outline"
 					size="emoji"
 					onClick={() => handleCopy(emoji, addEmoji)}
@@ -164,16 +184,17 @@ const EmojiButton = memo(function EmojiButton({ emojiEntry }) {
 						{emoji}
 					</Twemoji>
 				</Button>
-			</HoverCardTrigger>
-			<HoverCardContent
-				className="max-md:hidden w-fit"
-				side="top"
-				collisionPadding={16}
+			} />
+			<TooltipContent
+				variant="outline"
+				size="lg"
 			>
 				<div className="flex gap-4">
-					<Twemoji className="inline size-12">
-						{emoji}
-					</Twemoji>
+					<div className="flex items-center justify-center gap-1 size-12 overflow-hidden">
+						<Twemoji className="size-12 m-0">
+							{emoji}
+						</Twemoji>
+					</div>
 					<div className="font-medium">
 						<p className="text-lg mb-1">{capitalizedName}</p>
 						<Muted className="font-mono whitespace-pre-wrap">
@@ -184,12 +205,12 @@ const EmojiButton = memo(function EmojiButton({ emojiEntry }) {
 						</Muted>
 					</div>
 				</div>
-			</HoverCardContent>
-		</HoverCard>
+			</TooltipContent>
+		</Tooltip>
 	)
 });
 
-function flatMapEmojis(subgroup, skinTone) {
+function flatMapEmojis(subgroup: { emojis: CompEmojiEntry[] }, skinTone: string) {
 	return subgroup.emojis.flatMap(emoji => {
 		if (emoji.v && skinTone !== getSkinToneKey(DEFAULT_SKIN_TONE)) {
 			const flv = emoji.v[skinTone];
@@ -211,7 +232,7 @@ function flatMapEmojis(subgroup, skinTone) {
 	});
 }
 
-async function handleCopy(emoji, addEmoji) {
+async function handleCopy(emoji: string, addEmoji: (emoji: string) => void) {
 	addEmoji(emoji);
 	if (useEmomomoStore.getState().useCOC) {
 		try {

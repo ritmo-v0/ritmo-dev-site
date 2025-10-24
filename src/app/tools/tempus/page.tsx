@@ -23,7 +23,7 @@ export default function TempusPage() {
 			match(e.code)
 				.with("Space", "Enter", () => addTap())
 				.with("Escape", () => reset())
-				.otherwise(() => {});
+				.otherwise(() => { });
 		}
 
 		window.addEventListener("keydown", handleKeyDown);
