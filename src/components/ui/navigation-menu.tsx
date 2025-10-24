@@ -1,4 +1,3 @@
-import * as React from "react";
 import { cn } from "@/lib/utils"
 
 // Components & UI
@@ -30,13 +29,13 @@ function NavigationMenu({
 			{children}
 			<NavigationMenuBase.Portal>
 				<NavigationMenuPositioner sideOffset={8} collisionPadding={8}>
-					<NavigationMenuPopup className="z-50">
+					<NavigationMenuPopup>
 						<NavigationMenuViewport />
 					</NavigationMenuPopup>
 				</NavigationMenuPositioner>
 			</NavigationMenuBase.Portal>
 		</NavigationMenuBase.Root>
-	)
+	);
 }
 
 function NavigationMenuList({
@@ -52,7 +51,7 @@ function NavigationMenuList({
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function NavigationMenuItem({
@@ -65,7 +64,7 @@ function NavigationMenuItem({
 			className={cn("relative", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function NavigationMenuTrigger({
@@ -90,7 +89,7 @@ function NavigationMenuTrigger({
 				<CaretDownIcon aria-hidden="true" />
 			</NavigationMenuIcon>
 		</NavigationMenuBase.Trigger>
-	)
+	);
 }
 
 function NavigationMenuIcon({
@@ -106,7 +105,7 @@ function NavigationMenuIcon({
 		>
 			{children}
 		</NavigationMenuBase.Icon>
-	)
+	);
 }
 
 function NavigationMenuContent({
@@ -127,7 +126,7 @@ function NavigationMenuContent({
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function NavigationMenuLink({
@@ -140,7 +139,7 @@ function NavigationMenuLink({
 			className={cn(className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function NavigationMenuPositioner({
@@ -158,7 +157,7 @@ function NavigationMenuPositioner({
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function NavigationMenuPopup({
@@ -177,7 +176,7 @@ function NavigationMenuPopup({
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function NavigationMenuViewport({
@@ -190,7 +189,7 @@ function NavigationMenuViewport({
 			className={cn("relative size-full overflow-hidden")}
 			{...props}
 		/>
-	)
+	);
 }
 
 export {
@@ -204,4 +203,4 @@ export {
 	NavigationMenuPositioner,
 	NavigationMenuPopup,
 	NavigationMenuViewport,
-}
+};

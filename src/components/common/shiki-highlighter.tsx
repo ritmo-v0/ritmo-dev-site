@@ -1,5 +1,4 @@
 "use client";
-import * as React from "react";
 import { useShiki } from "@/hooks/use-shiki";
 import { useCopy } from "@/hooks/use-copy";
 import { cn } from "@/lib/utils";

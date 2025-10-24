@@ -1,7 +1,9 @@
 "use client";
-import * as React from "react";
 import { parse } from "@twemoji/parser";
 import { cn } from "@/lib/utils";
+
+// Components & UI
+import { Fragment } from "react";
 
 // Types & Interfaces
 import type { ParsingOptions } from "@twemoji/parser";
@@ -25,9 +27,9 @@ function parseChildren(
 	if (typeof children === "string") return parseString(children, options);
 	if (Array.isArray(children)) {
 		return children.map((child, index) => (
-			<React.Fragment key={index}>
+			<Fragment key={index}>
 				{parseChildren(child, options)}
-			</React.Fragment>
+			</Fragment>
 		))
 	}
 
