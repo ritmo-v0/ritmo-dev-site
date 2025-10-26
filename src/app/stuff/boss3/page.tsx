@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Muted, Wrapper } from "@/components/common/typography";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
-// Images & Icons
+// Icons & Images
 import { RefreshCw } from "lucide-react";
 
 // Constants & Variables

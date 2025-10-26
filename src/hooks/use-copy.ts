@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { ensureError } from "@/lib/fetch/response";
 
 // Components & UI
@@ -11,7 +11,7 @@ export function useCopy(duration: number = 3000) {
 	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 	const [copied, setCopied] = useState(false);
 
-	async function copy(text: string) {
+	const copy = useCallback(async (text: string) => {
 		try {
 			await navigator.clipboard.writeText(text);
 
@@ -29,7 +29,7 @@ export function useCopy(duration: number = 3000) {
 				{ description: "Failed to copy text to clipboard." }
 			);
 		}
-	}
+	}, [duration]);
 
 	return { copied, copy };
 }

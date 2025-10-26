@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Muted } from "@/components/common/typography";
 
-// Images & Icons
+// Icons & Images
 import {
 	CircleArrowOutUpLeft,
 	CornerDownLeft,

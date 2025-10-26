@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Muted, Wrapper } from "@/components/common/typography";
 
-// Images & Icons
+// Icons & Images
 import { RefreshCw } from "lucide-react";
 
 // Constants & Variables

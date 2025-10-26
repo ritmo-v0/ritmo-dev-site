@@ -3,7 +3,7 @@ import { Link } from "@/components/common/typography";
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { ThemeSelect } from "@/components/common/theme-select";
 
-// Images & Icons
+// Icons & Images
 import { GithubLogoIcon } from "@phosphor-icons/react/ssr";
 
 

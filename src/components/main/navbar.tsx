@@ -13,7 +13,7 @@ import {
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 
-// Images & Icons
+// Icons & Images
 import { ArchiveIcon, CubeIcon, NotebookIcon } from "@phosphor-icons/react/ssr";
 import { RitmoIcon } from "@/components/common/icons";
 
@@ -60,15 +60,15 @@ export default function Navbar() {
 					"bg-background/40 border rounded-full backdrop-blur-sm",
 				)}
 			>
+				<ButtonLink
+					href="/"
+					variant="ghost"
+					className="max-xs:size-9 rounded-full"
+				>
+					<RitmoIcon />
+					<span className="max-xs:hidden">Ritmo.</span>
+				</ButtonLink>
 				<NavigationMenuList className="gap-0">
-					<ButtonLink
-						href="/"
-						variant="ghost"
-						className="max-xs:size-9 rounded-full"
-					>
-						<RitmoIcon />
-						<span className="max-xs:hidden">Ritmo.</span>
-					</ButtonLink>
 					{NAV_ITEMS.map(item => "items" in item
 						? <NavMenuItem key={item.title} {...item} />
 						: <NavLinkItem key={item.title} {...item} />
@@ -118,7 +118,7 @@ function NavMenuItem({ icon, title, items }: MenuItem) {
 									<Link
 										href={item.href}
 										variant="ghost"
-										className="grid gap-1 p-2 rounded-sm"
+										className="grid gap-1"
 									>
 										<h3 className="font-heading font-semibold">
 											{item.title}

@@ -16,8 +16,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
 			disableTransitionOnChange
 		>
 			<ShadcnProvider>
-				{children}
-				<Toaster />
+				<div className="grid grid-rows-[1fr_auto] min-h-svh isolate">
+					{children}
+					<Toaster />
+				</div>
 			</ShadcnProvider>
 		</ThemeProvider>
 	);

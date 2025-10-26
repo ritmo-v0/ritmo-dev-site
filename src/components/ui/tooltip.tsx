@@ -34,21 +34,16 @@ function TooltipTrigger({
 }
 
 const tooltipContentVariants = cva(
-	"w-fit rounded-md shadow-xs transition-all data-[instant]:transition-none origin-(--transform-origin) data-[starting-style]:scale-90 data-[starting-style]:opacity-0 data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
+	"w-fit px-3 py-1.5 text-sm rounded-md shadow-md transition-all data-[instant]:transition-none origin-(--transform-origin) data-[starting-style]:scale-90 data-[starting-style]:opacity-0 data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
 	{
 		variants: {
 			variant: {
-				default: "bg-primary text-primary-foreground",
-				outline: "bg-card text-card-foreground border",
-			},
-			size: {
-				default: "px-3 py-1.5 text-sm text-balance",
-				lg: "p-4",
+				default: "bg-foreground text-background",
+				outline: "bg-popover text-popover-foreground border",
 			},
 		},
 		defaultVariants: {
 			variant: "default",
-			size: "default",
 		},
 	}
 );
@@ -57,7 +52,6 @@ function TooltipContent({
 	className,
 	children,
 	variant,
-	size,
 	sideOffset = 8,
 	collisionPadding = 16,
 	...props
@@ -72,7 +66,7 @@ function TooltipContent({
 			>
 				<TooltipPrimitive.Popup
 					data-slot="tooltip-popup"
-					className={cn(tooltipContentVariants({ variant, size, className }))}
+					className={cn(tooltipContentVariants({ variant, className }))}
 				>
 					{children}
 				</TooltipPrimitive.Popup>

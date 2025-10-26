@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 // Components & UI
 import { NavigationMenu as NavigationMenuBase } from "@base-ui-components/react/navigation-menu";
@@ -61,7 +61,7 @@ function NavigationMenuItem({
 	return (
 		<NavigationMenuBase.Item
 			data-slot="navigation-menu-item"
-			className={cn("relative", className)}
+			className={cn(className)}
 			{...props}
 		/>
 	);
@@ -117,6 +117,7 @@ function NavigationMenuContent({
 			data-slot="navigation-menu-content"
 			className={cn(
 				"h-full p-2 transition duration-300 ease-out",
+				"[&_[data-slot=navigation-menu-link]]:px-3 [&_[data-slot=navigation-menu-link]]:py-2 [&_[data-slot=navigation-menu-link]]:rounded-xs",
 				"data-[starting-style]:opacity-0 data-[ending-style]:opacity-0",
 				"data-[starting-style]:data-[activation-direction=left]:translate-x-[-50%]",
 				"data-[starting-style]:data-[activation-direction=right]:translate-x-[50%]",
@@ -168,10 +169,9 @@ function NavigationMenuPopup({
 		<NavigationMenuBase.Popup
 			data-slot="navigation-menu-popup"
 			className={cn(
-				"relative w-(--popup-width) h-(--popup-height) bg-popover text-popover-foreground border rounded-lg shadow",
-				"transition-all origin-top duration-300 ease-in-out",
+				"relative w-(--popup-width) h-(--popup-height) bg-popover text-popover-foreground border rounded-lg shadow-md",
+				"transition-all data-[instant]:transition-none origin-top duration-300 ease-in-out",
 				"data-[starting-style]:scale-90 data-[starting-style]:opacity-0 data-[ending-style]:ease-out data-[ending-style]:duration-150 data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
-				// "transition-[opacity,transform,width,height,scale,translate]",
 				className
 			)}
 			{...props}

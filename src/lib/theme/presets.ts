@@ -58,7 +58,7 @@ export const PRESETS = {
 			"sidebar-border": "oklch(0.92 0.004 286.32)",
 			"sidebar-ring": "oklch(0.705 0.015 286.067)",
 
-			radius: "0.625rem",
+			radius: "0.75rem",
 			"font-sans": DEFAULT_FONT_SANS,
 			"font-serif": DEFAULT_FONT_SERIF,
 			"font-mono": DEFAULT_FONT_MONO,

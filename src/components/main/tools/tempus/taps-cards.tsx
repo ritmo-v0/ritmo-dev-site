@@ -6,17 +6,18 @@ import { cn } from "@/lib/utils";
 
 // Components & UI
 import { BpmButton } from "./bpm-button";
+import { Button } from "@/components/ui/button";
 import { Muted } from "@/components/common/typography";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
-// Images & Icons
+// Icons & Images
 import { Info } from "lucide-react";
 
 // Types & Interfaces
 interface TapsCardProps {
 	title: string;
-	tooltip: string;
+	infotip: string;
 }
 
 interface TapsCardContentProps {
@@ -32,7 +33,7 @@ export function AllTapsCard({ className }: React.ComponentProps<typeof Card>) {
 		<TapsCard
 			className={className}
 			title="All Taps"
-			tooltip="BPM is calculated from all taps"
+			infotip="BPM is calculated from all taps"
 		>
 			<AllTapsCardContent />
 		</TapsCard>
@@ -68,7 +69,7 @@ export function RecentTapsCard({ className }: React.ComponentProps<typeof Card>)
 		<TapsCard
 			className={className}
 			title="Recent Taps"
-			tooltip={`BPM is calculated from the last ${recentTapCount} taps`}
+			infotip={`BPM is calculated from the last ${recentTapCount} taps`}
 		>
 			<RecentTapsCardContent />
 		</TapsCard>
@@ -102,21 +103,24 @@ function TapsCard({
 	children,
 	className,
 	title,
-	tooltip,
+	infotip,
 }: React.ComponentProps<typeof Card> & TapsCardProps) {
 	return (
 		<Card className={cn("gap-4", className)}>
 			<CardHeader>
 				<CardTitle className="flex items-center gap-x-1">
 					{title}
-					<Tooltip>
-						<TooltipTrigger className="p-1">
-							<Info className="size-4 text-primary" />
-						</TooltipTrigger>
-						<TooltipContent>
-							{tooltip}
-						</TooltipContent>
-					</Tooltip>
+					<Popover openOnHover>
+						<PopoverTrigger render={
+							<Button variant="ghost" size="icon-sm">
+								<Info />
+							</Button>
+						}>
+						</PopoverTrigger>
+						<PopoverContent side="top">
+							{infotip}
+						</PopoverContent>
+					</Popover>
 				</CardTitle>
 			</CardHeader>
 			{children}

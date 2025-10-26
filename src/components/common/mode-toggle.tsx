@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 // Components & UI
 import { Button } from "@/components/ui/button";
 
-// Images & Icons
+// Icons & Images
 import { DesktopIcon, MoonStarsIcon, SunIcon } from "@phosphor-icons/react";
 
 // Constants & Variables

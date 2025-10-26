@@ -4,11 +4,10 @@ import { useTempusStore } from "@/lib/store/tempus";
 import { match } from "ts-pattern";
 
 // Components & UI
+import { TapArea } from "@/components/main/tools/tempus/tap-area";
 import { ControlsCard } from "@/components/main/tools/tempus/controls-card";
 import { MetronomeCard } from "@/components/main/tools/tempus/metronome-card";
-import { TapArea } from "@/components/main/tools/tempus/tap-area";
 import { AllTapsCard, RecentTapsCard } from "@/components/main/tools/tempus/taps-cards";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { Wrapper } from "@/components/common/typography";
 
 
@@ -31,16 +30,14 @@ export default function TempusPage() {
 	}, [addTap, reset]);
 
 	return (
-		<Wrapper className="grid gap-4 h-min mb-4">
+		<Wrapper className="grid gap-4">
 			<TapArea className="max-md:order-1" />
-			<TooltipProvider>
-				<div className="grid grid-cols-2 gap-4">
-					<AllTapsCard className="max-md:order-1" />
-					<RecentTapsCard className="max-md:order-1" />
-					<ControlsCard className="col-span-2 md:col-span-1" />
-					<MetronomeCard className="hidden md:flex" />
-				</div>
-			</TooltipProvider>
+			<div className="grid grid-cols-2 gap-4">
+				<AllTapsCard className="max-md:order-1" />
+				<RecentTapsCard className="max-md:order-1" />
+				<ControlsCard className="col-span-2 md:col-span-1" />
+				<MetronomeCard className="hidden md:flex" />
+			</div>
 		</Wrapper>
 	);
 }

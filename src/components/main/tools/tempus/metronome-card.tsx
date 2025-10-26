@@ -7,7 +7,7 @@ import NumberFlow from "@number-flow/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 
-// Images & Icons
+// Icons & Images
 import { Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
