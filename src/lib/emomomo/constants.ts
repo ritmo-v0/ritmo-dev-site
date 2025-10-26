@@ -1,16 +1,15 @@
-// Types & Interfaces
-import type { SkinToneName } from "@/types/emoji";
-
-
-
+// # Redis
 export const EMOJI_DATA_REDIS_KEY = "emomomo";
 
+// # Prefix
 export const VERSION_PREFIX = "# Version:";
 export const GROUP_PREFIX = "# group:";
 export const SUBGROUP_PREFIX = "# subgroup:";
 
+// # Category
 export const PEOPLE_AND_BODY = "People & Body";
 
+// # Info & Variant
 export const EmojiStatus = Object.freeze({
 	Component: "component",                     // An Emoji_Component, excluding Regional_Indicators, ASCII, and non-Emoji.
 	FullyQualified: "fully-qualified",          // A fully-qualified emoji (see ED-18 in UTS #51), excluding Emoji_Component
@@ -19,19 +18,11 @@ export const EmojiStatus = Object.freeze({
 } as const);
 
 export const DEFAULT_SKIN_TONE = "default skin tone";
-export const EmojiSkinTone = Object.freeze({
-	Default: DEFAULT_SKIN_TONE,
-	Light: "light skin tone",
-	MediumLight: "medium-light skin tone",
-	Medium: "medium skin tone",
-	MediumDark: "medium-dark skin tone",
-	Dark: "dark skin tone",
-} as const);
-export const EmojiSkinToneOrder: readonly SkinToneName[] = [
-	EmojiSkinTone.Default,
-	EmojiSkinTone.Light,
-	EmojiSkinTone.MediumLight,
-	EmojiSkinTone.Medium,
-	EmojiSkinTone.MediumDark,
-	EmojiSkinTone.Dark,
+export const EMOJI_SKIN_TONES = [
+	DEFAULT_SKIN_TONE,
+	"light skin tone",
+	"medium-light skin tone",
+	"medium skin tone",
+	"medium-dark skin tone",
+	"dark skin tone",
 ] as const;

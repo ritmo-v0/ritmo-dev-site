@@ -1,19 +1,24 @@
-"use client"
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-import * as React from "react"
-import { Toggle as TogglePrimitive } from "radix-ui"
-import { cva, type VariantProps } from "class-variance-authority"
+// Components & UI
+import { Toggle as TogglePrimitive } from "radix-ui";
 
-import { cn } from "@/lib/utils"
+
 
 const toggleVariants = cva(
-	"inline-flex cursor-pointer items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,box-shadow] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap",
+	[
+		"not-disabled:cursor-pointer select-none inline-flex shrink-0 items-center justify-center gap-2 font-medium text-sm rounded-md outline-none transition-[color,box-shadow] whitespace-nowrap",
+		"[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
+		"hover:bg-muted hover:text-muted-foreground data-[state=on]:bg-accent data-[state=on]:text-accent-foreground disabled:pointer-events-none disabled:opacity-50",
+		"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+		"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+	],
 	{
 		variants: {
 			variant: {
 				default: "bg-transparent",
-				outline:
-					"border border-input bg-transparent shadow-xs hover:bg-accent hover:text-accent-foreground",
+				outline: "bg-transparent border border-input shadow-xs hover:bg-accent hover:text-accent-foreground",
 			},
 			size: {
 				default: "h-9 px-2 min-w-9",
@@ -26,7 +31,7 @@ const toggleVariants = cva(
 			size: "default",
 		},
 	}
-)
+);
 
 function Toggle({
 	className,
@@ -41,7 +46,7 @@ function Toggle({
 			className={cn(toggleVariants({ variant, size, className }))}
 			{...props}
 		/>
-	)
+	);
 }
 
-export { Toggle, toggleVariants }
+export { Toggle, toggleVariants };

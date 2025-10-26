@@ -1,5 +1,5 @@
 import { RedisRW } from "@/lib/db/redis";
-import { parseEmojis } from "@/lib/emomomo/utils";
+import { parseEmojis } from "@/lib/emomomo/parse";
 import { UnauthorizedError, ensureError } from "@/lib/fetch/response";
 
 // Constants & Variables
@@ -17,7 +17,7 @@ export async function GET(req: Request): Promise<Response> {
 		}
 
 		const emojiTestData = await fetch(EMOJI_TEST_DATA_URL).then(res => res.text());
-		const emojiData = parseEmojis(emojiTestData, { compressed: true });
+		const emojiData = parseEmojis(emojiTestData);
 
 		await RedisRW.set(EMOJI_DATA_REDIS_KEY, emojiData);
 

@@ -1,15 +1,15 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { getSkinToneKey } from "@/lib/emomomo/utils";
 
 // Types & Interfaces
+import type { SkinToneKey } from "@/lib/emomomo/types";
 interface EmomomoState {
 	// States
 	textareaRef: HTMLTextAreaElement | null;
 	preview: string;
-	useCOC: boolean;
 	useSubgroup: boolean;
-	skinTone: string;
+	useCOC: boolean;
+	skinTone: SkinToneKey | "0";
 
 	// Actions
 	addEmoji: (emoji: string) => void;
@@ -17,13 +17,10 @@ interface EmomomoState {
 	clearPreview: () => void;
 
 	setTextareaRef: (textareaRef: HTMLTextAreaElement | null) => void;
-	setUseCOC: (useCOC: boolean) => void;
 	setUseSubgroup: (useSubgroup: boolean) => void;
-	setSkinTone: (skinTone: string) => void;
+	setUseCOC: (useCOC: boolean) => void;
+	setSkinTone: (skinTone: SkinToneKey | "0") => void;
 }
-
-// Constants & Variables
-import { DEFAULT_SKIN_TONE } from "@/lib/emomomo/constants";
 
 
 
@@ -33,9 +30,9 @@ export const useEmomomoStore = create<EmomomoState>()(
 			// Initial states
 			textareaRef: null,
 			preview: "",
-			useCOC: true,
 			useSubgroup: false,
-			skinTone: getSkinToneKey(DEFAULT_SKIN_TONE),
+			useCOC: true,
+			skinTone: "0",
 
 			// Actions
 			addEmoji: (emoji) => {
@@ -64,16 +61,16 @@ export const useEmomomoStore = create<EmomomoState>()(
 			clearPreview: () => set({ preview: "" }),
 
 			setTextareaRef: (textareaRef) => set({ textareaRef }),
-			setUseCOC: (useCOC) => set({ useCOC }),
 			setUseSubgroup: (useSubgroup) => set({ useSubgroup }),
+			setUseCOC: (useCOC) => set({ useCOC }),
 			setSkinTone: (skinTone) => set({ skinTone }),
 		}), {
-			name: "emomomo-store",
-			partialize: (state) => ({
-				useCOC: state.useCOC,
-				useSubgroup: state.useSubgroup,
-				skinTone: state.skinTone,
-			}),
-		}
+		name: "emomomo-store",
+		partialize: (state) => ({
+			useCOC: state.useCOC,
+			useSubgroup: state.useSubgroup,
+			skinTone: state.skinTone,
+		}),
+	}
 	)
 );
