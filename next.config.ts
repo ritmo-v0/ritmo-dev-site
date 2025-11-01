@@ -47,6 +47,11 @@ export default {
 				permanent: true,
 			},
 			{
+				source: "/tools/inm-clock",
+				destination: "/stuff/inm-clock",
+				permanent: true,
+			},
+			{
 				source: "/stuff/7sref4",
 				destination: "/stuff/7sref",
 				permanent: true,
