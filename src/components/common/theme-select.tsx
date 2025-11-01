@@ -22,7 +22,7 @@ export function ThemeSelect({ className }: React.ComponentProps<typeof SelectTri
 
 	return (
 		<Select value={preset} onValueChange={setPreset}>
-			<SelectTrigger className={cn("w-34 !h-8", className)}>
+			<SelectTrigger size="sm" className={cn("w-34", className)}>
 				<SelectValue placeholder="Select a theme..." />
 			</SelectTrigger>
 			<SelectContent>

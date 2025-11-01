@@ -315,7 +315,8 @@ function Link<R extends string>({
 	href,
 	...props
 }: LinkProps<R> & VariantProps<typeof linkVariants>) {
-	const isExternal = !(/^\/(?!\/)/.test(href.toString()));
+	const s = href.toString();
+	const isExternal = !(s.startsWith("/") || s.startsWith("#"));
 
 	return (
 		<NextLink

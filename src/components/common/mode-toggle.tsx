@@ -10,9 +10,9 @@ import { DesktopIcon, MoonStarsIcon, SunIcon } from "@phosphor-icons/react";
 
 // Constants & Variables
 const BUTTONS = [
-	{ theme: "light", title: "Toggle light mode", icon: SunIcon, },
-	{ theme: "system", title: "Toggle system theme", icon: DesktopIcon },
-	{ theme: "dark", title: "Toggle dark mode", icon: MoonStarsIcon },
+	{ theme: "light", icon: SunIcon, },
+	{ theme: "system", icon: DesktopIcon },
+	{ theme: "dark", icon: MoonStarsIcon },
 ] as const;
 
 
@@ -28,9 +28,10 @@ export function ModeToggle() {
 			{BUTTONS.map(button => (
 				<Button
 					key={button.theme}
-					title={button.title}
+					title={`Toggle ${button.theme} mode`}
 					variant="ghost"
-					className="size-8 rounded-full not-first:-ml-1"
+					size="icon-sm"
+					className="rounded-full not-first:-ml-1"
 					onClick={() => setTheme(button.theme)}
 				>
 					<button.icon
