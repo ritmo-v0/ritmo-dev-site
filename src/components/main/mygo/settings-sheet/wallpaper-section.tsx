@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { H3, Section } from "@/components/common/typography";
 
 // Icons & Images
 import { Check } from "lucide-react";
@@ -21,8 +20,10 @@ export function WallpaperSection() {
 	const { blur, opacity, setBlur, setOpacity } = useMyGOStore();
 
 	return (
-		<Section>
-			<H3>Wallpaper</H3>
+		<section>
+			<h3 className="font-heading font-semibold">
+				Wallpaper
+			</h3>
 			<div className="mt-4 grid gap-6">
 				<ImageUrlInput />
 				<div className="space-y-1">
@@ -60,7 +61,7 @@ export function WallpaperSection() {
 					</div>
 				</div>
 			</div>
-		</Section>
+		</section>
 	);
 }
 
@@ -84,8 +85,10 @@ function ImageUrlInput() {
 
 			new URL(url);
 			setImage(url);
+			inputRef.current?.setAttribute("aria-invalid", "false");
 		} catch (err) {
 			const error = ensureError(err);
+			inputRef.current?.setAttribute("aria-invalid", "true");
 			console.warn("ERR::MYGO::IMAGE:", error.message);
 			toast.error("Invalid image URL. Please check the URL and try again.");
 		}

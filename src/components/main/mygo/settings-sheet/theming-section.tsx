@@ -1,16 +1,16 @@
+// Components & UI
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { ThemeSelect } from "@/components/common/theme-select";
-
-// Components & UI
 import { Label } from "@/components/ui/label";
-import { H3, Section } from "@/components/common/typography";
 
 
 
 export function ThemingSection() {
 	return (
-		<Section>
-			<H3>Theming</H3>
+		<section>
+			<h3 className="font-heading font-semibold">
+				Theming
+			</h3>
 			<div className="mt-4 grid gap-2">
 				<div className="flex items-center justify-between gap-2">
 					<Label>Theme</Label>
@@ -21,6 +21,6 @@ export function ThemingSection() {
 					<ModeToggle />
 				</div>
 			</div>
-		</Section>
+		</section>
 	);
 }

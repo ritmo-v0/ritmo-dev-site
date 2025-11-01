@@ -2,8 +2,8 @@ import { cn } from "@/lib/utils";
 
 // Components & UI
 import { ThemingSection } from "./theming-section";
-import { BookmarksSection } from "./bookmarks-section";
 import { WallpaperSection } from "./wallpaper-section";
+import { BookmarksSection } from "./bookmarks-section";
 import { Button } from "@/components/ui/button";
 import {
 	Sheet,
@@ -33,12 +33,12 @@ export function SettingsSheet({ className }: React.ComponentProps<typeof Button>
 					<Settings2 />
 				</Button>
 			</SheetTrigger>
-			<SheetContent className="w-4/5 gap-0">
+			<SheetContent className="w-4/5">
 				<SheetHeader>
 					<SheetTitle>Settings</SheetTitle>
 					<SheetDescription>Customize your own experience.</SheetDescription>
 				</SheetHeader>
-				<div className="grid px-4">
+				<div className="grid gap-6 px-4">
 					<ThemingSection />
 					<WallpaperSection />
 					<BookmarksSection />

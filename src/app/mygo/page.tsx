@@ -40,15 +40,15 @@ export default function MyGOPage() {
 		<>
 			<div />
 			<div className={cn(
-				"fixed inset-0 bg-background z-10",
+				"fixed inset-0 bg-background z-1",
 				"[&_img]:select-none [&_img]:touch-none [&_img]:pointer-events-none",
 			)}>
 				<MyGOWallpaper />
-				<SettingsSheet className="absolute top-8 right-8" />
-				<Wrapper className="relative size-full content-center lg:px-16 py-16">
+				<SettingsSheet className="absolute top-3.75 right-3.75 sm:top-8 sm:right-8" />
+				<Wrapper className="relative size-full content-center lg:px-16 py-16 pointer-events-none">
 					<motion.ul
 						className={cn(
-							"grid justify-items-center",
+							"grid justify-items-center pointer-events-auto",
 							"grid-cols-3 @2xl:grid-cols-4 @6xl:grid-cols-5",
 							"gap-2 @4xl:gap-8 @6xl:gap-y-12",
 						)}
@@ -119,6 +119,7 @@ function Bookmark({ bookmark }: { bookmark: Bookmark }) {
 						"rounded-3xl @md:rounded-4xl",
 					)}
 					width={128} height={128}
+					priority
 				/>
 				<span className="font-medium text-sm @xl:text-base @6xl:text-lg text-center truncate">
 					{bookmark.title}
