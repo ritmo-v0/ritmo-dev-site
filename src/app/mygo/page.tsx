@@ -37,35 +37,32 @@ const BOOKMARKS: Bookmark[] = [
 
 export default function MyGOPage() {
 	return (
-		<>
-			<div />
-			<div className={cn(
-				"fixed inset-0 bg-background z-1",
-				"[&_img]:select-none [&_img]:touch-none [&_img]:pointer-events-none",
-			)}>
-				<MyGOWallpaper />
-				<SettingsSheet className="absolute top-3.75 right-3.75 sm:top-8 sm:right-8" />
+		<div className={cn(
+			"fixed inset-0 bg-background z-1",
+			"[&_img]:select-none [&_img]:touch-none [&_img]:pointer-events-none",
+		)}>
+			<MyGOWallpaper />
+			<SettingsSheet className="absolute top-3.75 right-3.75 sm:top-8 sm:right-8" />
 			<Wrapper boxSizing="border" className="relative size-full content-center lg:px-16 py-16 pointer-events-none">
-					<motion.ul
-						className={cn(
-							"grid justify-items-center pointer-events-auto",
-							"grid-cols-3 @2xl:grid-cols-4 @6xl:grid-cols-5",
-							"gap-2 @4xl:gap-8 @6xl:gap-y-12",
-						)}
-						variants={CONTAINER_VARIANTS}
-						initial="hidden"
-						animate="visible"
-					>
-						{BOOKMARKS.map(bookmark => (
-							<Bookmark
-								key={bookmark.id}
-								bookmark={bookmark}
-							/>
-						))}
-					</motion.ul>
-				</Wrapper>
-			</div>
-		</>
+				<motion.ul
+					className={cn(
+						"grid justify-items-center pointer-events-auto",
+						"grid-cols-3 @2xl:grid-cols-4 @6xl:grid-cols-5",
+						"gap-2 @4xl:gap-8 @6xl:gap-y-12",
+					)}
+					variants={CONTAINER_VARIANTS}
+					initial="hidden"
+					animate="visible"
+				>
+					{BOOKMARKS.map(bookmark => (
+						<Bookmark
+							key={bookmark.id}
+							bookmark={bookmark}
+						/>
+					))}
+				</motion.ul>
+			</Wrapper>
+		</div>
 	);
 }
 

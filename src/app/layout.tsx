@@ -114,9 +114,11 @@ export default function RootLayout({
 			</head> */}
 			<body>
 				<Providers>
-					<Navbar />
-					{children}
-					<Footer />
+					<div className="grid grid-rows-[1fr_auto] min-h-svh isolate">
+						<Navbar />
+						<div>{children}</div>
+						<Footer />
+					</div>
 				</Providers>
 				<SpeedInsights />
 			</body>
