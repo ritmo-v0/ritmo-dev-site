@@ -45,7 +45,7 @@ export default function MyGOPage() {
 			)}>
 				<MyGOWallpaper />
 				<SettingsSheet className="absolute top-3.75 right-3.75 sm:top-8 sm:right-8" />
-				<Wrapper className="relative size-full content-center lg:px-16 py-16 pointer-events-none">
+			<Wrapper boxSizing="border" className="relative size-full content-center lg:px-16 py-16 pointer-events-none">
 					<motion.ul
 						className={cn(
 							"grid justify-items-center pointer-events-auto",

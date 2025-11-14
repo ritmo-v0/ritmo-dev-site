@@ -53,8 +53,8 @@ export default function Boss3Page() {
 	}, []);
 
 	return (
-		<div className="relative overflow-clip isolate">
-			<Wrapper className="grid justify-items-center items-end gap-8 py-16 h-full">
+		<div className="relative h-full overflow-clip isolate">
+			<Wrapper boxSizing="border" className="grid justify-items-center items-end gap-8 py-16 h-full">
 				<div className="grid justify-items-center gap-4">
 					<Title text="陳樂穎老大三號生日快樂" />
 					<Subtitle text="2025/08/07 謹製" />

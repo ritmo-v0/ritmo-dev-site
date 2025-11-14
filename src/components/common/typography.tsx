@@ -17,16 +17,23 @@ import type { AsChild } from "./types";
 
 function Wrapper({
 	className,
-	width = 1440,
+	width = 1400,
+	boxSizing = "content",
 	asChild = false,
 	...props
-}: React.ComponentProps<"div"> & AsChild & { width?: number }) {
+}: React.ComponentProps<"div">
+	& AsChild
+	& { boxSizing?: "border" | "content"; width?: number }) {
 	const Comp = asChild ? SlotPrimitive.Slot : "div";
 
 	return (
 		<Comp
-			style={{ maxInlineSize: `${width}px` }}
-			className={cn("@container w-full mx-auto px-4 md:px-8", className)}
+			style={{ "--max-width": `${width}px` } as React.CSSProperties}
+			className={cn(
+				"@container [max-inline-size:var(--max-width)] mx-auto px-4 md:px-8",
+				boxSizing === "content" && "box-content",
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -40,11 +47,11 @@ function Section({
 		<section
 			className={cn(
 				"py-6",
-				"has-[:first-child:is(h1)]:py-8",
-				"has-[:first-child:is(h2)]:py-6",
-				"has-[:first-child:is(h3)]:py-3",
-				"has-[:first-child:is(h4)]:py-2",
-				"has-[:first-child:is(h5,h6)]:py-1",
+				"has-[>:first-child:is(h1)]:py-8",
+				"has-[>:first-child:is(h2)]:py-6",
+				"has-[>:first-child:is(h3)]:py-3",
+				"has-[>:first-child:is(h4)]:py-2",
+				"has-[>:first-child:is(h5,h6)]:py-1",
 				className,
 			)}
 			{...props}

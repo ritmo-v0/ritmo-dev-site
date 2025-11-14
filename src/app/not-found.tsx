@@ -19,7 +19,7 @@ type BeatDiceProps = {
 
 export default function NotFound() {
 	return (
-		<Wrapper className="justify-items-center content-center space-y-8">
+		<Wrapper boxSizing="border" className="py-16 justify-items-center content-center space-y-8 h-full">
 			<div className="text-2xl">
 				<Markdown>
 					{`\\[ \\not\\exists p \\in P \\;:\\; p = p_{\\text{requested}} \\]`}
