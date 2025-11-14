@@ -24,6 +24,7 @@ export async function generateMetadata({
 				title: generatePageTitle({ title }),
 				description,
 				url: `/articles/${articleId}`,
+				locale: "zh_TW",
 				image: articleMetadata.image
 			}),
 		};
@@ -34,8 +35,8 @@ export async function generateMetadata({
 
 // Route Segment Config
 export const dynamic = "force-static";
-export const revalidate = 900;  // 15 min (60 * 15)
-export const dynamicParams = false;
+export const revalidate = 900;       // 15 min
+export const dynamicParams = false;  // 404
 export async function generateStaticParams() {
 	const articles = await getArticles();
 	return articles.map(article => ({ articleId: article.shortId }));

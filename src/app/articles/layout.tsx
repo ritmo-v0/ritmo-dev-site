@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 		title: generatePageTitle({ title }),
 		description,
 		url,
+		locale: "zh_TW",
 	}),
 	robots: {
 		index: true,

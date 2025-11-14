@@ -14,6 +14,7 @@ type PreviewMetadataProps = {
 	title: string;
 	description?: string;
 	url: string;
+	locale?: string;
 	image?: string;
 };
 
@@ -43,6 +44,7 @@ export function generatePreviewMetadata({
 	title,
 	description = "",
 	url,
+	locale = "en_US",
 	image,
 }: PreviewMetadataProps): Partial<Metadata> {
 	return {
@@ -53,7 +55,7 @@ export function generatePreviewMetadata({
 			url,
 			images: image,
 			siteName: PAGE_TITLE_SUFFIX,
-			locale: "en_US",
+			locale,
 		},
 		twitter: {
 			card: "summary_large_image",
