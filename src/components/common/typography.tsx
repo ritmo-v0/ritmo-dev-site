@@ -59,12 +59,6 @@ function Section({
 	);
 }
 
-function extractId(children: React.ReactNode): string | undefined {
-	return typeof children === "string"
-		? children.toString().trim().toLowerCase().replace(/\s+/g, "-")
-		: undefined;
-}
-
 function H1({
 	className,
 	children,
@@ -75,8 +69,7 @@ function H1({
 
 	return (
 		<Comp
-			id={extractId(children)}
-			className={cn("mt-12 scroll-m-20 font-heading text-3xl font-bold !leading-tight tracking-tight first:mt-0", className)}
+			className={cn("mt-12 scroll-m-20 font-heading text-3xl font-bold leading-tight tracking-tight first:mt-0", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -94,8 +87,7 @@ function H2({
 
 	return (
 		<Comp
-			id={extractId(children)}
-			className={cn("mt-12 scroll-m-20 font-heading text-2xl font-semibold leading-tight tracking-tight first:mt-0 [&+p]:!mt-4", className)}
+			className={cn("mt-12 scroll-m-20 font-heading text-2xl font-semibold leading-tight tracking-tight first:mt-0 [&+p]:mt-4!", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -113,8 +105,7 @@ function H3({
 
 	return (
 		<Comp
-			id={extractId(children)}
-			className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold leading-tight tracking-tight first:mt-0 [&+p]:!mt-4", className)}
+			className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold leading-tight tracking-tight first:mt-0 [&+p]:mt-4!", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -132,8 +123,7 @@ function H4({
 
 	return (
 		<Comp
-			id={extractId(children)}
-			className={cn("mt-8 scroll-m-20 font-heading text-lg font-semibold leading-tight tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			className={cn("mt-8 scroll-m-20 font-heading text-lg font-semibold leading-tight tracking-tight first:mt-0 [&+p]:mt-2!", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -151,8 +141,7 @@ function H5({
 
 	return (
 		<Comp
-			id={extractId(children)}
-			className={cn("mt-8 scroll-m-20 font-heading text-base font-medium leading-tight tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			className={cn("mt-8 scroll-m-20 font-heading text-base font-medium leading-tight tracking-tight first:mt-0 [&+p]:mt-2!", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -170,8 +159,7 @@ function H6({
 
 	return (
 		<Comp
-			id={extractId(children)}
-			className={cn("mt-8 scroll-m-20 font-heading font-medium leading-tight tracking-tight first:mt-0 [&+p]:!mt-2", className)}
+			className={cn("mt-8 scroll-m-20 font-heading font-medium leading-tight tracking-tight first:mt-0 [&+p]:mt-2!", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -186,7 +174,7 @@ function UL({
 }: React.ComponentProps<"ul"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "ul";
 
-	return <Comp className={cn("list-disc list-outside [&:not(:first-child)]:mt-2 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
+	return <Comp className={cn("list-disc list-outside not-first:mt-2 pl-6 marker:text-[color-mix(in_oklch,var(--primary),white_20%)]", className)} {...props} />;
 }
 
 function OL({
@@ -196,7 +184,7 @@ function OL({
 }: React.ComponentProps<"ol"> & AsChild) {
 	const Comp = asChild ? SlotPrimitive.Slot : "ol";
 
-	return <Comp className={cn("list-decimal list-outside [&:not(:first-child)]:mt-2 pl-6 marker:text-[color-mix(in_oklch,_var(--primary),_white_20%)]", className)} {...props} />;
+	return <Comp className={cn("list-decimal list-outside not-first:mt-2 pl-6 marker:text-[color-mix(in_oklch,var(--primary),white_20%)]", className)} {...props} />;
 }
 
 const LI = memo(function LI({
@@ -227,7 +215,7 @@ const P = memo(function P({
 
 	return (
 		<Comp
-			className={cn("leading-relaxed [&:not(:first-child)]:mt-8 wrap-break-word [&+p]:!mt-4", className)}
+			className={cn("leading-relaxed not-first:mt-8 wrap-break-word [&+p]:mt-4!", className)}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -291,7 +279,45 @@ const Blockquote = memo(function Blockquote({
 
 	return (
 		<Comp
-			className={cn("border-[color-mix(in_oklch,_var(--primary),_white_10%)] border-l-3 pl-6 font-serif font-medium italic not-first:mt-8", className)}
+			className={cn("border-[color-mix(in_oklch,var(--primary),white_10%)] border-l-3 pl-6 font-serif font-medium italic not-first:mt-8", className)}
+			{...props}
+		>
+			{asChild ? children : <Twemoji>{children}</Twemoji>}
+		</Comp>
+	);
+}, (prev, next) => prev.children === next.children);
+
+const asideVariants = cva(
+	"px-6 py-4 rounded-lg not-first:mt-8",
+	{
+		variants: {
+			variant: {
+				default: "bg-card border",
+				info: "bg-card border",
+				warning: "bg-amber-500/10 border-amber-500",
+				danger: "bg-destructive/10 border-destructive",
+				spoiler: "bg-card border transition-opacity opacity-10 hover:opacity-100",
+			},
+		},
+		defaultVariants: {
+			variant: "default",
+		},
+	}
+);
+
+const Aside = memo(function Aside({
+	className,
+	children,
+	variant,
+	asChild = false,
+	...props
+}: React.ComponentProps<"aside"> &
+	VariantProps<typeof asideVariants> & AsChild) {
+	const Comp = asChild ? SlotPrimitive.Slot : "aside";
+
+	return (
+		<Comp
+			className={cn(asideVariants({ variant, className }))}
 			{...props}
 		>
 			{asChild ? children : <Twemoji>{children}</Twemoji>}
@@ -300,13 +326,13 @@ const Blockquote = memo(function Blockquote({
 }, (prev, next) => prev.children === next.children);
 
 const linkVariants = cva(
-	"rounded-xs transition-all",
+	"rounded-xs transition-colors",
 	{
 		variants: {
 			variant: {
 				default: "font-medium text-primary underline-offset-4 underline hover:text-primary/60 outline-offset-4",
 				hover: "inline-flex items-center justify-center gap-2 w-max font-medium text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-offset-4",
-				ghost: "focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground",
+				ghost: "rounded-lg hover:bg-accent dark:hover:bg-accent/50 hover:text-accent-foreground focus-visible:bg-accent dark:focus-visible:bg-accent/50 focus-visible:text-accent-foreground data-[active]:bg-accent dark:data-[active]:bg-accent data-[active]:text-accent-foreground",
 				nothing: "",
 			},
 		},
@@ -363,6 +389,6 @@ export {
 	UL, OL, LI, P, HR,
 	Muted,
 	Code,
-	Blockquote,
+	Blockquote, Aside,
 	Link, ButtonLink,
 };

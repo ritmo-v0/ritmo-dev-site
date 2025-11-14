@@ -1,9 +1,31 @@
-"use client";
 import { isValidElement } from "react";
 import { cn } from "@/lib/utils";
 
+// Markdown
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import remarkBreaks from "remark-breaks";
+import remarkDirective from "remark-directive";
+import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+import rehypeKatex from "rehype-katex";
+import {
+	remarkTextDirective,
+	remarkLeafDirective,
+	remarkContainerDirective,
+} from "./plugins";
+
 // Components & UI
 import Image from "next/image";
+import { Pre } from "../shiki-highlighter";
+import {
+	H1, H2, H3, H4, H5, H6,
+	UL, OL, LI, P, HR,
+	Code,
+	Blockquote, Aside,
+	Link,
+} from "../typography";
 import {
 	Table,
 	TableBody,
@@ -12,22 +34,6 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import {
-	H1, H2, H3, H4, H5, H6,
-	UL, OL, LI, P, HR,
-	Code,
-	Blockquote,
-	Link,
-} from "./typography";
-import { Pre } from "./shiki-highlighter";
-
-// Markdown
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import remarkBreaks from "remark-breaks";
-import rehypeKatex from "rehype-katex";
-import rehypeRaw from "rehype-raw";
 
 // Types & Interfaces
 import type { Route } from "next";
@@ -40,8 +46,16 @@ export function Markdown({
 }: React.ComponentProps<typeof ReactMarkdown> & { renderH1?: boolean }) {
 	return (
 		<ReactMarkdown
-			remarkPlugins={[remarkMath, remarkBreaks, [remarkGfm, { singleTilde: false }]]}
-			rehypePlugins={[rehypeKatex, rehypeRaw]}
+			remarkPlugins={[
+				remarkMath,
+				remarkBreaks,
+				remarkDirective,
+				remarkTextDirective,
+				remarkLeafDirective,
+				remarkContainerDirective,
+				[remarkGfm, { singleTilde: false }]
+			]}
+			rehypePlugins={[rehypeRaw, rehypeSlug, rehypeKatex]}
 			components={{
 				h1: (props) => renderH1 ? <H1 {...props} /> : null,
 				h2: H2,
@@ -57,6 +71,7 @@ export function Markdown({
 				pre: MarkdownPre,
 				code: Code,
 				blockquote: Blockquote,
+				aside: Aside,
 				a: ({ children, href, ...props }) => (
 					href
 						? <Link href={href as Route} {...props}>{children}</Link>
@@ -77,6 +92,15 @@ export function Markdown({
 							{...props}
 						/>
 					)
+				),
+				iframe: ({ ...props }) => (
+					<iframe
+						{...props}
+						className="w-full aspect-video rounded-xl"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerPolicy="strict-origin-when-cross-origin"
+						allowFullScreen
+					/>
 				),
 				table: (props) => <Table className="mt-2" {...props} />,
 				thead: TableHeader,
