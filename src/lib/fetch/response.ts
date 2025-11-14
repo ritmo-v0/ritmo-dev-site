@@ -1,3 +1,4 @@
+import { HTTPError } from "ky";
 export const ErrorMessage = Object.freeze({
 	// 4xx
 	BadRequest: "Bad request",
@@ -123,6 +124,12 @@ export class NotImplementedError extends BaseError {
 // # Error Handler
 export function ensureError(value: unknown): BaseError {
 	if (value instanceof BaseError) return value;
+	if (value instanceof HTTPError) {
+		return new BaseError(value.message, {
+			status: value.response.status,
+			cause: value,
+		});
+	}
 	if (value instanceof Error) return new InternalServerError(value.message, { cause: value });
 
 	// Other Error

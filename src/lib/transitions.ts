@@ -1,5 +1,5 @@
 // Types & Interfaces
-import type { Transition, Variants } from "motion/react";
+import type { Transition, Variant, Variants } from "motion/react";
 
 // Constants & Variables
 export const TRANSITION_200_25: Transition = { type: "spring", stiffness: 200, damping: 25 };
@@ -13,5 +13,15 @@ export function getContainerVariants(
 	return {
 		hidden: {},
 		visible: { transition: { staggerChildren, delayChildren } },
+	};
+}
+
+export function getChildVariants(
+	hidden: Variant,
+	visible: Variant,
+): Variants {
+	return {
+		hidden: hidden,
+		visible: visible,
 	};
 }

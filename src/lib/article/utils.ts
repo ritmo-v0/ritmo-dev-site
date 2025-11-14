@@ -10,10 +10,11 @@ import type {
 	NoteOverview,
 	NoteTag,
 	OverviewResponse,
-} from "@/lib/article/types";
+} from "./types";
 
 // Constants & Variables
 const ARTICLES_API_URL = "https://hackmd.io/api/@Ritmo/overview";
+const ARTICLE_TAGS = ["Arcaea", "替代役"] as const;
 
 
 
@@ -25,7 +26,7 @@ const ARTICLES_API_URL = "https://hackmd.io/api/@Ritmo/overview";
 export async function getArticles(): Promise<NoteOverview[]> {
 	try {
 		const articles = await ky(ARTICLES_API_URL).json<OverviewResponse>();
-		return articles?.notes ?? [];
+		return articles?.notes.sort((a, b) => b.createdAt.localeCompare(a.createdAt)) ?? [];
 	} catch (err) {
 		const error = ensureError(err);
 		console.error(`ERR::ARTICLES: ${error.message}`);
@@ -92,6 +93,10 @@ export async function getArticleMetadata(articleId: string): Promise<ArticleMeta
 	}
 }
 
+export function getDownloadUrl(articleId: string) {
+	return `https://hackmd.io/${articleId}/download`;
+}
+
 export function getInfoUrl(articleId: string) {
 	return `https://hackmd.io/${articleId}/info`;
 }
@@ -104,6 +109,6 @@ export function getMetadataUrl(articleId: string) {
 	return `https://hackmd.io/api/_/noteMetadata/${articleId}`;
 }
 
-export function getDownloadUrl(articleId: string) {
-	return `https://hackmd.io/${articleId}/download`;
+export function isBadgeVariant(tag: string): tag is typeof ARTICLE_TAGS[number] {
+	return ARTICLE_TAGS.includes(tag as any);
 }
