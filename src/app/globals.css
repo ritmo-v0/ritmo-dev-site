@@ -144,6 +144,13 @@
 		@apply selection:bg-primary selection:text-primary-foreground;
 	}
 
+	@supports (corner-shape: squircle) {
+		[class*="rounded-"]:not(.rounded-full) {
+			--radius: 1.75rem;
+			corner-shape: squircle;
+		}
+	}
+
 	html {
 		@apply motion-safe:scroll-smooth scroll-pt-24;
 	}
