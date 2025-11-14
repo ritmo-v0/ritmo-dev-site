@@ -18,10 +18,27 @@ let highlighterPromise: Promise<HighlighterCore> | null = null;
 
 export async function getShikiHighlighter() {
 	if (!highlighterPromise) {
+		const t0 = performance.now();
 		highlighterPromise = createHighlighterCore({
-			themes: [OneLight, OneDarkPro],
-			langs: Object.values(bundledLanguages),
+			themes: [
+				OneLight,
+				OneDarkPro,
+			],
+			langs: [
+				bundledLanguages.html,
+				// bundledLanguages.css,
+				bundledLanguages.js,
+				bundledLanguages.ts,
+				// bundledLanguages.jsx,
+				bundledLanguages.tsx,
+				bundledLanguages.json,
+				bundledLanguages.jsonc,
+			],
 			engine: createOnigurumaEngine(import("shiki/wasm")),
+		}).then(highlighter => {
+			const t1 = performance.now();
+			console.info(`Shiki highlighter created in ${(t1 - t0).toFixed(2)} ms`);
+			return highlighter;
 		});
 	}
 
@@ -40,8 +57,8 @@ export function useShiki() {
 			})
 			.catch(err => {
 				const error = ensureError(err);
-				console.error("ERR::SHIKI:INIT:", error.message);
-			})
+				console.error("ERR::SHIKI::INIT:", error.message);
+			});
 
 		return () => setIsHighlighterReady(false);
 	}, []);
