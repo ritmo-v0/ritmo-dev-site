@@ -99,7 +99,7 @@ function OtherControls() {
 					value={recentTapCount.toString()}
 					onValueChange={(value) => setRecentTapCount(Number.parseInt(value, 10))}
 				>
-					<SelectTrigger className="w-18 !h-7">
+					<SelectTrigger className="w-18 h-7!">
 						<SelectValue placeholder="Count" />
 					</SelectTrigger>
 					<SelectContent>

@@ -27,7 +27,7 @@ export function BpmButton({ bpm, shouldMute = false }: BpmButtonProps) {
 		<Button
 			variant="nothing"
 			className={cn(
-				"md:gap-3 !p-0 font-mono font-bold text-xl xs:text-2xl md:text-3xl 2xl:text-4xl transition-opacity",
+				"md:gap-3 p-0! font-mono font-bold text-xl xs:text-2xl md:text-3xl 2xl:text-4xl transition-opacity",
 				`${isMuted && "font-normal text-muted-foreground"}`
 			)}
 			onClick={async () => copy(String(bpm))}

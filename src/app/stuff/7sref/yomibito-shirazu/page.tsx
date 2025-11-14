@@ -292,7 +292,7 @@ export default function YomibitoShirazuPage() {
 				{renderSerifuList(LYRICS[LYRICS.length - 2], locale)}
 				<HR className="mb-4" />
 				{renderSections([LYRICS[LYRICS.length - 1]], locale)}
-				<div className="bg-[#0100FF] mt-8 [&_*]:bg-transparent! [&_span]:text-white!">
+				<div className="bg-[#0100FF] mt-8 **:bg-transparent! [&_span]:text-white!">
 					<Pre code={CODE_OUTRO} className="border-none" />
 				</div>
 			</article>
@@ -362,7 +362,7 @@ function Serifu({ line, locale }: { line: LyricLine, locale: Locale }) {
 			)}
 			<div className="flex">
 				{isRoleLong && "　".repeat(MAX_ROLE_LENGTH)}
-				<P className={cn("!mt-0 whitespace-pre-wrap")}>
+				<P className={cn("mt-0! whitespace-pre-wrap")}>
 					{line.content[locale] || line.content.ja}
 				</P>
 			</div>

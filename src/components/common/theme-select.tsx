@@ -29,11 +29,11 @@ export function ThemeSelect({ className }: React.ComponentProps<typeof SelectTri
 				{PRESET_NAMES.map((name) => (
 					<SelectItem key={name} value={name} className="flex items-center gap-3">
 						<div className="size-6 bg-background rounded border p-1">
-							<div className="grid grid-rows-2 grid-cols-2 gap-[2px] size-full">
-								<div className="rounded-[2px]" style={{ backgroundColor: getThemeColor(name, "primary") }}></div>
-								<div className="rounded-[2px]" style={{ backgroundColor: getThemeColor(name, "destructive") }}></div>
-								<div className="rounded-[2px]" style={{ backgroundColor: getThemeColor(name, "secondary") }}></div>
-								<div className="rounded-full" style={{ backgroundColor: getThemeColor(name, "accent") }}></div>
+							<div className="grid grid-rows-2 grid-cols-2 gap-0.5 size-full">
+								<div className="rounded-0.5" style={{ backgroundColor: getThemeColor(name, "primary") }} />
+								<div className="rounded-0.5" style={{ backgroundColor: getThemeColor(name, "destructive") }} />
+								<div className="rounded-0.5" style={{ backgroundColor: getThemeColor(name, "secondary") }} />
+								<div className="rounded-full" style={{ backgroundColor: getThemeColor(name, "accent") }} />
 							</div>
 						</div>
 						<span>{name.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase())}</span>
