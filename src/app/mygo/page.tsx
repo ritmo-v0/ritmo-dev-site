@@ -18,8 +18,11 @@ type Bookmark = {
 };
 
 // Constants & Variables
-import { TRANSITION_200_25, getContainerVariants } from "@/lib/transitions";
-const CONTAINER_VARIANTS = getContainerVariants(0.025);
+import {
+	TRANSITION_200_25,
+	getContainerVariants,
+	getChildVariants
+} from "@/lib/transitions";
 const BOOKMARKS: Bookmark[] = [
 	{ id: "facebook", title: "Facebook", href: "https://www.facebook.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs1aij2TURjkKsgrZX5932Si8FNHcyhYTz6Gbqt" },
 	{ id: "messenger", title: "Messenger", href: "https://www.facebook.com/messages/t", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs18IlgXqXGW4wLAeEmHVTRdPyDNvsZJn9YUfQ2" },
@@ -50,7 +53,7 @@ export default function MyGOPage() {
 						"grid-cols-3 @2xl:grid-cols-4 @6xl:grid-cols-5",
 						"gap-2 @4xl:gap-8 @6xl:gap-y-12",
 					)}
-					variants={CONTAINER_VARIANTS}
+					variants={getContainerVariants(0.025)}
 					initial="hidden"
 					animate="visible"
 				>
@@ -75,14 +78,14 @@ function MyGOWallpaper() {
 			src={image}
 			className="absolute size-full object-cover scale-110"
 			width={3840} height={2160}
-			variants={{
-				hidden: { opacity: 0, filter: `blur(${blur / 2}px)` },
-				visible: {
+			variants={getChildVariants(
+				{ opacity: 0, filter: `blur(${blur / 2}px)` },
+				{
 					opacity,
 					filter: `blur(${blur}px)`,
 					transition: TRANSITION_200_25
-				},
-			}}
+				}
+			)}
 			initial="hidden"
 			animate={isLoaded ? "visible" : "hidden"}
 			onLoad={() => setIsLoaded(true)}
@@ -94,10 +97,10 @@ function Bookmark({ bookmark }: { bookmark: Bookmark }) {
 	return (
 		<motion.li
 			key={bookmark.id}
-			variants={{
-				hidden: { opacity: 0, y: 20 },
-				visible: { opacity: 1, y: 0, transition: TRANSITION_200_25 },
-			}}
+			variants={getChildVariants(
+				{ opacity: 0, y: 20 },
+				{ opacity: 1, y: 0, transition: TRANSITION_200_25 },
+			)}
 		>
 			<a
 				href={bookmark.href}

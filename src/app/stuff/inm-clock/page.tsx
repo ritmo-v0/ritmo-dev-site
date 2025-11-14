@@ -16,8 +16,13 @@ import { Muted, Wrapper } from "@/components/common/typography";
 import { RefreshCw } from "lucide-react";
 
 // Constants & Variables
-import { TRANSITION_200_25 } from "@/lib/transitions";
 import { ASCII_ART } from "@/lib/inm-clock/ascii-art";
+import {
+	TRANSITION_200_25,
+	TRANSITION_500_100,
+	getContainerVariants,
+	getChildVariants,
+} from "@/lib/transitions";
 const TARGET_TIME = new Date("2025-05-14T19:19:00.810");
 const PRESICION = 19;  // ms
 const QUOTES = [
@@ -106,16 +111,16 @@ function Clock({ time }: { time: Date }) {
 		<motion.span
 			className="inline-flex w-max font-mono font-bold text-2xl @md:text-3xl @3xl:text-5xl @5xl:text-7xl"
 			initial="hidden" animate="visible"
-			variants={{ visible: { transition: { staggerChildren: 0.015 } }, hidden: {} }}
+			variants={getContainerVariants(0.015)}
 		>
 			{formatTime(time).split("").map((char, index) => (
 				<motion.span
 					key={index}
 					className="w-[1ch]"
-					variants={{
-						hidden: { opacity: 0, y: "1ch", filter: "blur(4px)" },
-						visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: TRANSITION_200_25 }
-					}}
+					variants={getChildVariants(
+						{ opacity: 0, y: "1ch", filter: "blur(4px)" },
+						{ opacity: 1, y: 0, filter: "blur(0px)", transition: TRANSITION_200_25 }
+					)}
 				>
 					{char}
 				</motion.span>
@@ -129,10 +134,10 @@ function TimeDiff({ timeDiff }: { timeDiff: string }) {
 		<motion.span
 			className="text-sm @3xl:text-lg text-muted-foreground"
 			initial="hidden" animate="visible"
-			variants={{
-				hidden: { opacity: 0, filter: "blur(4px)" },
-				visible: { opacity: 1, filter: "blur(0px)", transition: { ...TRANSITION_200_25, delay: 0.4 } }
-			}}
+			variants={getChildVariants(
+				{ opacity: 0, filter: "blur(4px)" },
+				{ opacity: 1, filter: "blur(0px)", transition: { ...TRANSITION_200_25, delay: 0.4 } }
+			)}
 		>
 			{timeDiff}
 		</motion.span>
@@ -157,10 +162,10 @@ function InmQuote() {
 			key={quote}
 			className="inline-flex items-center w-max text-sm text-muted-foreground text-center whitespace-pre-line"
 			initial="hidden" animate="visible"
-			variants={{
-				hidden: { opacity: 0 },
-				visible: { opacity: 1, transition: { type: "spring", stiffness: 500, damping: 100, delay } }
-			}}
+			variants={getChildVariants(
+				{ opacity: 0 },
+				{ opacity: 1, transition: { ...TRANSITION_500_100, delay } }
+			)}
 		>
 			{quote}
 			<Button className="size-9 ml-2" variant="ghost" onClick={handleClick}>

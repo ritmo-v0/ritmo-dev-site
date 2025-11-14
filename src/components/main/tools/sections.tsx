@@ -7,13 +7,17 @@ import { Section } from "@/components/common/typography";
 
 // Constants & Variables
 import { TOOLS } from "@/app/tools/tools";
-import { TRANSITION_200_25, getContainerVariants } from "@/lib/transitions";
+import {
+	TRANSITION_200_25,
+	getContainerVariants,
+	getChildVariants
+} from "@/lib/transitions";
 // const ALPHABETS = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
 const CONTAINER_VARIANTS = getContainerVariants(0.1);
-const CHILDREN_VARIANTS = {
-	hidden: { opacity: 0, y: 20 },
-	visible: { opacity: 1, y: 0, transition: TRANSITION_200_25 },
-};
+const CHILDREN_VARIANTS = getChildVariants(
+	{ opacity: 0, y: 20 },
+	{ opacity: 1, y: 0, transition: TRANSITION_200_25 },
+);
 
 
 

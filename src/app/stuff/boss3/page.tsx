@@ -12,8 +12,13 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { RefreshCw } from "lucide-react";
 
 // Constants & Variables
-import { TRANSITION_200_25 } from "@/lib/transitions";
 import { ASCII_ART } from "./ascii-art";
+import {
+	TRANSITION_200_25,
+	TRANSITION_500_100,
+	getContainerVariants,
+	getChildVariants,
+} from "@/lib/transitions";
 const QUOTES = [
 	{ id: "S117002", text: "樂穎是老大，今天是她生日" },
 	{ id: "S119005", text: "祝妳生日快樂\n我們來為妳慶生" },
@@ -74,16 +79,16 @@ function Title({ text }: { text: string }) {
 		<motion.span
 			className="inline-flex w-max font-mono font-bold text-2xl @md:text-3xl @3xl:text-5xl @5xl:text-7xl"
 			initial="hidden" animate="visible"
-			variants={{ visible: { transition: { staggerChildren: 0.015 } }, hidden: {} }}
+			variants={getContainerVariants(0.015)}
 		>
 			{text.split("").map((char, index) => (
 				<motion.span
 					key={index}
 					className="w-[1.75ch]"
-					variants={{
-						hidden: { opacity: 0, y: "1ch", filter: "blur(4px)" },
-						visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: TRANSITION_200_25 }
-					}}
+					variants={getChildVariants(
+						{ opacity: 0, y: "1ch", filter: "blur(4px)" },
+						{ opacity: 1, y: 0, filter: "blur(0px)", transition: TRANSITION_200_25 }
+					)}
 				>
 					{char}
 				</motion.span>
@@ -97,10 +102,10 @@ function Subtitle({ text }: { text: string }) {
 		<motion.span
 			className="text-sm @3xl:text-lg text-muted-foreground"
 			initial="hidden" animate="visible"
-			variants={{
-				hidden: { opacity: 0, filter: "blur(4px)" },
-				visible: { opacity: 1, filter: "blur(0px)", transition: { ...TRANSITION_200_25, delay: 0.4 } }
-			}}
+			variants={getChildVariants(
+				{ opacity: 0, filter: "blur(4px)" },
+				{ opacity: 1, filter: "blur(0px)", transition: { ...TRANSITION_200_25, delay: 0.4 } }
+			)}
 		>
 			{text}
 		</motion.span>
@@ -127,10 +132,10 @@ function Boss3Quote() {
 					key={quote.id}
 					className="inline-flex items-center w-max text-sm text-muted-foreground text-center whitespace-pre-line cursor-pointer"
 					initial="hidden" animate="visible"
-					variants={{
-						hidden: { opacity: 0 },
-						visible: { opacity: 1, transition: { type: "spring", stiffness: 500, damping: 100, delay } }
-					}}
+					variants={getChildVariants(
+						{ opacity: 0 },
+						{ opacity: 1, transition: { ...TRANSITION_500_100, delay } }
+					)}
 				>
 					{quote.text}
 					<Button

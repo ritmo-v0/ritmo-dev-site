@@ -22,8 +22,16 @@ type SevensRefRoute = {
 };
 
 // Constants & Variables
-import { TRANSITION_200_25, getContainerVariants } from "@/lib/transitions";
+import {
+	TRANSITION_200_25,
+	getContainerVariants,
+	getChildVariants,
+} from "@/lib/transitions";
 const CONTAINER_VARIANTS = getContainerVariants(0.1);
+const CHILDREN_VARIANTS = getChildVariants(
+	{ opacity: 0, y: 20 },
+	{ opacity: 1, y: 0, transition: TRANSITION_200_25 }
+);
 const FINAL_MESSAGE: Record<Locale, string> = {
 	ja: `このメッセージが、最後の希望にたどり着いたあの者たちに届くことを願う。
 
@@ -126,7 +134,7 @@ export default function SevensRefPage() {
 						</CardContent>
 						<div className={cn(
 							"absolute inset-0 @4xl:right-1/3 backdrop-blur-3xl backdrop-brightness-90 backdrop-saturate-200",
-							"[mask-image:linear-gradient(to_right,black_40%,transparent_100%)] -z-1",
+							"mask-[linear-gradient(to_right,black_40%,transparent_100%)] -z-1",
 						)} />
 					</Card>
 				</Link>
@@ -137,7 +145,14 @@ export default function SevensRefPage() {
 				initial="hidden"
 				animate="visible"
 			>
-				{ROUTES.map(route => <SevensRefLink key={route.href} route={route} />)}
+				{ROUTES.map(route => (
+					<motion.li
+						key={route.href}
+						variants={CHILDREN_VARIANTS}
+					>
+						<SevensRefLink route={route} />
+					</motion.li>
+				))}
 			</motion.ul>
 		</main>
 	);
@@ -145,18 +160,13 @@ export default function SevensRefPage() {
 
 function SevensRefLink({ route }: { route: SevensRefRoute }) {
 	return (
-		<motion.li variants={{
-			hidden: { opacity: 0, y: 20 },
-			visible: { opacity: 1, y: 0, transition: TRANSITION_200_25 },
-		}}>
-			<Link href={route.href} variant="nothing">
-				<Card className="relative justify-center h-full overflow-hidden hover:scale-105 transition-transform ease-in-out">
-					<CardHeader>
-						<CardTitle>{route.title}</CardTitle>
-					</CardHeader>
-					<route.icon className="absolute -right-3 top-1/2 -translate-y-1/2 size-18 stroke-[0.3] opacity-10" />
-				</Card>
-			</Link>
-		</motion.li>
+		<Link href={route.href} variant="nothing">
+			<Card className="relative justify-center h-full overflow-hidden hover:scale-105 transition-transform ease-in-out">
+				<CardHeader>
+					<CardTitle>{route.title}</CardTitle>
+				</CardHeader>
+				<route.icon className="absolute -right-3 top-1/2 -translate-y-1/2 size-18 stroke-[0.3] opacity-10" />
+			</Card>
+		</Link>
 	);
 }
