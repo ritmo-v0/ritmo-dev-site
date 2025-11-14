@@ -1,5 +1,5 @@
 import { visit } from "unist-util-visit";
-import { toString } from "mdast-util-to-string";
+import { toString as mdastToString } from "mdast-util-to-string";
 
 // Types & Interfaces
 import type { Root } from "mdast";
@@ -28,7 +28,7 @@ export function remarkLeafDirective() {
 			node.data ??= {};
 			const data = node.data;
 			const id = node.attributes?.id;
-			const title = toString(node.children) || undefined;
+			const title = mdastToString(node.children) || undefined;
 
 			if (!id) return;
 

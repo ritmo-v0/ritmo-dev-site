@@ -26,6 +26,9 @@
 			"complexity": {
 				"noImportantStyles": "off"
 			},
+			"correctness": {
+				"noUnknownProperty": "off"
+			},
 			"performance": {
 				"noImgElement": "off"
 			},

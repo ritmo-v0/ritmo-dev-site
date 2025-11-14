@@ -5,7 +5,7 @@ import GithubSlugger from "github-slugger";
 import remarkParse from "remark-parse";
 import { remark } from "remark";
 import { visit } from "unist-util-visit";
-import { toString } from "mdast-util-to-string";
+import { toString as mdastToString } from "mdast-util-to-string";
 
 // Components & UI
 import { Link } from "@/components/common/typography";
@@ -15,7 +15,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { BookOpenTextIcon } from "@phosphor-icons/react/ssr";
 
 // Types & Interfaces
-import { Route } from "next";
+import type { Route } from "next";
 type Heading = {
 	depth: number;
 	text: string;
@@ -65,7 +65,7 @@ function getHeadingList(content: string | undefined): Heading[] {
 
 	visit(tree, "heading", (node) => {
 		const depth = node.depth;
-		const text = toString(node);
+		const text = mdastToString(node);
 		const url = `#${slugger.slug(text)}`;
 		if (depth !== 1 && depth < 4) headings.push({ depth, text, url });
 	});
