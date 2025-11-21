@@ -28,7 +28,7 @@ function NavigationMenu({
 		>
 			{children}
 			<NavigationMenuBase.Portal>
-				<NavigationMenuPositioner sideOffset={8} collisionPadding={8}>
+				<NavigationMenuPositioner>
 					<NavigationMenuPopup>
 						<NavigationMenuViewport />
 					</NavigationMenuPopup>
@@ -80,7 +80,7 @@ function NavigationMenuTrigger({
 			data-slot="navigation-menu-trigger"
 			className={cn(
 				buttonVariants({ variant, size, className }),
-				"data-[popup-open]:bg-accent data-[popup-open]:text-accent-foreground dark:data-[popup-open]:bg-accent/50",
+				"data-popup-open:bg-accent data-popup-open:text-accent-foreground dark:data-popup-open:bg-accent/50",
 			)}
 			{...props}
 		>
@@ -100,7 +100,7 @@ function NavigationMenuIcon({
 	return (
 		<NavigationMenuBase.Icon
 			data-slot="navigation-menu-icon"
-			className={cn("transition duration-300 ease-in-out data-[popup-open]:rotate-180", className)}
+			className={cn("transition duration-300 ease-out data-popup-open:rotate-180", className)}
 			{...props}
 		>
 			{children}
@@ -117,12 +117,12 @@ function NavigationMenuContent({
 			data-slot="navigation-menu-content"
 			className={cn(
 				"h-full p-2 transition duration-300 ease-out",
-				"[&_[data-slot=navigation-menu-link]]:px-3 [&_[data-slot=navigation-menu-link]]:py-2 [&_[data-slot=navigation-menu-link]]:rounded-xs",
-				"data-[starting-style]:opacity-0 data-[ending-style]:opacity-0",
-				"data-[starting-style]:data-[activation-direction=left]:translate-x-[-50%]",
-				"data-[starting-style]:data-[activation-direction=right]:translate-x-[50%]",
-				"data-[ending-style]:data-[activation-direction=left]:translate-x-[50%]",
-				"data-[ending-style]:data-[activation-direction=right]:translate-x-[-50%]",
+				"**:data-[slot=navigation-menu-link]:px-3 **:data-[slot=navigation-menu-link]:py-2 **:data-[slot=navigation-menu-link]:rounded-xs",
+				"data-starting-style:opacity-0 data-ending-style:opacity-0",
+				"data-starting-style:data-[activation-direction=left]:-translate-x-3/4",
+				"data-starting-style:data-[activation-direction=right]:translate-x-3/4",
+				"data-ending-style:data-[activation-direction=left]:translate-x-3/4",
+				"data-ending-style:data-[activation-direction=right]:-translate-x-3/4",
 				className
 			)}
 			{...props}
@@ -145,15 +145,22 @@ function NavigationMenuLink({
 
 function NavigationMenuPositioner({
 	className,
+	sideOffset = 8,
+	collisionPadding = 16,
 	...props
 }: React.ComponentProps<typeof NavigationMenuBase.Positioner>) {
 	return (
 		<NavigationMenuBase.Positioner
-			data-slot="navigation-menu-positioner"
+			sideOffset={sideOffset}
+			collisionPadding={collisionPadding}
 			className={cn(
-				"w-[var(--positioner-width)] h-[var(--positioner-height)] max-w-[var(--available-width)]",
-				"transition-[top,left,right,bottom] data-[instant]:transition-none origin-(--transform-origin) duration-300 ease-out",
-				"before:absolute before:content-[''] data-[side=bottom]:before:top-[-10px] data-[side=bottom]:before:right-0 data-[side=bottom]:before:left-0 data-[side=bottom]:before:h-2.5 data-[side=left]:before:top-0 data-[side=left]:before:right-[-10px] data-[side=left]:before:bottom-0 data-[side=left]:before:w-2.5 data-[side=right]:before:top-0 data-[side=right]:before:bottom-0 data-[side=right]:before:left-[-10px] data-[side=right]:before:w-2.5 data-[side=top]:before:right-0 data-[side=top]:before:bottom-[-10px] data-[side=top]:before:left-0 data-[side=top]:before:h-2.5",
+				"w-(--positioner-width) h-(--positioner-height) max-w-(--available-width)",
+				"transition-[top,left,right,bottom] data-instant:transition-none duration-300 ease-out",
+				"before:absolute before:content-['']",
+				"data-[side=bottom]:before:-top-2.5 data-[side=bottom]:before:right-0 data-[side=bottom]:before:left-0 data-[side=bottom]:before:h-2.5",
+				"data-[side=left]:before:top-0 data-[side=left]:before:-right-2.5 data-[side=left]:before:bottom-0 data-[side=left]:before:w-2.5",
+				"data-[side=right]:before:top-0 data-[side=right]:before:bottom-0 data-[side=right]:before:-left-2.5 data-[side=right]:before:w-2.5",
+				"data-[side=top]:before:right-0 data-[side=top]:before:-bottom-2.5 data-[side=top]:before:left-0 data-[side=top]:before:h-2.5",
 				className
 			)}
 			{...props}
@@ -170,8 +177,9 @@ function NavigationMenuPopup({
 			data-slot="navigation-menu-popup"
 			className={cn(
 				"relative w-(--popup-width) h-(--popup-height) bg-popover text-popover-foreground border rounded-lg shadow-md",
-				"transition-all data-[instant]:transition-none origin-top duration-300 ease-in-out",
-				"data-[starting-style]:scale-90 data-[starting-style]:opacity-0 data-[ending-style]:ease-out data-[ending-style]:duration-150 data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
+				"transition-all data-instant:transition-none origin-(--transform-origin) duration-300 ease-out",
+				"data-starting-style:scale-90 data-starting-style:opacity-0",
+				"data-ending-style:duration-150 data-ending-style:scale-90 data-ending-style:opacity-0",
 				className
 			)}
 			{...props}

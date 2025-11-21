@@ -36,8 +36,10 @@ function PopoverContent({
 				<PopoverPrimitive.Popup
 					data-slot="popover-popup"
 					className={cn(
-						"relative w-fit px-4 py-3 bg-popover text-popover-foreground border rounded-md shadow-md",
-						"transition-all data-[instant]:transition-none origin-[var(--transform-origin)] data-[starting-style]:scale-90 data-[starting-style]:opacity-0 data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
+						"relative w-fit p-2 bg-popover text-popover-foreground border rounded-lg shadow-md",
+						"transition data-instant:transition-none origin-(--transform-origin)",
+						"data-starting-style:scale-90 data-starting-style:opacity-0",
+						"data-ending-style:scale-90 data-ending-style:opacity-0",
 						className,
 					)}
 				>

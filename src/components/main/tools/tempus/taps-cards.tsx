@@ -117,7 +117,7 @@ function TapsCard({
 							</Button>
 						}>
 						</PopoverTrigger>
-						<PopoverContent side="top">
+						<PopoverContent side="top" className="px-4 py-3">
 							{infotip}
 						</PopoverContent>
 					</Popover>
