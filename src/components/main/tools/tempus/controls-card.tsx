@@ -96,17 +96,17 @@ function OtherControls() {
 			<div className="flex items-center justify-between gap-4">
 				<Label>Recent Taps</Label>
 				<Select
-					value={recentTapCount.toString()}
-					onValueChange={(value) => setRecentTapCount(Number.parseInt(value, 10))}
+					value={recentTapCount}
+					onValueChange={setRecentTapCount}
 				>
-					<SelectTrigger className="w-18 h-7!">
-						<SelectValue placeholder="Count" />
+					<SelectTrigger className="w-16 h-7!">
+						<SelectValue />
 					</SelectTrigger>
 					<SelectContent>
-						{RECENT_TAP_OPTIONS.map((option) => (
+						{RECENT_TAP_OPTIONS.map(option => (
 							<SelectItem
 								key={option}
-								value={option.toString()}
+								value={option}
 							>
 								{option}
 							</SelectItem>

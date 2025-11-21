@@ -486,4 +486,4 @@ export const PRESETS = {
 	},
 } as const satisfies Record<string, ThemeStyles>;
 
-export const PRESET_NAMES = Object.keys(PRESETS) as Array<keyof typeof PRESETS>;
+export const PRESET_IDS = Object.keys(PRESETS) as Array<keyof typeof PRESETS>;

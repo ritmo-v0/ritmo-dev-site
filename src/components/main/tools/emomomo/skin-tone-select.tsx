@@ -16,6 +16,15 @@ import type { SkinToneKey } from "@/lib/emomomo/types";
 
 // Constants & Variables
 import { EMOJI_SKIN_TONES } from "@/lib/emomomo/constants";
+const ITEMS = EMOJI_SKIN_TONES.map((skinTone, index) => ({
+	value: skinTone,
+	label: skinTone
+		.replace("skin tone", "").replace("-", " ")
+		.replace(/\b\w/g, char => char.toUpperCase()),
+	emoji: index !== 0
+		? String.fromCodePoint(0x1F3FA + index)
+		: String.fromCodePoint(0x1F9B2),
+}));
 
 
 
@@ -24,35 +33,34 @@ export function SkinToneSelect() {
 	const setSkinTone = useEmomomoStore(state => state.setSkinTone);
 
 	return (
-		<Select
-			value={skinTone}
-			onValueChange={(value) => setSkinTone(value as SkinToneKey)}
-		>
-			<SelectTrigger title="Select a skin tone" className="sm:w-42">
-				<SelectValue placeholder="Skin tone" />
+		<Select<SkinToneKey> value={skinTone} onValueChange={setSkinTone}>
+			<SelectTrigger className="sm:w-42">
+				<SelectValue>
+					{(value) => renderSelectItem(ITEMS[value])}
+				</SelectValue>
 			</SelectTrigger>
 			<SelectContent>
-				{EMOJI_SKIN_TONES.map((value, index) => (
+				{ITEMS.map((item, index) => (
 					<SelectItem
-						key={value}
-						value={index.toString()}
+						key={item.value}
+						value={index}
 						className="flex items-center gap-3"
 					>
-						<Twemoji className="m-0 size-4">
-							{index !== 0
-								? String.fromCodePoint(0x1F3FA + index)
-								: String.fromCodePoint(0x1F9B2)
-							}
-						</Twemoji>
-						<span className="max-sm:hidden">
-							{value
-								.replace("skin tone", "").replace("-", " ")
-								.replace(/\b\w/g, char => char.toUpperCase())
-							}
-						</span>
+						{renderSelectItem(item)}
 					</SelectItem>
 				))}
 			</SelectContent>
 		</Select>
 	);
 }
+
+const renderSelectItem = (item: typeof ITEMS[number]) => (
+	<>
+		<Twemoji className="m-0 size-4">
+			{item.emoji}
+		</Twemoji>
+		<span className="max-sm:hidden">
+			{item.label}
+		</span>
+	</>
+);

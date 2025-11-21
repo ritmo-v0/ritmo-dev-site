@@ -1,15 +1,15 @@
 // Types & Interfaces
-import type { PresetName, ThemeStyles, ThemeStyleProps } from "./types";
+import type { PresetId, ThemeStyles, ThemeStyleProps } from "./types";
 
 // Constants & Variables
 import { COMMON_STYLES, PRESETS } from "./presets";
 
 
 
-export function getPresetThemeStyles(name: PresetName): ThemeStyles {
-	if (name === "default") return PRESETS.default;
+export function getPresetThemeStyles(id: PresetId): ThemeStyles {
+	if (id === "default") return PRESETS.default;
 
-	const preset = PRESETS[name];
+	const preset = PRESETS[id];
 	if (!preset) return PRESETS.default;
 
 	return {
@@ -24,7 +24,7 @@ export function getPresetThemeStyles(name: PresetName): ThemeStyles {
 	};
 }
 
-export function getThemeColor(preset: PresetName, color: keyof ThemeStyleProps) {
+export function getThemeColor(preset: PresetId, color: keyof ThemeStyleProps) {
 	const theme = getPresetThemeStyles(preset);
 	return theme?.light?.[color] || theme?.dark?.[color] || "#000000";
 }

@@ -20,12 +20,11 @@ export function LocaleSelect({ className }: React.ComponentProps<typeof SelectTr
 	const { locale, setLocale } = use7sRefStore();
 
 	return (
-		<Select
-			value={locale}
-			onValueChange={(value) => setLocale(value as Locale)}
-		>
+		<Select<Locale> value={locale} onValueChange={setLocale}>
 			<SelectTrigger className={cn("w-24", className)}>
-				<SelectValue />
+				<SelectValue>
+					{(value: string) => value.toUpperCase()}
+				</SelectValue>
 			</SelectTrigger>
 			<SelectContent>
 				{LOCALES.map(locale => (

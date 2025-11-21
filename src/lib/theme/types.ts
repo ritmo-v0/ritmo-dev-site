@@ -1,6 +1,6 @@
 import type { PRESETS } from "./presets";
 
-export type PresetName = keyof typeof PRESETS;
+export type PresetId = keyof typeof PRESETS;
 
 export type ThemeStyles = {
 	light: ThemeStyleProps;
