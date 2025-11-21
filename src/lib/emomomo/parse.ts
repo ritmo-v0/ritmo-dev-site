@@ -9,7 +9,7 @@ import type {
 	EmojiSubgroup,
 	EmojiSubEntry,
 	SkinTone,
-	SkinToneKey,
+	SkinToneKeyWithoutDefault,
 } from "@/lib/emomomo/types";
 
 // Constants & Variables
@@ -245,9 +245,9 @@ export function isSkinTone(value: string): value is SkinTone {
 	return EMOJI_SKIN_TONES.includes(value as any);
 }
 
-export function getSkinToneKey(skinTone: SkinTone): SkinToneKey {
+export function getSkinToneKey(skinTone: SkinTone): SkinToneKeyWithoutDefault {
 	const index = EMOJI_SKIN_TONES.indexOf(skinTone);
 	if (index === -1) throw new Error(`Invalid skin tone: ${skinTone}`);
 
-	return index.toString() as SkinToneKey;
+	return index.toString() as SkinToneKeyWithoutDefault;
 }

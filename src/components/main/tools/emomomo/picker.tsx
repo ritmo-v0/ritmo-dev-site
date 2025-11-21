@@ -94,7 +94,7 @@ function EmojiGroupContent({ subgroups, supportsSkinTone }: {
 
 const EmojisSubgroup = memo(function EmojiSubgroup({ subgroup, skinTone }: {
 	subgroup: EmojiSubgroup;
-	skinTone?: SkinToneKey | "0";
+	skinTone?: SkinToneKey;
 }) {
 	const title = getEmojiSubgroupTitle(subgroup.title);
 	const emojis = useMemo(() => {
@@ -113,7 +113,7 @@ const EmojisSubgroup = memo(function EmojiSubgroup({ subgroup, skinTone }: {
 
 const EmojiSupergroup = memo(function EmojiSupergroup({ subgroups, skinTone }: {
 	subgroups: EmojiSubgroup[];
-	skinTone?: SkinToneKey | "0";
+	skinTone?: SkinToneKey;
 }) {
 	const supergroup = useMemo(() => {
 		return subgroups.flatMap(subgroup => subgroup.emojis);
@@ -210,7 +210,7 @@ const EmojiButton = memo(function EmojiButton({ emojiEntry }: { emojiEntry: Emoj
 	)
 });
 
-function flatMapEmojis(subgroup: { emojis: EmojiEntry[] }, skinTone: SkinToneKey | "0") {
+function flatMapEmojis(subgroup: { emojis: EmojiEntry[] }, skinTone: SkinToneKey) {
 	return subgroup.emojis.flatMap(emoji => {
 		if (emoji.v && skinTone !== "0") {
 			const flv = emoji.v[skinTone];

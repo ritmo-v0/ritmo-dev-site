@@ -20,7 +20,7 @@ export type EmojiEntry = EmojiSubEntry & {
 };
 export type EmojiSubEntry = {
 	e: string;
-	v?: Partial<Record<SkinToneKey, EmojiSubEntry>>;
+	v?: Partial<Record<SkinToneKeyWithoutDefault, EmojiSubEntry>>;
 };
 export type EmojiProps = {
 	codePoints: string;
@@ -32,4 +32,5 @@ export type EmojiProps = {
 
 // # Skin Tone
 export type SkinTone = typeof EMOJI_SKIN_TONES[number];
-export type SkinToneKey = "1" | "2" | "3" | "4" | "5";
+export type SkinToneKeyWithoutDefault = "1" | "2" | "3" | "4" | "5";
+export type SkinToneKey = SkinToneKeyWithoutDefault | "0";

@@ -9,7 +9,7 @@ interface EmomomoState {
 	preview: string;
 	useSubgroup: boolean;
 	useCOC: boolean;
-	skinTone: SkinToneKey | "0";
+	skinTone: SkinToneKey;
 
 	// Actions
 	addEmoji: (emoji: string) => void;
@@ -19,7 +19,7 @@ interface EmomomoState {
 	setTextareaRef: (textareaRef: HTMLTextAreaElement | null) => void;
 	setUseSubgroup: (useSubgroup: boolean) => void;
 	setUseCOC: (useCOC: boolean) => void;
-	setSkinTone: (skinTone: SkinToneKey | "0") => void;
+	setSkinTone: (skinTone: SkinToneKey) => void;
 }
 
 
