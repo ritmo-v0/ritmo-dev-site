@@ -27,6 +27,7 @@
 				"noImportantStyles": "off"
 			},
 			"correctness": {
+				"noUnknownFunction": "off",
 				"noUnknownProperty": "off"
 			},
 			"performance": {
