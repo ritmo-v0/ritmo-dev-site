@@ -112,32 +112,10 @@ const ROUTES: SevensRefRoute[] = [
 
 
 export default function SevensRefPage() {
-	const locale = use7sRefStore(state => state.locale);
-
 	return (
 		<main>
 			<header className="mb-6">
-				<Link
-					href="https://info-maimai.sega.jp/7466/#:~:text=%E3%81%AF%E3%82%B3%E3%83%81%E3%83%A9-,%EF%BC%81,-twitter%E3%81%A7%E3%82%B7%E3%82%A7%E3%82%A2"
-					title="カレイドスコープモードの「扉」と「鍵」の獲得条件を公開！"
-					variant="nothing"
-					className="text-muted-foreground"
-				>
-					<Card className={cn(
-						"relative bg-right overflow-hidden isolate",
-						"bg-[url('https://info-maimai.sega.jp/wp-content/uploads/2025/07/42b7a401b347a390ac8e16a95ad86045.jpg')]",
-					)}>
-						<CardContent className="not-dark:text-white">
-							<Markdown>
-								{FINAL_MESSAGE[locale] || FINAL_MESSAGE.ja}
-							</Markdown>
-						</CardContent>
-						<div className={cn(
-							"absolute inset-0 @4xl:right-1/3 backdrop-blur-3xl backdrop-brightness-90 backdrop-saturate-200",
-							"mask-[linear-gradient(to_right,black_40%,transparent_100%)] -z-1",
-						)} />
-					</Card>
-				</Link>
+				<SevensRefLinkCard />
 			</header>
 			<motion.ul
 				className="grid @2xl:grid-cols-2 @4xl:grid-cols-4 gap-4"
@@ -155,6 +133,30 @@ export default function SevensRefPage() {
 				))}
 			</motion.ul>
 		</main>
+	);
+}
+
+function SevensRefLinkCard() {
+	const locale = use7sRefStore(state => state.locale);
+
+	return (
+		<Link
+			href="https://info-maimai.sega.jp/7466/#:~:text=%E3%81%AF%E3%82%B3%E3%83%81%E3%83%A9-,%EF%BC%81,-twitter%E3%81%A7%E3%82%B7%E3%82%A7%E3%82%A2"
+			title="カレイドスコープモードの「扉」と「鍵」の獲得条件を公開！"
+			variant="nothing"
+		>
+			<Card className="relative bg-right bg-[url('https://info-maimai.sega.jp/wp-content/uploads/2025/07/42b7a401b347a390ac8e16a95ad86045.jpg')]">
+				<CardContent className="not-dark:text-white z-1">
+					<Markdown>
+						{FINAL_MESSAGE[locale] || FINAL_MESSAGE.ja}
+					</Markdown>
+				</CardContent>
+				<div className={cn(
+					"absolute inset-0 @4xl:right-1/3 rounded-xl mask-r-from-40%",
+					"backdrop-blur-3xl backdrop-brightness-90 backdrop-saturate-200",
+				)} />
+			</Card>
+		</Link>
 	);
 }
 
