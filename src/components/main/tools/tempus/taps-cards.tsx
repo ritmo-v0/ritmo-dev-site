@@ -110,8 +110,8 @@ function TapsCard({
 			<CardHeader>
 				<CardTitle className="flex items-center gap-x-1">
 					{title}
-					<Popover openOnHover>
-						<PopoverTrigger render={
+					<Popover>
+						<PopoverTrigger openOnHover render={
 							<Button variant="ghost" size="icon-sm">
 								<Info />
 							</Button>

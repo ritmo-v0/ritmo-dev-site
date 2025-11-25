@@ -6,17 +6,24 @@ import { Popover as PopoverPrimitive } from "@base-ui-components/react/popover";
 
 
 function Popover({
-	delay = 500,
-	closeDelay = 50,
 	...props
 }: React.ComponentProps<typeof PopoverPrimitive.Root>) {
 	return <PopoverPrimitive.Root data-slot="popover" {...props} />;
 }
 
 function PopoverTrigger({
+	delay = 500,
+	closeDelay = 50,
 	...props
 }: React.ComponentProps<typeof PopoverPrimitive.Trigger>) {
-	return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />;
+	return (
+		<PopoverPrimitive.Trigger
+			data-slot="popover-trigger"
+			delay={delay}
+			closeDelay={closeDelay}
+			{...props}
+		/>
+	);
 }
 
 function PopoverContent({
