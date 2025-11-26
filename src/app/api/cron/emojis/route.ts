@@ -24,7 +24,7 @@ export async function GET(req: Request): Promise<Response> {
 		return Response.json(emojiData, { status: 200 });
 	} catch (err) {
 		const error = ensureError(err);
-		const message = `ERR::EMOJIS::UPDATE: ${error.message}`
+		const message = `ERR::EMOJIS::UPDATE: ${error.message}`;
 		console.error(message);
 
 		return Response.json({ message }, { status: 500 });
