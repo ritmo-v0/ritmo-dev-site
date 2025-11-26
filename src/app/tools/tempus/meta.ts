@@ -7,5 +7,7 @@ export const meta: Meta = {
 	keywords: [
 		// Main Keywords
 		"bpm",
+		"tap bpm",
+		"tap tempo",
 	],
 };
