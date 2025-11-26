@@ -8,7 +8,7 @@ interface SevensRefState {
 	locale: Locale;
 
 	// Actions
-	setLocale: (locale: Locale) => void;
+	setLocale: (locale: Locale | null) => void;
 }
 
 
@@ -20,7 +20,7 @@ export const use7sRefStore = create<SevensRefState>()(
 			locale: "ja",
 
 			// Actions
-			setLocale: (locale) => set({ locale }),
+			setLocale: (locale) => set({ locale: locale || "ja" }),
 		}),
 		{ name: "7sRef-store" }
 	)

@@ -19,7 +19,7 @@ interface EmomomoState {
 	setTextareaRef: (textareaRef: HTMLTextAreaElement | null) => void;
 	setUseSubgroup: (useSubgroup: boolean) => void;
 	setUseCOC: (useCOC: boolean) => void;
-	setSkinTone: (skinTone: SkinToneKey) => void;
+	setSkinTone: (skinTone: SkinToneKey | null) => void;
 }
 
 
@@ -63,7 +63,7 @@ export const useEmomomoStore = create<EmomomoState>()(
 			setTextareaRef: (textareaRef) => set({ textareaRef }),
 			setUseSubgroup: (useSubgroup) => set({ useSubgroup }),
 			setUseCOC: (useCOC) => set({ useCOC }),
-			setSkinTone: (skinTone) => set({ skinTone }),
+			setSkinTone: (skinTone) => set({ skinTone: skinTone || "0" }),
 		}), {
 		name: "emomomo-store",
 		partialize: (state) => ({

@@ -20,7 +20,7 @@ interface TempusState {
 
 	toggleAutoReset: () => void;
 	setAutoResetDuration: (autoResetDuration: number) => void;
-	setRecentTapCount: (recentTapCount: number) => void;
+	setRecentTapCount: (recentTapCount: number | null) => void;
 }
 
 
@@ -76,7 +76,7 @@ export const useTempusStore = create<TempusState>()(
 
 			toggleAutoReset: () => set((state) => ({ useAutoReset: !state.useAutoReset })),
 			setAutoResetDuration: (autoResetDuration) => set({ autoResetDuration }),
-			setRecentTapCount: (recentTapCount) => set({ recentTapCount }),
+			setRecentTapCount: (recentTapCount) => set({ recentTapCount: recentTapCount || 4 }),
 		}), {
 			name: "tempus-store",
 			partialize: (state) => ({

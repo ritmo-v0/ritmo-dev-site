@@ -6,7 +6,7 @@ import { persist } from "zustand/middleware";
 import type { PresetId } from "@/lib/theme/types";
 interface ThemeStoreProps {
 	preset: PresetId;
-	setPreset: (preset: PresetId) => void;
+	setPreset: (preset: PresetId | null) => void;
 }
 
 
@@ -15,7 +15,7 @@ export const useThemeStore = create<ThemeStoreProps>()(
 	persist(
 		(set) => ({
 			preset: "default",
-			setPreset: (preset) => set({ preset }),
+			setPreset: (preset) => set({ preset: preset || "default" }),
 		}),
 		{ name: "rds-theme" }
 	)
