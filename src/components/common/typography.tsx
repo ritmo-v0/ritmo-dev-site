@@ -383,6 +383,21 @@ function ButtonLink<R extends string>({
 	);
 }
 
+function IFrame({
+	className,
+	...props
+}: React.ComponentProps<"iframe">) {
+	return (
+		<iframe
+			{...props}
+			className={cn("w-full aspect-video rounded-xl", className)}
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			referrerPolicy="strict-origin-when-cross-origin"
+			allowFullScreen
+		/>
+	);
+}
+
 export {
 	Wrapper, Section,
 	H1, H2, H3, H4, H5, H6,
@@ -391,4 +406,5 @@ export {
 	Code,
 	Blockquote, Aside,
 	Link, ButtonLink,
+	IFrame,
 };

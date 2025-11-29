@@ -18,14 +18,14 @@ import {
 
 // Components & UI
 import Image from "next/image";
-import { Pre } from "../shiki-highlighter";
+import { Pre } from "@/components/common/shiki-highlighter";
 import {
 	H1, H2, H3, H4, H5, H6,
 	UL, OL, LI, P, HR,
 	Code,
 	Blockquote, Aside,
-	Link,
-} from "../typography";
+	Link, IFrame,
+} from "@/components/common/typography";
 import {
 	Table,
 	TableBody,
@@ -85,7 +85,7 @@ export function Markdown({
 							width={Number(width) || 768}
 							height={Number(height) || 432}
 							className={cn(
-								"mx-auto my-2 w-full max-w-3xl h-auto rounded-lg shadow-lg object-cover first:mt-0",
+								"mx-auto my-2 w-full max-w-3xl h-auto rounded-lg shadow-lg object-cover not-only:first:mt-0",
 								"[&+br]:hidden [&+br+span]:block [&+br+span]:text-center [&+br+span]:text-sm [&+br+span]:text-muted-foreground",
 							)}
 							loading="lazy"
@@ -93,15 +93,7 @@ export function Markdown({
 						/>
 					)
 				),
-				iframe: ({ ...props }) => (
-					<iframe
-						{...props}
-						className="w-full aspect-video rounded-xl"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-					/>
-				),
+				iframe: IFrame,
 				table: (props) => <Table className="mt-2" {...props} />,
 				thead: TableHeader,
 				tbody: TableBody,
