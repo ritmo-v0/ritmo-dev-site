@@ -24,7 +24,7 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
 	return (
-		<footer className="p-6 sm:px-8 text-sm text-muted-foreground border-t border-input">
+		<footer className="p-6 sm:px-8 text-sm text-muted-foreground bg-background border-t border-input">
 			<nav className="grid justify-items-center mx-auto">
 				<ul className="flex items-center">
 					{SOCIAL_LINKS.map(link => (

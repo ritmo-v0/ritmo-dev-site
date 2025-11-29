@@ -29,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		// # articles/*
 		{
 			url: `${baseUrl}/articles`,
-			lastModified: new Date("2025-09-27"),
+			lastModified: new Date("2025-11-26"),
 			changeFrequency: "monthly",
 			priority: 0.6,
 		},
@@ -65,31 +65,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		// 7sRef
 		{
 			url: `${baseUrl}/stuff/7sref`,
-			lastModified: new Date("2025-09-20"),
+			lastModified: new Date("2025-11-30"),
 			changeFrequency: "yearly",
 			priority: 0.3,
 		},
 		{
 			url: `${baseUrl}/stuff/7sref/arg`,
-			lastModified: new Date("2025-09-20"),
+			lastModified: new Date("2025-11-30"),
 			changeFrequency: "yearly",
 			priority: 0.3,
 		},
 		{
 			url: `${baseUrl}/stuff/7sref/yomibito-shirazu`,
-			lastModified: new Date("2025-09-20"),
+			lastModified: new Date("2025-11-30"),
 			changeFrequency: "yearly",
 			priority: 0.3,
 		},
 		{
 			url: `${baseUrl}/stuff/7sref/xaleidscopix`,
-			lastModified: new Date("2025-09-20"),
+			lastModified: new Date("2025-11-30"),
 			changeFrequency: "yearly",
 			priority: 0.3,
 		},
 		{
 			url: `${baseUrl}/stuff/7sref/refrain`,
-			lastModified: new Date("2025-09-20"),
+			lastModified: new Date("2025-11-30"),
 			changeFrequency: "yearly",
 			priority: 0.3,
 		},

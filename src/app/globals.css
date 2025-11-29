@@ -13,6 +13,7 @@
 	--ease-in-out: cubic-bezier(0.43, 0.01, 0.29, 1);
 	--ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 	--animate-blink: blink 1s steps(2, start) infinite;
+	--animate-orbit: orbit 80s linear infinite;
 
 	--font-heading: var(--font-plus-jakarta-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
 	--font-sans: var(--font-geist-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
@@ -166,15 +167,36 @@
 	button {
 		@apply cursor-pointer;
 	}
+
+	rt {
+		font-size: max(10px, 0.75em);
+	}
 }
 
 
 
 /* ---------------------------- STYLES ---------------------------- */
+@utility absolute-center {
+	@apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@utility grid-stack {
+	@apply [grid-template-areas:'stack'] *:not-[.absolute]:[grid-area:stack];
+}
+
 @keyframes blink {
 	to { visibility: hidden; }
 }
 
-@utility absolute-center {
-	@apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+@keyframes orbit {
+    0% {
+		transform: rotate(var(--orbit-offset, 0deg))
+		translateX(var(--orbit-radius))
+		rotate(calc(-1 * var(--orbit-offset, 0deg)));
+	}
+    100% {
+		transform: rotate(calc(1turn + var(--orbit-offset, 0deg)))
+		translateX(var(--orbit-radius))
+		rotate(calc(-1 * (1turn + var(--orbit-offset, 0deg))));
+	}
 }

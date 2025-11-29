@@ -13,13 +13,7 @@ import { Droplets, Hexagon, Sparkles, MessagesSquare } from "lucide-react";
 
 // Types & Interfaces
 import type { Route } from "next";
-import type { LucideIcon } from "lucide-react";
 import type { Locale } from "@/lib/7sref/types";
-type SevensRefRoute = {
-	title: string;
-	href: Route;
-	icon: LucideIcon;
-};
 
 // Constants & Variables
 import {
@@ -27,7 +21,7 @@ import {
 	getContainerVariants,
 	getChildVariants,
 } from "@/lib/transitions";
-const CONTAINER_VARIANTS = getContainerVariants(0.1);
+const CONTAINER_VARIANTS = getContainerVariants(0.12);
 const CHILDREN_VARIANTS = getChildVariants(
 	{ opacity: 0, y: 20 },
 	{ opacity: 1, y: 0, transition: TRANSITION_200_25 }
@@ -86,7 +80,7 @@ PRiSM…いや、リズに見せてあげるといい。
 <ruby>W■K■Y■<rt>WAKAYA?</rt></ruby>`,
 	en: "",
 };
-const ROUTES: SevensRefRoute[] = [
+const ROUTES = [
 	{
 		title: "ARG 對話文本",
 		href: "/stuff/7sref/arg",
@@ -114,15 +108,18 @@ const ROUTES: SevensRefRoute[] = [
 export default function SevensRefPage() {
 	return (
 		<main>
-			<header className="mb-6">
-				<SevensRefLinkCard />
-			</header>
 			<motion.ul
-				className="grid @2xl:grid-cols-2 @4xl:grid-cols-4 gap-4"
+				className="grid @xl:grid-cols-2 @4xl:grid-cols-4 gap-4"
 				variants={CONTAINER_VARIANTS}
 				initial="hidden"
 				animate="visible"
 			>
+				<motion.li
+					className="col-span-full max-lg:text-sm"
+					variants={CHILDREN_VARIANTS}
+				>
+					<SevensRefLinkCard />
+				</motion.li>
 				{ROUTES.map(route => (
 					<motion.li
 						key={route.href}
@@ -146,13 +143,13 @@ function SevensRefLinkCard() {
 			variant="nothing"
 		>
 			<Card className="relative bg-right bg-[url('https://info-maimai.sega.jp/wp-content/uploads/2025/07/42b7a401b347a390ac8e16a95ad86045.jpg')]">
-				<CardContent className="not-dark:text-white z-1">
+				<CardContent className="not-dark:text-white z-1 *:nth-last-2:wrap-anywhere">
 					<Markdown>
 						{FINAL_MESSAGE[locale] || FINAL_MESSAGE.ja}
 					</Markdown>
 				</CardContent>
 				<div className={cn(
-					"absolute inset-0 @4xl:right-1/3 rounded-xl mask-r-from-40%",
+					"absolute inset-0 @4xl:right-1/4 rounded-xl mask-r-from-40%",
 					"backdrop-blur-3xl backdrop-brightness-90 backdrop-saturate-200",
 				)} />
 			</Card>
@@ -160,10 +157,10 @@ function SevensRefLinkCard() {
 	);
 }
 
-function SevensRefLink({ route }: { route: SevensRefRoute }) {
+function SevensRefLink({ route }: { route: typeof ROUTES[number] }) {
 	return (
-		<Link href={route.href} variant="nothing">
-			<Card className="relative justify-center h-full overflow-hidden hover:scale-105 transition-transform ease-in-out">
+		<Link href={route.href as Route} variant="nothing">
+			<Card className="relative justify-center h-full overflow-clip hover:scale-105 transition-transform ease-in-out">
 				<CardHeader>
 					<CardTitle>{route.title}</CardTitle>
 				</CardHeader>
