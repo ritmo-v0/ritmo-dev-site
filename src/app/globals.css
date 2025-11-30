@@ -156,12 +156,13 @@
 	}
 
 	html {
-		@apply motion-safe:scroll-smooth scroll-pt-24;
+		@apply motion-safe:scroll-smooth scroll-pt-24 overscroll-y-none;
+		@apply lg:[scrollbar-gutter:stable];
+		scrollbar-color: var(--color-muted-foreground) transparent;
 	}
 
 	body {
 		@apply min-w-[320px] bg-background text-foreground font-sans antialiased;
-		scrollbar-gutter: stable both-edges;
 	}
 
 	button {
