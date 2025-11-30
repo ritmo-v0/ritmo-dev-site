@@ -33,16 +33,20 @@ export function Pre({
 	if (!isHighlighterReady || !highlighter) return null;
 
 	const isPlaintext = language === "plaintext";
+	const isFixedToolbar = showLanguage && !isPlaintext;
 
 	return (
-		<div className={cn("group/code relative border rounded-lg overflow-hidden isolate", className)}>
+		<div className={cn(
+			"group/code relative border rounded-lg text-sm overflow-hidden isolate",
+			className,
+		)}>
 			<div className={cn(
-				"flex items-center gap-2",
-				(showLanguage && !isPlaintext)
-					? "justify-between pl-4 pr-2 py-2 bg-muted"
-					: "absolute top-2 right-2 opacity-20 group-hover/code:opacity-100 transition-opacity z-1",
+				"flex items-center justify-between gap-2",
+				isFixedToolbar
+					? "pl-4 pr-2 py-1.5 bg-muted"
+					: "absolute top-2 right-2 not-focus-within:opacity-20 group-hover/code:opacity-100 transition-opacity z-1",
 			)}>
-				{(showLanguage && !isPlaintext) && <Muted className="font-mono text-sm">{language}</Muted>}
+				{isFixedToolbar && <Muted className="font-mono text-sm">{language}</Muted>}
 				<CodeCopyButton code={code} />
 			</div>
 			<ShikiHighlighter
@@ -57,7 +61,7 @@ export function Pre({
 				showLanguage={false}
 				showLineNumbers={!isPlaintext}
 				tabindex={-1}
-				className="text-sm [&_pre]:px-5! [&_pre]:py-3! [&_pre]:rounded-t-none! [&_pre]:rounded-b-md!"
+				className="*:px-5! *:py-3! *:rounded-t-none! *:rounded-b-lg!"
 				{...props}
 			>
 				{code}
@@ -75,7 +79,7 @@ function CodeCopyButton({
 	return (
 		<Button
 			variant="ghost"
-			className={cn("size-6 text-muted-foreground", className)}
+			className={cn("size-7 text-muted-foreground rounded-full [&_svg]:size-3.5", className)}
 			onClick={async () => copy(code)}
 			asChild
 		>

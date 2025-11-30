@@ -149,7 +149,7 @@
 	}
 
 	@supports (corner-shape: squircle) {
-		[class*="rounded-"]:not(.rounded-full) {
+		[class*="rounded-"]:not(.rounded-full), .shiki {
 			--radius: 1.4rem;
 			corner-shape: superellipse(1.6);
 		}
