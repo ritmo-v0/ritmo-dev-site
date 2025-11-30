@@ -46,5 +46,5 @@ export type SevensRefMessage = {
 export type LyricLine = {
 	role?: "リズ" | "アシッド" | (string & {});
 	isRoleSpoiler?: boolean;
-	content: Record<Locale, string>;
+	content: Record<Extract<Locale, "ja">, string> & Partial<Record<Exclude<Locale, "ja">, string>>;
 };

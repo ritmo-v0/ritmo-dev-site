@@ -168,7 +168,8 @@
 		@apply cursor-pointer;
 	}
 
-	rt {
+	rt, rp {
+		@apply tracking-normal;
 		font-size: max(10px, 0.75em);
 	}
 }

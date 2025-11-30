@@ -1,9 +1,9 @@
 // Components & UI
 import { Markdown } from "@/components/common/markdown";
-import { HR, P, Section } from "@/components/common/typography";
+import { HR, IFrame, P, Section } from "@/components/common/typography";
 
 // Constants & Variables
-const TEXT = `
+const AREA_RECAP = `
 ## PHASE.01 - SEISHUN AREA
 
 Sky street, where young talent from all fields of art, sports, and music talent gathers.
@@ -84,13 +84,9 @@ export default function XaleidscopiXPage() {
 	return (
 		<main>
 			<header className="mb-6">
-				<iframe
-					className="w-full aspect-video rounded-xl"
+				<IFrame
 					src="https://www.youtube-nocookie.com/embed/-PTe8zkYt9A"
 					title="Xaleid◆scopiX / xi [maimai でらっくす]"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					referrerPolicy="strict-origin-when-cross-origin"
-					allowFullScreen
 				/>
 			</header>
 			<Section className="font-sans">
@@ -100,7 +96,7 @@ export default function XaleidscopiXPage() {
 				<HR className="my-12" />
 				<div className="[&_p]:italic">
 					<Markdown>
-						{TEXT}
+						{AREA_RECAP}
 					</Markdown>
 				</div>
 				<HR className="my-12" />
