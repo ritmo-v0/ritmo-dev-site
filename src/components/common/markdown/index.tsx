@@ -58,7 +58,7 @@ export function Markdown({
 			rehypePlugins={[rehypeRaw, rehypeSlug, rehypeKatex]}
 			components={{
 				h1: (props) => renderH1 ? <H1 {...props} /> : null,
-				h2: H2,
+				h2: (props) => <H2 className="pb-2 border-b" {...props} />,
 				h3: H3,
 				h4: H4,
 				h5: H5,
