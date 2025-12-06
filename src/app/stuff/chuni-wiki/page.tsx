@@ -1,4 +1,7 @@
+import { cn } from "@/lib/utils";
+
 // Components & UI
+import Image from "next/image";
 import { Markdown } from "@/components/common/markdown";
 import { H1, Muted } from "@/components/common/typography";
 
@@ -29,7 +32,7 @@ BIGLOBE の回線を用いて編集を行っている方はお手数ですが SM
 | 木 | 超アバターチャンス | アバターチャンスの際、未獲得のコスチュームに「NEW」が表示される。※必ず未獲得のコスチュームが選択肢に現れるとは限らない |
 | 金 | キャラクター EXP x1.5 | キャラ経験値計算におけるブースト効果が 1.5 倍。EXP ストック以外のチケットの経験値ブースト効果と重複する |
 | <span class="text-blue-500">土</span> | ペンギンセレクション確定 | 全国対戦で必ずお題が出る。※期間中だけ「自由に選曲！※ボーナスはありません」がお題として出現しません |
-| <span class="text-destructive">日</span> | マップのメモリー ×2 倍 | マップ移動画面上では「×2」表示。獲得アイテム一覧では2個表示 |
+| <span class="text-destructive">日</span> | マップのメモリー ×2 倍 | マップ移動画面上では「×2」表示。獲得アイテム一覧では 2 個表示 |
 
 ### 不具合情報
 
@@ -69,6 +72,18 @@ export default function ChuniWikiPage() {
 	return (
 		<>
 			<header>
+				<Image
+					src="https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQCPyPo7c4mw1EsMqgjBCph0QOdWak9DVGxf5l"
+					alt="CHUNITHM【チュウニズム】攻略 Wiki"
+					className={cn(
+						"aspect-video rounded-xl shadow-lg object-cover",
+						"select-none pointer-events-none",
+					)}
+					sizes="(max-width: 64rem) 100vw, 720px"
+					width={720}
+					height={405}
+					priority
+				/>
 				<H1>CHUNITHM Wiki へようこそ！！</H1>
 				<Muted className="text-lg">
 					あなたは{` `}
