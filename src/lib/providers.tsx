@@ -1,4 +1,5 @@
 // Providers & Context
+import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
 import { ShadcnProvider } from "@/lib/theme/provider";
 
@@ -9,16 +10,18 @@ import { Toaster } from "@/components/ui/sonner";
 
 export function Providers({ children }: { children: React.ReactNode }) {
 	return (
-		<ThemeProvider
-			attribute="class"
-			defaultTheme="system"
-			enableSystem
-			disableTransitionOnChange
-		>
-			<ShadcnProvider>
-				{children}
-				<Toaster />
-			</ShadcnProvider>
-		</ThemeProvider>
+		<NextIntlClientProvider>
+			<ThemeProvider
+				attribute="class"
+				defaultTheme="system"
+				enableSystem
+				disableTransitionOnChange
+			>
+				<ShadcnProvider>
+					{children}
+					<Toaster />
+				</ShadcnProvider>
+			</ThemeProvider>
+		</NextIntlClientProvider>
 	);
 }

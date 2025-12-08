@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { ThemeSelect } from "@/components/common/theme-select";
+import { LocaleSelect } from "@/components/common/locale-select";
 import { ButtonLink, Link, Muted } from "@/components/common/typography";
 import {
 	NavigationMenu,
@@ -180,6 +181,10 @@ function Settings() {
 					<li className="flex items-center gap-4 text-sm">
 						Theme
 						<ThemeSelect className="ml-auto" />
+					</li>
+					<li className="flex items-center gap-4 text-sm">
+						Language
+						<LocaleSelect className="ml-auto" />
 					</li>
 				</ul>
 			</PopoverContent>

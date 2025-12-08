@@ -1,6 +1,9 @@
+import createNextIntlPlugin from "next-intl/plugin";
+
+// Types & Interfaces
 import type { NextConfig } from "next";
 
-export default {
+const config: NextConfig = {
 	async headers() {
 		return [
 			{
@@ -95,4 +98,7 @@ export default {
 		},
 	},
 	typedRoutes: true,
-} satisfies NextConfig;
+};
+
+const withNextIntl = createNextIntlPlugin("./src/lib/i18n/request.ts");
+export default withNextIntl(config);

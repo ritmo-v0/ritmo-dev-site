@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import "katex/dist/katex.min.css";
+import { getLocale } from "next-intl/server";
 import {
 	PAGE_TITLE_SUFFIX,
 	getBaseUrl,
@@ -90,12 +91,14 @@ export const metadata: Metadata = {
 
 
 
-export default function RootLayout({
+export default async function RootLayout({
 	children
 }: LayoutProps<typeof url>) {
+	const locale = await getLocale() as string;
+
 	return (
 		<html
-			lang="en-US"
+			lang={locale}
 			className={cn(
 				GeistSans.variable,
 				JetBrainsMono.variable,

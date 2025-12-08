@@ -1,0 +1,10 @@
+{
+	"common": {
+		"locales": {
+			"label": "語言",
+			"en": "English",
+			"ja": "日本語",
+			"zh-TW": "繁體中文"
+		}
+	}
+}
