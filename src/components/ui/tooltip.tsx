@@ -34,7 +34,12 @@ function TooltipTrigger({
 }
 
 const tooltipContentVariants = cva(
-	"w-fit px-3 py-1.5 text-sm rounded-md shadow-md transition-all data-[instant]:transition-none origin-(--transform-origin) data-[starting-style]:scale-90 data-[starting-style]:opacity-0 data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
+	[
+		"w-fit px-3 py-1.5 text-sm rounded-md shadow-md",
+		"transition-all data-instant:transition-none origin-(--transform-origin)",
+		"data-starting-style:scale-90 data-starting-style:opacity-0",
+		"data-ending-style:scale-90 data-ending-style:opacity-0",
+	],
 	{
 		variants: {
 			variant: {

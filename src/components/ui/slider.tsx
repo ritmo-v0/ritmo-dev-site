@@ -1,11 +1,13 @@
-"use client"
+"use client";
+import { useMemo } from "react";
+import { cn } from "@/lib/utils";
 
-import * as React from "react"
-import { Slider as SliderPrimitive } from "radix-ui"
+// Components & UI
+import { Slider as SliderPrimitive } from "radix-ui";
 
-import { cn } from "@/lib/utils"
 
-function Slider({
+
+export function Slider({
 	className,
 	defaultValue,
 	value,
@@ -13,7 +15,7 @@ function Slider({
 	max = 100,
 	...props
 }: React.ComponentProps<typeof SliderPrimitive.Root>) {
-	const _values = React.useMemo(
+	const _values = useMemo(
 		() =>
 			Array.isArray(value)
 				? value
@@ -31,7 +33,7 @@ function Slider({
 			min={min}
 			max={max}
 			className={cn(
-				"transition-opacity relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+				"transition-opacity relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
 				className
 			)}
 			{...props}
@@ -57,7 +59,5 @@ function Slider({
 				/>
 			))}
 		</SliderPrimitive.Root>
-	)
+	);
 }
-
-export { Slider }

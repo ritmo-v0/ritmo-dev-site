@@ -1,10 +1,21 @@
-"use client"
+"use client";
+import { useTheme } from "next-themes";
 
-import { useTheme } from "next-themes"
-import { Toaster as Sonner, ToasterProps } from "sonner"
-import { CircleAlert, CircleCheck, CircleX, Info, LoaderCircle } from "lucide-react"
+// Components & UI
+import { type ToasterProps, Toaster as Sonner } from "sonner";
 
-const Toaster = ({ ...props }: ToasterProps) => {
+// Icons & Images
+import {
+	CircleAlert,
+	CircleCheck,
+	CircleX,
+	Info,
+	LoaderCircle,
+} from "lucide-react";
+
+
+
+export const Toaster = ({ ...props }: ToasterProps) => {
 	const { theme = "system" } = useTheme()
 
 	return (
@@ -32,7 +43,5 @@ const Toaster = ({ ...props }: ToasterProps) => {
 			closeButton={true}
 			{...props}
 		/>
-	)
-}
-
-export { Toaster }
+	);
+};
