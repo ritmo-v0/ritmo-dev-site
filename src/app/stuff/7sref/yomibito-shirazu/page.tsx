@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { use7sRefStore } from "@/lib/store/7sref";
+import { useLocale } from "next-intl";
 import { renderSections } from "@/lib/7sref/utils";
 import { cn } from "@/lib/utils";
 
@@ -9,7 +9,8 @@ import { Pre } from "@/components/common/shiki-highlighter";
 import { HR, IFrame, P, Section } from "@/components/common/typography";
 
 // Types & Interfaces
-import type { Locale, LyricLine } from "@/lib/7sref/types";
+import type { Locale } from "next-intl";
+import type { LyricLine } from "@/lib/7sref/types";
 
 // Constants & Variables
 const MAX_ROLE_LENGTH = 6;
@@ -215,7 +216,7 @@ const LYRICS: LyricLine[][] = [
 
 
 export default function YomibitoShirazuPage() {
-	const locale = use7sRefStore(state => state.locale);
+	const locale = useLocale();
 
 	return (
 		<main>

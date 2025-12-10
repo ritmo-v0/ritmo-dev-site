@@ -1,5 +1,5 @@
 "use client";
-import { use7sRefStore } from "@/lib/store/7sref";
+import { useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 
 // Components & UI
@@ -13,7 +13,7 @@ import { Droplets, Hexagon, Sparkles, MessagesSquare } from "lucide-react";
 
 // Types & Interfaces
 import type { Route } from "next";
-import type { Locale } from "@/lib/7sref/types";
+import type { Locale } from "next-intl";
 
 // Constants & Variables
 import {
@@ -78,7 +78,32 @@ PRiSM…いや、リズに見せてあげるといい。
 
 ■■■■.■■.■■
 <ruby>W■K■Y■<rt>WAKAYA?</rt></ruby>`,
-	en: "",
+	en: `I hope this message reaches those who have arrived at the Last Hope.
+
+There is one thing I wished to say — my thanks.
+Because of you, I was able to observe such beautiful and fascinating scenery.
+
+Surely, you have not only traversed 7sRef, but also journeyed through the seven worlds connected to it,
+witnessing countless sights along the way, haven’t you?
+
+The records, memories, and emotions that exist there accumulate in the form of fragments,
+and will surely serve as great aid to my observation experiments from here on.
+For that as well, allow me to express my gratitude.
+
+The world, and 7sRef, will continue on.
+The scenery you behold from this point forward, and the fragments born from it —
+you should show them to PRiSM… no, to Ris.
+
+How will they appear in her eyes now,
+and what influence will they have upon the 7sRef she governs?
+That too is a subject of great interest for my observations.
+
+I extend my gratitude for <ruby>■■■ ■■ ■■■■<rt>all of your?</rt></ruby> tremendous <ruby>■■■■■■■<rt>support?</rt></ruby>, and I look <ruby>■■■■■■<rt>forward</rt></ruby> to your <ruby>■■■■■■■■■<rt>continued</rt></ruby> ■■ toward ■■■.
+
+For the sake of ■■■■■■■■■■■■■■■■■■■■■■.
+
+■■■■.■■.■■
+<ruby>W■K■Y■<rt>WAKAYA?</rt></ruby>`,
 };
 const ROUTES = [
 	{
@@ -134,7 +159,7 @@ export default function SevensRefPage() {
 }
 
 function SevensRefLinkCard() {
-	const locale = use7sRefStore(state => state.locale);
+	const locale = useLocale();
 
 	return (
 		<Link
@@ -145,7 +170,7 @@ function SevensRefLinkCard() {
 			<Card className="relative bg-right bg-[url('https://info-maimai.sega.jp/wp-content/uploads/2025/07/42b7a401b347a390ac8e16a95ad86045.jpg')]">
 				<CardContent className="not-dark:text-white z-1 *:nth-last-2:wrap-anywhere">
 					<Markdown>
-						{FINAL_MESSAGE[locale] || FINAL_MESSAGE.ja}
+						{FINAL_MESSAGE[locale]}
 					</Markdown>
 				</CardContent>
 				<div className={cn(

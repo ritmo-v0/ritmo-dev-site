@@ -6,5 +6,13 @@
 			"ja": "日本語",
 			"zh-TW": "繁體中文"
 		}
+	},
+	"stuff": {
+		"7sref": {
+			"controls": {
+				"aria_label_show_original": "原文（日本語）に切り替える",
+				"aria_label_show_translated": "翻訳文に切り替える"
+			}
+		}
 	}
 }
