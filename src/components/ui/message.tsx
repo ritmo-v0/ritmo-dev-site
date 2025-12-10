@@ -1,7 +1,7 @@
-import * as React from "react";
-import { cva, VariantProps } from "class-variance-authority";
-
+import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+
+// Components & UI
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 
 // Types

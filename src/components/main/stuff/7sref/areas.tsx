@@ -25,7 +25,7 @@ export function Areas({ className }: React.ComponentProps<"div">) {
 				initial={{ scale: 0.2, opacity: 0, filter: "blur(4px)" }}
 				animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
 				transition={{ duration: ANI_DURATION, ease: [0, 0.9, 0.2, 1] }}
-				// transition={{ type: "spring", stiffness: 200, damping: 100, mass: 5 }}
+			// transition={{ type: "spring", stiffness: 200, damping: 100, mass: 5 }}
 			>
 				<Area
 					className="[--orbit-size:var(--base-size)] size-(--orbit-size) isolate"
@@ -137,8 +137,8 @@ const generatePath = (height: number) => {
 	const MIN_Y_STEP = 20;    // Minimum vertical step between points
 	const MAX_Y_STEP = 100;   // Maximum vertical step between points
 
-	const startY = -height * 0.1;  // -10vh
-	const endY = height * 1.1;     // +10vh
+	const startY = -height * 0.2;  // -20vh
+	const endY = height * 1.2;     // +20vh
 	const baseX = MAX_X_OFFSET;    // Center of screen
 
 	const points: { x: number, y: number }[] = [];
