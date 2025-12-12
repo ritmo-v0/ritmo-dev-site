@@ -2,7 +2,7 @@ import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { Toggle as TogglePrimitive } from "@base-ui-components/react/toggle";
+import { Toggle as TogglePrimitive } from "@base-ui/react/toggle";
 
 
 

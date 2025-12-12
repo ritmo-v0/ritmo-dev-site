@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { Tabs as TabsPrimitive } from "@base-ui-components/react/tabs";
+import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
 
 
 

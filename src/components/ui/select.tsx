@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { Select as SelectPrimitive } from "@base-ui-components/react/select";
+import { Select as SelectPrimitive } from "@base-ui/react/select";
 
 // Icons & Images
 import {

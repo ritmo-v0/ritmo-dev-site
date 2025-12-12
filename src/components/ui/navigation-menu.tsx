@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { NavigationMenu as NavigationMenuBase } from "@base-ui-components/react/navigation-menu";
+import { NavigationMenu as NavigationMenuBase } from "@base-ui/react/navigation-menu";
 import { buttonVariants } from "./button";
 
 // Icons & Images

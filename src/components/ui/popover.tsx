@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { Popover as PopoverPrimitive } from "@base-ui-components/react/popover";
+import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
 
 
 
