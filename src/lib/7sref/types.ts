@@ -1,7 +1,7 @@
 import type { Locale } from "next-intl";
 
 export type SevensRefMessage = {
-	role: "acid" | "maimai" | "player";
+	role: "acid" | "maimai" | "player" | "separator";
 	content: Record<Locale, string>;
 	timestamp?: string;
 };

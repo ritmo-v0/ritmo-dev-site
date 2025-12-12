@@ -1,5 +1,14 @@
 [
 	{
+		"role": "separator",
+		"content": {
+			"ja": "💬 maimai(マイマイ)",
+			"zh-TW": "💬 maimai(マイマイ)",
+			"en": "💬 maimai(マイマイ)"
+		},
+		"timestamp": "2025-07-12T20:59:00.000Z"
+	},
+	{
 		"role": "player",
 		"content": {
 			"ja": "最後の希望",
@@ -18,7 +27,7 @@
 		"timestamp": "2025-07-12T20:59:00.000Z"
 	},
 	{
-		"role": "acid",
+		"role": "maimai",
 		"content": {
 			"ja": "unknown",
 			"zh-TW": "unknown",
@@ -34,6 +43,15 @@
 			"en": "[View Profile]"
 		},
 		"timestamp": "2025-07-12T20:59:00.000Z"
+	},
+	{
+		"role": "separator",
+		"content": {
+			"ja": "💬 アシッド",
+			"zh-TW": "💬 Acid",
+			"en": "💬 Acid"
+		},
+		"timestamp": "2025-07-12T21:00:00.000Z"
 	},
 	{
 		"role": "acid",
@@ -288,6 +306,15 @@
 		"timestamp": "2025-07-13T00:43:00.000Z"
 	},
 	{
+		"role": "separator",
+		"content": {
+			"ja": "🚪 7つ目の扉",
+			"zh-TW": "🚪 第七扇門",
+			"en": "🚪 The Seventh Gate"
+		},
+		"timestamp": "2025-07-13T00:45:00.000Z"
+	},
+	{
 		"role": "player",
 		"content": {
 			"ja": "7つ目の扉",
@@ -515,9 +542,9 @@
 	{
 		"role": "acid",
 		"content": {
-			"ja": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQ9SIUOZ67lszh5JYUGKw9v8Zt6coPqj1SVe2a)",
-			"zh-TW": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQ9SIUOZ67lszh5JYUGKw9v8Zt6coPqj1SVe2a)",
-			"en": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQ9SIUOZ67lszh5JYUGKw9v8Zt6coPqj1SVe2a)"
+			"ja": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQAGMoxlUMeDhHLI3ZWP2nRopbTJqkyOj5E9vw)",
+			"zh-TW": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQAGMoxlUMeDhHLI3ZWP2nRopbTJqkyOj5E9vw)",
+			"en": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQAGMoxlUMeDhHLI3ZWP2nRopbTJqkyOj5E9vw)"
 		},
 		"timestamp": "2025-07-13T00:46:00.000Z"
 	},
@@ -538,6 +565,15 @@
 			"en": "How can we reconnect…?"
 		},
 		"timestamp": "2025-07-13T00:46:00.000Z"
+	},
+	{
+		"role": "separator",
+		"content": {
+			"ja": "🚪 バックドア",
+			"zh-TW": "🚪 後門",
+			"en": "🚪 Backdoor"
+		},
+		"timestamp": "2025-07-13T00:50:00.000Z"
 	},
 	{
 		"role": "player",
@@ -792,6 +828,15 @@
 		"timestamp": "2025-07-13T00:52:00.000Z"
 	},
 	{
+		"role": "separator",
+		"content": {
+			"ja": "🚪 希望の扉",
+			"zh-TW": "🚪 希望之扉",
+			"en": "🚪 Gate of Hope"
+		},
+		"timestamp": "2025-07-13T01:35:00.000Z"
+	},
+	{
 		"role": "player",
 		"content": {
 			"ja": "希望の扉",
@@ -835,5 +880,41 @@
 			"en": "Let’s go together —\nto <ruby>bring everything to an end<rt><a class=\"block underline-offset-2\" href=\"/stuff/7sref/xaleidscopix\">Xaleid◆scopiX</a></rt></ruby>."
 		},
 		"timestamp": "2025-07-13T01:35:00.000Z"
+	},
+	{
+		"role": "separator",
+		"content": {
+			"ja": "✉️ メッセージを確認する",
+			"zh-TW": "✉️ 確認訊息",
+			"en": "✉️ Check message"
+		},
+		"timestamp": "2025-07-25T11:24:00.000Z"
+	},
+	{
+		"role": "player",
+		"content": {
+			"ja": "![メッセージを確認する](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQcspdgYE8TLKnGhHlusWYUZBCM9o24zwNxE5J)",
+			"zh-TW": "![確認訊息](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQcspdgYE8TLKnGhHlusWYUZBCM9o24zwNxE5J)",
+			"en": "![Check message](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQcspdgYE8TLKnGhHlusWYUZBCM9o24zwNxE5J)"
+		},
+		"timestamp": "2025-07-25T11:24:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "どうやらあなたの声が届かなくなってしまったみたい。このメッセージが届いているといいのだけれど。\n\nあなたと一緒に開いた希望の扉。\nそこから出現した鍵の力で、プリズムは機能を停止し、7sRefもリズも、元に戻った。\n\n<ruby>鍵と一緒について来た2人<rt>みるく、シフォン</rt></ruby>も、元の世界に送り届けたから安心して。\n\nあなたたちの協力が無ければ、この結末を迎える事はできなかった。本当に感謝してますわ。\n\nまたどこかで会えるといいわね。\nそれではごきげんよう、名前も知らない誰かさん。",
+			"zh-TW": "看來你的聲音已經傳不到我這裡了。希望這封訊息還能順利送達。\n\n我們一起打開的希望之扉──\n從那裡出現的鑰匙之力使稜鏡停止運作，7sRef 和莉茲也都恢復了原狀。\n\n<ruby>跟著鑰匙一起來的那兩個人<rt>牛奶、雪紡</rt></ruby>，我也已經把他們送回原本的世界了，所以放心吧。\n\n若沒有你們的協助，我們絕不可能迎來這個結局。真的非常感謝你。\n\n希望哪天還能再相遇。\n那麼，再會了──名字都不知道的某個人。",
+			"en": "It looks like your voice can’t reach me anymore. I hope this message still gets through.\n\nThe Gate of Hope we opened together —\nwith the power of the key that appeared from it, PRiSM shut down, and both 7sRef and Ris returned to normal.\n\nAnd <ruby>the two who came along with the key<rt>Milk & Chiffon</rt></ruby> have been safely sent back to their original world, so don’t worry.\n\nWithout your help, we never could have reached this ending. I truly thank you.\n\nI hope we can meet again somewhere.\nGoodbye, someone whose name I still don’t know."
+		},
+		"timestamp": "2025-07-25T11:24:00.000Z"
+	},
+	{
+		"role": "acid",
+		"content": {
+			"ja": "![THANK YOU FOR PLAYING](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQNwewspXBrq8s5aiHe1TVS2JjDUcC6lQzbOfy)",
+			"zh-TW": "![THANK YOU FOR PLAYING](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQNwewspXBrq8s5aiHe1TVS2JjDUcC6lQzbOfy)",
+			"en": "![THANK YOU FOR PLAYING](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQNwewspXBrq8s5aiHe1TVS2JjDUcC6lQzbOfy)"
+		},
+		"timestamp": "2025-07-25T11:24:00.000Z"
 	}
 ]
