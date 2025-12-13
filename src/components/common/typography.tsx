@@ -332,7 +332,7 @@ const linkVariants = cva(
 			variant: {
 				default: "font-medium text-primary underline-offset-4 underline hover:text-primary/60 outline-offset-4",
 				hover: "inline-flex items-center justify-center gap-2 w-max font-medium text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-offset-4",
-				ghost: "rounded-lg hover:bg-accent dark:hover:bg-accent/50 hover:text-accent-foreground focus-visible:bg-accent dark:focus-visible:bg-accent/50 focus-visible:text-accent-foreground data-[active]:bg-accent dark:data-[active]:bg-accent data-[active]:text-accent-foreground",
+				ghost: "rounded-lg hover:bg-accent dark:hover:bg-accent/50 hover:text-accent-foreground focus-visible:bg-accent dark:focus-visible:bg-accent/50 focus-visible:text-accent-foreground data-active:bg-accent dark:data-active:bg-accent data-active:text-accent-foreground",
 				nothing: "",
 			},
 		},

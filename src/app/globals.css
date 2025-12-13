@@ -16,7 +16,7 @@
 	--animate-orbit: orbit 80s linear infinite;
 
 	--font-heading: var(--font-plus-jakarta-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
-	--font-sans: var(--font-geist-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
+	--font-sans: var(--font-rethink-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
 	--font-mono: var(--font-jetbrains-mono), monospace, var(--font-noto-sans-tc), var(--font-noto-sans-jp);
 	--font-mono-7sref: var(--font-doto), monospace, var(--font-noto-sans-tc), var(--font-noto-sans-jp);
 	--font-serif: var(--font-noto-serif-tc), sans-serif;
@@ -170,7 +170,7 @@
 	}
 
 	rt, rp {
-		@apply tracking-normal;
+		@apply py-px tracking-normal;
 		font-size: max(10px, 0.75em);
 	}
 }

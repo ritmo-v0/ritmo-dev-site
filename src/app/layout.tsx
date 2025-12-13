@@ -16,13 +16,13 @@ import { Providers } from "@/lib/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Fonts
-import { GeistSans } from "geist/font/sans";
 import {
 	JetBrains_Mono,
 	Noto_Sans_JP,
 	Noto_Sans_TC,
 	Noto_Serif_TC,
 	Plus_Jakarta_Sans,
+	Rethink_Sans,
 } from "next/font/google";
 const JetBrainsMono = JetBrains_Mono({
 	weight: "variable",
@@ -58,6 +58,13 @@ const PlusJakartaSans = Plus_Jakarta_Sans({
 	display: "swap",
 	subsets: ["latin"],
 	variable: "--font-plus-jakarta-sans",
+});
+const RethinkSans = Rethink_Sans({
+	weight: "variable",
+	style: ["normal", "italic"],
+	display: "swap",
+	subsets: ["latin"],
+	variable: "--font-rethink-sans",
 });
 
 // Types & Interfaces
@@ -100,12 +107,12 @@ export default async function RootLayout({
 		<html
 			lang={locale}
 			className={cn(
-				GeistSans.variable,
 				JetBrainsMono.variable,
 				NotoSansJP.variable,
 				NotoSansTC.variable,
 				NotoSerifTC.variable,
 				PlusJakartaSans.variable,
+				RethinkSans.variable,
 			)}
 			suppressHydrationWarning
 		>

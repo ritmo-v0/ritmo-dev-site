@@ -25,7 +25,7 @@ export function TapArea({ className }: React.ComponentProps<typeof Card>) {
 		<Card
 			className={cn(
 				"flex items-center justify-center gap-4 w-full max-h-96 p-8 bg-secondary hover:bg-secondary/80 focus-visible:bg-secondary/80",
-				"font-mono text-secondary-foreground border-2 border-dashed aspect-square @3xl:aspect-square cursor-pointer select-none transition-all",
+				"text-secondary-foreground border-2 border-dashed aspect-square @3xl:aspect-square cursor-pointer select-none transition-all",
 				className,
 			)}
 			tabIndex={0}
@@ -64,7 +64,7 @@ export function TapArea({ className }: React.ComponentProps<typeof Card>) {
 function TapCount() {
 	const taps = useTempusStore(state => state.taps);
 
-	return <Muted>Taps: {taps.length}</Muted>;
+	return <Muted className="tabular-nums">Taps: {taps.length}</Muted>;
 }
 
 function ShortcutKeyBadge({ children }: React.ComponentProps<typeof Badge>) {
