@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { use7sRefStore } from "@/lib/store/7sref";
+import { useLocale } from "next-intl";
 import { renderSections } from "@/lib/7sref/utils";
 import { cn } from "@/lib/utils";
 
@@ -408,7 +408,7 @@ const LYRICS: LyricLine[][] = [
 
 
 export default function RefrainPage() {
-	const locale = use7sRefStore(state => state.locale);
+	const locale = useLocale();
 
 	return (
 		<main>
