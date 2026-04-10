@@ -106,6 +106,7 @@ export default async function RootLayout({
 	return (
 		<html
 			lang={locale}
+			data-scroll-behavior="smooth"
 			className={cn(
 				JetBrainsMono.variable,
 				NotoSansJP.variable,

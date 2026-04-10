@@ -14,12 +14,11 @@ import type { ArticleMetadata } from "@/lib/article/types";
 
 
 
-export function ArticleHeader({ metadata }: { metadata?: ArticleMetadata }) {
-	const title = metadata?.title || "Unknown Article";
-	const description = metadata?.description || "No description.";
-	const image = metadata?.image || "https://img.ritmo.dev/placeholder.webp";
-	const updatedAt = metadata?.updatedAt
-		? new Date(metadata.updatedAt).toLocaleDateString() : "…?";
+export function ArticleHeader({ metadata }: { metadata: ArticleMetadata }) {
+	const title = metadata.title;
+	const description = metadata.description;
+	const image = metadata.image || "https://img.ritmo.dev/placeholder.webp";
+	const updatedAt = new Date(metadata.updatedAt).toLocaleDateString();
 
 	return (
 		<header id="header" className="grid gap-y-3 lg:gap-y-4">
@@ -53,7 +52,11 @@ export function ArticleHeader({ metadata }: { metadata?: ArticleMetadata }) {
 
 export function ArticleContent({ content }: { content: string }) {
 	return (
-		<article>
+		<article className={cn(
+			"[&>section[data-footnotes]]:mt-8",
+			"[&>section[data-footnotes]]:pt-8",
+			"[&>section[data-footnotes]]:border-t",
+		)}>
 			<Markdown renderH1={false}>
 				{content || ""}
 			</Markdown>

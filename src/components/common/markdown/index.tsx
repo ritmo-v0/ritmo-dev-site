@@ -47,15 +47,19 @@ export function Markdown({
 	return (
 		<ReactMarkdown
 			remarkPlugins={[
-				remarkMath,
+				[remarkMath, { singleDollarTextMath: false }],
 				remarkBreaks,
 				remarkDirective,
 				remarkTextDirective,
 				remarkLeafDirective,
 				remarkContainerDirective,
-				[remarkGfm, { singleTilde: false }]
+				[remarkGfm, { singleTilde: false }],
 			]}
-			rehypePlugins={[rehypeRaw, rehypeSlug, rehypeKatex]}
+			rehypePlugins={[
+				rehypeRaw,
+				rehypeSlug,
+				rehypeKatex,
+			]}
 			components={{
 				h1: (props) => renderH1 ? <H1 {...props} /> : null,
 				h2: (props) => <H2 className="pb-2 border-b" {...props} />,

@@ -27,7 +27,7 @@ type Heading = {
 export function ArticleTOC({
 	className,
 	content
-}: React.ComponentProps<"nav"> & { content?: string }) {
+}: React.ComponentProps<"nav"> & { content: string }) {
 	const headings = getHeadingList(content);
 
 	return (
@@ -36,8 +36,8 @@ export function ArticleTOC({
 				<BookOpenTextIcon className="size-4" />
 				On this page
 			</div>
-			<ScrollArea className="h-[70svh]">
-				<div className="flex flex-col m-2 px-2 border-l">
+			<ScrollArea className="">
+				<div className="flex flex-col m-2 max-h-[70svh] px-2 border-l">
 					{headings.map(heading => (
 						<Link
 							key={heading.url}
@@ -56,7 +56,7 @@ export function ArticleTOC({
 	);
 }
 
-function getHeadingList(content: string | undefined): Heading[] {
+function getHeadingList(content: string): Heading[] {
 	if (!content) return [];
 
 	const slugger = new GithubSlugger();
