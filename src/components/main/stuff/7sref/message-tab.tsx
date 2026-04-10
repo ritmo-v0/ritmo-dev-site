@@ -20,9 +20,9 @@ import type { SevensRefMessage } from "@/lib/7sref/types";
 import { Twemoji } from "@/components/common/twemoji";
 
 // Constants & Variables
-const MAIMAI_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQHq5MdZSkseSjTQcCutJRGYVBfAwKMo8h67Xx";
-const ACID_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQltdYqm0qy59sg0zPLQXWFarBZVS14jb2e8vf";
-const RITMO_AVATAR_URL = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQrTxR6l8TJnrEBNZlzcimWfebRjxC0t9DwYS5";
+const MAIMAI_AVATAR_URL = "https://img.ritmo.dev/stuff/7sref/avatar-maimai.jpg";
+const ACID_AVATAR_URL = "https://img.ritmo.dev/stuff/7sref/avatar-acid.jpg";
+const RITMO_AVATAR_URL = "https://img.ritmo.dev/stuff/7sref/avatar-ritmo.webp";
 
 
 

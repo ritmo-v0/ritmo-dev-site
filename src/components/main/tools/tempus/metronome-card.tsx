@@ -25,7 +25,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 
 	useEffect(() => {
 		audioContext.current = new (window.AudioContext);
-		fetch("https://aaw2tslxqb.ufs.sh/f/vQ66ADGRMiselntgRFEbZhtipnrSKAc8zy0eWVDCEoU4sa3m")
+		fetch("https://img.ritmo.dev/tools/tempus/metronome.mp3")
 			.then((response) => response.arrayBuffer())
 			.then((arrayBuffer) => {
 				audioContext.current?.decodeAudioData(arrayBuffer, (buffer) => {

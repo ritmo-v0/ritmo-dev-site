@@ -11,7 +11,7 @@ export const TOOLS = {
 	E: {
 		id: emomomoMeta.title.toLowerCase(),
 		color: "#FFCC4D",
-		imageUrl: "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQkfPpIiMeUidzayDsoZlwWN436cLjA5v9KxHp",
+		imageUrl: "https://img.ritmo.dev/tools/emomomo/og_image.webp",
 		...emomomoMeta,
 	},
 	T: {

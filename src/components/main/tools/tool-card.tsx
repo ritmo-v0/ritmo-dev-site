@@ -10,7 +10,7 @@ import type { ToolMeta } from "@/types/meta";
 export function ToolCard({
 	id,
 	color,
-	imageUrl = "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQRgPt9uBWlDj3kitow0r8z5VN42BInQgvEmGc",
+	imageUrl = "https://img.ritmo.dev/placeholder.webp",
 	title,
 	description,
 	url,

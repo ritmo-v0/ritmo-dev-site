@@ -17,7 +17,7 @@ import type { ArticleMetadata } from "@/lib/article/types";
 export function ArticleHeader({ metadata }: { metadata?: ArticleMetadata }) {
 	const title = metadata?.title || "Unknown Article";
 	const description = metadata?.description || "No description.";
-	const image = metadata?.image || "https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQRgPt9uBWlDj3kitow0r8z5VN42BInQgvEmGc";
+	const image = metadata?.image || "https://img.ritmo.dev/placeholder.webp";
 	const updatedAt = metadata?.updatedAt
 		? new Date(metadata.updatedAt).toLocaleDateString() : "…?";
 

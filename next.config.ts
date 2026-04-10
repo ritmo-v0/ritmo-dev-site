@@ -69,27 +69,8 @@ const config: NextConfig = {
 	devIndicators: false,
 	images: {
 		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "ywu5w3rxj7.ufs.sh",  // UploadThing (MyGO)
-				pathname: "/f/**",
-			},
-			{
-				protocol: "https",
-				hostname: "y79ckzbnk6.ufs.sh",  // UploadThing (Articles)
-				pathname: "/f/**",
-			},
-			{
-				protocol: "https",
-				hostname: "3b4o9rg98c.ufs.sh",  // UploadThing (Tools & Stuff)
-				pathname: "/f/**",
-			},
-			// Additional article image sources
-			{
-				protocol: "https",
-				hostname: "hackmd.io",
-				pathname: "/_uploads/**",       // HackMD (OG images only)
-			},
+			new URL("https://img.ritmo.dev/**"),
+			new URL("https://hackmd.io/_uploads/**"),
 		]
 	},
 	turbopack: {

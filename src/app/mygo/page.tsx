@@ -24,16 +24,16 @@ import {
 	getChildVariants
 } from "@/lib/transitions";
 const BOOKMARKS: Bookmark[] = [
-	{ id: "facebook", title: "Facebook", href: "https://www.facebook.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs1aij2TURjkKsgrZX5932Si8FNHcyhYTz6Gbqt" },
-	{ id: "messenger", title: "Messenger", href: "https://www.facebook.com/messages/t", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs18IlgXqXGW4wLAeEmHVTRdPyDNvsZJn9YUfQ2" },
-	{ id: "instagram", title: "Instagram", href: "https://www.instagram.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs1W3bGIsA7b0ZLSFHv5toEpJYqzcyXwDgBGnPx" },
-	{ id: "twitter", title: "Twitter", href: "https://www.twitter.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs1zAE95G840tFjqwOsdi7pJbGuSoXxryegR9cT" },
-	{ id: "youtube", title: "YouTube", href: "https://www.youtube.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs1ILYABRWUDQLh6AgySY2zHbcW9GoFsidRJqNk" },
-	{ id: "threads", title: "Threads", href: "https://www.threads.net", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs1ziBKg3840tFjqwOsdi7pJbGuSoXxryegR9cT" },
-	{ id: "ani-gamer", title: "巴哈姆特動畫瘋", href: "https://ani.gamer.com.tw", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs18LW1hbGW4wLAeEmHVTRdPyDNvsZJn9YUfQ2I" },
-	{ id: "github", title: "GitHub", href: "https://github.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs1FxA6dX5OhkxaiHcUzpwqT9j7WKs24rnGQBYb" },
-	{ id: "chatgpt", title: "ChatGPT", href: "https://chatgpt.com", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs10ZNkpZYmxTj5cmdVkoDGvCFWLOyHQ6RfzgAS" },
-	{ id: "pixiv", title: "PIXIV", href: "https://www.pixiv.net", image: "https://ywu5w3rxj7.ufs.sh/f/qAQXfUAIKDs18ySrmDGW4wLAeEmHVTRdPyDNvsZJn9YUfQ2I" },
+	{ id: "facebook", title: "Facebook", href: "https://www.facebook.com", image: "https://img.ritmo.dev/mygo/icon-facebook.webp" },
+	{ id: "messenger", title: "Messenger", href: "https://www.facebook.com/messages/t", image: "https://img.ritmo.dev/mygo/icon-messenger.webp" },
+	{ id: "instagram", title: "Instagram", href: "https://www.instagram.com", image: "https://img.ritmo.dev/mygo/icon-instagram.webp" },
+	{ id: "twitter", title: "Twitter", href: "https://www.twitter.com", image: "https://img.ritmo.dev/mygo/icon-twitter.webp" },
+	{ id: "youtube", title: "YouTube", href: "https://www.youtube.com", image: "https://img.ritmo.dev/mygo/icon-youtube.webp" },
+	{ id: "threads", title: "Threads", href: "https://www.threads.net", image: "https://img.ritmo.dev/mygo/icon-threads.webp" },
+	{ id: "ani-gamer", title: "巴哈姆特動畫瘋", href: "https://ani.gamer.com.tw", image: "https://img.ritmo.dev/mygo/icon-ani-gamer.webp" },
+	{ id: "github", title: "GitHub", href: "https://github.com", image: "https://img.ritmo.dev/mygo/icon-github.webp" },
+	{ id: "chatgpt", title: "ChatGPT", href: "https://chatgpt.com", image: "https://img.ritmo.dev/mygo/icon-chatgpt.webp" },
+	{ id: "pixiv", title: "PIXIV", href: "https://www.pixiv.net", image: "https://img.ritmo.dev/mygo/icon-pixiv.webp" },
 ];
 
 

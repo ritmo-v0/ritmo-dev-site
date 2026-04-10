@@ -542,9 +542,9 @@
 	{
 		"role": "acid",
 		"content": {
-			"ja": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQAGMoxlUMeDhHLI3ZWP2nRopbTJqkyOj5E9vw)",
-			"zh-TW": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQAGMoxlUMeDhHLI3ZWP2nRopbTJqkyOj5E9vw)",
-			"en": "![LINK ERROR](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQAGMoxlUMeDhHLI3ZWP2nRopbTJqkyOj5E9vw)"
+			"ja": "![LINK ERROR](https://img.ritmo.dev/stuff/7sref/link-error.jpg)",
+			"zh-TW": "![LINK ERROR](https://img.ritmo.dev/stuff/7sref/link-error.jpg)",
+			"en": "![LINK ERROR](https://img.ritmo.dev/stuff/7sref/link-error.jpg)"
 		},
 		"timestamp": "2025-07-13T00:46:00.000Z"
 	},
@@ -893,9 +893,9 @@
 	{
 		"role": "player",
 		"content": {
-			"ja": "![メッセージを確認する](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQcspdgYE8TLKnGhHlusWYUZBCM9o24zwNxE5J)",
-			"zh-TW": "![確認訊息](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQcspdgYE8TLKnGhHlusWYUZBCM9o24zwNxE5J)",
-			"en": "![Check message](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQcspdgYE8TLKnGhHlusWYUZBCM9o24zwNxE5J)"
+			"ja": "![メッセージを確認する](https://img.ritmo.dev/stuff/7sref/check-message.jpg)",
+			"zh-TW": "![確認訊息](https://img.ritmo.dev/stuff/7sref/check-message.jpg)",
+			"en": "![Check message](https://img.ritmo.dev/stuff/7sref/check-message.jpg)"
 		},
 		"timestamp": "2025-07-25T11:24:00.000Z"
 	},
@@ -911,9 +911,9 @@
 	{
 		"role": "acid",
 		"content": {
-			"ja": "![THANK YOU FOR PLAYING](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQNwewspXBrq8s5aiHe1TVS2JjDUcC6lQzbOfy)",
-			"zh-TW": "![THANK YOU FOR PLAYING](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQNwewspXBrq8s5aiHe1TVS2JjDUcC6lQzbOfy)",
-			"en": "![THANK YOU FOR PLAYING](https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQNwewspXBrq8s5aiHe1TVS2JjDUcC6lQzbOfy)"
+			"ja": "![THANK YOU FOR PLAYING](https://img.ritmo.dev/stuff/7sref/thank-you-for-playing.jpg)",
+			"zh-TW": "![THANK YOU FOR PLAYING](https://img.ritmo.dev/stuff/7sref/thank-you-for-playing.jpg)",
+			"en": "![THANK YOU FOR PLAYING](https://img.ritmo.dev/stuff/7sref/thank-you-for-playing.jpg)"
 		},
 		"timestamp": "2025-07-25T11:24:00.000Z"
 	}

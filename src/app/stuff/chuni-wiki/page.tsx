@@ -73,7 +73,7 @@ export default function ChuniWikiPage() {
 		<>
 			<header>
 				<Image
-					src="https://3b4o9rg98c.ufs.sh/f/Tv72XolD6hyQCPyPo7c4mw1EsMqgjBCph0QOdWak9DVGxf5l"
+					src="https://img.ritmo.dev/stuff/chuni-wiki/og_image.webp"
 					alt="CHUNITHM【チュウニズム】攻略 Wiki"
 					className={cn(
 						"aspect-video rounded-xl shadow-lg object-cover",
