@@ -34,6 +34,7 @@ export async function generateMetadata({
 }
 
 // Route Segment Config
+export const dynamic = "force-static";
 export const revalidate = 900;       // 15 min
 export async function generateStaticParams() {
 	const articles = await getArticles();
