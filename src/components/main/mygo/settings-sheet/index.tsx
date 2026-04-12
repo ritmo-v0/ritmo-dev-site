@@ -24,28 +24,24 @@ import { Settings2 } from "lucide-react";
 export function SettingsSheet({ className }: React.ComponentProps<typeof Button>) {
 	return (
 		<Sheet>
-			<SheetTrigger asChild>
-				<Button
-					variant="ghost"
-					size="icon"
-					className={cn(className)}
-				>
-					<Settings2 />
-				</Button>
+			<SheetTrigger
+				className={cn(className)}
+				render={<Button variant="ghost" size="icon" />}>
+				<Settings2 />
 			</SheetTrigger>
 			<SheetContent className="w-4/5">
 				<SheetHeader>
 					<SheetTitle>Settings</SheetTitle>
 					<SheetDescription>Customize your own experience.</SheetDescription>
 				</SheetHeader>
-				<div className="grid gap-6 px-4">
+				<div className="grid gap-6 px-6">
 					<ThemingSection />
 					<WallpaperSection />
 					<BookmarksSection />
 				</div>
 				<SheetFooter>
-					<SheetClose asChild>
-						<Button variant="outline">Close</Button>
+					<SheetClose render={<Button variant="outline" />}>
+						Close
 					</SheetClose>
 				</SheetFooter>
 			</SheetContent>

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 // Components & UI
 import MuxVideo from "@mux/mux-video-react";
-import { H1, Muted, Wrapper } from "@/components/common/typography";
+import { H1, Muted } from "@/components/common/typography";
 
 // Icons & Images
 // import { RitmoIcon } from "@/components/common/icons";
@@ -30,7 +30,6 @@ export default function HomePage() {
 					"text-center text-white select-none",
 					"text-shadow-[0px_0px_4em_white] opacity-65 mix-blend-plus-lighter",
 				)}>
-					{/* <RitmoIcon className="size-20 md:size-32" /> */}
 					<div className="grid gap-y-4 md:gap-y-6">
 						<H1 className="font-semibold text-6xl md:text-8xl">ritmo_v0</H1>
 						<Muted className="text-2xl md:text-4xl text-muted-foreground">
@@ -39,10 +38,8 @@ export default function HomePage() {
 					</div>
 				</div>
 			</header>
-			<Wrapper asChild>
-				<main>
-				</main>
-			</Wrapper>
+			<main>
+			</main>
 		</div>
 	);
 }

@@ -1,5 +1,6 @@
 import { visit } from "unist-util-visit";
 import { toString as mdastToString } from "mdast-util-to-string";
+import { match } from "ts-pattern";
 
 // Types & Interfaces
 import type { Root } from "mdast";
@@ -8,14 +9,20 @@ import type { Root } from "mdast";
 
 export function remarkTextDirective() {
 	return (tree: Root) => {
-		visit(tree, "textDirective", (node, index, parent) => {
-			if (
-				!parent || !index ||
-				node.children.length > 0 ||
-				(node.attributes && Object.keys(node.attributes).length > 0)
-			) return;
+		visit(tree, "textDirective", (node) => {
+			node.data ??= {};
+			const data = node.data;
 
-			parent.children[index] = { type: "text", value: `:${node.name}` };
+			data.hName = match(node.name)
+				.with("abbr", () => "abbr")
+				.with("b", () => "strong")
+				.with("i", () => "em")
+				.with("br", () => "br")
+				.otherwise(() => "span");
+			data.hProperties = {
+				...(node.attributes || {}),
+				dataName: node.name,
+			};
 		});
 	};
 }

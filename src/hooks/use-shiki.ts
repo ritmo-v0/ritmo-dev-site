@@ -3,13 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import { ensureError } from "@/lib/fetch/response";
 
 // Shiki
-import { createHighlighterCore, createOnigurumaEngine } from "react-shiki/core";
-import { bundledLanguages } from "shiki/bundle/web";
+import { createHighlighterCore } from "@shikijs/core";
+import { createJavaScriptRawEngine } from "@shikijs/engine-javascript";
 import OneLight from "@shikijs/themes/one-light"
 import OneDarkPro from "@shikijs/themes/one-dark-pro";
 
 // Types & Interfaces
-import type { HighlighterCore } from "shiki";
+import type { HighlighterCore } from "@shikijs/core";
 
 // Constants & Variables
 let highlighterPromise: Promise<HighlighterCore> | null = null;
@@ -18,27 +18,19 @@ let highlighterPromise: Promise<HighlighterCore> | null = null;
 
 export async function getShikiHighlighter() {
 	if (!highlighterPromise) {
-		const t0 = performance.now();
 		highlighterPromise = createHighlighterCore({
-			themes: [
-				OneLight,
-				OneDarkPro,
-			],
+			engine: createJavaScriptRawEngine(),
+			themes: [OneLight, OneDarkPro],
 			langs: [
-				bundledLanguages.html,
-				// bundledLanguages.css,
-				bundledLanguages.js,
-				bundledLanguages.ts,
-				// bundledLanguages.jsx,
-				bundledLanguages.tsx,
-				bundledLanguages.json,
-				bundledLanguages.jsonc,
+				import("@shikijs/langs-precompiled/html"),
+				() => import("@shikijs/langs-precompiled/css"),
+				() => import("@shikijs/langs-precompiled/js"),
+				() => import("@shikijs/langs-precompiled/jsx"),
+				import("@shikijs/langs-precompiled/ts"),
+				import("@shikijs/langs-precompiled/tsx"),
+				() => import("@shikijs/langs-precompiled/json"),
+				() => import("@shikijs/langs-precompiled/jsonc"),
 			],
-			engine: createOnigurumaEngine(import("shiki/wasm")),
-		}).then(highlighter => {
-			const t1 = performance.now();
-			console.info(`Shiki highlighter created in ${(t1 - t0).toFixed(2)} ms`);
-			return highlighter;
 		});
 	}
 
@@ -47,7 +39,7 @@ export async function getShikiHighlighter() {
 
 export function useShiki() {
 	const highlighterRef = useRef<HighlighterCore | null>(null);
-	const [isHighlighterReady, setIsHighlighterReady] = useState(false)
+	const [isHighlighterReady, setIsHighlighterReady] = useState(false);
 
 	useEffect(() => {
 		getShikiHighlighter()

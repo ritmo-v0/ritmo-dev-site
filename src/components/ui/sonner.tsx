@@ -1,44 +1,43 @@
 "use client";
 import { useTheme } from "next-themes";
 
-// Components & UI
+// Sonner
 import { type ToasterProps, Toaster as Sonner } from "sonner";
 
 // Icons & Images
 import {
-	CircleAlert,
-	CircleCheck,
-	CircleX,
-	Info,
-	LoaderCircle,
-} from "lucide-react";
+	CheckCircleIcon,
+	CircleNotchIcon,
+	InfoIcon,
+	WarningIcon,
+	XCircleIcon,
+} from "@phosphor-icons/react";
 
 
 
-export const Toaster = ({ ...props }: ToasterProps) => {
-	const { theme = "system" } = useTheme()
+export function Toaster(props: ToasterProps) {
+	const { resolvedTheme } = useTheme();
 
 	return (
 		<Sonner
-			theme={theme as ToasterProps["theme"]}
+			offset={32}
+			theme={resolvedTheme as ToasterProps["theme"]}
 			className="toaster group"
 			toastOptions={{
 				classNames: {
-					toast:
-						"group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:font-sans group-[.toaster]:border-border group-[.toaster]:shadow-lg",
-					description: "group-[.toast]:text-muted-foreground",
-					actionButton:
-						"group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
-					cancelButton:
-						"group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
+					toast: "bg-background! font-heading! text-sm! text-foreground! border-border! rounded-2xl! shadow-2xl!",
+					description: "font-sans! text-muted-foreground!",
+					actionButton: "bg-primary! text-primary-foreground!",
+					cancelButton: "bg-muted! text-muted-foreground!",
+					closeButton: "bg-background! text-foreground! border-border!",
 				},
 			}}
 			icons={{
-				success: <CircleCheck className="size-4 text-green-500" />,
-				info: <Info className="size-4" />,
-				warning: <CircleAlert className="size-4 text-amber-500" />,
-				error: <CircleX className="size-4 text-destructive" />,
-				loading: <LoaderCircle className="size-4 animate-spin" />,
+				info: <InfoIcon className="size-4" />,
+				success: <CheckCircleIcon className="size-4 text-green-500" />,
+				warning: <WarningIcon className="size-4 text-amber-500" />,
+				error: <XCircleIcon className="size-4 text-destructive" />,
+				loading: <CircleNotchIcon className="size-4 animate-spin" />,
 			}}
 			closeButton={true}
 			{...props}

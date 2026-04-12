@@ -31,6 +31,9 @@
 		},
 		"rules": {
 			"recommended": true,
+			"a11y": {
+				"useHeadingContent": "off"
+			},
 			"complexity": {
 				"noImportantStyles": "off"
 			},
@@ -40,6 +43,9 @@
 			},
 			"performance": {
 				"noImgElement": "off"
+			},
+			"style": {
+				"noDescendingSpecificity": "off"
 			},
 			"suspicious": {
 				"noArrayIndexKey": "off",

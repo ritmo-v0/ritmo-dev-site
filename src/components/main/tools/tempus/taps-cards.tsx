@@ -108,16 +108,16 @@ function TapsCard({
 	return (
 		<Card className={cn("gap-4", className)}>
 			<CardHeader>
-				<CardTitle className="flex items-center gap-x-1">
+				<CardTitle className="flex gap-x-1">
 					{title}
 					<Popover>
 						<PopoverTrigger openOnHover render={
-							<Button variant="ghost" size="icon-sm">
-								<Info />
+							<Button variant="nothing" size="icon-xs">
+								<Info className="text-primary" />
 							</Button>
 						}>
 						</PopoverTrigger>
-						<PopoverContent side="top" className="px-4 py-3">
+						<PopoverContent side="top" variant="tooltip">
 							{infotip}
 						</PopoverContent>
 					</Popover>

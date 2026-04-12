@@ -58,7 +58,7 @@ function PreviewTextarea() {
 				ref={ref}
 				id="emoji-preview"
 				value={preview}
-				className="min-h-20 max-h-[40svh]"
+				className="min-h-20 max-h-[40svh] resize-y"
 				placeholder="Click any button to add an emoji..."
 				onChange={(e) => setPreview(e.target.value)}
 			/>
@@ -76,7 +76,7 @@ function UseSubgroupToggle() {
 			onPressedChange={() => setUseSubgroup(!useSubgroup)}
 			aria-label={`Toggle use ${useSubgroup ? "supergroup" : "subgroup"}`}
 		>
-			<ListTree />
+			<ListTree data-icon="inline-start" />
 			<span className="max-sm:hidden">
 				Subgroup
 			</span>
@@ -94,7 +94,7 @@ function UseCOCToggle() {
 			onPressedChange={() => setUseCOC(!useCOC)}
 			aria-label={`Toggle ${useCOC ? "disable" : "enable"} copy on click`}
 		>
-			<SquareDashedMousePointer />
+			<SquareDashedMousePointer data-icon="inline-start" />
 			<span className="max-sm:hidden">
 				Copy on click
 			</span>

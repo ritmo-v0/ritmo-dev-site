@@ -45,7 +45,10 @@ function MessageTabs() {
 							value={tab.id}
 							aria-label={tab.name[locale]}
 						>
-							<tab.icon weight={activeTab === tab.id ? "fill" : "regular"} />
+							<tab.icon
+								data-icon="inline-start"
+								weight={activeTab === tab.id ? "fill" : "regular"}
+							/>
 							<span className="max-xs:hidden">
 								{tab.name[locale]}
 							</span>

@@ -22,8 +22,7 @@ import { Pre } from "@/components/common/shiki-highlighter";
 import {
 	H1, H2, H3, H4, H5, H6,
 	UL, OL, LI, P, HR,
-	Code,
-	Blockquote, Aside,
+	Code, Blockquote, Aside,
 	Link, IFrame,
 } from "@/components/common/typography";
 import {
@@ -41,6 +40,9 @@ import type { Route } from "next";
 
 
 export function Markdown({
+	components,
+	remarkPlugins,
+	rehypePlugins,
 	renderH1 = true,
 	...props
 }: React.ComponentProps<typeof ReactMarkdown> & { renderH1?: boolean }) {
@@ -54,47 +56,48 @@ export function Markdown({
 				remarkLeafDirective,
 				remarkContainerDirective,
 				[remarkGfm, { singleTilde: false }],
+				...(remarkPlugins ?? []),
 			]}
 			rehypePlugins={[
 				rehypeRaw,
 				rehypeSlug,
 				rehypeKatex,
+				...(rehypePlugins ?? []),
 			]}
 			components={{
+				...components,
 				h1: (props) => renderH1 ? <H1 {...props} /> : null,
-				h2: (props) => <H2 className="pb-2 border-b" {...props} />,
+				h2: H2,
 				h3: H3,
 				h4: H4,
 				h5: H5,
 				h6: H6,
+				p: P,
+				hr: HR,
 				ul: UL,
 				ol: OL,
 				li: LI,
-				p: P,
-				hr: HR,
-				pre: MarkdownPre,
 				code: Code,
+				pre: MarkdownPre,
 				blockquote: Blockquote,
 				aside: Aside,
-				a: ({ children, href, ...props }) => (
-					href
-						? <Link href={href as Route} {...props}>{children}</Link>
-						: <span {...props}>{children}</span>
-				),
+				a: ({ href, ...props }) => <Link href={href as Route || "#"} {...props} />,
 				img: ({ src, alt, width, height, ...props }) => (
 					typeof src !== "string" ? null : (
-						<Image
-							src={src}
-							alt={alt || ""}
-							width={Number(width) || 768}
-							height={Number(height) || 432}
-							className={cn(
-								"mx-auto my-2 w-full max-w-3xl h-auto rounded-lg shadow-lg object-cover not-only:first:mt-0",
-								"[&+br]:hidden [&+br+span]:block [&+br+span]:text-center [&+br+span]:text-sm [&+br+span]:text-muted-foreground",
-							)}
-							loading="lazy"
-							{...props}
-						/>
+						<span className={cn(
+							"relative",
+							"[&+br]:hidden [&+br+span]:block [&+br+span]:text-center [&+br+span]:text-sm [&+br+span]:text-muted-foreground",
+						)}>
+							<Image
+								src={src}
+								alt={alt || ""}
+								className="relative! mx-auto my-3 max-w-3xl rounded-2xl shadow-lg object-cover not-only:first:mt-0"
+								sizes="(max-width: 64rem) 100vw, 768px"
+								loading="lazy"
+								fill
+								{...props}
+							/>
+						</span>
 					)
 				),
 				iframe: IFrame,
@@ -116,22 +119,22 @@ function MarkdownPre({
 	...props
 }: React.ComponentProps<"pre">) {
 	const isValidCodeElement = isValidElement(children);
-	const codeElement = isValidCodeElement
-		? children.props as React.ComponentProps<"code">
-		: null;
+	if (!isValidCodeElement) return null;
+
+	const codeElement = children.props as React.ComponentProps<"code">;
 
 	const rawCode = codeElement?.children ?? "";
-	const code = typeof rawCode === "string" ? rawCode.trimEnd() : String(rawCode).trimEnd();
+	const code = typeof rawCode === "string"
+		? rawCode.trimEnd()
+		: String(rawCode).trimEnd();
 
 	const codeClassName = codeElement?.className ?? "";
 	const matchLang = codeClassName?.match(/language-(\w+)/);
 	const language = matchLang ? matchLang[1] : "plaintext";
 
-	if (!isValidCodeElement) return null;
-
 	return (
 		<Pre
-			className={cn("my-2", className)}
+			className={cn("my-2 first:mt-0 last:mb-0", className)}
 			code={code}
 			language={language}
 			{...props}

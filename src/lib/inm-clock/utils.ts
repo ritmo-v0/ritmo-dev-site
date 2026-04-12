@@ -74,7 +74,7 @@ export function celebrate() {
 	});
 }
 
-function fire(particleRatio: number, options: Record<string, any>): void {
+function fire(particleRatio: number, options: confetti.Options): void {
 	confetti({
 		origin: { y: 0.7 },
 		...options,

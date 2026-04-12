@@ -76,7 +76,7 @@ export default function ChuniWikiPage() {
 					src="https://img.ritmo.dev/stuff/chuni-wiki/og_image.webp"
 					alt="CHUNITHM【チュウニズム】攻略 Wiki"
 					className={cn(
-						"aspect-video rounded-xl shadow-lg object-cover",
+						"aspect-video rounded-2xl shadow-lg object-cover",
 						"select-none pointer-events-none",
 					)}
 					sizes="(max-width: 64rem) 100vw, 720px"

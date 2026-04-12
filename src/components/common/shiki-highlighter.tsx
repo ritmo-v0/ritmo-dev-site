@@ -33,21 +33,33 @@ export function Pre({
 	if (!isHighlighterReady || !highlighter) return null;
 
 	const isPlaintext = language === "plaintext";
-	const isFixedToolbar = showLanguage && !isPlaintext;
+	const showFigCaption = showLanguage && !isPlaintext;
 
 	return (
-		<div className={cn(
-			"group/code relative border rounded-lg text-sm overflow-hidden isolate",
+		<figure className={cn(
+			"group/code relative bg-muted text-sm ring-1 ring-foreground/5 dark:ring-foreground/10 rounded-2xl overflow-hidden isolate",
 			className,
 		)}>
 			<div className={cn(
-				"flex items-center justify-between gap-2",
-				isFixedToolbar
-					? "pl-4 pr-2 py-1.5 bg-muted"
-					: "absolute top-2 right-2 not-focus-within:opacity-20 group-hover/code:opacity-100 transition-opacity z-1",
+				"relative flex items-center justify-between gap-2 h-10 px-4 z-1",
+				!showFigCaption && "absolute top-0 inset-e-0",
 			)}>
-				{isFixedToolbar && <Muted className="font-mono text-sm">{language}</Muted>}
-				<CodeCopyButton code={code} />
+				{showFigCaption && (
+					<Muted
+						className="font-heading"
+						render={<figcaption />}>
+						{language}
+					</Muted>
+				)}
+				<div className={cn(
+					"flex items-center -me-2",
+					!showFigCaption && "md:not-focus-within:opacity-20 md:group-hover/code:opacity-100 transition-opacity",
+				)}>
+					<CodeCopyButton code={code} />
+				</div>
+				{!showFigCaption && (
+					<div className="absolute inset-0 bg-[#FAFAFA] dark:bg-[#282C34] rounded-s-full blur-sm -z-1" />
+				)}
 			</div>
 			<ShikiHighlighter
 				highlighter={highlighter}
@@ -61,29 +73,30 @@ export function Pre({
 				showLanguage={false}
 				showLineNumbers={!isPlaintext}
 				tabindex={-1}
-				className="*:px-5! *:py-3! *:rounded-t-none! *:rounded-b-lg!"
+				className="*:px-4! *:py-2.5! *:rounded-none! *:[scrollbar-width:thin]"
 				{...props}
 			>
 				{code}
 			</ShikiHighlighter>
-		</div>
+		</figure>
 	);
 }
 
 function CodeCopyButton({
 	className,
-	code
+	code,
+	...props
 }: React.ComponentProps<typeof Button> & Pick<CodeProps, "code">) {
 	const { copied, copy } = useCopy();
 
 	return (
 		<Button
 			variant="ghost"
-			className={cn("size-7 text-muted-foreground rounded-full [&_svg]:size-3.5", className)}
-			onClick={async () => copy(code)}
-			asChild
-		>
-			<CopyButton showIsCopied={copied} />
-		</Button>
+			size="icon-xs"
+			className={cn("text-muted-foreground", className)}
+			onClick={async () => await copy(code)}
+			render={<CopyButton showIsCopied={copied} />}
+			{...props}
+		/>
 	);
 }

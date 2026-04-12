@@ -83,11 +83,15 @@ function SRMessage({
 					{matches.map(match => (
 						<Button
 							key={match}
-							type="button"
-							variant="7sref"
-							className={cn("h-auto", match.includes("\n")
-								? "shrink inline-block whitespace-normal"
-								: "xs:min-w-60")}
+							variant="nothing"
+							className={cn(
+								"h-auto px-4 py-2 inset-shadow-[0_-2px_2px_#7893C8]",
+								"bg-linear-to-b from-[#F9FAFE] to-[#D5E5FC]",
+								"font-bold xs:text-base text-[#446EBA]",
+								"will-change-transform active:scale-[0.975]",
+								match.includes("\n")
+									? "shrink inline-block whitespace-normal"
+									: "xs:min-w-60")}
 						>
 							<Markdown>{match}</Markdown>
 						</Button>

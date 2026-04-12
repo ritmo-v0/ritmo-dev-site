@@ -19,15 +19,15 @@ export function ToolCard({
 		<Link
 			id={id}
 			href={url}
-			variant="nothing"
-			className="flex flex-col size-full rounded-xl transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50"
+			variant="ghost"
+			className="flex flex-col size-full"
 		>
 			<Image
 				src={imageUrl}
 				alt={`OG image of the ${title} tool`}
-				className="border rounded-xl object-cover"
-				width={960}
-				height={540}
+				className="border rounded-[inherit] object-cover"
+				width={720}
+				height={405}
 			/>
 			<div className="flex justify-between gap-x-4 p-4 h-full">
 				<div>
@@ -35,8 +35,8 @@ export function ToolCard({
 					<Muted className="line-clamp-2">{description}</Muted>
 				</div>
 				<div
-					className="self-end shrink-0 size-3 rounded-full"
-					style={{ backgroundColor: color }}
+					className="self-end shrink-0 size-3 bg-(--tool-color) rounded-full"
+					style={{ "--tool-color": color } as React.CSSProperties}
 				></div>
 			</div>
 		</Link>

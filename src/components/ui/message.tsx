@@ -68,7 +68,7 @@ function Message({
 			{...props}
 		>
 			{shouldRenderAvatar && (
-				<Avatar>
+				<Avatar size="lg">
 					{showAvatar && (
 						<>
 							<AvatarImage
@@ -76,7 +76,9 @@ function Message({
 								src={avatarSrc}
 								alt={avatarAlt}
 							/>
-							<AvatarFallback>{avatarFallback}</AvatarFallback>
+							<AvatarFallback>
+								{avatarFallback}
+							</AvatarFallback>
 						</>
 					)}
 				</Avatar>
@@ -92,7 +94,7 @@ const messageContentVariants = cva(
 		variants: {
 			variant: {
 				default: "grow",
-				bubble: "px-4 py-2 bg-secondary text-secondary-foreground rounded-3xl",
+				bubble: "px-4 py-2 bg-secondary text-secondary-foreground rounded-4xl",
 			},
 		},
 		defaultVariants: {
@@ -116,7 +118,10 @@ function MessageContent({
 }
 
 const messageSeparatorVariants = cva(
-	"relative flex items-center gap-4 my-2 py-2 w-full font-semibold text-xs before:block after:block before:h-[0.5px] after:h-[0.5px] before:grow after:grow",
+	[
+		"relative flex items-center gap-4 my-2 py-2 w-full font-semibold text-xs",
+		"before:block after:block before:h-[0.5px] after:h-[0.5px] before:grow after:grow",
+	],
 	{
 		variants: {
 			variant: {
@@ -144,9 +149,10 @@ function MessageSeparator({
 		>
 			{children}
 			{variant === "unread" && (
-				<span
-					className="absolute right-0 top-1/2 -translate-y-1/2 px-1.5 bg-destructive text-white uppercase rounded-sm select-none"
-				>
+				<span className={cn(
+					"absolute right-0 top-1/2 -translate-y-1/2",
+					"px-1.5 bg-destructive text-white uppercase rounded-sm select-none",
+				)}>
 					NEW
 				</span>
 			)}

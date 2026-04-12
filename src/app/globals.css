@@ -5,32 +5,37 @@
 
 
 /* ---------------------------- THEMES ---------------------------- */
-@theme inline {
-	/* Overrides */
+@theme {
 	--breakpoint-xs: 32rem;
-	--leading-relaxed: 1.75;
+
+	--default-mono-font-variation-settings: "ROND" 100;
+	--leading-relaxed: 1.8;
+
 	--ease-out: cubic-bezier(0.22, 1, 0.64, 1);
 	--ease-in-out: cubic-bezier(0.43, 0.01, 0.29, 1);
 	--ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
 	--animate-blink: blink 1s steps(2, start) infinite;
 	--animate-orbit: orbit 80s linear infinite;
+}
 
+@theme inline {
 	--font-heading: var(--font-plus-jakarta-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
 	--font-sans: var(--font-rethink-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
-	--font-mono: var(--font-jetbrains-mono), monospace, var(--font-noto-sans-tc), var(--font-noto-sans-jp);
-	--font-mono-7sref: var(--font-doto), monospace, var(--font-noto-sans-tc), var(--font-noto-sans-jp);
-	--font-serif: var(--font-noto-serif-tc), sans-serif;
-	--font-serif-7sref: var(--font-shippori-mincho), sans-serif;
-	--default-mono-font-variation-settings: "ROND" 100;
+	--font-mono: var(--font-jetbrains-mono), var(--font-noto-sans-tc), var(--font-noto-sans-jp), monospace;
+	--font-mono-7sref: var(--font-doto), var(--font-noto-sans-tc), var(--font-noto-sans-jp), monospace;
+	--font-serif: var(--font-noto-serif-tc), serif;
+	--font-serif-7sref: var(--font-shippori-mincho), serif;
 
-	--radius-xs: calc(var(--radius) - 6px);
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
+	--radius-xs: calc(var(--radius) * 0.4);
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
 	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) + 4px);
-	--radius-2xl: calc(var(--radius) + 8px);
-	--radius-3xl: calc(var(--radius) + 16px);
-	--radius-4xl: calc(var(--radius) + 24px);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
+
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--color-card: var(--card);
@@ -65,7 +70,7 @@
 }
 
 :root {
-	--radius: 0.75rem;
+	--radius: 0.625rem;
 	--background: oklch(1 0 0);
 	--foreground: oklch(0.141 0.005 285.823);
 	--card: oklch(1 0 0);
@@ -134,8 +139,7 @@
 
 	& .shiki,
 	& .shiki span {
-		color: var(--shiki-dark) !important;
-		background-color: var(--shiki-dark-bg) !important;
+		@apply bg-(--shiki-dark-bg)! text-(--shiki-dark)!;
 	}
 }
 
@@ -148,28 +152,33 @@
 		@apply selection:bg-primary selection:text-primary-foreground;
 	}
 
-	@supports (corner-shape: squircle) {
-		[class*="rounded-"]:not(.rounded-full), .shiki {
-			--radius: 1.4rem;
-			corner-shape: superellipse(1.6);
-		}
-	}
-
 	html {
+		@apply font-sans antialiased;
 		@apply motion-safe:scroll-smooth scroll-pt-24 overscroll-y-none;
-		@apply lg:[scrollbar-gutter:stable];
 		scrollbar-color: var(--color-muted-foreground) transparent;
 	}
 
 	body {
-		@apply min-w-[320px] bg-background text-foreground font-sans antialiased;
+		@apply relative min-w-[320px] bg-background text-foreground;
 	}
 
-	button {
+	button:not(:disabled),
+	[role="button"]:not(:disabled),
+	[role="option"]:not([data-disabled]),
+	[role*="menuitem"]:not([data-disabled]) {
 		@apply cursor-pointer;
 	}
 
-	rt, rp {
+	@supports (corner-shape: squircle) {
+		[class*="rounded-"]:not([class*="rounded-full"]),
+		.shiki {
+			--radius: 1rem;
+			corner-shape: superellipse(1.6);
+		}
+	}
+
+	rt,
+	rp {
 		@apply py-px tracking-normal;
 		font-size: max(10px, 0.75em);
 	}
@@ -191,14 +200,14 @@
 }
 
 @keyframes orbit {
-    0% {
+	0% {
 		transform: rotate(var(--orbit-offset, 0deg))
-		translateX(var(--orbit-radius))
-		rotate(calc(-1 * var(--orbit-offset, 0deg)));
+			translateX(var(--orbit-radius))
+			rotate(calc(-1 * var(--orbit-offset, 0deg)));
 	}
-    100% {
+	100% {
 		transform: rotate(calc(1turn + var(--orbit-offset, 0deg)))
-		translateX(var(--orbit-radius))
-		rotate(calc(-1 * (1turn + var(--orbit-offset, 0deg))));
+			translateX(var(--orbit-radius))
+			rotate(calc(-1 * (1turn + var(--orbit-offset, 0deg))));
 	}
 }

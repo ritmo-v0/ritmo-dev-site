@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import {
 	Select,
 	SelectContent,
+	SelectGroup,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
@@ -42,7 +43,7 @@ export function LocaleSelect({
 		>
 			<SelectTrigger
 				size="sm"
-				className={cn("w-26", className)}
+				className={cn(className)}
 				aria-label={t("label")}
 			>
 				<SelectValue>
@@ -50,11 +51,13 @@ export function LocaleSelect({
 				</SelectValue>
 			</SelectTrigger>
 			<SelectContent>
-				{LOCALES.map(locale => (
-					<SelectItem key={locale} value={locale}>
-						{t(locale) || locale.toUpperCase()}
-					</SelectItem>
-				))}
+				<SelectGroup>
+					{LOCALES.map(locale => (
+						<SelectItem key={locale} value={locale}>
+							{t(locale) || locale.toUpperCase()}
+						</SelectItem>
+					))}
+				</SelectGroup>
 			</SelectContent>
 		</Select>
 	);

@@ -4,11 +4,12 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 // Components & UI
+import NextLink from "next/link";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { ThemeSelect } from "@/components/common/theme-select";
 import { LocaleSelect } from "@/components/common/locale-select";
-import { ButtonLink, Link, Muted } from "@/components/common/typography";
+import { ButtonLink, Muted } from "@/components/common/typography";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -35,7 +36,7 @@ import { RitmoIcon } from "@/components/common/icons";
 // Types & Interfaces
 import type { Route } from "next";
 import type { Icon } from "@phosphor-icons/react";
-type BaseItem = { icon: Icon, title: string };
+type BaseItem = { icon: Icon, label: string };
 type LinkItem = BaseItem & { href: Route };
 type MenuItem = BaseItem & {
 	items: Array<Omit<LinkItem, "icon"> & { description: string }>;
@@ -46,23 +47,23 @@ import { STUFF } from "@/app/stuff/stuff";
 const NAV_ITEMS: Array<LinkItem | MenuItem> = [
 	{
 		icon: NotebookIcon,
-		title: "Articles",
+		label: "Articles",
 		href: "/articles",
 	},
 	{
 		icon: CubeIcon,
-		title: "Tools",
+		label: "Tools",
 		href: "/tools",
 	},
 	{
 		icon: ArchiveIcon,
-		title: "Stuff",
+		label: "Stuff",
 		items: STUFF.map(stuff => ({
-			title: stuff.title,
+			label: stuff.title,
 			description: stuff.description,
 			href: stuff.url,
 		})),
-	}
+	},
 ];
 
 
@@ -82,14 +83,14 @@ export default function Navbar() {
 						variant="ghost"
 						size="icon"
 					>
-						<RitmoIcon />
+						<RitmoIcon viewBox="3 3 18 18" className="p-0.5" />
 					</ButtonLink>
 				</div>
 				<NavigationMenu>
-					<NavigationMenuList className="gap-0 *:not-first:-ml-1.5">
+					<NavigationMenuList className="-space-x-0.5">
 						{NAV_ITEMS.map(item => "items" in item
-							? <NavMenuItem key={item.title} {...item} />
-							: <NavLinkItem key={item.title} {...item} />
+							? <NavMenuItem key={item.label} {...item} />
+							: <NavLinkItem key={item.label} {...item} />
 						)}
 					</NavigationMenuList>
 				</NavigationMenu>
@@ -101,7 +102,7 @@ export default function Navbar() {
 	);
 }
 
-function NavLinkItem({ icon: Icon, title, href }: LinkItem) {
+function NavLinkItem({ icon: Icon, label, href }: LinkItem) {
 	const pathname = usePathname();
 	const active = pathname.startsWith(href);
 
@@ -113,10 +114,13 @@ function NavLinkItem({ icon: Icon, title, href }: LinkItem) {
 					<ButtonLink
 						href={href}
 						variant="ghost"
-						className="rounded-full [&>svg]:max-xs:hidden"
+						className="[&>svg]:max-xs:hidden"
 					>
-						<Icon weight={active ? "fill" : "regular"} />
-						{title}
+						<Icon
+							data-icon="inline-start"
+							weight={active ? "fill" : "regular"}
+						/>
+						{label}
 					</ButtonLink>
 				)}
 			/>
@@ -124,30 +128,29 @@ function NavLinkItem({ icon: Icon, title, href }: LinkItem) {
 	);
 }
 
-function NavMenuItem({ icon: Icon, title, items }: MenuItem) {
+function NavMenuItem({ icon: Icon, label, items }: MenuItem) {
 	return (
 		<NavigationMenuItem>
-			<NavigationMenuTrigger className="rounded-full [&>svg]:max-xs:hidden">
-				<Icon />
-				{title}
+			<NavigationMenuTrigger className="[&>svg]:max-xs:hidden">
+				<Icon data-icon="inline-start" />
+				{label}
 			</NavigationMenuTrigger>
 			<NavigationMenuContent>
 				<ul className="grid gap-2">
 					{items.map(item => (
-						<li key={item.title}>
+						<li key={item.label}>
 							<NavigationMenuLink
 								closeOnClick={true}
 								render={
-									<Link
+									<NextLink
 										href={item.href}
-										variant="ghost"
 										className="grid gap-1"
 									>
 										<h3 className="font-heading font-semibold">
-											{item.title}
+											{item.label}
 										</h3>
 										<Muted>{item.description}</Muted>
-									</Link>
+									</NextLink>
 								}
 							/>
 						</li>
@@ -172,19 +175,19 @@ function Settings() {
 					<GearSixIcon className="transition-[rotate] ease-out duration-300" />
 				</Button>
 			} />
-			<PopoverContent className="w-60">
-				<ul className="grid gap-2 p-2 pl-3">
+			<PopoverContent>
+				<ul className="grid gap-2 pl-2">
 					<li className="flex items-center gap-4 text-sm">
 						Mode
 						<ModeToggle className="ml-auto" />
 					</li>
 					<li className="flex items-center gap-4 text-sm">
 						Theme
-						<ThemeSelect className="ml-auto" />
+						<ThemeSelect className="ml-auto w-34" />
 					</li>
 					<li className="flex items-center gap-4 text-sm">
 						Language
-						<LocaleSelect className="ml-auto" />
+						<LocaleSelect className="ml-auto w-34" />
 					</li>
 				</ul>
 			</PopoverContent>

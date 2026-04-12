@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
 	Select,
 	SelectContent,
+	SelectGroup,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
@@ -41,10 +42,11 @@ function AutoResetControl() {
 	const toggleAutoReset = useTempusStore(state => state.toggleAutoReset);
 
 	return (
-		<div className="flex items-center justify-between space-x-2">
+		<div className="flex items-center justify-between">
 			<Label htmlFor="tempus-ar">Auto Reset</Label>
 			<Switch
 				id="tempus-ar"
+				className="ml-auto"
 				checked={useAutoReset}
 				onCheckedChange={toggleAutoReset}
 			/>
@@ -63,11 +65,11 @@ function AutoResetDurationControl() {
 			<div className="flex items-center justify-between gap-4">
 				<Slider
 					id="tempus-ard"
-					value={[autoResetDuration]}
+					value={autoResetDuration}
 					min={1}
 					max={5}
 					step={1}
-					onValueChange={(value) => setAutoResetDuration(value[0])}
+					onValueChange={setAutoResetDuration}
 					disabled={!useAutoReset}
 				/>
 				<span className={cn("font-mono text-sm transition-opacity", !useAutoReset && "opacity-50")}>
@@ -99,18 +101,20 @@ function OtherControls() {
 					value={recentTapCount}
 					onValueChange={setRecentTapCount}
 				>
-					<SelectTrigger className="w-16 h-7!">
+					<SelectTrigger size="sm" className="w-20">
 						<SelectValue />
 					</SelectTrigger>
 					<SelectContent>
-						{RECENT_TAP_OPTIONS.map(option => (
-							<SelectItem
-								key={option}
-								value={option}
-							>
-								{option}
-							</SelectItem>
-						))}
+						<SelectGroup>
+							{RECENT_TAP_OPTIONS.map(option => (
+								<SelectItem
+									key={option}
+									value={option}
+								>
+									{option}
+								</SelectItem>
+							))}
+						</SelectGroup>
 					</SelectContent>
 				</Select>
 			</div>
@@ -118,13 +122,10 @@ function OtherControls() {
 			{/* Reset Button */}
 			<Button
 				variant="destructive"
-				className="size-full"
 				onClick={handleClick}
-				asChild
+				render={<ResetButton />}
 			>
-				<ResetButton>
-					Reset Taps
-				</ResetButton>
+				Reset Taps
 			</Button>
 		</div>
 	);

@@ -32,11 +32,11 @@ export function WallpaperSection() {
 						<Slider
 							id="mygo-blur"
 							name="mygo-blur"
-							value={[blur]}
+							value={blur}
 							min={0}
 							max={20}
 							step={1}
-							onValueChange={(value) => setBlur(value[0])}
+							onValueChange={setBlur}
 						/>
 						<Muted className="w-[5ch] font-mono text-right">
 							{blur}px
@@ -49,11 +49,11 @@ export function WallpaperSection() {
 						<Slider
 							id="mygo-opacity"
 							name="mygo-opacity"
-							value={[opacity]}
+							value={opacity}
 							min={0}
 							max={1}
 							step={0.01}
-							onValueChange={(value) => setOpacity(value[0])}
+							onValueChange={setOpacity}
 						/>
 						<Muted className="w-[5ch] font-mono text-right">
 							{Math.floor(100 * opacity)}%

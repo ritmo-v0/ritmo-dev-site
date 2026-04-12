@@ -6,6 +6,7 @@ import { Twemoji } from "@/components/common/twemoji";
 import {
 	Select,
 	SelectContent,
+	SelectGroup,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
@@ -40,15 +41,16 @@ export function SkinToneSelect() {
 				</SelectValue>
 			</SelectTrigger>
 			<SelectContent>
-				{ITEMS.map((item, index) => (
-					<SelectItem
-						key={item.value}
-						value={index}
-						className="flex items-center gap-3"
-					>
-						{renderSelectItem(item)}
-					</SelectItem>
-				))}
+				<SelectGroup>
+					{ITEMS.map((item, index) => (
+						<SelectItem
+							key={item.value}
+							value={index}
+						>
+							{renderSelectItem(item)}
+						</SelectItem>
+					))}
+				</SelectGroup>
 			</SelectContent>
 		</Select>
 	);

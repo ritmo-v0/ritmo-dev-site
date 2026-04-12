@@ -16,7 +16,7 @@ export interface MotionButtonProps {
 
 /*
  * These components are intended to be used with the `Button` shadcn component.
- * Use the asChild prop to pass the button props to the motion button.
+ * Use the `render` prop to render these motion buttons instead.
  */
 
 export function CopyButton(
@@ -63,13 +63,14 @@ export function CopyButton(
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke="currentColor"
-			strokeWidth="2"
+			strokeWidth="1.5"
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			className={cn("size-4", svgClassName)}
 			initial={{ scale: 0.8, opacity: 0 }}
 			animate={{ scale: 1, opacity: 1 }}
 			transition={inTransition}
+			data-icon="inline-start"
 		>
 			<motion.rect
 				width="14"
@@ -103,10 +104,11 @@ export function CopyButton(
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke="currentColor"
-			strokeWidth="2"
+			strokeWidth="1.5"
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			className={cn("size-4", svgClassName)}
+			data-icon="inline-start"
 		>
 			<motion.path
 				variants={checkPathVariants}
@@ -159,13 +161,14 @@ export function DeleteButton(
 				viewBox="0 0 24 24"
 				fill="none"
 				stroke="currentColor"
-				strokeWidth="2"
+				strokeWidth="1.5"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 				className={cn("size-4 origin-bottom", svgClassName)}
 				initial={{ y: -12, opacity: 0, rotateZ: -10 }}
 				animate={{ y: 0, opacity: 1, rotateZ: 0 }}
 				transition={fallTransition}
+				data-icon="inline-start"
 			>
 				<motion.g
 					variants={{
@@ -230,7 +233,7 @@ export function ResetButton(
 				viewBox="0 0 24 24"
 				fill="none"
 				stroke="currentColor"
-				strokeWidth="2"
+				strokeWidth="1.5"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 				className={cn("size-4", svgClassName)}

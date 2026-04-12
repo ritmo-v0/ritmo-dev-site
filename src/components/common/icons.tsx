@@ -1,5 +1,13 @@
-
 export function RitmoIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
+	return (
+		<RitmoIconSVG {...props}>
+			<RitmoIconV />
+			<RitmoIcon0 />
+		</RitmoIconSVG>
+	);
+}
+
+export function RitmoIconSVG({ ...props }: React.SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			key="Ritmo."
@@ -15,15 +23,28 @@ export function RitmoIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
 			strokeLinecap="square"
 			strokeLinejoin="miter"
 			{...props}
-		>
+		/>
+	);
+}
 
+export function RitmoIconV({ ...props }: React.SVGProps<SVGGElement>) {
+	return (
+		<g {...props}>
 			<line x1="4" y1="20" x2="4" y2="4" />
-			<path d="m4,4h11c2.76,0,5,2.24,5,5c0,2.76-2.24,5-5,5h-6c-2.76,0-5-2.24-5-5v-5Z" />
 			<polygon
 				fill="currentColor"
 				stroke="none"
 				points="3 3 5.63 3 21 21 18.37 21 3 3"
 			/>
-		</svg>
+		</g>
+	);
+}
+
+export function RitmoIcon0({ ...props }: React.SVGProps<SVGPathElement>) {
+	return (
+		<path
+			d="m4,4h11c2.76,0,5,2.24,5,5c0,2.76-2.24,5-5,5h-6c-2.76,0-5-2.24-5-5v-5Z"
+			{...props}
+		/>
 	);
 }

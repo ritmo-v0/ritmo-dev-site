@@ -57,14 +57,17 @@ function ArticleLink({ article }: { article: NoteOverview }) {
 			href={`/articles/${article.shortId}`}
 			className="flex max-sm:flex-col sm:items-center justify-between gap-2 p-4 transition-none"
 		>
-			<H5 className="text-balance" asChild>
-				<h2>{article.title}</h2>
+			<H5 className="text-balance" render={<h2 />}>
+				{article.title}
 			</H5>
 			<div className="grow w-max flex max-sm:flex-row-reverse items-center gap-2">
 				{tag && <Badge variant={variant}>{tag}</Badge>}
 				<div className="grow max-sm:hidden h-px mx-2 bg-border" />
-				<Muted className="w-max font-light tabular-nums" asChild>
-					<span>{createdAt}</span>
+				<Muted
+					className="w-max font-light tabular-nums"
+					render={<span />}
+				>
+					{createdAt}
 				</Muted>
 			</div>
 		</Link>

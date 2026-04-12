@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 // Components & UI
@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 
 
 
+// TODO: Refactor
 export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) {
 	const [value, setValue] = useState(100);
 	const [step, setStep] = useState(1);
@@ -34,13 +35,6 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 			});
 	}, []);
 
-	useEffect(() => {
-		stop();
-		if (isPlaying) start();
-		return stop;
-		// TODO
-	}, [isPlaying, value]);
-
 	// Metronome
 	function handleClick() {
 		const state = !isPlaying;
@@ -48,22 +42,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 		setWasPlaying(state);
 	}
 
-	function start() {
-		const interval = (60 / value) * 1000;
-		playSFX();
-		intervalRef.current = window.setInterval(() => {
-			playSFX();
-		}, interval);
-	}
-
-	function stop() {
-		if (intervalRef.current) {
-			clearInterval(intervalRef.current);
-			intervalRef.current = 0;
-		}
-	}
-
-	function playSFX() {
+	const playSFX = useCallback(() => {
 		const audioCtx = audioContext.current;
 		const buffer = sfx.current;
 		if (!audioCtx || !buffer) return;
@@ -72,7 +51,28 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 		bufferSource.buffer = buffer;
 		bufferSource.connect(audioCtx.destination);
 		bufferSource.start(0);
-	}
+	}, []);
+
+	const start = useCallback(() => {
+		const interval = (60 / value) * 1000;
+		playSFX();
+		intervalRef.current = window.setInterval(() => {
+			playSFX();
+		}, interval);
+	}, [value, playSFX]);
+
+	const stop = useCallback(() => {
+		if (intervalRef.current) {
+			clearInterval(intervalRef.current);
+			intervalRef.current = 0;
+		}
+	}, []);
+
+	useEffect(() => {
+		stop();
+		if (isPlaying) start();
+		return stop;
+	}, [isPlaying, value, start, stop]);
 
 	function handleValueChange(value: number) {
 		setIsPlaying(false);
@@ -115,7 +115,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 						willChange
 					/>
 					<Slider
-						value={[value]}
+						value={value}
 						min={40}
 						max={400}
 						step={step}
@@ -125,7 +125,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 						onKeyUp={(e) => {
 							if (e.key === "Shift") setStep(1);
 						}}
-						onValueChange={(value) => handleValueChange(value[0])}
+						onValueChange={handleValueChange}
 						onPointerUp={() => { if (wasPlaying) setIsPlaying(true) }}
 					/>
 				</div>

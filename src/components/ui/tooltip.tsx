@@ -1,4 +1,3 @@
-import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 // Components & UI
@@ -10,7 +9,7 @@ function TooltipProvider({
 	delay = 500,
 	closeDelay = 50,
 	...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
+}: TooltipPrimitive.Provider.Props) {
 	return (
 		<TooltipPrimitive.Provider
 			data-slot="tooltip-provider"
@@ -21,57 +20,56 @@ function TooltipProvider({
 	);
 }
 
-function Tooltip({
-	...props
-}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
+function Tooltip({ ...props }: TooltipPrimitive.Root.Props) {
+	return (
+		<TooltipProvider>
+			<TooltipPrimitive.Root data-slot="tooltip" {...props} />
+		</TooltipProvider>
+	);
+}
+
+function TooltipMultiple({ ...props }: TooltipPrimitive.Root.Props) {
 	return <TooltipPrimitive.Root data-slot="tooltip" {...props} />;
 }
 
-function TooltipTrigger({
-	...props
-}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
+function TooltipTrigger({ ...props }: TooltipPrimitive.Trigger.Props) {
 	return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
 }
-
-const tooltipContentVariants = cva(
-	[
-		"w-fit px-3 py-1.5 text-sm rounded-md shadow-md",
-		"transition-all data-instant:transition-none origin-(--transform-origin)",
-		"data-starting-style:scale-90 data-starting-style:opacity-0",
-		"data-ending-style:scale-90 data-ending-style:opacity-0",
-	],
-	{
-		variants: {
-			variant: {
-				default: "bg-foreground text-background",
-				outline: "bg-popover text-popover-foreground border",
-			},
-		},
-		defaultVariants: {
-			variant: "default",
-		},
-	}
-);
 
 function TooltipContent({
 	className,
 	children,
-	variant,
+	align = "center",
+	alignOffset = 0,
+	side = "top",
 	sideOffset = 8,
 	collisionPadding = 16,
 	...props
-}: React.ComponentProps<typeof TooltipPrimitive.Positioner>
-	& VariantProps<typeof tooltipContentVariants>) {
+}: TooltipPrimitive.Popup.Props &
+	Pick<
+		TooltipPrimitive.Positioner.Props,
+		"align" | "alignOffset" | "collisionPadding" | "side" | "sideOffset"
+	>) {
 	return (
 		<TooltipPrimitive.Portal>
 			<TooltipPrimitive.Positioner
+				align={align}
+				alignOffset={alignOffset}
+				side={side}
 				sideOffset={sideOffset}
 				collisionPadding={collisionPadding}
-				{...props}
 			>
 				<TooltipPrimitive.Popup
-					data-slot="tooltip-popup"
-					className={cn(tooltipContentVariants({ variant, className }))}
+					data-slot="tooltip-content"
+					className={cn(
+						"inline-flex items-center gap-1.5 w-fit px-3 py-1.5 bg-foreground text-xs text-background rounded-xl",
+						"transition data-instant:transition-none origin-(--transform-origin)",
+						"data-starting-style:scale-90 data-starting-style:opacity-0",
+						"data-ending-style:scale-90 data-ending-style:opacity-0",
+						"has-data-[slot=kbd]:pe-1.5 **:data-[slot=kbd]:rounded-lg",
+						className,
+					)}
+					{...props}
 				>
 					{children}
 				</TooltipPrimitive.Popup>
@@ -80,4 +78,10 @@ function TooltipContent({
 	);
 }
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
+export {
+	Tooltip,
+	TooltipMultiple,
+	TooltipTrigger,
+	TooltipContent,
+	TooltipProvider,
+};

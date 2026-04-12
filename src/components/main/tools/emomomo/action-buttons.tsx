@@ -20,13 +20,11 @@ export function PreviewCopyButton() {
 			className="max-md:size-10"
 			onClick={async () => copy(preview)}
 			disabled={preview === ""}
-			asChild
+			render={<CopyButton showIsCopied={copied} />}
 		>
-			<CopyButton showIsCopied={copied}>
-				<span className="max-md:hidden">
-					Copy
-				</span>
-			</CopyButton>
+			<span className="max-md:hidden">
+				Copy
+			</span>
 		</Button>
 	);
 }
@@ -43,13 +41,11 @@ export function PreviewClearButton() {
 			className="max-md:size-10"
 			onClick={clearPreview}
 			disabled={preview === ""}
-			asChild
+			render={<DeleteButton />}
 		>
-			<DeleteButton>
-				<span className="max-md:hidden">
-					Clear
-				</span>
-			</DeleteButton>
+			<span className="max-md:hidden">
+				Clear
+			</span>
 		</Button>
 	);
 }

@@ -26,13 +26,13 @@ export function ArticleHeader({ metadata }: { metadata: ArticleMetadata }) {
 				src={image}
 				alt={title}
 				className={cn(
-					"aspect-video rounded-xl shadow-lg object-cover",
+					"aspect-video rounded-2xl shadow-lg object-cover",
 					"select-none pointer-events-none",
 				)}
 				sizes="(max-width: 64rem) 100vw, 720px"
 				width={720}
 				height={405}
-				priority
+				loading="eager"
 			/>
 			<H1 className="mt-1 lg:text-4xl text-balance">{title}</H1>
 			<div className="grid gap-1.5">
@@ -53,6 +53,7 @@ export function ArticleHeader({ metadata }: { metadata: ArticleMetadata }) {
 export function ArticleContent({ content }: { content: string }) {
 	return (
 		<article className={cn(
+			"*:[h2]:pb-2 *:[h2]:border-b",
 			"[&>section[data-footnotes]]:mt-8",
 			"[&>section[data-footnotes]]:pt-8",
 			"[&>section[data-footnotes]]:border-t",

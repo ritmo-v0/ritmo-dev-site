@@ -34,13 +34,13 @@ export function BpmButton({ bpm, shouldMute = false }: BpmButtonProps) {
 			disabled={isMuted}
 			draggable
 			onDragStart={onDragStart}
-			asChild
-		>
-			<CopyButton
-				svgClassName="2xl:size-5"
-				childrenBefore={<span>{bpm}</span>}
-				showIsCopied={copied}
-			/>
-		</Button>
+			render={
+				<CopyButton
+					svgClassName="2xl:size-5"
+					childrenBefore={<span>{bpm}</span>}
+					showIsCopied={copied}
+				/>
+			}
+		/>
 	);
 }

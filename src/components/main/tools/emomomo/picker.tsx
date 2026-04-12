@@ -40,7 +40,7 @@ export function EmomomoPicker({ emojiData }: { emojiData: EmojiData }) {
 
 	return (
 		<TooltipProvider>
-			<Accordion type="multiple" defaultValue={defaultValue}>
+			<Accordion defaultValue={defaultValue}>
 				{emojiData.groups.map(group => (
 					<EmojiGroup
 						value={getEmojiGroupId(group.title)}
@@ -158,7 +158,7 @@ function EmojiVirtuosoGrid({ emojis }: { emojis: EmojiEntry[] }) {
 	);
 }
 
-const EmojiButton = memo(function EmojiButton({ emojiEntry }: { emojiEntry: EmojiEntry }) {
+export const EmojiButton = memo(function EmojiButton({ emojiEntry }: { emojiEntry: EmojiEntry }) {
 	const addEmoji = useEmomomoStore(state => state.addEmoji);
 
 	const { e: emoji, n: name } = emojiEntry;
@@ -179,12 +179,12 @@ const EmojiButton = memo(function EmojiButton({ emojiEntry }: { emojiEntry: Emoj
 					size="emoji"
 					onClick={() => handleCopy(emoji, addEmoji)}
 				>
-					<Twemoji className="size-6 xs:size-7">
+					<Twemoji>
 						{emoji}
 					</Twemoji>
 				</Button>
 			} />
-			<TooltipContent variant="outline" className="p-4">
+			<TooltipContent className="p-4">
 				<div className="flex gap-4">
 					<div className="flex items-center justify-center gap-1 size-12 overflow-hidden">
 						<Twemoji className="size-12 m-0">

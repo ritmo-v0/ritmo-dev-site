@@ -1,17 +1,31 @@
+"use client";
 import { memo } from "react";
+import { useRender } from "@base-ui/react/use-render";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { match } from "ts-pattern";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 // Components & UI
 import NextLink from "next/link";
+import NextImage from "next/image";
+import { motion } from "motion/react";
 import { Twemoji } from "./twemoji";
-import { Slot as SlotPrimitive } from "radix-ui";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+
+// Icons & Images
+import {
+	CheckCircleIcon,
+	DetectiveIcon,
+	InfoIcon,
+	WarningIcon,
+	XCircleIcon,
+} from "@phosphor-icons/react";
 
 // Types & Interfaces
 import type { LinkProps } from "next/link";
+import type { Icon } from "@phosphor-icons/react";
 import type { VariantProps } from "class-variance-authority";
-import type { AsChild } from "./types";
 
 
 
@@ -19,24 +33,30 @@ function Wrapper({
 	className,
 	width = 1400,
 	boxSizing = "content",
-	asChild = false,
+	render,
 	...props
-}: React.ComponentProps<"div">
-	& AsChild
-	& { boxSizing?: "border" | "content"; width?: number }) {
-	const Comp = asChild ? SlotPrimitive.Slot : "div";
-
-	return (
-		<Comp
-			style={{ "--max-width": `${width}px` } as React.CSSProperties}
-			className={cn(
-				"@container [max-inline-size:var(--max-width)] mx-auto px-4 md:px-8",
-				boxSizing === "content" && "box-content",
-				className,
-			)}
-			{...props}
-		/>
-	);
+}: useRender.ComponentProps<"div"> & {
+	boxSizing?: "border" | "content";
+	width?: number;
+}) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps<"div">(
+			{
+				style: { "--max-width": `${width}px` } as React.CSSProperties,
+				className: cn(
+					"@container mx-auto max-inline-(--max-width) px-4 md:px-8",
+					"data-[box-sizing=border]:box-border data-[box-sizing=content]:box-content",
+					className,
+				),
+			},
+			props
+		),
+		state: {
+			"box-sizing": boxSizing,
+		},
+	});
 }
 
 function Section({
@@ -62,278 +82,359 @@ function Section({
 function H1({
 	className,
 	children,
-	asChild = false,
+	render,
 	...props
-}: React.ComponentProps<"h1"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "h1";
-
-	return (
-		<Comp
-			className={cn("mt-12 scroll-m-20 font-heading text-3xl font-bold leading-tight tracking-tight first:mt-0", className)}
-			{...props}
-		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
-	);
+}: useRender.ComponentProps<"h1">) {
+	return useRender({
+		defaultTagName: "h1",
+		render,
+		props: mergeProps<"h1">(
+			{
+				className: cn(
+					"font-heading font-bold text-3xl/tight tracking-tight scroll-m-20",
+					"mt-12 first:mt-0 [&>strong]:font-bold [&+p]:mt-4!",
+					className,
+				),
+				children: <Twemoji>{children}</Twemoji>,
+			},
+			props
+		),
+	});
 }
 
 function H2({
 	className,
 	children,
-	asChild = false,
+	render,
 	...props
-}: React.ComponentProps<"h2"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "h2";
-
-	return (
-		<Comp
-			className={cn("mt-12 scroll-m-20 font-heading text-2xl font-semibold leading-tight tracking-tight first:mt-0 [&+p]:mt-4!", className)}
-			{...props}
-		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
-	);
+}: useRender.ComponentProps<"h2">) {
+	return useRender({
+		defaultTagName: "h2",
+		render,
+		props: mergeProps<"h2">(
+			{
+				className: cn(
+					"font-heading font-semibold text-2xl/tight tracking-tight scroll-m-20",
+					"mt-8 first:mt-0 [&>strong]:font-semibold [&+p]:mt-4!",
+					className,
+				),
+				children: <Twemoji>{children}</Twemoji>,
+			},
+			props
+		),
+	});
 }
 
 function H3({
 	className,
 	children,
-	asChild = false,
+	render,
 	...props
-}: React.ComponentProps<"h3"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "h3";
-
-	return (
-		<Comp
-			className={cn("mt-8 scroll-m-20 font-heading text-xl font-semibold leading-tight tracking-tight first:mt-0 [&+p]:mt-4!", className)}
-			{...props}
-		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
-	);
+}: useRender.ComponentProps<"h3">) {
+	return useRender({
+		defaultTagName: "h3",
+		render,
+		props: mergeProps<"h3">(
+			{
+				className: cn(
+					"font-heading font-semibold text-xl/tight tracking-tight scroll-m-20",
+					"mt-6 first:mt-0 [&>strong]:font-semibold [&+p]:mt-4!",
+					className,
+				),
+				children: <Twemoji>{children}</Twemoji>,
+			},
+			props
+		),
+	});
 }
 
 function H4({
 	className,
 	children,
-	asChild = false,
+	render,
 	...props
-}: React.ComponentProps<"h4"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "h4";
-
-	return (
-		<Comp
-			className={cn("mt-8 scroll-m-20 font-heading text-lg font-semibold leading-tight tracking-tight first:mt-0 [&+p]:mt-2!", className)}
-			{...props}
-		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
-	);
+}: useRender.ComponentProps<"h4">) {
+	return useRender({
+		defaultTagName: "h4",
+		render,
+		props: mergeProps<"h4">(
+			{
+				className: cn(
+					"font-heading font-semibold text-lg/tight tracking-tight scroll-m-20",
+					"mt-4 first:mt-0 [&>strong]:font-semibold [&+p]:mt-2!",
+					className,
+				),
+				children: <Twemoji>{children}</Twemoji>,
+			},
+			props
+		),
+	});
 }
 
 function H5({
 	className,
 	children,
-	asChild = false,
+	render,
 	...props
-}: React.ComponentProps<"h5"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "h5";
-
-	return (
-		<Comp
-			className={cn("mt-8 scroll-m-20 font-heading text-base font-medium leading-tight tracking-tight first:mt-0 [&+p]:mt-2!", className)}
-			{...props}
-		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
-	);
+}: useRender.ComponentProps<"h5">) {
+	return useRender({
+		defaultTagName: "h5",
+		render,
+		props: mergeProps<"h5">(
+			{
+				className: cn(
+					"font-heading font-medium text-base/tight tracking-tight scroll-m-20",
+					"mt-4 first:mt-0 [&>strong]:font-medium [&+p]:mt-2!",
+					className,
+				),
+				children: <Twemoji>{children}</Twemoji>,
+			},
+			props
+		),
+	});
 }
 
 function H6({
 	className,
 	children,
-	asChild = false,
+	render,
 	...props
-}: React.ComponentProps<"h6"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "h6";
+}: useRender.ComponentProps<"h6">) {
+	return useRender({
+		defaultTagName: "h6",
+		render,
+		props: mergeProps<"h6">(
+			{
+				className: cn(
+					"font-heading font-medium text-base/tight tracking-tight scroll-m-20",
+					"mt-4 first:mt-0 [&>strong]:font-medium [&+p]:mt-2!",
+					className,
+				),
+				children: <Twemoji>{children}</Twemoji>,
+			},
+			props
+		),
+	});
+}
 
+const P = memo(function P({
+	className,
+	children,
+	...props
+}: React.ComponentProps<"p">) {
 	return (
-		<Comp
-			className={cn("mt-8 scroll-m-20 font-heading font-medium leading-tight tracking-tight first:mt-0 [&+p]:mt-2!", className)}
+		<p
+			className={cn(
+				"leading-relaxed wrap-break-word not-first:mt-8 [&+p]:mt-4!",
+				className,
+			)}
 			{...props}
 		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
+			<Twemoji>{children}</Twemoji>
+		</p>
+	);
+}, (prev, next) => prev.children === next.children);
+
+function Muted({
+	className,
+	children,
+	render,
+	...props
+}: useRender.ComponentProps<"p">) {
+	return useRender({
+		defaultTagName: "p",
+		render,
+		props: mergeProps<"p">(
+			{
+				className: cn("text-muted-foreground text-sm", className),
+				children: <Twemoji>{children}</Twemoji>,
+			},
+			props
+		),
+	});
+}
+
+function HR({ className, ...props }: React.ComponentProps<"hr">) {
+	return (
+		<hr
+			className={cn("my-8 border-t has-[+h1]:mt-12", className)}
+			{...props}
+		/>
 	);
 }
 
-function UL({
-	className,
-	asChild = false,
-	...props
-}: React.ComponentProps<"ul"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "ul";
-
-	return <Comp className={cn("list-disc list-outside not-first:mt-2 pl-6 marker:text-[color-mix(in_oklch,var(--primary),white_20%)]", className)} {...props} />;
+function UL({ className, children, ...props }: React.ComponentProps<"ul">) {
+	return (
+		<ul
+			className={cn(
+				"list-disc list-outside not-first:mt-2 pl-6 marker:text-primary",
+				className,
+			)}
+			{...props}
+		>
+			<Twemoji>{children}</Twemoji>
+		</ul>
+	);
 }
 
-function OL({
-	className,
-	asChild = false,
-	...props
-}: React.ComponentProps<"ol"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "ol";
-
-	return <Comp className={cn("list-decimal list-outside not-first:mt-2 pl-6 marker:text-[color-mix(in_oklch,var(--primary),white_20%)]", className)} {...props} />;
+function OL({ className, children, ...props }: React.ComponentProps<"ol">) {
+	return (
+		<ol
+			className={cn(
+				"list-decimal list-outside not-first:mt-2 pl-6 marker:text-primary",
+				className,
+			)}
+			{...props}
+		>
+			<Twemoji>{children}</Twemoji>
+		</ol>
+	);
 }
 
 const LI = memo(function LI({
 	className,
 	children,
-	asChild = false,
 	...props
-}: React.ComponentProps<"li"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "li";
-
+}: React.ComponentProps<"li">) {
 	return (
-		<Comp
-			className={cn("leading-relaxed my-1 pl-1", className)}
+		<li
+			className={cn(
+				"my-1.5 pl-1 leading-relaxed [&_ul]:mt-0! [&_ol]:mt-0!",
+				className,
+			)}
 			{...props}
 		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
+			<Twemoji>{children}</Twemoji>
+		</li>
 	);
 }, (prev, next) => prev.children === next.children);
-
-const P = memo(function P({
-	className,
-	children,
-	asChild = false,
-	...props
-}: React.ComponentProps<"p"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "p";
-
-	return (
-		<Comp
-			className={cn("leading-relaxed not-first:mt-8 wrap-break-word [&+p]:mt-4!", className)}
-			{...props}
-		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
-	);
-}, (prev, next) => prev.children === next.children);
-
-function HR({
-	className,
-	asChild = false,
-	...props
-}: React.ComponentProps<"hr"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "hr";
-
-	return <Comp className={cn("mt-8 border-t has-[+h1]:mt-12 has-[+h2]:mt-12 has-[+h3]:mt-8", className)} {...props} />;
-}
-
-function Muted({
-	className,
-	children,
-	asChild = false,
-	...props
-}: React.ComponentProps<"p"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "p";
-
-	return (
-		<Comp
-			className={cn("text-muted-foreground text-sm", className)}
-			{...props}
-		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
-	);
-}
 
 const Code = memo(function Code({
 	className,
 	children,
-	asChild = false,
 	...props
-}: React.ComponentProps<"code"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "code";
-
+}: React.ComponentProps<"code">) {
 	return (
-		<Comp
-			className={cn("bg-muted px-[0.3rem] py-[0.15rem] font-mono text-[0.875em] rounded", className)}
+		<code
+			className={cn(
+				"px-1.5 py-0.75 bg-muted font-mono text-[0.875em] text-foreground ring-1 ring-foreground/5 dark:ring-foreground/10 rounded-md",
+				className,
+			)}
 			{...props}
 		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
+			<Twemoji>{children}</Twemoji>
+		</code>
 	);
 }, (prev, next) => prev.children === next.children);
 
 const Blockquote = memo(function Blockquote({
 	className,
 	children,
-	asChild = false,
 	...props
-}: React.ComponentProps<"blockquote"> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "blockquote";
-
+}: React.ComponentProps<"blockquote">) {
 	return (
-		<Comp
-			className={cn("border-[color-mix(in_oklch,var(--primary),white_10%)] border-l-3 pl-6 font-serif font-medium italic not-first:mt-8", className)}
+		<blockquote
+			className={cn(
+				"flex gap-6 my-12 first:mt-0 last:mb-0 font-serif italic",
+				className,
+			)}
 			{...props}
 		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
+			<div
+				data-slot="blockquote-handle"
+				className="shrink-0 my-0.75 w-0.75 bg-primary rounded-full"
+			/>
+			<div
+				data-slot="blockquote-content"
+				className="min-w-0 w-full"
+			>
+				<Twemoji>{children}</Twemoji>
+			</div>
+		</blockquote>
 	);
 }, (prev, next) => prev.children === next.children);
 
 const asideVariants = cva(
-	"px-6 py-4 rounded-lg not-first:mt-8",
+	[
+		"flex gap-3 my-4 first:mt-0 last:mb-0 p-3 pl-2 bg-card text-card-foreground border rounded-2xl shadow-lg",
+		"[&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-5 [&>svg]:pointer-events-none",
+		"[--aside-color:var(--card-foreground)] *:data-[slot=aside-handle]:bg-(--aside-color) [&>svg]:text-(--aside-color)",
+	],
 	{
 		variants: {
 			variant: {
-				default: "bg-card border",
-				info: "bg-card border",
-				warning: "bg-amber-500/10 border-amber-500",
-				danger: "bg-destructive/10 border-destructive",
-				spoiler: "bg-card border transition-opacity opacity-10 hover:opacity-100",
+				info: "[--aside-color:var(--card-foreground)]",
+				success: "[--aside-color:var(--color-green-500)]",
+				warning: "[--aside-color:var(--color-amber-500)]",
+				danger: "[--aside-color:var(--color-destructive)]",
+				spoiler: "[--aside-color:var(--color-muted-foreground)]",
 			},
 		},
 		defaultVariants: {
-			variant: "default",
+			variant: "info",
 		},
 	}
 );
 
-const Aside = memo(function Aside({
+function Aside({
 	className,
 	children,
-	variant,
-	asChild = false,
+	variant = "info",
+	icon,
 	...props
-}: React.ComponentProps<"aside"> &
-	VariantProps<typeof asideVariants> & AsChild) {
-	const Comp = asChild ? SlotPrimitive.Slot : "aside";
+}: React.ComponentProps<"aside"> & { icon?: Icon } &
+	VariantProps<typeof asideVariants>) {
+	const AsideIcon: Icon = icon ?? match(variant)
+		.with("info", () => InfoIcon)
+		.with("success", () => CheckCircleIcon)
+		.with("warning", () => WarningIcon)
+		.with("danger", () => XCircleIcon)
+		.with("spoiler", () => DetectiveIcon)
+		.otherwise(() => InfoIcon);
 
 	return (
-		<Comp
+		<aside
 			className={cn(asideVariants({ variant, className }))}
 			{...props}
 		>
-			{asChild ? children : <Twemoji>{children}</Twemoji>}
-		</Comp>
+			<div
+				data-slot="aside-handle"
+				className="shrink-0 my-1.5 w-0.5 rounded-full"
+			/>
+			<AsideIcon
+				data-slot="aside-icon"
+				weight="fill"
+				className="my-1"
+			/>
+			<div
+				data-slot="aside-content"
+				className={cn(
+					"min-w-0 w-full",
+					variant === "spoiler" && "transition-[filter] ease-in-out duration-300",
+					variant === "spoiler" && "will-change-[filter] blur-sm hover:blur-none",
+				)}
+			>
+				<Twemoji>{children}</Twemoji>
+			</div>
+		</aside>
 	);
-}, (prev, next) => prev.children === next.children);
+};
 
 const linkVariants = cva(
-	"rounded-xs transition-colors",
+	[
+		"outline-none rounded-md transition-colors",
+		"focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/30",
+	],
 	{
 		variants: {
 			variant: {
-				default: "font-medium text-primary underline-offset-4 underline hover:text-primary/60 outline-offset-4",
-				hover: "inline-flex items-center justify-center gap-2 w-max font-medium text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-offset-4",
-				ghost: "rounded-lg hover:bg-accent dark:hover:bg-accent/50 hover:text-accent-foreground focus-visible:bg-accent dark:focus-visible:bg-accent/50 focus-visible:text-accent-foreground data-active:bg-accent dark:data-active:bg-accent data-active:text-accent-foreground",
-				nothing: "",
+				default: "font-medium text-primary underline-offset-4 underline hover:text-primary/60",
+				hover: [
+					"shrink-0 inline-flex items-center justify-center gap-2 w-max font-medium text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground",
+					"[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
+				],
+				ghost: "rounded-2xl hover:bg-muted dark:hover:bg-muted/50 hover:text-foreground",
+				nothing: "rounded-2xl",
 			},
 		},
 		defaultVariants: {
@@ -342,19 +443,19 @@ const linkVariants = cva(
 	}
 );
 
-function Link<R extends string>({
+function Link<T extends string>({
 	className,
-	variant,
+	variant = "default",
 	href,
 	...props
-}: LinkProps<R> & VariantProps<typeof linkVariants>) {
+}: LinkProps<T> & VariantProps<typeof linkVariants>) {
 	const s = href.toString();
 	const isExternal = !(s.startsWith("/") || s.startsWith("#"));
 
 	return (
 		<NextLink
 			href={href}
-			className={cn(linkVariants({ variant, className }))}
+			className={cn(linkVariants({ variant }), className)}
 			target={isExternal ? "_blank" : undefined}
 			rel={isExternal ? "noopener noreferrer" : undefined}
 			{...props}
@@ -362,24 +463,24 @@ function Link<R extends string>({
 	);
 }
 
-function ButtonLink<R extends string>({
+function ButtonLink<T extends string>({
 	className,
-	children,
-	variant,
-	size,
+	variant = "default",
+	size = "default",
+	href,
 	...props
-}: Pick<React.ComponentProps<typeof Button>, "variant" | "size"> & LinkProps<R>) {
+}: LinkProps<T> & VariantProps<typeof buttonVariants>) {
+	const s = href.toString();
+	const isExternal = !(s.startsWith("/") || s.startsWith("#"));
+
 	return (
-		<Button
-			variant={variant}
-			size={size}
-			className={cn(className)}
-			asChild
-		>
-			<Link variant="nothing" {...props}>
-				{children}
-			</Link>
-		</Button>
+		<NextLink
+			href={href}
+			className={cn(buttonVariants({ variant, size }), className)}
+			target={isExternal ? "_blank" : undefined}
+			rel={isExternal ? "noopener noreferrer" : undefined}
+			{...props}
+		/>
 	);
 }
 
@@ -389,22 +490,21 @@ function IFrame({
 }: React.ComponentProps<"iframe">) {
 	return (
 		<iframe
-			{...props}
-			className={cn("w-full aspect-video rounded-xl", className)}
+			className={cn("w-full aspect-video rounded-2xl", className)}
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 			referrerPolicy="strict-origin-when-cross-origin"
 			allowFullScreen
+			{...props}
 		/>
 	);
 }
 
+const MotionImage = motion.create(NextImage);
+
 export {
 	Wrapper, Section,
 	H1, H2, H3, H4, H5, H6,
-	UL, OL, LI, P, HR,
-	Muted,
-	Code,
-	Blockquote, Aside,
-	Link, ButtonLink,
-	IFrame,
+	P, Muted, HR, UL, OL, LI,
+	Code, Blockquote, Aside,
+	Link, ButtonLink, IFrame, MotionImage,
 };
