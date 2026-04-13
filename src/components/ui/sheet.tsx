@@ -42,7 +42,7 @@ function SheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props) {
 function SheetContent({
 	className,
 	children,
-	side = "left",
+	side = "right",
 	showCloseButton = true,
 	closeLabel = "Close",
 	...props
@@ -80,7 +80,7 @@ function SheetContent({
 							<Button
 								variant="ghost"
 								size="icon-sm"
-								className="absolute top-4 inset-e-4 bg-secondary"
+								className="absolute top-4 inset-e-4"
 							/>
 						}
 					>

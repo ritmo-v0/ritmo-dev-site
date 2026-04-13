@@ -54,6 +54,7 @@ export function Slider<TValue extends number | readonly number[] = number>({
 				{Array.from({ length: _values.length }, (_, index) => (
 					<SliderPrimitive.Thumb
 						key={index}
+						index={index}
 						data-slot="slider-thumb"
 						className={cn(
 							"shrink-0 block bg-white not-dark:bg-clip-padding ring-1 ring-black/10 hover:ring-4 hover:ring-ring/30 rounded-full shadow-md transition-[color,box-shadow,background-color] select-none",

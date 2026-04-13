@@ -1,14 +1,14 @@
 "use client";
 import { useTheme } from "next-themes";
 
-// Sonner
+// Components & UI
 import { type ToasterProps, Toaster as Sonner } from "sonner";
 
 // Icons & Images
 import {
 	CheckCircleIcon,
-	CircleNotchIcon,
 	InfoIcon,
+	SpinnerIcon,
 	WarningIcon,
 	XCircleIcon,
 } from "@phosphor-icons/react";
@@ -20,16 +20,20 @@ export function Toaster(props: ToasterProps) {
 
 	return (
 		<Sonner
-			offset={32}
 			theme={resolvedTheme as ToasterProps["theme"]}
 			className="toaster group"
+			style={{
+				"--normal-bg": "var(--popover)",
+				"--normal-text": "var(--popover-foreground)",
+				"--normal-border": "var(--border)",
+			} as React.CSSProperties}
 			toastOptions={{
 				classNames: {
-					toast: "bg-background! font-heading! text-sm! text-foreground! border-border! rounded-2xl! shadow-2xl!",
-					description: "font-sans! text-muted-foreground!",
-					actionButton: "bg-primary! text-primary-foreground!",
-					cancelButton: "bg-muted! text-muted-foreground!",
-					closeButton: "bg-background! text-foreground! border-border!",
+					toast: "font-sans text-sm! rounded-3xl! shadow-lg!",
+					content: "flex-1",
+					title: "font-heading tracking-tight",
+					description: "text-muted-foreground! text-balance",
+					closeButton: "border-(--normal-border)!",
 				},
 			}}
 			icons={{
@@ -37,9 +41,10 @@ export function Toaster(props: ToasterProps) {
 				success: <CheckCircleIcon className="size-4 text-green-500" />,
 				warning: <WarningIcon className="size-4 text-amber-500" />,
 				error: <XCircleIcon className="size-4 text-destructive" />,
-				loading: <CircleNotchIcon className="size-4 animate-spin" />,
+				loading: <SpinnerIcon className="size-4 animate-spin" />,
 			}}
 			closeButton={true}
+			offset={32}
 			{...props}
 		/>
 	);
