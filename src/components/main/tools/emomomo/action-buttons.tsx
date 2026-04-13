@@ -16,8 +16,7 @@ export function PreviewCopyButton() {
 		<Button
 			title="Copy preview text to clipboard"
 			variant="ghost"
-			size="lg"
-			className="max-md:size-10"
+			className="max-md:size-9 md:ps-2.5"
 			onClick={async () => copy(preview)}
 			disabled={preview === ""}
 			render={<CopyButton showIsCopied={copied} />}
@@ -37,8 +36,7 @@ export function PreviewClearButton() {
 		<Button
 			title="Clear preview text"
 			variant="destructive"
-			size="lg"
-			className="max-md:size-10"
+			className="max-md:size-9 md:ps-2.5"
 			onClick={clearPreview}
 			disabled={preview === ""}
 			render={<DeleteButton />}

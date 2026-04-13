@@ -13,7 +13,7 @@ function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
 	return (
 		<AccordionPrimitive.Root
 			data-slot="accordion"
-			className={cn("flex flex-col w-full overflow-hidden", className)}
+			className={cn("flex flex-col w-full rounded-2xl border overflow-hidden", className)}
 			{...props}
 		/>
 	);
@@ -39,7 +39,7 @@ function AccordionTrigger({
 			<AccordionPrimitive.Trigger
 				data-slot="accordion-trigger"
 				className={cn(
-					"group/accordion-trigger relative flex-1 flex items-center justify-between gap-6 font-medium text-left text-sm border border-transparent outline-none transition-all",
+					"group/accordion-trigger relative flex-1 flex items-center justify-between gap-6 p-4 font-medium text-left text-sm border border-transparent outline-none transition-all",
 					"disabled:opacity-50 disabled:pointer-events-none",
 					"[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
 					className,
@@ -50,7 +50,7 @@ function AccordionTrigger({
 				<CaretLeftIcon
 					data-slot="accordion-trigger-icon"
 					className={cn(
-						"shrink-0 ml-auto size-3.5 text-muted-foreground pointer-events-none",
+						"shrink-0 ml-auto size-3.5 text-muted-foreground",
 						"transition-transform group-data-panel-open/accordion-trigger:-rotate-90",
 					)}
 				/>
@@ -74,7 +74,7 @@ function AccordionContent({
 			)}
 			{...props}
 		>
-			<div className={cn("pt-0 pb-4", className)}>
+			<div className={cn("p-4 pt-0", className)}>
 				{children}
 			</div>
 		</AccordionPrimitive.Panel>

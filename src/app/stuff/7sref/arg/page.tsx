@@ -43,10 +43,10 @@ function MessageTabs() {
 						<TabsTrigger
 							key={tab.id}
 							value={tab.id}
+							className="xs:ps-2"
 							aria-label={tab.name[locale]}
 						>
 							<tab.icon
-								data-icon="inline-start"
 								weight={activeTab === tab.id ? "fill" : "regular"}
 							/>
 							<span className="max-xs:hidden">

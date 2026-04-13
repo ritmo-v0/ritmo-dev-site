@@ -40,7 +40,7 @@ export function EmomomoPicker({ emojiData }: { emojiData: EmojiData }) {
 
 	return (
 		<TooltipProvider>
-			<Accordion defaultValue={defaultValue}>
+			<Accordion defaultValue={defaultValue} multiple>
 				{emojiData.groups.map(group => (
 					<EmojiGroup
 						value={getEmojiGroupId(group.title)}
@@ -135,7 +135,7 @@ function EmojiGrid({ emojis }: { emojis: EmojiEntry[] }) {
 	return emojis.length > EMOJIS_PER_LINE * LINE_THRESHOLD ? (
 		<EmojiVirtuosoGrid emojis={emojis} />
 	) : (
-		<div className="flex flex-wrap gap-1 py-2 overflow-x-hidden isolate">
+		<div className="flex flex-wrap gap-1 overflow-x-hidden isolate">
 			{emojis.map(emoji => <EmojiButton key={emoji.e} emojiEntry={emoji} />)}
 		</div>
 	);
@@ -147,7 +147,7 @@ function EmojiVirtuosoGrid({ emojis }: { emojis: EmojiEntry[] }) {
 	const height = 4 * (EMOJI_BUTTON_SIZE + GAP_SIZE) + EMOJI_BUTTON_SIZE;
 
 	return (
-		<div className="w-full py-2">
+		<div className="w-full">
 			<VirtuosoGrid
 				totalCount={emojis.length}
 				itemContent={index => <EmojiButton emojiEntry={emojis[index]} />}

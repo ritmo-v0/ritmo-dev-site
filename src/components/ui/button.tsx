@@ -8,7 +8,7 @@ import { Button as ButtonPrimitive } from "@base-ui/react/button";
 
 const buttonVariants = cva(
 	[
-		"group/button shrink-0 inline-flex items-center justify-center bg-clip-padding font-medium text-sm border border-transparent outline-none rounded-full transition-all select-none whitespace-nowrap",
+		"group/button shrink-0 inline-flex items-center justify-center bg-clip-padding font-medium text-sm border border-transparent outline-none rounded-full transition select-none whitespace-nowrap",
 		"focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30",
 		"aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
 		"disabled:opacity-50 disabled:pointer-events-none",

@@ -114,10 +114,10 @@ function NavLinkItem({ icon: Icon, label, href }: LinkItem) {
 					<ButtonLink
 						href={href}
 						variant="ghost"
-						className="[&>svg]:max-xs:hidden"
+						className="xs:ps-2.5"
 					>
 						<Icon
-							data-icon="inline-start"
+							className="max-xs:hidden"
 							weight={active ? "fill" : "regular"}
 						/>
 						{label}
@@ -131,8 +131,8 @@ function NavLinkItem({ icon: Icon, label, href }: LinkItem) {
 function NavMenuItem({ icon: Icon, label, items }: MenuItem) {
 	return (
 		<NavigationMenuItem>
-			<NavigationMenuTrigger className="[&>svg]:max-xs:hidden">
-				<Icon data-icon="inline-start" />
+			<NavigationMenuTrigger className="xs:ps-2.5">
+				<Icon className="max-xs:hidden" />
 				{label}
 			</NavigationMenuTrigger>
 			<NavigationMenuContent>

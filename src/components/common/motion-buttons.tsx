@@ -70,7 +70,6 @@ export function CopyButton(
 			initial={{ scale: 0.8, opacity: 0 }}
 			animate={{ scale: 1, opacity: 1 }}
 			transition={inTransition}
-			data-icon="inline-start"
 		>
 			<motion.rect
 				width="14"
@@ -108,7 +107,6 @@ export function CopyButton(
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			className={cn("size-4", svgClassName)}
-			data-icon="inline-start"
 		>
 			<motion.path
 				variants={checkPathVariants}
@@ -168,7 +166,6 @@ export function DeleteButton(
 				initial={{ y: -12, opacity: 0, rotateZ: -10 }}
 				animate={{ y: 0, opacity: 1, rotateZ: 0 }}
 				transition={fallTransition}
-				data-icon="inline-start"
 			>
 				<motion.g
 					variants={{

@@ -2,7 +2,6 @@
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import { Markdown } from "@/components/common/markdown";
 import { ButtonLink, Wrapper } from "@/components/common/typography";
 
 // Icons & Images
@@ -20,11 +19,6 @@ type BeatDiceProps = {
 export default function NotFound() {
 	return (
 		<Wrapper boxSizing="border" className="py-16 justify-items-center content-center space-y-8 h-full">
-			<div className="text-2xl">
-				<Markdown>
-					{`\\[ \\not\\exists p \\in P \\;:\\; p = p_{\\text{requested}} \\]`}
-				</Markdown>
-			</div>
 			<div className="flex items-center gap-4">
 				<BeatDice className="bg-chart-1" pattern={[1, 1, 1]} currentBeat={2} isActive />
 				<BeatDice className="bg-chart-3" />
@@ -33,7 +27,7 @@ export default function NotFound() {
 			</div>
 			<div>
 				<ButtonLink href="/">
-					<ArrowLeft />
+					<ArrowLeft data-icon="inline-start" />
 					Back to Home
 				</ButtonLink>
 			</div>

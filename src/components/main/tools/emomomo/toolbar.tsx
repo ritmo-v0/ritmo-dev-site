@@ -76,7 +76,7 @@ function UseSubgroupToggle() {
 			onPressedChange={() => setUseSubgroup(!useSubgroup)}
 			aria-label={`Toggle use ${useSubgroup ? "supergroup" : "subgroup"}`}
 		>
-			<ListTree data-icon="inline-start" />
+			<ListTree />
 			<span className="max-sm:hidden">
 				Subgroup
 			</span>
@@ -94,7 +94,7 @@ function UseCOCToggle() {
 			onPressedChange={() => setUseCOC(!useCOC)}
 			aria-label={`Toggle ${useCOC ? "disable" : "enable"} copy on click`}
 		>
-			<SquareDashedMousePointer data-icon="inline-start" />
+			<SquareDashedMousePointer />
 			<span className="max-sm:hidden">
 				Copy on click
 			</span>
