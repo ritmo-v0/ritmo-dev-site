@@ -38,7 +38,15 @@ A clock, giving off a terrible stench, that runs and then stops at exactly `2025
 
 ![INM Clock](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/stuff/inm-clock/opengraph-image.png)
 
-#### [7sRef](https://ritmo.dev/stuff/7sref)
+#### [《色づく世界の明日から》Pilgrimage Activity Data](https://ritmo.dev/stuff/iroduku-pgm)
+
+Garmin activity data visualization of my *Iroduku: The World in Colors* Pilgrimage (2026). Curious about the trip? Check out the following articles in order:
+
+- [《來自繽紛世界的明日》聖地巡禮――福岡篇](https://ritmo.dev/articles/rJzdyAQoZe)
+- TBD
+- TBD
+
+#### [7sRef.exe](https://ritmo.dev/stuff/7sref)
 
 ##### [アシッド](https://ritmo.dev/stuff/7sref/arg)
 

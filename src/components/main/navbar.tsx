@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { ThemeSelect } from "@/components/common/theme-select";
 import { LocaleSelect } from "@/components/common/locale-select";
-import { ButtonLink, Muted } from "@/components/common/typography";
+import { ButtonLink, H3, Muted } from "@/components/common/typography";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -135,7 +135,7 @@ function NavMenuItem({ icon: Icon, label, items }: MenuItem) {
 				<Icon className="max-xs:hidden" />
 				{label}
 			</NavigationMenuTrigger>
-			<NavigationMenuContent>
+			<NavigationMenuContent className="max-w-2xs">
 				<ul className="grid gap-2">
 					{items.map(item => (
 						<li key={item.label}>
@@ -146,9 +146,9 @@ function NavMenuItem({ icon: Icon, label, items }: MenuItem) {
 										href={item.href}
 										className="grid gap-1"
 									>
-										<h3 className="font-heading font-semibold">
+										<H3 className="text-base [&+p]:mt-0!">
 											{item.label}
-										</h3>
+										</H3>
 										<Muted>{item.description}</Muted>
 									</NextLink>
 								}

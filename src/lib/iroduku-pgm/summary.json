@@ -1,0 +1,92 @@
+[
+	{
+		"date": "2026-03-17",
+		"steps": 20406,
+		"floorsAscended": 26,
+		"floorsDescended": -30,
+		"calories": 2740,
+		"activeCalories": 969,
+		"restingCalories": 1771
+	},
+	{
+		"date": "2026-03-18",
+		"steps": 10320,
+		"floorsAscended": 5,
+		"floorsDescended": -9,
+		"calories": 2656,
+		"activeCalories": 924,
+		"restingCalories": 1732
+	},
+	{
+		"date": "2026-03-19",
+		"steps": 16942,
+		"floorsAscended": 52,
+		"floorsDescended": -49,
+		"calories": 2412,
+		"activeCalories": 641,
+		"restingCalories": 1771
+	},
+	{
+		"date": "2026-03-20",
+		"steps": 20749,
+		"floorsAscended": 66,
+		"floorsDescended": -84,
+		"calories": 2450,
+		"activeCalories": 679,
+		"restingCalories": 1771
+	},
+	{
+		"date": "2026-03-21",
+		"steps": 18739,
+		"floorsAscended": 38,
+		"floorsDescended": -49,
+		"calories": 2471,
+		"activeCalories": 700,
+		"restingCalories": 1771
+	},
+	{
+		"date": "2026-03-22",
+		"steps": 6907,
+		"floorsAscended": 17,
+		"floorsDescended": -15,
+		"calories": 1998,
+		"activeCalories": 227,
+		"restingCalories": 1771
+	},
+	{
+		"date": "2026-03-23",
+		"steps": 14544,
+		"floorsAscended": 41,
+		"floorsDescended": -43,
+		"calories": 2238,
+		"activeCalories": 467,
+		"restingCalories": 1771
+	},
+	{
+		"date": "2026-03-24",
+		"steps": 13189,
+		"floorsAscended": 25,
+		"floorsDescended": -28,
+		"calories": 2161,
+		"activeCalories": 390,
+		"restingCalories": 1771
+	},
+	{
+		"date": "2026-03-25",
+		"steps": 19811,
+		"floorsAscended": 14,
+		"floorsDescended": -12,
+		"calories": 2265,
+		"activeCalories": 494,
+		"restingCalories": 1771
+	},
+	{
+		"date": "2026-03-26",
+		"steps": 8012,
+		"floorsAscended": 6,
+		"floorsDescended": -1,
+		"calories": 1931,
+		"activeCalories": 160,
+		"restingCalories": 1771
+	}
+]

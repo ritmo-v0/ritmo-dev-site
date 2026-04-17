@@ -28,7 +28,7 @@ function PopoverTrigger({
 const popoverContentVariants = cva(
 	[
 		"relative flex flex-col gap-4 w-fit text-sm ring-1 ring-foreground/5 dark:ring-foreground/10 outline-hidden rounded-3xl shadow-lg",
-		"transition data-instant:transition-none origin-(--transform-origin)",
+		"transition-[transform,scale,opacity] data-instant:transition-none origin-(--transform-origin)",
 		"data-starting-style:scale-90 data-starting-style:opacity-0",
 		"data-ending-style:scale-90 data-ending-style:opacity-0",
 	],

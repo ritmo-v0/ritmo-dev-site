@@ -1,4 +1,4 @@
-import { generatePreviewMetadata } from "@/lib/utils";
+import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 	description: meta.description,
 	keywords: meta.keywords,
 	...generatePreviewMetadata({
-		title: meta.title,
+		title: generatePageTitle({ title: meta.title }),
 		description: meta.description,
 		url: meta.url,
 	}),
@@ -23,8 +23,12 @@ export const metadata: Metadata = {
 
 
 
-export default function InmClockLayout({
+export default function IrodukuPilgrimageLayout({
 	children
-}: LayoutProps<"/stuff/inm-clock">) {
-	return children;
+}: LayoutProps<"/stuff/iroduku-pgm">) {
+	return (
+		<div className="my-16">
+			{children}
+		</div>
+	);
 }

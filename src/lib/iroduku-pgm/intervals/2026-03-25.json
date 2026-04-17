@@ -1,0 +1,770 @@
+[
+	{
+		"startTime": "2026-03-24T15:00:00Z",
+		"endTime": "2026-03-24T15:15:00Z",
+		"steps": 432,
+		"floorsAscended": 3,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-24T15:15:00Z",
+		"endTime": "2026-03-24T15:30:00Z",
+		"steps": 18,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T15:30:00Z",
+		"endTime": "2026-03-24T15:45:00Z",
+		"steps": 14,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T15:45:00Z",
+		"endTime": "2026-03-24T16:00:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T16:00:00Z",
+		"endTime": "2026-03-24T16:15:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T16:15:00Z",
+		"endTime": "2026-03-24T16:30:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T16:30:00Z",
+		"endTime": "2026-03-24T16:45:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T16:45:00Z",
+		"endTime": "2026-03-24T17:00:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T17:00:00Z",
+		"endTime": "2026-03-24T17:15:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T17:15:00Z",
+		"endTime": "2026-03-24T17:30:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T17:30:00Z",
+		"endTime": "2026-03-24T17:45:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T17:45:00Z",
+		"endTime": "2026-03-24T18:00:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T18:00:00Z",
+		"endTime": "2026-03-24T18:15:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T18:15:00Z",
+		"endTime": "2026-03-24T18:30:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T18:30:00Z",
+		"endTime": "2026-03-24T18:45:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T18:45:00Z",
+		"endTime": "2026-03-24T19:00:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T19:00:00Z",
+		"endTime": "2026-03-24T19:15:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T19:15:00Z",
+		"endTime": "2026-03-24T19:30:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T19:30:00Z",
+		"endTime": "2026-03-24T19:45:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T19:45:00Z",
+		"endTime": "2026-03-24T20:00:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T20:00:00Z",
+		"endTime": "2026-03-24T20:15:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T20:15:00Z",
+		"endTime": "2026-03-24T20:30:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T20:30:00Z",
+		"endTime": "2026-03-24T20:45:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T20:45:00Z",
+		"endTime": "2026-03-24T21:00:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T21:00:00Z",
+		"endTime": "2026-03-24T21:15:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T21:15:00Z",
+		"endTime": "2026-03-24T21:30:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T21:30:00Z",
+		"endTime": "2026-03-24T21:45:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T21:45:00Z",
+		"endTime": "2026-03-24T22:00:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T22:00:00Z",
+		"endTime": "2026-03-24T22:15:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T22:15:00Z",
+		"endTime": "2026-03-24T22:30:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T22:30:00Z",
+		"endTime": "2026-03-24T22:45:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T22:45:00Z",
+		"endTime": "2026-03-24T23:00:00Z",
+		"steps": 19,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T23:00:00Z",
+		"endTime": "2026-03-24T23:15:00Z",
+		"steps": 116,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T23:15:00Z",
+		"endTime": "2026-03-24T23:30:00Z",
+		"steps": 116,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-24T23:30:00Z",
+		"endTime": "2026-03-24T23:45:00Z",
+		"steps": 325,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "highlyActive"
+	},
+	{
+		"startTime": "2026-03-24T23:45:00Z",
+		"endTime": "2026-03-25T00:00:00Z",
+		"steps": 238,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T00:00:00Z",
+		"endTime": "2026-03-25T00:15:00Z",
+		"steps": 186,
+		"floorsAscended": 0,
+		"floorsDescended": -3,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T00:15:00Z",
+		"endTime": "2026-03-25T00:30:00Z",
+		"steps": 22,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T00:30:00Z",
+		"endTime": "2026-03-25T00:45:00Z",
+		"steps": 137,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T00:45:00Z",
+		"endTime": "2026-03-25T01:00:00Z",
+		"steps": 446,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T01:00:00Z",
+		"endTime": "2026-03-25T01:15:00Z",
+		"steps": 84,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T01:15:00Z",
+		"endTime": "2026-03-25T01:30:00Z",
+		"steps": 677,
+		"floorsAscended": 2,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T01:30:00Z",
+		"endTime": "2026-03-25T01:45:00Z",
+		"steps": 43,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T01:45:00Z",
+		"endTime": "2026-03-25T02:00:00Z",
+		"steps": 1005,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T02:00:00Z",
+		"endTime": "2026-03-25T02:15:00Z",
+		"steps": 1183,
+		"floorsAscended": 1,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T02:15:00Z",
+		"endTime": "2026-03-25T02:30:00Z",
+		"steps": 38,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T02:30:00Z",
+		"endTime": "2026-03-25T02:45:00Z",
+		"steps": 88,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T02:45:00Z",
+		"endTime": "2026-03-25T03:00:00Z",
+		"steps": 299,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T03:00:00Z",
+		"endTime": "2026-03-25T03:15:00Z",
+		"steps": 335,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T03:15:00Z",
+		"endTime": "2026-03-25T03:30:00Z",
+		"steps": 157,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T03:30:00Z",
+		"endTime": "2026-03-25T03:45:00Z",
+		"steps": 111,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T03:45:00Z",
+		"endTime": "2026-03-25T04:00:00Z",
+		"steps": 437,
+		"floorsAscended": 1,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T04:00:00Z",
+		"endTime": "2026-03-25T04:15:00Z",
+		"steps": 1463,
+		"floorsAscended": 1,
+		"floorsDescended": -1,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T04:15:00Z",
+		"endTime": "2026-03-25T04:30:00Z",
+		"steps": 115,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T04:30:00Z",
+		"endTime": "2026-03-25T04:45:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T04:45:00Z",
+		"endTime": "2026-03-25T05:00:00Z",
+		"steps": 348,
+		"floorsAscended": 1,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T05:00:00Z",
+		"endTime": "2026-03-25T05:15:00Z",
+		"steps": 459,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T05:15:00Z",
+		"endTime": "2026-03-25T05:30:00Z",
+		"steps": 297,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T05:30:00Z",
+		"endTime": "2026-03-25T05:45:00Z",
+		"steps": 873,
+		"floorsAscended": 4,
+		"floorsDescended": -1,
+		"activityLevel": "highlyActive"
+	},
+	{
+		"startTime": "2026-03-25T05:45:00Z",
+		"endTime": "2026-03-25T06:00:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T06:00:00Z",
+		"endTime": "2026-03-25T06:15:00Z",
+		"steps": 54,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T06:15:00Z",
+		"endTime": "2026-03-25T06:30:00Z",
+		"steps": 26,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T06:30:00Z",
+		"endTime": "2026-03-25T06:45:00Z",
+		"steps": 15,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T06:45:00Z",
+		"endTime": "2026-03-25T07:00:00Z",
+		"steps": 12,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T07:00:00Z",
+		"endTime": "2026-03-25T07:15:00Z",
+		"steps": 23,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T07:15:00Z",
+		"endTime": "2026-03-25T07:30:00Z",
+		"steps": 467,
+		"floorsAscended": 0,
+		"floorsDescended": -2,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T07:30:00Z",
+		"endTime": "2026-03-25T07:45:00Z",
+		"steps": 784,
+		"floorsAscended": 1,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T07:45:00Z",
+		"endTime": "2026-03-25T08:00:00Z",
+		"steps": 369,
+		"floorsAscended": 0,
+		"floorsDescended": -2,
+		"activityLevel": "highlyActive"
+	},
+	{
+		"startTime": "2026-03-25T08:00:00Z",
+		"endTime": "2026-03-25T08:15:00Z",
+		"steps": 661,
+		"floorsAscended": 0,
+		"floorsDescended": -1,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T08:15:00Z",
+		"endTime": "2026-03-25T08:30:00Z",
+		"steps": 402,
+		"floorsAscended": 0,
+		"floorsDescended": -1,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T08:30:00Z",
+		"endTime": "2026-03-25T08:45:00Z",
+		"steps": 352,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T08:45:00Z",
+		"endTime": "2026-03-25T09:00:00Z",
+		"steps": 156,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T09:00:00Z",
+		"endTime": "2026-03-25T09:15:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T09:15:00Z",
+		"endTime": "2026-03-25T09:30:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T09:30:00Z",
+		"endTime": "2026-03-25T09:45:00Z",
+		"steps": 239,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T09:45:00Z",
+		"endTime": "2026-03-25T10:00:00Z",
+		"steps": 88,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T10:00:00Z",
+		"endTime": "2026-03-25T10:15:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T10:15:00Z",
+		"endTime": "2026-03-25T10:30:00Z",
+		"steps": 18,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T10:30:00Z",
+		"endTime": "2026-03-25T10:45:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T10:45:00Z",
+		"endTime": "2026-03-25T11:00:00Z",
+		"steps": 193,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T11:00:00Z",
+		"endTime": "2026-03-25T11:15:00Z",
+		"steps": 952,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T11:15:00Z",
+		"endTime": "2026-03-25T11:30:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T11:30:00Z",
+		"endTime": "2026-03-25T11:45:00Z",
+		"steps": 19,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T11:45:00Z",
+		"endTime": "2026-03-25T12:00:00Z",
+		"steps": 0,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T12:00:00Z",
+		"endTime": "2026-03-25T12:15:00Z",
+		"steps": 520,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T12:15:00Z",
+		"endTime": "2026-03-25T12:30:00Z",
+		"steps": 247,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T12:30:00Z",
+		"endTime": "2026-03-25T12:45:00Z",
+		"steps": 553,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "highlyActive"
+	},
+	{
+		"startTime": "2026-03-25T12:45:00Z",
+		"endTime": "2026-03-25T13:00:00Z",
+		"steps": 326,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "highlyActive"
+	},
+	{
+		"startTime": "2026-03-25T13:00:00Z",
+		"endTime": "2026-03-25T13:15:00Z",
+		"steps": 84,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T13:15:00Z",
+		"endTime": "2026-03-25T13:30:00Z",
+		"steps": 613,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "highlyActive"
+	},
+	{
+		"startTime": "2026-03-25T13:30:00Z",
+		"endTime": "2026-03-25T13:45:00Z",
+		"steps": 803,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "highlyActive"
+	},
+	{
+		"startTime": "2026-03-25T13:45:00Z",
+		"endTime": "2026-03-25T14:00:00Z",
+		"steps": 711,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "highlyActive"
+	},
+	{
+		"startTime": "2026-03-25T14:00:00Z",
+		"endTime": "2026-03-25T14:15:00Z",
+		"steps": 656,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "active"
+	},
+	{
+		"startTime": "2026-03-25T14:15:00Z",
+		"endTime": "2026-03-25T14:30:00Z",
+		"steps": 278,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T14:30:00Z",
+		"endTime": "2026-03-25T14:45:00Z",
+		"steps": 43,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	},
+	{
+		"startTime": "2026-03-25T14:45:00Z",
+		"endTime": "2026-03-25T15:00:00Z",
+		"steps": 66,
+		"floorsAscended": 0,
+		"floorsDescended": 0,
+		"activityLevel": "sedentary"
+	}
+]

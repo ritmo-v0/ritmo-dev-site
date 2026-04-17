@@ -1,0 +1,6 @@
+export const DATA_TYPES = ["steps", "floors", "calories"] as const;
+
+export const DATE_KEYS = [
+	"2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21",
+	"2026-03-22", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26",
+] as const;

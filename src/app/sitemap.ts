@@ -62,6 +62,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			changeFrequency: "yearly",
 			priority: 0.114514,
 		},
+		{
+			url: `${baseUrl}/stuff/iroduku-pgm`,
+			lastModified: new Date("2026-04-17"),
+			changeFrequency: "yearly",
+			priority: 0.3,
+		},
 		// 7sRef
 		{
 			url: `${baseUrl}/stuff/7sref`,
