@@ -3,6 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 // Types & Interfaces
 import type { NextConfig } from "next";
 
+// Config
 const config: NextConfig = {
 	async headers() {
 		return [

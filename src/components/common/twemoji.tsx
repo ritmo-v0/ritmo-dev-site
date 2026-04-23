@@ -3,6 +3,7 @@ import { parse } from "@twemoji/parser";
 import { cn } from "@/lib/utils";
 
 // Components & UI
+import NextImage from "next/image";
 import { Fragment } from "react";
 
 // Types & Interfaces
@@ -53,11 +54,15 @@ function parseString(
 
 		if (url) {
 			nodes.push(
-				<img
+				<NextImage
 					key={indices[0]}
 					src={url}
 					alt={text}
+					width={24}
+					height={24}
 					draggable={false}
+					loading="lazy"
+					unoptimized
 					className={cn(
 						"inline size-[1.1em] mx-[0.15em] align-[-0.2em]",
 						options?.className,

@@ -53,13 +53,13 @@ function DropdownMenuContent({
 						"data-ending-style:scale-90 data-ending-style:opacity-0",
 						"**:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10",
 						"not-data-[variant=destructive]:data-[slot$=-item]:focus:**:text-accent-foreground",
-						className
+						className,
 					)}
 					{...props}
 				/>
 			</MenuPrimitive.Positioner>
 		</MenuPrimitive.Portal>
-	)
+	);
 }
 
 function DropdownMenuGroup({ ...props }: MenuPrimitive.Group.Props) {

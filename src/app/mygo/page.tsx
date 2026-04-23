@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 // Components & UI
 import Image from "next/image";
 import { motion } from "motion/react";
-import { Wrapper } from "@/components/common/typography";
+import { MotionImage, Wrapper } from "@/components/common/typography";
 import { SettingsSheet } from "@/components/main/mygo/settings-sheet";
 
 // Types & Interfaces
@@ -73,9 +73,11 @@ function MyGOWallpaper() {
 	const { image, blur, opacity } = useMyGOStore();
 	const [isLoaded, setIsLoaded] = useState(false);
 
-	return (
-		<motion.img
+	return image ? (
+		<MotionImage
 			src={image}
+			alt=""
+			role="presentation"
 			className="absolute size-full object-cover scale-110"
 			width={3840} height={2160}
 			variants={getChildVariants(
@@ -89,8 +91,9 @@ function MyGOWallpaper() {
 			initial="hidden"
 			animate={isLoaded ? "visible" : "hidden"}
 			onLoad={() => setIsLoaded(true)}
+			unoptimized
 		/>
-	);
+	) : null;
 }
 
 function Bookmark({ bookmark }: { bookmark: Bookmark }) {
