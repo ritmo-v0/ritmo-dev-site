@@ -1,217 +1,200 @@
 "use client";
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import { useEmomomoStore } from "@/lib/store/emomomo";
-import {
-	getEmojiCodePoints,
-	getEmojiGroupId,
-	getEmojiSubgroupTitle,
-} from "@/lib/emomomo/utils";
-import { ensureError } from "@/lib/fetch/response";
+import { getEmojiGroupId, getEmojiSubgroupTitle } from "@/lib/emomomo/utils";
+import { cn } from "@/lib/utils";
 
 // Components & UI
-import { toast } from "sonner";
+import { EmojiButton } from "./emoji-button";
+import { H3 } from "@/components/common/typography";
 import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Twemoji } from "@/components/common/twemoji";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { H4, Section } from "@/components/common/typography";
-import { Virtuoso, VirtuosoGrid } from "react-virtuoso";
+	Tabs,
+	TabsContent,
+	TabsList,
+	TabsTrigger,
+} from "@/components/ui/tabs";
+import {
+	TooltipContent,
+	TooltipMultiple,
+	TooltipProvider,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+// Icons & Images
+import {
+	CityIcon,
+	FlagIcon,
+	ForkKnifeIcon,
+	HandWavingIcon,
+	HeartIcon,
+	LeafIcon,
+	LightbulbFilamentIcon,
+	QuestionMarkIcon,
+	SmileyIcon,
+	SoccerBallIcon,
+	SwatchesIcon,
+} from "@phosphor-icons/react";
 
 // Types & Interfaces
+import type { Icon } from "@phosphor-icons/react";
 import type {
 	EmojiData,
 	EmojiEntry,
+	EmojiGroup,
 	EmojiSubgroup,
 	SkinToneKey,
 } from "@/lib/emomomo/types";
 
 // Constants & Variables
 import { PEOPLE_AND_BODY } from "@/lib/emomomo/constants";
+const GROUP_ICON_MAP: Record<string, Icon> = {
+	"Smileys & Emotion": SmileyIcon,
+	"People & Body": HandWavingIcon,
+	"Component": SwatchesIcon,
+	"Animals & Nature": LeafIcon,
+	"Food & Drink": ForkKnifeIcon,
+	"Travel & Places": CityIcon,
+	"Activities": SoccerBallIcon,
+	"Objects": LightbulbFilamentIcon,
+	"Symbols": HeartIcon,
+	"Flags": FlagIcon,
+};
 
 
 
 export function EmomomoPicker({ emojiData }: { emojiData: EmojiData }) {
-	const defaultValue = emojiData.groups.map(group => getEmojiGroupId(group.title));
-
 	return (
 		<TooltipProvider>
-			<Accordion defaultValue={defaultValue} multiple>
+			<Tabs defaultValue="Smileys & Emotion">
+				<div className="sticky top-58.25 z-1">
+					<div className={cn(
+						"absolute inset-0 h-[200%] pointer-events-none -z-10",
+						"bg-linear-to-t/oklch from-transparent to-70% to-background",
+					)} />
+					<TabsList className="flex mx-auto gap-1.5">
+						{emojiData.groups.map(group => (
+							<EmojiGroupTabsTrigger
+								key={group.title}
+								title={group.title}
+							/>
+						))}
+					</TabsList>
+				</div>
+
 				{emojiData.groups.map(group => (
-					<EmojiGroup
-						value={getEmojiGroupId(group.title)}
-						key={group.title}
-						title={group.title}
-					>
-						<EmojiGroupContent
-							subgroups={group.subgroups}
-							supportsSkinTone={group.title === PEOPLE_AND_BODY}
-						/>
-					</EmojiGroup>
+					<EmojiGroupTab key={group.title} {...group} />
 				))}
-			</Accordion>
+			</Tabs>
 		</TooltipProvider>
 	);
 }
 
-function EmojiGroup({
-	children,
-	value,
-	title,
-	...props
-}: React.ComponentProps<typeof AccordionItem>) {
+function EmojiGroupTabsTrigger({ title }: { title: string }) {
+	const GroupIcon = GROUP_ICON_MAP[title] || QuestionMarkIcon;
+
 	return (
-		<AccordionItem id={value} value={value} className="scroll-mt-32" {...props}>
-			<AccordionTrigger className="font-heading font-semibold text-xl">
-				{title}
-			</AccordionTrigger>
-			<AccordionContent>{children}</AccordionContent>
-		</AccordionItem>
+		<TooltipMultiple>
+			<TooltipTrigger
+				className="size-7"
+				render={<TabsTrigger value={title} />}
+				aria-label={title}
+			>
+				<GroupIcon weight="fill" />
+			</TooltipTrigger>
+			<TooltipContent>{title}</TooltipContent>
+		</TooltipMultiple>
 	);
 }
 
-function EmojiGroupContent({ subgroups, supportsSkinTone }: {
-	subgroups: EmojiSubgroup[];
-	supportsSkinTone: boolean;
-}) {
+function EmojiGroupTab({ title, subgroups }: EmojiGroup) {
 	const useSubgroup = useEmomomoStore(state => state.useSubgroup);
-	const skinTone = useEmomomoStore(
-		supportsSkinTone ? state => state.skinTone : () => undefined
-	);
-
-	return useSubgroup ? (
-		<Virtuoso
-			useWindowScroll
-			totalCount={subgroups.length}
-			itemContent={index => <EmojisSubgroup subgroup={subgroups[index]} skinTone={skinTone} />}
-		/>
-	) : <EmojiSupergroup subgroups={subgroups} skinTone={skinTone} />;
-}
-
-const EmojisSubgroup = memo(function EmojiSubgroup({ subgroup, skinTone }: {
-	subgroup: EmojiSubgroup;
-	skinTone?: SkinToneKey;
-}) {
-	const title = getEmojiSubgroupTitle(subgroup.title);
-	const emojis = useMemo(() => {
-		return !skinTone
-			? subgroup.emojis
-			: flatMapEmojis(subgroup, skinTone);
-	}, [subgroup, skinTone]);
 
 	return (
-		<Section>
-			<H4>{title}</H4>
-			<EmojiGrid emojis={emojis} />
-		</Section>
+		<TabsContent value={title}>
+			{useSubgroup ? (
+				subgroups.map(subgroup => (
+					<EmojiSubgroupContent
+						key={subgroup.title}
+						subgroup={subgroup}
+						supportsSkinTone={title === PEOPLE_AND_BODY}
+					/>
+				))
+			) : (
+				<EmojiSupergroupContent
+					subgroups={subgroups}
+					supportsSkinTone={title === PEOPLE_AND_BODY}
+				/>
+			)}
+		</TabsContent>
 	);
-});
+}
 
-const EmojiSupergroup = memo(function EmojiSupergroup({ subgroups, skinTone }: {
+function EmojiSupergroupContent({ subgroups, supportsSkinTone }: {
 	subgroups: EmojiSubgroup[];
-	skinTone?: SkinToneKey;
+	supportsSkinTone?: boolean;
 }) {
-	const supergroup = useMemo(() => {
-		return subgroups.flatMap(subgroup => subgroup.emojis);
-	}, [subgroups]);
+	const skinTone = useEmomomoStore(
+		state => supportsSkinTone ? state.skinTone : undefined
+	);
 
 	const emojis = useMemo(() => {
-		return !skinTone
-			? supergroup
-			: flatMapEmojis({ emojis: supergroup }, skinTone);
-	}, [supergroup, skinTone]);
+		const supergroup = subgroups.flatMap(subgroup => subgroup.emojis);
 
-	return <EmojiGrid emojis={emojis} />;
-});
+		return skinTone
+			? flatMapEmojis(supergroup, skinTone)
+			: supergroup;
+	}, [subgroups, skinTone]);
 
-function EmojiGrid({ emojis }: { emojis: EmojiEntry[] }) {
-	const EMOJIS_PER_LINE = 27;
-	const LINE_THRESHOLD = 8;  // 5
-
-	return emojis.length > EMOJIS_PER_LINE * LINE_THRESHOLD ? (
-		<EmojiVirtuosoGrid emojis={emojis} />
-	) : (
-		<div className="flex flex-wrap gap-1 overflow-x-hidden isolate">
-			{emojis.map(emoji => <EmojiButton key={emoji.e} emojiEntry={emoji} />)}
+	return (
+		<div className={cn(
+			"flex flex-wrap gap-1.5 justify-center",
+			"contain-paint [content-visibility:auto] [contain-intrinsic-height:calc(100vh-18rem)]",
+		)}>
+			{emojis.map(emoji => (
+				<EmojiButton
+					key={emoji.e}
+					emojiEntry={emoji}
+				/>
+			))}
 		</div>
 	);
 }
 
-function EmojiVirtuosoGrid({ emojis }: { emojis: EmojiEntry[] }) {
-	const EMOJI_BUTTON_SIZE = 3;
-	const GAP_SIZE = 0.25;
-	const height = 4 * (EMOJI_BUTTON_SIZE + GAP_SIZE) + EMOJI_BUTTON_SIZE;
+function EmojiSubgroupContent({ subgroup, supportsSkinTone }: {
+	subgroup: EmojiSubgroup;
+	supportsSkinTone?: boolean;
+}) {
+	const skinTone = useEmomomoStore(
+		state => supportsSkinTone ? state.skinTone : undefined
+	);
+
+	const title = getEmojiSubgroupTitle(subgroup.title);
+	const emojis = skinTone
+		? flatMapEmojis(subgroup.emojis, skinTone)
+		: subgroup.emojis;
 
 	return (
-		<div className="w-full">
-			<VirtuosoGrid
-				totalCount={emojis.length}
-				itemContent={index => <EmojiButton emojiEntry={emojis[index]} />}
-				listClassName="flex flex-wrap gap-1 overflow-x-hidden isolate"
-				style={{ height: `${height}rem` }}
-			/>
-		</div>
+		<>
+			<H3 id={getEmojiGroupId(title)} className="[&+div]:mt-2">
+				{title}
+			</H3>
+			<div className={cn(
+				"flex flex-wrap gap-1.5",
+				"contain-paint [content-visibility:auto] [contain-intrinsic-height:12rem]",
+			)}>
+				{emojis.map(emoji => (
+					<EmojiButton
+						key={emoji.e}
+						emojiEntry={emoji}
+					/>
+				))}
+			</div>
+		</>
 	);
 }
 
-export const EmojiButton = memo(function EmojiButton({ emojiEntry }: { emojiEntry: EmojiEntry }) {
-	const addEmoji = useEmomomoStore(state => state.addEmoji);
-
-	const { e: emoji, n: name } = emojiEntry;
-
-	const codePoints = useMemo(() => (
-		getEmojiCodePoints(emoji)
-	), [emoji]);
-	const capitalizedName = useMemo(() => (
-		name.charAt(0).toUpperCase() + name.slice(1)
-	), [name]);
-
-	return (
-		<Tooltip>
-			<TooltipTrigger render={
-				<Button
-					className="gap-0 ease-out-expo duration-500 active:scale-[0.8] overflow-clip select-none"
-					variant="outline"
-					size="emoji"
-					onClick={() => handleCopy(emoji, addEmoji)}
-				>
-					<Twemoji>
-						{emoji}
-					</Twemoji>
-				</Button>
-			} />
-			<TooltipContent className="p-4">
-				<div className="flex gap-4">
-					<div className="flex items-center justify-center gap-1 size-12 overflow-hidden">
-						<Twemoji className="size-12 m-0">
-							{emoji}
-						</Twemoji>
-					</div>
-					<div className="grid gap-1">
-						<p className="font-medium text-lg">{capitalizedName}</p>
-						<div className="grid grid-cols-[auto_1fr] items-center gap-x-[3ch] font-mono text-muted-foreground">
-							<div className="col-span-2 grid grid-cols-subgrid">
-								<span>Unicode</span>
-								<span>{emoji}</span>
-							</div>
-							<div className="col-span-2 grid grid-cols-subgrid">
-								<span>HEX</span>
-								<span className="font-extralight">{codePoints}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</TooltipContent>
-		</Tooltip>
-	)
-});
-
-function flatMapEmojis(subgroup: { emojis: EmojiEntry[] }, skinTone: SkinToneKey) {
-	return subgroup.emojis.flatMap(emoji => {
+function flatMapEmojis(entries: EmojiEntry[], skinTone: SkinToneKey) {
+	return entries.flatMap(emoji => {
 		if (emoji.v && skinTone !== "0") {
 			const flv = emoji.v[skinTone];
 			if (flv) {
@@ -230,20 +213,4 @@ function flatMapEmojis(subgroup: { emojis: EmojiEntry[] }, skinTone: SkinToneKey
 		}
 		return [emoji];
 	});
-}
-
-async function handleCopy(emoji: string, addEmoji: (emoji: string) => void) {
-	addEmoji(emoji);
-	if (useEmomomoStore.getState().useCOC) {
-		try {
-			await navigator.clipboard.writeText(emoji);
-		} catch (err) {
-			const error = ensureError(err);
-			console.error("ERR::COPY:", error);
-			toast.error(
-				"A small 🤏🌌 issue occurred...",
-				{ description: "Failed to copy text to clipboard." }
-			);
-		}
-	}
 }

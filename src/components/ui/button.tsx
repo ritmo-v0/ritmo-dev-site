@@ -34,7 +34,6 @@ const buttonVariants = cva(
 				"icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3.5",
 				"icon-sm": "size-8",
 				"icon-lg": "size-10",
-				emoji: "size-12 [&_img]:size-7 rounded-xl not-focus-visible:focus:border-primary not-focus-visible:focus:border-3",
 			},
 		},
 		defaultVariants: {

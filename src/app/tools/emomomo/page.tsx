@@ -10,25 +10,23 @@ import type { EmojiData } from "@/lib/emomomo/types";
 
 // Constants & Variables
 import { EMOJI_DATA_REDIS_KEY } from "@/lib/emomomo/constants";
-
-// Route Segment Config
-export const dynamic = "force-static";
-export const revalidate = 604800;  // 1 week (60 * 60 * 24 * 7)
+const WRAPPER_WIDTH = 720;
 
 
 
 export default async function EmomomoPage() {
-	const emojiData = await RedisRO.get(EMOJI_DATA_REDIS_KEY) as EmojiData;
+	const emojiData = await RedisRO.get<EmojiData>(EMOJI_DATA_REDIS_KEY);
 
 	return (
 		<>
-			<div className="sticky top-16 mx-auto bg-background z-10">
-				<Wrapper className="relative py-2">
-					<div className="absolute top-0 left-0 w-full h-16 bg-background -translate-y-full" />
-					<EmomomoToolbar />
-				</Wrapper>
-			</div>
-			<Wrapper className="py-3">
+			<Wrapper
+				className="sticky top-16 pb-6 z-10 bg-background"
+				width={WRAPPER_WIDTH}
+			>
+				<div className="absolute inset-0 h-16 bg-inherit -translate-y-full -z-1" />
+				<EmomomoToolbar />
+			</Wrapper>
+			<Wrapper width={WRAPPER_WIDTH}>
 				{emojiData && <EmomomoPicker emojiData={emojiData} />}
 			</Wrapper>
 		</>

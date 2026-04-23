@@ -5,29 +5,26 @@ import { useEmomomoStore } from "@/lib/store/emomomo";
 // Components & UI
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Toggle } from "@/components/ui/toggle";
 import { SkinToneSelect } from "./skin-tone-select";
+import { UseCOCToggle, UseSubgroupToggle } from "./option-toggles";
 import { PreviewClearButton, PreviewCopyButton } from "./action-buttons";
-
-// Icons & Images
-import { ListTree, SquareDashedMousePointer } from "lucide-react";
 
 
 
 export function EmomomoToolbar() {
 	return (
-		<div className="grid gap-2">
+		<div className="grid gap-3">
 			<PreviewTextarea />
-			<div className="flex items-center justify-between gap-4">
+			<div className="flex items-center justify-between gap-3">
 				{/* Options */}
-				<div className="flex items-center gap-2">
+				<div className="flex items-center gap-3">
 					<UseSubgroupToggle />
 					<UseCOCToggle />
 					<SkinToneSelect />
 				</div>
 
-				{/* Textarea */}
-				<div className="flex items-center gap-2">
+				{/* Actions */}
+				<div className="flex items-center gap-3">
 					<PreviewCopyButton />
 					<PreviewClearButton />
 				</div>
@@ -57,47 +54,12 @@ function PreviewTextarea() {
 			<Textarea
 				ref={ref}
 				id="emoji-preview"
+				name="emoji-preview"
+				className="h-24.25"
 				value={preview}
-				className="min-h-20 max-h-[40svh] resize-y"
 				placeholder="Click any button to add an emoji..."
 				onChange={(e) => setPreview(e.target.value)}
 			/>
 		</div>
-	);
-}
-
-function UseSubgroupToggle() {
-	const useSubgroup = useEmomomoStore(state => state.useSubgroup);
-	const setUseSubgroup = useEmomomoStore(state => state.setUseSubgroup);
-
-	return (
-		<Toggle
-			pressed={useSubgroup}
-			onPressedChange={() => setUseSubgroup(!useSubgroup)}
-			aria-label={`Toggle use ${useSubgroup ? "supergroup" : "subgroup"}`}
-		>
-			<ListTree />
-			<span className="max-sm:hidden">
-				Subgroup
-			</span>
-		</Toggle>
-	);
-}
-
-function UseCOCToggle() {
-	const useCOC = useEmomomoStore(state => state.useCOC);
-	const setUseCOC = useEmomomoStore(state => state.setUseCOC);
-
-	return (
-		<Toggle
-			pressed={useCOC}
-			onPressedChange={() => setUseCOC(!useCOC)}
-			aria-label={`Toggle ${useCOC ? "disable" : "enable"} copy on click`}
-		>
-			<SquareDashedMousePointer />
-			<span className="max-sm:hidden">
-				Copy on click
-			</span>
-		</Toggle>
 	);
 }
