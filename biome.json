@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.13/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.4.14/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -36,19 +36,11 @@
 			"a11y": {
 				"useHeadingContent": "off"
 			},
-			"complexity": {
-				"noImportantStyles": "off"
-			},
-			"correctness": {
-				"noUnknownFunction": "off",
-				"noUnknownProperty": "off"
-			},
 			"style": {
 				"noDescendingSpecificity": "off"
 			},
 			"suspicious": {
-				"noArrayIndexKey": "off",
-				"noExplicitAny": "off"
+				"noArrayIndexKey": "off"
 			}
 		}
 	},

@@ -25,7 +25,7 @@ export async function generateMetadata({
 				description,
 				url: `/articles/${articleId}`,
 				locale: "zh_TW",
-				image: articleMetadata.image
+				images: articleMetadata.image
 			}),
 		};
 	} catch {

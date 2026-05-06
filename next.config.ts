@@ -41,7 +41,7 @@ const config: NextConfig = {
 					},
 				],
 			},
-		]
+		];
 	},
 	async redirects() {
 		return [
@@ -72,7 +72,7 @@ const config: NextConfig = {
 		remotePatterns: [
 			new URL("https://img.ritmo.dev/**"),
 			new URL("https://hackmd.io/_uploads/**"),
-		]
+		],
 	},
 	turbopack: {
 		resolveAlias: {

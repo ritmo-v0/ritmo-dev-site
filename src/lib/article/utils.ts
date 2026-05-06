@@ -110,5 +110,6 @@ export function getMetadataUrl(articleId: string) {
 }
 
 export function isBadgeVariant(tag: string): tag is typeof ARTICLE_TAGS[number] {
+	// biome-ignore lint/suspicious/noExplicitAny: Type guard requires casting to satisfy .includes()
 	return ARTICLE_TAGS.includes(tag as any);
 }

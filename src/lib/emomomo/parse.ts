@@ -242,6 +242,7 @@ function isSubgroup(line: string): boolean {
 }
 
 export function isSkinTone(value: string): value is SkinTone {
+	// biome-ignore lint/suspicious/noExplicitAny: Type guard requires casting to satisfy .includes()
 	return EMOJI_SKIN_TONES.includes(value as any);
 }
 

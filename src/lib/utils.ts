@@ -1,21 +1,17 @@
 // shadcn
-import { clsx, type ClassValue } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import type { OpenGraphType } from "next/dist/lib/metadata/types/opengraph-types";
+import type {
+	OpenGraph,
+	OpenGraphType,
+} from "next/dist/lib/metadata/types/opengraph-types";
+
 type PageTitleProps = {
 	title?: string;
 	suffix?: string;
-};
-type PreviewMetadataProps = {
-	type?: OpenGraphType;
-	title: string;
-	description?: string;
-	url: string;
-	locale?: string;
-	image?: string;
 };
 
 // Constants & Variables
@@ -29,6 +25,7 @@ export function getBaseUrl() {
 	const baseUrl = PRODUCTION_URL
 		? `https://${PRODUCTION_URL}`
 		: `https://localhost:${process.env.PORT || 3000}`;
+
 	return new URL(baseUrl);
 }
 
@@ -42,18 +39,18 @@ export function generatePageTitle({
 export function generatePreviewMetadata({
 	type = "website",
 	title,
-	description = "",
+	description,
 	url,
+	images,
 	locale = "en_US",
-	image,
-}: PreviewMetadataProps): Partial<Metadata> {
+}: Partial<OpenGraph & { type: OpenGraphType }>): Partial<Metadata> {
 	return {
 		openGraph: {
 			type,
 			title,
 			description,
 			url,
-			images: image,
+			images: images,
 			siteName: PAGE_TITLE_SUFFIX,
 			locale,
 		},
@@ -61,7 +58,7 @@ export function generatePreviewMetadata({
 			card: "summary_large_image",
 			title,
 			description,
-			images: image,
+			images: images,
 			site: "@ritmo_v0",
 			siteId: "904003428262723584",
 			creator: "@ritmo_v0",
@@ -72,5 +69,5 @@ export function generatePreviewMetadata({
 
 // # Utility Functions
 export function cn(...inputs: ClassValue[]) {
-	return twMerge(clsx(inputs))
+	return twMerge(clsx(inputs));
 }
