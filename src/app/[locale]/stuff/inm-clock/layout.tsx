@@ -14,7 +14,12 @@ export const metadata: Metadata = {
 		title: meta.title,
 		description: meta.description,
 		url: meta.url,
+		images: [`${meta.url}/image.png`],
 	}),
+	icons: {
+		icon: [{ url: `${meta.url}/icon.png` }],
+		apple: [{ url: `${meta.url}/apple-icon.png` }],
+	},
 	robots: {
 		index: true,
 		follow: true,

@@ -8,6 +8,10 @@ export const metadata = {
 	title: { absolute: title },
 	description,
 	...generatePreviewMetadata({ title, description, url }),
+	icons: {
+		icon: [{ url: `${url}/icon.png` }],
+		apple: [{ url: `${url}/apple-icon.png` }],
+	},
 };
 
 

@@ -11,7 +11,16 @@ const url = "/stuff/boss3";
 export const metadata: Metadata = {
 	title: { absolute: "今天是我生日" },
 	description: description,
-	...generatePreviewMetadata({ title, description, url }),
+	...generatePreviewMetadata({
+		title,
+		description,
+		url,
+		images: [`${url}/image.jpg`],
+	}),
+	icons: {
+		icon: [{ url: `${url}/icon.png` }],
+		apple: [{ url: `${url}/apple-icon.png` }],
+	},
 	robots: {
 		index: false,
 		follow: false,

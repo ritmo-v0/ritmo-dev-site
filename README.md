@@ -22,13 +22,13 @@ An emoji picker that allows you to copy emojis by just one click; it also has a 
 
 A cron job is written to periodically parse the [latest set of Unicode emojis](https://unicode.org/Public/emoji/latest/emoji-test.txt) and cached.
 
-![EMOMOMO](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/tools/emomomo/opengraph-image.png)
+![EMOMOMO](https://github.com/ritmoHung/ritmo-dev-site/blob/main/public/tools/emomomo/image.png)
 
 #### [Tempus](https://ritmo.dev/tools/tempus)
 
 A BPM measuring tool inspired from [Tap for Beats Per Minute](https://www.all8.com/tools/bpm.htm) by [Rich Reel](https://www.all8.com/rich.htm). Been using it since I started writing custom rhythm game charts, but always dreamed of giving it a good look and more functionality one day when I learn front-end.
 
-![Tempus](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/tools/tempus/opengraph-image.png)
+![Tempus](https://github.com/ritmoHung/ritmo-dev-site/blob/main/public/tools/tempus/image.png)
 
 ### Random Stuff
 
@@ -36,7 +36,7 @@ A BPM measuring tool inspired from [Tap for Beats Per Minute](https://www.all8.c
 
 A clock, giving off a terrible stench, that runs and then stops at exactly `2025-05-14T19:19:00.810`.
 
-![INM Clock](https://github.com/ritmoHung/ritmo-dev-site/blob/main/src/app/stuff/inm-clock/opengraph-image.png)
+![INM Clock](https://github.com/ritmoHung/ritmo-dev-site/blob/main/public/stuff/inm-clock/image.png)
 
 #### [《色づく世界の明日から》Pilgrimage Activity Data](https://ritmo.dev/stuff/iroduku-pgm)
 

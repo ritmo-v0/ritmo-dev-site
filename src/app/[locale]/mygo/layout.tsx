@@ -11,7 +11,12 @@ const url = "/mygo";
 export const metadata: Metadata = {
 	title: { absolute: title },
 	description,
-	...generatePreviewMetadata({ title, description, url }),
+	...generatePreviewMetadata({
+		title,
+		description,
+		url,
+		images: [`${url}/image.jpg`],
+	}),
 	robots: {
 		index: false,
 		follow: false,

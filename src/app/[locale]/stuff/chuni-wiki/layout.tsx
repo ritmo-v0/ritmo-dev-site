@@ -14,7 +14,16 @@ const url = "/stuff/chuni-wiki";
 export const metadata: Metadata = {
 	title: { absolute: title },
 	description: description,
-	...generatePreviewMetadata({ title, description, url }),
+	...generatePreviewMetadata({
+		title,
+		description,
+		url,
+		images: [`${url}/image.png`],
+	}),
+	icons: {
+		icon: [{ url: `${url}/icon.svg` }],
+		apple: [{ url: `${url}/apple-icon.png` }],
+	},
 	robots: {
 		index: false,
 		follow: false,

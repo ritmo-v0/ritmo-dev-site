@@ -17,6 +17,7 @@ export const metadata = {
 		title: generatePageTitle({ title, suffix: meta.title }),
 		description,
 		url,
+		images: [`${url}/image.jpg`],
 	}),
 };
 

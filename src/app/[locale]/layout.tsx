@@ -93,6 +93,10 @@ export const metadata: Metadata = {
 	creator: author,
 	publisher: author,
 	...generatePreviewMetadata({ title, description, url }),
+	icons: {
+		icon: [{ url: "/icon.svg" }],
+		apple: [{ url: "/apple-icon.png" }],
+	},
 	robots: {
 		index: true,
 		follow: true,
