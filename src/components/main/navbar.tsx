@@ -4,12 +4,11 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import NextLink from "next/link";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { ThemeSelect } from "@/components/common/theme-select";
 import { LocaleSelect } from "@/components/common/locale-select";
-import { ButtonLink, H3, Muted } from "@/components/common/typography";
+import { ButtonLink, H3, Link, Muted } from "@/components/common/typography";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -34,16 +33,16 @@ import {
 import { RitmoIcon } from "@/components/common/icons";
 
 // Types & Interfaces
-import type { Route } from "next";
+// TODO: Wait for `next-intl` to support Next.js typed routes
 import type { Icon } from "@phosphor-icons/react";
 type BaseItem = { icon: Icon, label: string };
-type LinkItem = BaseItem & { href: Route };
+type LinkItem = BaseItem & { href: string };
 type MenuItem = BaseItem & {
 	items: Array<Omit<LinkItem, "icon"> & { description: string }>;
 };
 
 // Constants & Variables
-import { STUFF } from "@/app/stuff/stuff";
+import { STUFF } from "@/app/[locale]/stuff/stuff";
 const NAV_ITEMS: Array<LinkItem | MenuItem> = [
 	{
 		icon: NotebookIcon,
@@ -142,7 +141,8 @@ function NavMenuItem({ icon: Icon, label, items }: MenuItem) {
 							<NavigationMenuLink
 								closeOnClick={true}
 								render={
-									<NextLink
+									<Link
+										variant="nothing"
 										href={item.href}
 										className="grid gap-1"
 									>
@@ -150,7 +150,7 @@ function NavMenuItem({ icon: Icon, label, items }: MenuItem) {
 											{item.label}
 										</H3>
 										<Muted>{item.description}</Muted>
-									</NextLink>
+									</Link>
 								}
 							/>
 						</li>

@@ -1,23 +1,14 @@
-"use server";
-import { cookies } from "next/headers";
-
-// Types & Interfaces
-import type { Locale } from "next-intl";
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
 // Constants & Variables
-import { DEFAULT_LOCALE } from "./config";
-const LOCALE_COOKIE = "NEXT_LOCALE";
+import { routing } from "./routing";
 
 
 
-export async function getUserLocale(): Promise<Locale> {
-	const cookieStore = await cookies();
-	const userLocale = cookieStore.get(LOCALE_COOKIE)?.value;
-
-	return userLocale as Locale || DEFAULT_LOCALE;
-}
-
-export async function setUserLocale(locale: Locale | null) {
-	const cookieStore = await cookies();
-	cookieStore.set(LOCALE_COOKIE, locale || DEFAULT_LOCALE);
+export function handleLayoutLocale(locale: string) {
+	// Enable static rendering
+	if (!hasLocale(routing.locales, locale)) notFound();
+	setRequestLocale(locale);
 }

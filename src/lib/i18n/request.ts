@@ -1,9 +1,17 @@
 import { getRequestConfig } from "next-intl/server";
-import { getUserLocale } from "./utils";
-import { FORMATS } from "./config";
+import { hasLocale } from "next-intl";
 
-export default getRequestConfig(async () => {
-	const locale = await getUserLocale();
+// Constants & Variables
+import { routing } from "./routing";
+import { FORMATS } from "./constants";
+
+
+
+export default getRequestConfig(async ({ requestLocale }) => {
+	const requestedLocale = await requestLocale;
+	const locale = hasLocale(routing.locales, requestedLocale)
+		? requestedLocale
+		: routing.defaultLocale;
 
 	return {
 		locale,

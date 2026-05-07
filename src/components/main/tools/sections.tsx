@@ -6,7 +6,7 @@ import { ToolCard } from "./tool-card";
 import { Section } from "@/components/common/typography";
 
 // Constants & Variables
-import { TOOLS } from "@/app/tools/tools";
+import { TOOLS } from "@/app/[locale]/tools/tools";
 import {
 	TRANSITION_200_25,
 	getContainerVariants,

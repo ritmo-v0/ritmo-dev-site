@@ -43,25 +43,6 @@ const config: NextConfig = {
 			},
 		];
 	},
-	async redirects() {
-		return [
-			{
-				source: "/tools/emojis",
-				destination: "/tools/emomomo",
-				permanent: true,
-			},
-			{
-				source: "/tools/inm-clock",
-				destination: "/stuff/inm-clock",
-				permanent: true,
-			},
-			{
-				source: "/stuff/7sref4",
-				destination: "/stuff/7sref",
-				permanent: true,
-			},
-		];
-	},
 	compiler: {
 		removeConsole: process.env.NODE_ENV === "production"
 			? { exclude: ["error"] }

@@ -7,11 +7,11 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 // Components & UI
-import NextLink from "next/link";
 import NextImage from "next/image";
 import { motion } from "motion/react";
 import { Twemoji } from "./twemoji";
 import { buttonVariants } from "@/components/ui/button";
+import { Link as NextLink } from "@/lib/i18n/navigation";
 
 // Icons & Images
 import {
@@ -23,7 +23,6 @@ import {
 } from "@phosphor-icons/react";
 
 // Types & Interfaces
-import type { LinkProps } from "next/link";
 import type { Icon } from "@phosphor-icons/react";
 import type { VariantProps } from "class-variance-authority";
 
@@ -443,12 +442,12 @@ const linkVariants = cva(
 	}
 );
 
-function Link<T extends string>({
+function Link({
 	className,
 	variant = "default",
 	href,
 	...props
-}: LinkProps<T> & VariantProps<typeof linkVariants>) {
+}: React.ComponentProps<typeof NextLink> & VariantProps<typeof linkVariants>) {
 	const s = href.toString();
 	const isExternal = !(s.startsWith("/") || s.startsWith("#"));
 
@@ -463,22 +462,18 @@ function Link<T extends string>({
 	);
 }
 
-function ButtonLink<T extends string>({
+function ButtonLink({
 	className,
 	variant = "default",
 	size = "default",
 	href,
 	...props
-}: LinkProps<T> & VariantProps<typeof buttonVariants>) {
-	const s = href.toString();
-	const isExternal = !(s.startsWith("/") || s.startsWith("#"));
-
+}: React.ComponentProps<typeof NextLink> & VariantProps<typeof buttonVariants>) {
 	return (
-		<NextLink
+		<Link
 			href={href}
+			variant="nothing"
 			className={cn(buttonVariants({ variant, size }), className)}
-			target={isExternal ? "_blank" : undefined}
-			rel={isExternal ? "noopener noreferrer" : undefined}
 			{...props}
 		/>
 	);

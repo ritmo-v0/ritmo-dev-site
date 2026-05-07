@@ -1,9 +1,10 @@
-import type { Route } from "next";
+// import type { Route } from "next";
 
+// TODO: Wait for `next-intl` to support Next.js typed routes
 export type Meta = {
 	title: string;
 	description: string;
-	url: Route;
+	url: string;
 	keywords: string[];
 };
 

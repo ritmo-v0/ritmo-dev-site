@@ -1,0 +1,29 @@
+import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
+
+// Metadata
+import { meta } from "@/app/[locale]/stuff/7sref/meta";
+const title = "Ref:rain (for 7th Heaven)";
+const description = `
+******************************
+** Welcome to KALEIDX_SCOPE **
+** Thank you, and good bye. **
+******************************
+`.trim();
+const url = "/stuff/7sref/refrain";
+export const metadata = {
+	title,
+	description,
+	...generatePreviewMetadata({
+		title: generatePageTitle({ title, suffix: meta.title }),
+		description,
+		url,
+	}),
+};
+
+
+
+export default function RefrainLayout({
+	children
+}: LayoutProps<"/[locale]/stuff/7sref/refrain">) {
+	return children;
+}
