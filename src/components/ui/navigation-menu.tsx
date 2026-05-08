@@ -86,7 +86,7 @@ function NavigationMenuTrigger({
 		>
 			{children}
 			<NavigationMenuPrimitive.Icon className="transition duration-300 ease-out data-popup-open:rotate-180">
-				<CaretDownIcon aria-hidden="true" />
+				<CaretDownIcon data-icon="inline-end" aria-hidden="true" />
 			</NavigationMenuPrimitive.Icon>
 		</NavigationMenuPrimitive.Trigger>
 	);

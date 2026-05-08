@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import {
 	cn,
 	generatePreviewMetadata,
@@ -26,26 +27,43 @@ const ShipporiMincho = Shippori_Mincho({
 import { Areas } from "@/components/main/stuff/7sref/areas";
 import { Wrapper } from "@/components/common/typography";
 
+// Types & Interfaces
+import type { Metadata } from "next";
+import type { Locale } from "next-intl";
+
 // Metadata
-import { meta } from "./meta";
-export const metadata = {
-	title: {
-		absolute: meta.title,
-		template: generatePageTitle({ suffix: meta.title }),
-	},
-	description: meta.description,
-	keywords: meta.keywords,
-	...generatePreviewMetadata({
-		title: meta.title,
-		description: meta.description,
-		url: meta.url,
-	}),
-	robots: {
-		index: true,
-		follow: true,
-		nocache: false,
-	},
-};
+export async function generateMetadata(
+	{ params }: LayoutProps<"/[locale]/stuff/7sref">
+): Promise<Metadata> {
+	const locale = (await params).locale as Locale;
+	const t = await getTranslations({ locale, namespace: "stuff.7sref" });
+
+	const title = t("title");
+	const description = t("description");
+
+	return {
+		title: {
+			absolute: title,
+			template: generatePageTitle({ suffix: title }),
+		},
+		description: description,
+		keywords: [
+			"maimai",
+			"7sRef",
+			"7sRef 4",
+		],
+		...generatePreviewMetadata({
+			title: title,
+			description: description,
+			url: "/stuff/7sref",
+		}),
+		robots: {
+			index: true,
+			follow: true,
+			nocache: false,
+		},
+	};
+}
 
 
 

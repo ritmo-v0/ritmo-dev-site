@@ -1,7 +1,11 @@
+import { getTranslations } from "next-intl/server";
 import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
 
-// Metadata
-import { meta } from "@/app/[locale]/stuff/7sref/meta";
+// Types & Interfaces
+import type { Metadata } from "next";
+import type { Locale } from "next-intl";
+
+// Constants & Variables
 const title = "ヨミビトシラズ";
 const description = `
 **********************************
@@ -10,16 +14,27 @@ const description = `
 **********************************
 `.trim();
 const url = "/stuff/7sref/yomibito-shirazu";
-export const metadata = {
-	title,
-	description,
-	...generatePreviewMetadata({
-		title: generatePageTitle({ title, suffix: meta.title }),
+
+// Metadata
+export async function generateMetadata(
+	{ params }: LayoutProps<"/[locale]/stuff/7sref/yomibito-shirazu">
+): Promise<Metadata> {
+	const locale = (await params).locale as Locale;
+	const t = await getTranslations({ locale, namespace: "stuff.7sref" });
+
+	const parentTitle = t("title");
+
+	return {
+		title,
 		description,
-		url,
-		images: [`${url}/image.jpg`],
-	}),
-};
+		...generatePreviewMetadata({
+			title: generatePageTitle({ title, suffix: parentTitle }),
+			description,
+			url,
+			images: [`${url}/image.jpg`],
+		}),
+	};
+}
 
 
 

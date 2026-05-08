@@ -1,14 +1,16 @@
 "use client";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 // Components & UI
+import { Link } from "@/lib/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/common/mode-toggle";
 import { ThemeSelect } from "@/components/common/theme-select";
 import { LocaleSelect } from "@/components/common/locale-select";
-import { ButtonLink, H3, Link, Muted } from "@/components/common/typography";
+import { ButtonLink, H3, Muted } from "@/components/common/typography";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -33,35 +35,27 @@ import {
 import { RitmoIcon } from "@/components/common/icons";
 
 // Types & Interfaces
-// TODO: Wait for `next-intl` to support Next.js typed routes
 import type { Icon } from "@phosphor-icons/react";
-type BaseItem = { icon: Icon, label: string };
-type LinkItem = BaseItem & { href: string };
-type MenuItem = BaseItem & {
-	items: Array<Omit<LinkItem, "icon"> & { description: string }>;
+type NavItem = {
+	id: string;
+	icon: Icon;
+	items?: string[];
 };
 
 // Constants & Variables
-import { STUFF } from "@/app/[locale]/stuff/stuff";
-const NAV_ITEMS: Array<LinkItem | MenuItem> = [
+const NAV_ITEMS: NavItem[] = [
 	{
+		id: "articles",
 		icon: NotebookIcon,
-		label: "Articles",
-		href: "/articles",
 	},
 	{
+		id: "tools",
 		icon: CubeIcon,
-		label: "Tools",
-		href: "/tools",
 	},
 	{
+		id: "stuff",
 		icon: ArchiveIcon,
-		label: "Stuff",
-		items: STUFF.map(stuff => ({
-			label: stuff.title,
-			description: stuff.description,
-			href: stuff.url,
-		})),
+		items: ["7sref", "iroduku-pgm", "inm-clock"],
 	},
 ];
 
@@ -69,12 +63,15 @@ const NAV_ITEMS: Array<LinkItem | MenuItem> = [
 
 export default function Navbar() {
 	return (
-		<div className="fixed left-0 top-0 content-center w-full h-16 px-4 py-3 z-50 pointer-events-none">
+		<div className={cn(
+			"fixed left-0 top-0 content-center",
+			"w-full h-16 px-4 py-3 z-50 pointer-events-none",
+		)}>
 			<div className={cn(
-				"max-w-max mx-auto flex items-center gap-2 pointer-events-auto",
+				"flex items-center gap-2 mx-auto max-w-max pointer-events-auto",
 				"*:bg-background/40 *:border *:rounded-full",
-				"*:backdrop-blur-sm *:backdrop-saturate-200",
-				"*:backdrop-brightness-110 *:dark:backdrop-brightness-80",
+				"*:backdrop-blur-md *:backdrop-saturate-200",
+				"*:backdrop-brightness-120 *:dark:backdrop-brightness-80",
 			)}>
 				<div>
 					<ButtonLink
@@ -87,9 +84,9 @@ export default function Navbar() {
 				</div>
 				<NavigationMenu>
 					<NavigationMenuList className="-space-x-0.5">
-						{NAV_ITEMS.map(item => "items" in item
-							? <NavMenuItem key={item.label} {...item} />
-							: <NavLinkItem key={item.label} {...item} />
+						{NAV_ITEMS.map(item => item.items
+							? <NavMenuItem key={item.id} {...item} items={item.items} />
+							: <NavLinkItem key={item.id} {...item} />
 						)}
 					</NavigationMenuList>
 				</NavigationMenu>
@@ -101,58 +98,60 @@ export default function Navbar() {
 	);
 }
 
-function NavLinkItem({ icon: Icon, label, href }: LinkItem) {
+function NavLinkItem({ id, icon: Icon }: NavItem) {
+	const t = useTranslations(id);
 	const pathname = usePathname();
-	const active = pathname.startsWith(href);
+
+	const url = `/${id}`;
+	const active = pathname.startsWith(url);
 
 	return (
 		<NavigationMenuItem>
 			<NavigationMenuLink
 				active={active}
-				render={(
+				render={
 					<ButtonLink
-						href={href}
+						href={url}
 						variant="ghost"
 						className="xs:ps-2.5"
-					>
-						<Icon
-							className="max-xs:hidden"
-							weight={active ? "fill" : "regular"}
-						/>
-						{label}
-					</ButtonLink>
-				)}
-			/>
+					/>
+				}
+			>
+				<Icon
+					className="max-xs:hidden"
+					weight={active ? "fill" : "regular"}
+				/>
+				{t("label")}
+			</NavigationMenuLink>
 		</NavigationMenuItem>
 	);
 }
 
-function NavMenuItem({ icon: Icon, label, items }: MenuItem) {
+function NavMenuItem({ id, icon: Icon, items }: Required<NavItem>) {
+	const t = useTranslations(id);
+
 	return (
 		<NavigationMenuItem>
 			<NavigationMenuTrigger className="xs:ps-2.5">
 				<Icon className="max-xs:hidden" />
-				{label}
+				{t("label")}
 			</NavigationMenuTrigger>
-			<NavigationMenuContent className="max-w-2xs">
-				<ul className="grid gap-2">
-					{items.map(item => (
-						<li key={item.label}>
+			<NavigationMenuContent className="max-w-74">
+				<ul className="grid gap-1">
+					{items.map(itemId => (
+						<li key={itemId}>
 							<NavigationMenuLink
+								className="grid gap-1.5"
 								closeOnClick={true}
-								render={
-									<Link
-										variant="nothing"
-										href={item.href}
-										className="grid gap-1"
-									>
-										<H3 className="text-base [&+p]:mt-0!">
-											{item.label}
-										</H3>
-										<Muted>{item.description}</Muted>
-									</Link>
-								}
-							/>
+								render={<Link href={`/${id}/${itemId}`} />}
+							>
+								<H3 className="text-base/tight [&+p]:mt-0!">
+									{t(`${itemId}.title`)}
+								</H3>
+								<Muted>
+									{t(`${itemId}.description`)}
+								</Muted>
+							</NavigationMenuLink>
 						</li>
 					))}
 				</ul>

@@ -25,15 +25,34 @@
 			"label": "テーマ"
 		}
 	},
+	"articles": {
+		"label": "記事"
+	},
 	"stuff": {
+		"label": "いろいろ",
 		"7sref": {
+			"title": "7sRef.exe",
+			"description": "Sevens Refraction",
 			"controls": {
 				"aria_label_show_original": "原文（日本語）に切り替える",
 				"aria_label_show_translated": "翻訳文に切り替える"
 			}
+		},
+		"inm-clock": {
+			"title": "迫真時鐘部．時停の裏技",
+			"description": "こんなに臭い時計、存在する必要はあるか（怒"
+		},
+		"iroduku-pgm": {
+			"title": "『色づく世界の明日から』聖地巡礼",
+			"description": "2026年の巡礼データ．グラフ一覧",
+			"activity": {
+				"title": "アクティビティデータ",
+				"description": "長崎には本当に階段が多い。"
+			}
 		}
 	},
 	"tools": {
+		"label": "ツール",
 		"tempus": {
 			"metronome": {
 				"title": "メトロノーム"

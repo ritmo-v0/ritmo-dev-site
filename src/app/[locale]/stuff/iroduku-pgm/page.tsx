@@ -1,6 +1,7 @@
 "use client";
 import { useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 // Components & UI
 import { Suspense } from "react";
@@ -14,7 +15,6 @@ import { SummaryChart } from "@/components/main/stuff/iroduku-pgm/summary-chart"
 import type { DataType, DateKey } from "@/lib/iroduku-pgm/types";
 
 // Constants & Variables
-import { meta } from "@/app/[locale]/stuff/iroduku-pgm/meta";
 import { DATA_TYPES, DATE_KEYS } from "@/lib/iroduku-pgm/constants";
 const DEFAULT_TYPES: DataType[] = ["steps", "floors"];
 const DEFAULT_DATE: DateKey = "2026-03-17";
@@ -35,14 +35,15 @@ function parseTypes(v: string | null): DataType[] {
 
 
 export default function IrodukuPilgrimagePage() {
+	const t = useTranslations("stuff.iroduku-pgm.activity");
 	return (
 		<Wrapper>
 			<header className="grid gap-2">
 				<H2 className="text-balance [&+p]:mt-0!">
-					{meta.title}
+					{t("title")}
 				</H2>
 				<Muted className="text-base">
-					Nagasaki really does have a lot of stairs.
+					{t("description")}
 				</Muted>
 			</header>
 

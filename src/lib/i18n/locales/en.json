@@ -25,15 +25,34 @@
 			"label": "Theme"
 		}
 	},
+	"articles": {
+		"label": "Articles"
+	},
 	"stuff": {
+		"label": "Stuff",
 		"7sref": {
+			"title": "7sRef.exe",
+			"description": "Sevens Refraction",
 			"controls": {
 				"aria_label_show_original": "Switch to original Japanese text",
 				"aria_label_show_translated": "Switch to translated text"
 			}
+		},
+		"inm-clock": {
+			"title": "Legit Clock Club．Time Stop Trick",
+			"description": "Does this reeking clock even need to exist? (seething"
+		},
+		"iroduku-pgm": {
+			"title": "“Iroduku: The World in Colors” Pilgrimage",
+			"description": "My 2026 pilgrimage data & charts",
+			"activity": {
+				"title": "Activity Data",
+				"description": "Nagasaki really does have a lot of stairs."
+			}
 		}
 	},
 	"tools": {
+		"label": "Tools",
 		"tempus": {
 			"metronome": {
 				"title": "Metronome"

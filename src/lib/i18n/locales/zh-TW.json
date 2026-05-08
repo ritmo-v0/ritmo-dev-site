@@ -25,15 +25,34 @@
 			"label": "主題"
 		}
 	},
+	"articles": {
+		"label": "文章"
+	},
 	"stuff": {
+		"label": "雜項",
 		"7sref": {
+			"title": "7sRef.exe",
+			"description": "Sevens Refraction",
 			"controls": {
 				"aria_label_show_original": "切換為日文原文",
 				"aria_label_show_translated": "切換為翻譯內容"
 			}
+		},
+		"inm-clock": {
+			"title": "迫真時鐘部．時停の裏技",
+			"description": "這麼惡臭的時鐘有存在的必要嗎（惱"
+		},
+		"iroduku-pgm": {
+			"title": "《來自繽紛世界的明日》聖地巡禮",
+			"description": "2026 年巡禮資料與圖表總覽",
+			"activity": {
+				"title": "活動資料",
+				"description": "長崎真的有很多階梯。"
+			}
 		}
 	},
 	"tools": {
+		"label": "工具",
 		"tempus": {
 			"metronome": {
 				"title": "節拍器"
