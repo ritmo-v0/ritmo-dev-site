@@ -16,6 +16,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 				defaultTheme="system"
 				enableSystem
 				disableTransitionOnChange
+				scriptProps={{ type: "application/json" }}
 			>
 				<ShadcnProvider>
 					{children}
