@@ -1,4 +1,8 @@
-import { cn, generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
+import {
+	cn,
+	generatePreviewMetadata,
+	generatePageTitle,
+} from "@/lib/utils";
 
 // Fonts
 import { Doto, Shippori_Mincho } from "next/font/google";

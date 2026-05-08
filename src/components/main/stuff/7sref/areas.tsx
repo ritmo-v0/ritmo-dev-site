@@ -12,6 +12,8 @@ const ANI_DURATION = 1.6;
 
 export function Areas({ className }: React.ComponentProps<"div">) {
 	const [path, setPath] = useState("");
+	const [isComplete, setIsComplete] = useState(false);
+
 	useEffect(() => setPath(generatePath(window.innerHeight)), []);
 
 	return (
@@ -21,11 +23,14 @@ export function Areas({ className }: React.ComponentProps<"div">) {
 			className,
 		)}>
 			<motion.div
-				className="[--base-size:min(110vw,110svh)] grid grid-stack place-content-center place-items-center"
+				className={cn(
+					"[--base-size:min(110vw,110svh)] grid grid-stack place-content-center place-items-center",
+					isComplete && "filter-none!"
+				)}
 				initial={{ scale: 0.2, opacity: 0, filter: "blur(4px)" }}
 				animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
 				transition={{ duration: ANI_DURATION, ease: [0, 0.9, 0.2, 1] }}
-			// transition={{ type: "spring", stiffness: 200, damping: 100, mass: 5 }}
+				onAnimationComplete={() => setIsComplete(true)}
 			>
 				<Area
 					className="[--orbit-size:var(--base-size)] size-(--orbit-size) isolate"
