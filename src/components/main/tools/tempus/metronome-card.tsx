@@ -1,83 +1,36 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { useMetronome } from "@/hooks/use-metronome";
 import { cn } from "@/lib/utils";
 
 // Components & UI
 import NumberFlow from "@number-flow/react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 
 // Icons & Images
-import { Pause, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { PauseIcon, PlayIcon } from "@phosphor-icons/react";
+
+// Constants & Variables
+const BPM_MIN = 40;
+const BPM_MAX = 400;
+const BPM_DEFAULT = 100;
 
 
 
-// TODO: Refactor
 export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) {
-	const [value, setValue] = useState(100);
+	const t = useTranslations("tools.tempus.metronome");
+	const [bpm, setBpm] = useState(BPM_DEFAULT);
 	const [step, setStep] = useState(1);
-	const [isPlaying, setIsPlaying] = useState(false);
-	const [wasPlaying, setWasPlaying] = useState(false);
 
-	const audioContext = useRef<AudioContext | null>(null);
-	const sfx = useRef<AudioBuffer | null>(null);
-	const intervalRef = useRef(0);
-
-	useEffect(() => {
-		audioContext.current = new (window.AudioContext);
-		fetch("https://img.ritmo.dev/tools/tempus/metronome.mp3")
-			.then((response) => response.arrayBuffer())
-			.then((arrayBuffer) => {
-				audioContext.current?.decodeAudioData(arrayBuffer, (buffer) => {
-					sfx.current = buffer;
-				})
-			});
-	}, []);
-
-	// Metronome
-	function handleClick() {
-		const state = !isPlaying;
-		setIsPlaying(state);
-		setWasPlaying(state);
-	}
-
-	const playSFX = useCallback(() => {
-		const audioCtx = audioContext.current;
-		const buffer = sfx.current;
-		if (!audioCtx || !buffer) return;
-
-		const bufferSource = audioCtx.createBufferSource();
-		bufferSource.buffer = buffer;
-		bufferSource.connect(audioCtx.destination);
-		bufferSource.start(0);
-	}, []);
-
-	const start = useCallback(() => {
-		const interval = (60 / value) * 1000;
-		playSFX();
-		intervalRef.current = window.setInterval(() => {
-			playSFX();
-		}, interval);
-	}, [value, playSFX]);
-
-	const stop = useCallback(() => {
-		if (intervalRef.current) {
-			clearInterval(intervalRef.current);
-			intervalRef.current = 0;
-		}
-	}, []);
-
-	useEffect(() => {
-		stop();
-		if (isPlaying) start();
-		return stop;
-	}, [isPlaying, value, start, stop]);
-
-	function handleValueChange(value: number) {
-		setIsPlaying(false);
-		setValue(value);
-	}
+	const { isPlaying, toggle, sliderPointerHandlers } = useMetronome({ bpm });
 
 	// Drag and Drop
 	function onDragOver(e: React.DragEvent<HTMLDivElement>) {
@@ -87,11 +40,8 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 
 	function onDrop(e: React.DragEvent<HTMLDivElement>) {
 		e.preventDefault();
-		const bpm = e.dataTransfer.getData("text/plain");
-		if (bpm) {
-			const bpmValue = parseFloat(bpm);
-			if (!Number.isNaN(bpmValue)) setValue(bpmValue);
-		}
+		const val = parseFloat(e.dataTransfer.getData("text/plain"));
+		if (!Number.isNaN(val)) setBpm(val);
 	}
 
 	return (
@@ -101,13 +51,13 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 			onDrop={onDrop}
 		>
 			<CardHeader>
-				<CardTitle>Metronome</CardTitle>
+				<CardTitle>{t("title")}</CardTitle>
 			</CardHeader>
 			<CardContent>
 				<div className="grid auto-rows-min justify-items-center gap-2">
 					<NumberFlow
 						className="font-bold text-5xl tabular-nums pointer-events-none"
-						value={value}
+						value={bpm}
 						locales="en-US"
 						format={{ useGrouping: false }}
 						aria-hidden="true"
@@ -115,23 +65,19 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 						willChange
 					/>
 					<Slider
-						value={value}
-						min={40}
-						max={400}
+						value={bpm}
+						min={BPM_MIN}
+						max={BPM_MAX}
 						step={step}
-						onKeyDown={(e) => {
-							if (e.key === "Shift" && !e.repeat) setStep(0.01);
-						}}
-						onKeyUp={(e) => {
-							if (e.key === "Shift") setStep(1);
-						}}
-						onValueChange={handleValueChange}
-						onPointerUp={() => { if (wasPlaying) setIsPlaying(true) }}
+						onValueChange={setBpm}
+						onKeyDown={(e) => { if (e.key === "Shift" && !e.repeat) setStep(0.01); }}
+						onKeyUp={(e) => { if (e.key === "Shift") setStep(1); }}
+						{...sliderPointerHandlers}
 					/>
 				</div>
 				<div className="w-max mx-auto mt-4">
-					<Button variant="ghost" size="icon" onClick={handleClick} >
-						{isPlaying ? <Pause /> : <Play />}
+					<Button variant="ghost" size="icon" onClick={toggle}>
+						{isPlaying ? <PauseIcon /> : <PlayIcon />}
 					</Button>
 				</div>
 			</CardContent>

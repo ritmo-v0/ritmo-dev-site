@@ -1,8 +1,8 @@
 "use client";
 import { useTransition } from "react";
 import { useParams } from "next/navigation";
-import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 // Components & UI
@@ -23,19 +23,18 @@ import { LOCALES } from "@/lib/i18n/constants";
 
 
 
-export function LocaleSelect({
-	className
-}: React.ComponentProps<typeof SelectTrigger>) {
+export function LocaleSelect({ className }: { className?: string }) {
 	const router = useRouter();
 	const pathname = usePathname();
 	const params = useParams();
 
 	const locale = useLocale();
-	const t = useTranslations("common.locales");
+	const t = useTranslations("common.locale");
 	const [isPending, startTransition] = useTransition();
 
 	function handleLocaleChange(locale: Locale | null) {
 		if (!locale) return;
+
 		startTransition(() => {
 			router.replace(
 				// @ts-expect-error -- TypeScript will validate that only known `params`
@@ -59,8 +58,8 @@ export function LocaleSelect({
 				aria-label={t("label")}
 			>
 				<SelectValue>
-					{t.has(locale)
-						? t(locale)
+					{t.has(`${locale}.label`)
+						? t(`${locale}.label`)
 						: locale.toUpperCase()}
 				</SelectValue>
 			</SelectTrigger>
@@ -68,8 +67,8 @@ export function LocaleSelect({
 				<SelectGroup>
 					{LOCALES.map(locale => (
 						<SelectItem key={locale} value={locale}>
-							{t.has(locale)
-								? t(locale)
+							{t.has(`${locale}.label`)
+								? t(`${locale}.label`)
 								: locale.toUpperCase()}
 						</SelectItem>
 					))}

@@ -1,10 +1,28 @@
 {
 	"common": {
-		"locales": {
+		"locale": {
 			"label": "Language",
-			"en": "English",
-			"ja": "日本語",
-			"zh-TW": "繁體中文"
+			"en": {
+				"label": "English",
+				"short": "En"
+			},
+			"ja": {
+				"label": "日本語",
+				"short": "日"
+			},
+			"zh-TW": {
+				"label": "繁體中文",
+				"short": "中"
+			}
+		},
+		"mode": {
+			"label": "Mode",
+			"light": "Light",
+			"dark": "Dark",
+			"system": "System"
+		},
+		"theme": {
+			"label": "Theme"
 		}
 	},
 	"stuff": {
@@ -12,6 +30,13 @@
 			"controls": {
 				"aria_label_show_original": "Switch to original Japanese text",
 				"aria_label_show_translated": "Switch to translated text"
+			}
+		}
+	},
+	"tools": {
+		"tempus": {
+			"metronome": {
+				"title": "Metronome"
 			}
 		}
 	}

@@ -165,7 +165,9 @@
 	button:not(:disabled),
 	[role="button"]:not(:disabled),
 	[role="option"]:not([data-disabled]),
-	[role*="menuitem"]:not([data-disabled]) {
+	[role*="menuitem"]:not([data-disabled]),
+	[data-slot*="slider"]:not([data-disabled]),
+	[data-slot*="switch"]:not([data-disabled]) {
 		@apply cursor-pointer;
 	}
 

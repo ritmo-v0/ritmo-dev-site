@@ -1,10 +1,28 @@
 {
 	"common": {
-		"locales": {
+		"locale": {
 			"label": "語言",
-			"en": "English",
-			"ja": "日本語",
-			"zh-TW": "繁體中文"
+			"en": {
+				"label": "English",
+				"short": "En"
+			},
+			"ja": {
+				"label": "日本語",
+				"short": "日"
+			},
+			"zh-TW": {
+				"label": "繁體中文",
+				"short": "中"
+			}
+		},
+		"mode": {
+			"label": "模式",
+			"light": "淺色",
+			"dark": "深色",
+			"system": "系統"
+		},
+		"theme": {
+			"label": "主題"
 		}
 	},
 	"stuff": {
@@ -12,6 +30,13 @@
 			"controls": {
 				"aria_label_show_original": "切換為日文原文",
 				"aria_label_show_translated": "切換為翻譯內容"
+			}
+		}
+	},
+	"tools": {
+		"tempus": {
+			"metronome": {
+				"title": "節拍器"
 			}
 		}
 	}
