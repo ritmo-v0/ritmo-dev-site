@@ -1,5 +1,5 @@
 import { handleLayoutLocale } from "@/lib/i18n/utils";
-import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
+import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -10,16 +10,11 @@ export const metadata: Metadata = {
 	title: meta.title,
 	description: meta.description,
 	keywords: meta.keywords,
-	...generatePreviewMetadata({
+	...generateSocialMetadata({
 		title: generatePageTitle({ title: meta.title }),
 		description: meta.description,
 		url: meta.url,
 	}),
-	robots: {
-		index: true,
-		follow: true,
-		nocache: false,
-	},
 };
 
 

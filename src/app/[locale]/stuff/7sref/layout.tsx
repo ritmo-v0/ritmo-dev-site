@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import {
 	cn,
-	generatePreviewMetadata,
+	generateSocialMetadata,
 	generatePageTitle,
 } from "@/lib/utils";
 
@@ -52,16 +52,11 @@ export async function generateMetadata(
 			"7sRef",
 			"7sRef 4",
 		],
-		...generatePreviewMetadata({
+		...generateSocialMetadata({
 			title: title,
 			description: description,
 			url: "/stuff/7sref",
 		}),
-		robots: {
-			index: true,
-			follow: true,
-			nocache: false,
-		},
 	};
 }
 

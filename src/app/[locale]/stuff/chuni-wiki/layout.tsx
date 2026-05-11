@@ -1,5 +1,5 @@
 import { handleLayoutLocale } from "@/lib/i18n/utils";
-import { generatePreviewMetadata } from "@/lib/utils";
+import { generateSocialMetadata } from "@/lib/utils";
 
 // Components & UI
 import { Wrapper } from "@/components/common/typography";
@@ -14,7 +14,7 @@ const url = "/stuff/chuni-wiki";
 export const metadata: Metadata = {
 	title: { absolute: title },
 	description: description,
-	...generatePreviewMetadata({
+	...generateSocialMetadata({
 		title,
 		description,
 		url,

@@ -1,5 +1,5 @@
 // shadcn
-import { type ClassValue, clsx } from "clsx";
+import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 // Types & Interfaces
@@ -33,10 +33,10 @@ export function generatePageTitle({
 	title = "%s",
 	suffix = PAGE_TITLE_SUFFIX
 }: Partial<PageTitleProps> = {}): string {
-	return `${title}｜${suffix}`;
+	return `${title} - ${suffix}`;
 }
 
-export function generatePreviewMetadata({
+export function generateSocialMetadata({
 	type = "website",
 	title,
 	description,
@@ -44,6 +44,8 @@ export function generatePreviewMetadata({
 	images,
 	locale = "en_US",
 }: Partial<OpenGraph & { type: OpenGraphType }>): Partial<Metadata> {
+	const ogLocale = locale.replace("-", "_");
+
 	return {
 		openGraph: {
 			type,
@@ -52,7 +54,7 @@ export function generatePreviewMetadata({
 			url,
 			images,
 			siteName: PAGE_TITLE_SUFFIX,
-			locale,
+			locale: ogLocale,
 		},
 		twitter: {
 			card: "summary_large_image",

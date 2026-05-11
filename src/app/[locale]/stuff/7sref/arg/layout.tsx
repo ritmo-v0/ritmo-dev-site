@@ -1,4 +1,4 @@
-import { generatePreviewMetadata } from "@/lib/utils";
+import { generateSocialMetadata } from "@/lib/utils";
 
 // Metadata
 const title = "アシッド";
@@ -7,7 +7,7 @@ const url = "/stuff/7sref/arg";
 export const metadata = {
 	title: { absolute: title },
 	description,
-	...generatePreviewMetadata({ title, description, url }),
+	...generateSocialMetadata({ title, description, url }),
 	icons: {
 		icon: [{ url: `${url}/icon.png` }],
 		apple: [{ url: `${url}/apple-icon.png` }],

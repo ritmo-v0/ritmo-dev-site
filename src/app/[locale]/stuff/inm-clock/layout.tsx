@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { handleLayoutLocale } from "@/lib/i18n/utils";
-import { generatePreviewMetadata } from "@/lib/utils";
+import { generateSocialMetadata } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -45,7 +45,7 @@ export async function generateMetadata(
 			"homo",
 			"ホモ",
 		],
-		...generatePreviewMetadata({
+		...generateSocialMetadata({
 			title,
 			description,
 			url,
@@ -54,11 +54,6 @@ export async function generateMetadata(
 		icons: {
 			icon: [{ url: `${url}/icon.png` }],
 			apple: [{ url: `${url}/apple-icon.png` }],
-		},
-		robots: {
-			index: true,
-			follow: true,
-			nocache: false,
 		},
 	};
 }

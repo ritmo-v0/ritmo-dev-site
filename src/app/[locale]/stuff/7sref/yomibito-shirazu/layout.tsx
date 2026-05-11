@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
+import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -27,7 +27,7 @@ export async function generateMetadata(
 	return {
 		title,
 		description,
-		...generatePreviewMetadata({
+		...generateSocialMetadata({
 			title: generatePageTitle({ title, suffix: parentTitle }),
 			description,
 			url,

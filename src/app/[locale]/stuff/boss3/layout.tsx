@@ -1,5 +1,5 @@
 import { handleLayoutLocale } from "@/lib/i18n/utils";
-import { generatePreviewMetadata } from "@/lib/utils";
+import { generateSocialMetadata } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -11,7 +11,7 @@ const url = "/stuff/boss3";
 export const metadata: Metadata = {
 	title: { absolute: "今天是我生日" },
 	description: description,
-	...generatePreviewMetadata({
+	...generateSocialMetadata({
 		title,
 		description,
 		url,

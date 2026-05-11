@@ -5,7 +5,7 @@ import {
 	cn,
 	getBaseUrl,
 	generatePageTitle,
-	generatePreviewMetadata,
+	generateSocialMetadata,
 } from "@/lib/utils";
 
 // next-intl
@@ -74,11 +74,12 @@ const RethinkSans = Rethink_Sans({
 // Types & Interfaces
 import type { Metadata } from "next";
 
-// Metadata
+// Constants & Variables
 const title = PAGE_TITLE_SUFFIX;
 const description = "<PersonalWebsite />";
 const url = "/";
-const author = "ritmo_v0";
+
+// Metadata
 export const metadata: Metadata = {
 	metadataBase: getBaseUrl(),
 	title: {
@@ -86,13 +87,7 @@ export const metadata: Metadata = {
 		template: generatePageTitle(),
 	},
 	description,
-	applicationName: title,
-	category: "Web Development",
-	keywords: ["Next.js", "React", "Tailwind CSS", "Geist UI"],  // TODO: Update keywords
-	authors: [{ name: author }],
-	creator: author,
-	publisher: author,
-	...generatePreviewMetadata({ title, description, url }),
+	...generateSocialMetadata({ title, description, url }),
 	icons: {
 		icon: [{ url: "/icon.svg" }],
 		apple: [{ url: "/apple-icon.png" }],
@@ -100,7 +95,13 @@ export const metadata: Metadata = {
 	robots: {
 		index: true,
 		follow: true,
-		nocache: false,
+		googleBot: {
+			index: true,
+			follow: true,
+			"max-video-preview": -1,
+			"max-image-preview": "large",
+			"max-snippet": -1,
+		},
 	},
 };
 

@@ -1,5 +1,5 @@
 import { handleLayoutLocale } from "@/lib/i18n/utils";
-import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
+import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
 import { getArticles, getArticleMetadata } from "@/lib/article/utils";
 
 // Types & Interfaces
@@ -19,7 +19,7 @@ export async function generateMetadata({
 			title,
 			description,
 			keywords: articleMetadata.tags,
-			...generatePreviewMetadata({
+			...generateSocialMetadata({
 				type: "article",
 				title: generatePageTitle({ title }),
 				description,

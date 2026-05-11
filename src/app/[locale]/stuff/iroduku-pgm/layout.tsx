@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { handleLayoutLocale } from "@/lib/i18n/utils";
-import { generatePreviewMetadata, generatePageTitle } from "@/lib/utils";
+import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -30,16 +30,11 @@ export async function generateMetadata(
 			"動畫 聖地巡禮",
 			"anime pilgrimage",
 		],
-		...generatePreviewMetadata({
+		...generateSocialMetadata({
 			title: generatePageTitle({ title }),
 			description,
 			url,
 		}),
-		robots: {
-			index: true,
-			follow: true,
-			nocache: false,
-		},
 	};
 }
 
