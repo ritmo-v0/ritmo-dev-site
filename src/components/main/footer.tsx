@@ -5,7 +5,7 @@ import { ButtonLink } from "@/components/common/typography";
 import type { Route } from "next";
 
 // Constants & Variables
-import { SOCIAL_LINKS } from "@/lib/constants/social";
+import { SOCIAL_LINKS } from "@/lib/constants/socials";
 
 
 

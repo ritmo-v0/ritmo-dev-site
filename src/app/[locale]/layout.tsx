@@ -74,19 +74,12 @@ const RethinkSans = Rethink_Sans({
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import type { Person } from "schema-dts";
 
 // Constants & Variables
-import { SOCIAL_LINKS } from "@/lib/constants/social";
+import { PERSON_JSON_LD } from "@/lib/constants/socials";
 const title = PAGE_TITLE_SUFFIX;
 const description = "<PersonalWebsite />";
 const url = "/";
-const PERSON_JSON_LD: Person = {
-	"@type": "Person",
-	name: "ritmo_v0",
-	url: getBaseUrl().origin,
-	sameAs: SOCIAL_LINKS.map(link => link.url),
-};
 
 // Metadata
 export const metadata: Metadata = {
