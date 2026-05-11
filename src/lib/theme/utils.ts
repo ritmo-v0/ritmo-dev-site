@@ -1,14 +1,26 @@
 // Types & Interfaces
 import type { PresetId, ThemeStyles, ThemeStyleProps } from "./types";
+type CommonStyle = typeof COMMON_STYLES[number];
 
 // Constants & Variables
-import { COMMON_STYLES, PRESETS } from "./presets";
+import { PRESETS } from "./presets";
+const COMMON_STYLES = [
+	"font-sans",
+	"font-serif",
+	"font-mono",
+	"radius",
+	"shadow-opacity",
+	"shadow-blur",
+	"shadow-spread",
+	"shadow-offset-x",
+	"shadow-offset-y",
+	"letter-spacing",
+	"spacing",
+] as const satisfies readonly (keyof ThemeStyleProps)[];
 
 
 
 export function getPresetThemeStyles(id: PresetId): ThemeStyles {
-	if (id === "default") return PRESETS.default;
-
 	const preset = PRESETS[id];
 	if (!preset) return PRESETS.default;
 
@@ -24,14 +36,21 @@ export function getPresetThemeStyles(id: PresetId): ThemeStyles {
 	};
 }
 
-export function getThemeColor(preset: PresetId, color: keyof ThemeStyleProps) {
+export function getThemeColor(
+	preset: PresetId,
+	color: keyof ThemeStyleProps
+) {
 	const theme = getPresetThemeStyles(preset);
 	return theme?.light?.[color] || theme?.dark?.[color] || "#000000";
 }
 
-export function applyCommonStyles(root: HTMLElement, themeStyles: ThemeStyles) {
-	Object.entries(themeStyles)
-		.filter(([key]) => COMMON_STYLES.includes(key as (typeof COMMON_STYLES)[number]))
+export function applyThemeColors(
+	root: HTMLElement,
+	themeStyles: ThemeStyles,
+	mode: keyof ThemeStyles
+) {
+	Object.entries(themeStyles[mode])
+		.filter(([key]) => !COMMON_STYLES.includes(key as CommonStyle))
 		.forEach(([key, value]) => {
 			if (typeof value === "string") {
 				root.style.setProperty(`--${key}`, value);
@@ -39,10 +58,16 @@ export function applyCommonStyles(root: HTMLElement, themeStyles: ThemeStyles) {
 		});
 }
 
-export function applyThemeColors(root: HTMLElement, themeStyles: ThemeStyles, mode: keyof ThemeStyles) {
-	Object.entries(themeStyles[mode]).forEach(([key, value]) => {
-		if (typeof value === "string" && !COMMON_STYLES.includes(key as (typeof COMMON_STYLES)[number])) {
-			root.style.setProperty(`--${key}`, value);
-		}
-	});
+export function applyThemeCommonStyles(
+	root: HTMLElement,
+	themeStyles: ThemeStyles
+) {
+	Object.entries(themeStyles.light)
+		.filter(([key]) => COMMON_STYLES.includes(key as CommonStyle))
+		.forEach(([key, value]) => {
+			// TODO: Compose shadows & tracking
+			if (typeof value === "string") {
+				root.style.setProperty(`--${key}`, value);
+			}
+		});
 }

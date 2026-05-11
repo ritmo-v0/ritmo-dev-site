@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { useTheme } from "next-themes";
 import { useThemeStore } from "@/lib/store/theme";
 import {
-	getPresetThemeStyles,
-	applyCommonStyles,
 	applyThemeColors,
+	applyThemeCommonStyles,
+	getPresetThemeStyles,
 } from "@/lib/theme/utils";
 
 
@@ -20,7 +20,7 @@ export function ShadcnProvider({ children }: { children: React.ReactNode }) {
 
 		if (mode === "light" || mode === "dark") {
 			applyThemeColors(root, theme, mode);
-			applyCommonStyles(root, theme);
+			applyThemeCommonStyles(root, theme);
 		}
 	}, [preset, mode]);
 
