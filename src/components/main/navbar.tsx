@@ -61,7 +61,7 @@ const NAV_ITEMS: NavItem[] = [
 
 
 
-export default function Navbar() {
+export function Navbar() {
 	return (
 		<div className={cn(
 			"fixed left-0 top-0 content-center",

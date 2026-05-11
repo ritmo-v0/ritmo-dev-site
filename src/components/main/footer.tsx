@@ -1,28 +1,15 @@
 // Components & UI
 import { ButtonLink } from "@/components/common/typography";
 
-// Icons & Images
-import {
-	BehanceLogoIcon,
-	GithubLogoIcon,
-	ThreadsLogoIcon,
-	YoutubeLogoIcon,
-} from "@phosphor-icons/react/ssr";
-
 // Types & Interfaces
 import type { Route } from "next";
 
 // Constants & Variables
-const SOCIAL_LINKS = [
-	{ label: "GitHub", icon: GithubLogoIcon, url: "https://github.com/ritmoHung/ritmo-dev-site" },
-	{ label: "YouTube", icon: YoutubeLogoIcon, url: "https://www.youtube.com/@ritmo_v0" },
-	{ label: "Threads", icon: ThreadsLogoIcon, url: "https://www.threads.com/@ritmo_v0" },
-	{ label: "Behance", icon: BehanceLogoIcon, url: "https://www.behance.net/ritmo_v0" },
-];
+import { SOCIAL_LINKS } from "@/lib/constants/social";
 
 
 
-export default function Footer() {
+export function Footer() {
 	return (
 		<footer className="p-6 sm:px-8 text-sm text-muted-foreground bg-background border-t border-input">
 			<nav className="grid justify-items-center mx-auto">

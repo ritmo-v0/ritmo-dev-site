@@ -14,10 +14,11 @@ import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { routing } from "@/lib/i18n/routing";
 
 // Components & UI
-import Navbar from "@/components/main/navbar";
-import Footer from "@/components/main/footer";
 import { Providers } from "@/lib/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { JsonLd } from "@/components/common/json-ld";
+import { Navbar } from "@/components/main/navbar";
+import { Footer } from "@/components/main/footer";
 
 // Fonts
 import {
@@ -73,11 +74,19 @@ const RethinkSans = Rethink_Sans({
 
 // Types & Interfaces
 import type { Metadata } from "next";
+import type { Person } from "schema-dts";
 
 // Constants & Variables
+import { SOCIAL_LINKS } from "@/lib/constants/social";
 const title = PAGE_TITLE_SUFFIX;
 const description = "<PersonalWebsite />";
 const url = "/";
+const PERSON_JSON_LD: Person = {
+	"@type": "Person",
+	name: "ritmo_v0",
+	url: getBaseUrl().origin,
+	sameAs: SOCIAL_LINKS.map(link => link.url),
+};
 
 // Metadata
 export const metadata: Metadata = {
@@ -131,12 +140,13 @@ export default async function RootLayout(
 			)}
 			suppressHydrationWarning
 		>
-			{/* <head>
-				<script
+			<head>
+				{/* <script
 					src="//unpkg.com/react-scan/dist/auto.global.js"
 					crossOrigin="anonymous" async
-				/>
-			</head> */}
+				/> */}
+				<JsonLd data={PERSON_JSON_LD} />
+			</head>
 			<body>
 				<Providers>
 					<div className="grid grid-rows-[1fr_auto] min-h-svh isolate">
