@@ -1,5 +1,4 @@
 "use client";
-import { memo } from "react";
 import { useRender } from "@base-ui/react/use-render";
 import { mergeProps } from "@base-ui/react/merge-props";
 import { match } from "ts-pattern";
@@ -216,7 +215,7 @@ function H6({
 	});
 }
 
-const P = memo(function P({
+function P({
 	className,
 	children,
 	...props
@@ -232,7 +231,7 @@ const P = memo(function P({
 			<Twemoji>{children}</Twemoji>
 		</p>
 	);
-}, (prev, next) => prev.children === next.children);
+}
 
 function Muted({
 	className,
@@ -290,7 +289,7 @@ function OL({ className, children, ...props }: React.ComponentProps<"ol">) {
 	);
 }
 
-const LI = memo(function LI({
+function LI({
 	className,
 	children,
 	...props
@@ -306,9 +305,9 @@ const LI = memo(function LI({
 			<Twemoji>{children}</Twemoji>
 		</li>
 	);
-}, (prev, next) => prev.children === next.children);
+}
 
-const Code = memo(function Code({
+function Code({
 	className,
 	children,
 	...props
@@ -324,9 +323,9 @@ const Code = memo(function Code({
 			<Twemoji>{children}</Twemoji>
 		</code>
 	);
-}, (prev, next) => prev.children === next.children);
+}
 
-const Blockquote = memo(function Blockquote({
+function Blockquote({
 	className,
 	children,
 	...props
@@ -351,7 +350,7 @@ const Blockquote = memo(function Blockquote({
 			</div>
 		</blockquote>
 	);
-}, (prev, next) => prev.children === next.children);
+}
 
 const asideVariants = cva(
 	[
