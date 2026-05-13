@@ -1,26 +1,39 @@
+import { getTranslations } from "next-intl/server";
 import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
+import type { Locale } from "next-intl";
+
+// Constants & Variables
+const url = "/tools";
 
 // Metadata
-const title = "Project α";
-const description = "Inspired by Nuanced, but a web version. Tired of finding the perfect tool, so nvm I'll build it myself.";
-const url = "/tools";
-export const metadata: Metadata = {
-	title: {
-		default: title,
-		template: generatePageTitle(),
-	},
-	description,
-	// keywords,
-	...generateSocialMetadata({
-		title: generatePageTitle({ title }),
+export async function generateMetadata(
+	{ params }: LayoutProps<"/[locale]/tools">
+): Promise<Metadata> {
+	const locale = (await params).locale as Locale;
+	const t = await getTranslations({ locale, namespace: "tools" });
+
+	const title = t("title");
+	const description = t.markup("description", {
+		a: (chunks) => chunks,
+	});
+
+	return {
+		title: {
+			default: title,
+			template: generatePageTitle(),
+		},
 		description,
-		url,
-	}),
-};
+		...generateSocialMetadata({
+			title: generatePageTitle({ title }),
+			description,
+			url,
+		}),
+	};
+}
 
 
 

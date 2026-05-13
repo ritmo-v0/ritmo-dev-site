@@ -121,7 +121,7 @@ function NavLinkItem({ id, icon: Icon }: NavItem) {
 					className="max-xs:hidden"
 					weight={active ? "fill" : "regular"}
 				/>
-				{t("label")}
+				{t("title")}
 			</NavigationMenuLink>
 		</NavigationMenuItem>
 	);
@@ -134,7 +134,7 @@ function NavMenuItem({ id, icon: Icon, items }: Required<NavItem>) {
 		<NavigationMenuItem>
 			<NavigationMenuTrigger className="xs:ps-2.5">
 				<Icon className="max-xs:hidden" />
-				{t("label")}
+				{t("title")}
 			</NavigationMenuTrigger>
 			<NavigationMenuContent className="max-w-74" keepMounted>
 				<ul className="grid gap-1">

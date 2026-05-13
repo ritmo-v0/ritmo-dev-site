@@ -1,26 +1,41 @@
+import { getTranslations } from "next-intl/server";
 import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
 
+// Components & UI
+import { H1 } from "@/components/common/typography";
+
 // Types & Interfaces
 import type { Metadata } from "next";
+import type { Locale } from "next-intl";
+
+// Constants & Variables
+const url = "/articles";
 
 // Metadata
-const title = "Articles";
-const description = "Yes, articles. Ritmo's articles.";
-const url = "/articles";
-export const metadata: Metadata = {
-	title: {
-		default: title,
-		template: generatePageTitle(),
-	},
-	description: description,
-	...generateSocialMetadata({
-		title: generatePageTitle({ title }),
+export async function generateMetadata(
+	{ params }: LayoutProps<"/[locale]/articles">
+): Promise<Metadata> {
+	const locale = (await params).locale as Locale;
+	const t = await getTranslations({ locale, namespace: "articles" });
+
+	const title = t("title");
+	const description = t("description");
+
+	return {
+		title: {
+			default: title,
+			template: generatePageTitle(),
+		},
 		description,
-		url,
-		locale: "zh_TW",
-	}),
-};
+		...generateSocialMetadata({
+			title: generatePageTitle({ title }),
+			description,
+			url,
+			locale: "zh_TW",
+		}),
+	};
+}
 
 
 
@@ -30,8 +45,11 @@ export default async function ArticlesLayout(
 	const { locale } = await params;
 	handleLayoutLocale(locale);
 
+	const t = await getTranslations("articles");
+
 	return (
 		<div className="my-16">
+			<H1 className="sr-only">{t("title")}</H1>
 			{children}
 		</div>
 	);

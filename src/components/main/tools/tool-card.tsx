@@ -3,41 +3,46 @@ import Image from "next/image";
 import { Link, Muted } from "@/components/common/typography";
 
 // Types & Interfaces
-import type { ToolMeta } from "@/types/meta";
+import type { Tool } from "@/lib/tools/types";
+interface ToolCardProps extends Tool {
+	title: string;
+	description: string;
+	url: string;
+	imageUrl?: string;
+};
 
 
 
 export function ToolCard({
 	id,
-	color,
-	imageUrl = "https://img.ritmo.dev/placeholder.webp",
 	title,
 	description,
 	url,
-}: ToolMeta) {
+	imageUrl = "https://img.ritmo.dev/placeholder.webp"
+}: ToolCardProps) {
 	return (
 		<Link
 			id={id}
 			href={url}
 			variant="ghost"
-			className="flex flex-col size-full"
+			className="flex flex-col size-full focus-visible:"
 		>
 			<Image
 				src={imageUrl}
-				alt={`OG image of the ${title} tool`}
-				className="border rounded-[inherit] object-cover"
+				alt=""
+				className="ring-1 ring-foreground/5 dark:ring-foreground/10 rounded-[inherit]"
+				sizes="(max-width: 45rem) 100vw, (max-width: 76rem) 50vw, 33vw"
 				width={720}
 				height={405}
+				loading="eager"
 			/>
-			<div className="flex justify-between gap-x-4 p-4 h-full">
-				<div>
-					<div className="font-semibold text-lg">{title}</div>
-					<Muted className="line-clamp-2">{description}</Muted>
+			<div className="flex flex-col gap-1.5 h-full p-4">
+				<div className="font-semibold text-lg/tight">
+					{title}
 				</div>
-				<div
-					className="self-end shrink-0 size-3 bg-(--tool-color) rounded-full"
-					style={{ "--tool-color": color } as React.CSSProperties}
-				></div>
+				<Muted className="text-pretty line-clamp-2">
+					{description}
+				</Muted>
 			</div>
 		</Link>
 	);

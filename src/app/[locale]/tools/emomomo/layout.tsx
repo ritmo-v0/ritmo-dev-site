@@ -1,26 +1,42 @@
+import { getTranslations } from "next-intl/server";
 import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
 
+// Components & UI
+import { H1 } from "@/components/common/typography";
+
 // Types & Interfaces
 import type { Metadata } from "next";
+import type { Locale } from "next-intl";
+
+// Constants & Variables
+const url = "/tools/emomomo";
 
 // Metadata
-import { meta } from "./meta";
-export const metadata: Metadata = {
-	title: meta.title,
-	description: meta.description,
-	keywords: meta.keywords,
-	...generateSocialMetadata({
-		title: generatePageTitle({ title: meta.title }),
-		description: meta.description,
-		url: meta.url,
-		images: [`${meta.url}/image.png`],
-	}),
-	icons: {
-		icon: [{ url: `${meta.url}/icon.svg` }],
-		apple: [{ url: `${meta.url}/apple-icon.png` }],
-	},
-};
+export async function generateMetadata(
+	{ params }: LayoutProps<"/[locale]/tools/emomomo">
+): Promise<Metadata> {
+	const locale = (await params).locale as Locale;
+	const t = await getTranslations({ locale, namespace: "tools.emomomo" });
+
+	const title = t("title");
+	const description = t("description");
+
+	return {
+		title,
+		description,
+		...generateSocialMetadata({
+			title: generatePageTitle({ title }),
+			description,
+			url,
+			images: [`${url}/image.png`],
+		}),
+		icons: {
+			icon: [{ url: `${url}/icon.svg` }],
+			apple: [{ url: `${url}/apple-icon.png` }],
+		},
+	};
+}
 
 
 
@@ -30,5 +46,12 @@ export default async function EmomomoLayout(
 	const { locale } = await params;
 	handleLayoutLocale(locale);
 
-	return children;
+	const t = await getTranslations("tools.emomomo");
+
+	return (
+		<>
+			<H1 className="sr-only">{t("title")}</H1>
+			{children}
+		</>
+	);
 }

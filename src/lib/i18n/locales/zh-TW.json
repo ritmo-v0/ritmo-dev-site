@@ -26,10 +26,11 @@
 		}
 	},
 	"articles": {
-		"label": "文章"
+		"title": "文章",
+		"description": "遊記、開發筆記、作品雜感，以及其他種種。"
 	},
 	"stuff": {
-		"label": "雜項",
+		"title": "雜項",
 		"7sref": {
 			"title": "7sRef.exe",
 			"description": "Sevens Refraction",
@@ -52,8 +53,15 @@
 		}
 	},
 	"tools": {
-		"label": "工具",
+		"title": "工具",
+		"description": "來認識一下 Project α — 靈感來自 <a>Nuanced</a>，但這是網頁版。找不到完美的工具，所以算了，自己做。",
+		"emomomo": {
+			"title": "EMOMOMO",
+			"description": "輕鬆複製、編輯與預覽 Emoji，支援膚色篩選。"
+		},
 		"tempus": {
+			"title": "Tempus",
+			"description": "跟著音樂點擊節拍，即時取得精準 BPM 並一鍵複製。內建節拍器，輕鬆掌握每一拍。",
 			"metronome": {
 				"title": "節拍器"
 			}

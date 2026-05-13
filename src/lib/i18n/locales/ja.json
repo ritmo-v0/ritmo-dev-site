@@ -26,10 +26,11 @@
 		}
 	},
 	"articles": {
-		"label": "記事"
+		"title": "記事",
+		"description": "旅行記録、開発メモ、作品の雑感など。"
 	},
 	"stuff": {
-		"label": "いろいろ",
+		"title": "いろいろ",
 		"7sref": {
 			"title": "7sRef.exe",
 			"description": "Sevens Refraction",
@@ -52,8 +53,15 @@
 		}
 	},
 	"tools": {
-		"label": "ツール",
+		"title": "ツール",
+		"description": "Project α を紹介 — <a>Nuanced</a> にインスパイアされた、でもウェブ版。理想のツールが見つからないから、もういい、自分で作った。",
+		"emomomo": {
+			"title": "EMOMOMO",
+			"description": "絵文字を簡単にコピー・編集・プレビュー。スキントーンフィルターにも対応。"
+		},
 		"tempus": {
+			"title": "Tempus",
+			"description": "音楽に合わせてタップするだけで正確な BPM を即座に取得、ワンクリックでコピー。メトロノーム機能も搭載。",
 			"metronome": {
 				"title": "メトロノーム"
 			}

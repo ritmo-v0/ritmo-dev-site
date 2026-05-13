@@ -122,7 +122,7 @@ function Bookmark({ bookmark }: { bookmark: Bookmark }) {
 						"rounded-3xl @md:rounded-4xl",
 					)}
 					width={128} height={128}
-					priority
+					loading="eager"
 				/>
 				<span className="font-medium text-sm @xl:text-base @6xl:text-lg text-center truncate">
 					{bookmark.title}

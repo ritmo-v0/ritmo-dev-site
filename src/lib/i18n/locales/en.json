@@ -26,10 +26,11 @@
 		}
 	},
 	"articles": {
-		"label": "Articles"
+		"title": "Articles",
+		"description": "Articles about travel, development, and thoughts on various works."
 	},
 	"stuff": {
-		"label": "Stuff",
+		"title": "Stuff",
 		"7sref": {
 			"title": "7sRef.exe",
 			"description": "Sevens Refraction",
@@ -52,8 +53,15 @@
 		}
 	},
 	"tools": {
-		"label": "Tools",
+		"title": "Tools",
+		"description": "Introducing Project α — inspired by <a>Nuanced</a>, but a web version. Tired of finding the perfect tool, so nvm I’ll build it myself.",
+		"emomomo": {
+			"title": "EMOMOMO",
+			"description": "Easily copy, edit & preview emojis. Supports skin tone filtering."
+		},
 		"tempus": {
+			"title": "Tempus",
+			"description": "Tap to the beat and instantly get your BPM — copy it with one click. Built-in metronome included.",
 			"metronome": {
 				"title": "Metronome"
 			}

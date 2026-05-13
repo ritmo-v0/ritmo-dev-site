@@ -82,7 +82,7 @@ export default function ChuniWikiPage() {
 					sizes="(max-width: 64rem) 100vw, 720px"
 					width={720}
 					height={405}
-					priority
+					loading="eager"
 				/>
 				<H1>CHUNITHM Wiki へようこそ！！</H1>
 				<Muted className="text-lg">
