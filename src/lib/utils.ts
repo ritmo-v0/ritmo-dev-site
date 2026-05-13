@@ -42,11 +42,18 @@ export function generateSocialMetadata({
 	description,
 	url,
 	images,
-	locale = "en_US",
+	locale = "en_US"
 }: Partial<OpenGraph & { type: OpenGraphType }>): Partial<Metadata> {
 	const ogLocale = locale.replace("-", "_");
 
 	return {
+		alternates: {
+			canonical: url,
+			languages: {
+				// TODO: Add locales when migrating to localPrefix: "asNeeded"
+				"x-default": url,
+			},
+		},
 		openGraph: {
 			type,
 			title,

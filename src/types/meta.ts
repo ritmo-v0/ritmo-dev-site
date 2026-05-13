@@ -5,7 +5,7 @@ export type Meta = {
 	title: string;
 	description: string;
 	url: string;
-	keywords: string[];
+	keywords?: string[];
 };
 
 export type ToolMeta = Meta & {

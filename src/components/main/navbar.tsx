@@ -136,7 +136,7 @@ function NavMenuItem({ id, icon: Icon, items }: Required<NavItem>) {
 				<Icon className="max-xs:hidden" />
 				{t("label")}
 			</NavigationMenuTrigger>
-			<NavigationMenuContent className="max-w-74">
+			<NavigationMenuContent className="max-w-74" keepMounted>
 				<ul className="grid gap-1">
 					{items.map(itemId => (
 						<li key={itemId}>

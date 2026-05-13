@@ -8,7 +8,6 @@ import type { Metadata } from "next";
 const title = "Project α";
 const description = "Inspired by Nuanced, but a web version. Tired of finding the perfect tool, so nvm I'll build it myself.";
 const url = "/tools";
-// TODO: const keywords = [];
 export const metadata: Metadata = {
 	title: {
 		default: title,
