@@ -17,9 +17,7 @@ export async function generateMetadata(
 	const t = await getTranslations({ locale, namespace: "tools" });
 
 	const title = t("title");
-	const description = t.markup("description", {
-		a: (chunks) => chunks,
-	});
+	const description = t.raw("description").replace(/<[^>]*>/g, "");
 
 	return {
 		title: {

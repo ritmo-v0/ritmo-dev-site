@@ -1,4 +1,5 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+import { useTranslations } from "next-intl";
 
 // Components & UI
 import { ToolList } from "@/components/main/tools/list";
@@ -9,8 +10,8 @@ const NUANCED_HREF = "https://github.com/nuance-dev#-im-building-26-native-macos
 
 
 
-export default async function ToolsPage() {
-	const t = await getTranslations("tools");
+export default function ToolsPage() {
+	const t = useTranslations("tools");
 
 	return (
 		<Wrapper className="grid gap-8">
