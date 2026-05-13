@@ -2,9 +2,6 @@ import { getTranslations } from "next-intl/server";
 import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
 
-// Components & UI
-import { H1 } from "@/components/common/typography";
-
 // Types & Interfaces
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
@@ -45,11 +42,8 @@ export default async function ArticlesLayout(
 	const { locale } = await params;
 	handleLayoutLocale(locale);
 
-	const t = await getTranslations("articles");
-
 	return (
 		<div className="my-16">
-			<H1 className="sr-only">{t("title")}</H1>
 			{children}
 		</div>
 	);

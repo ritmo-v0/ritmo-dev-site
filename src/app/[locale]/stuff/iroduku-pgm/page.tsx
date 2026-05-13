@@ -36,6 +36,7 @@ function parseTypes(v: string | null): DataType[] {
 
 export default function IrodukuPilgrimagePage() {
 	const t = useTranslations("stuff.iroduku-pgm.activity");
+
 	return (
 		<Wrapper>
 			<header className="grid gap-2">
