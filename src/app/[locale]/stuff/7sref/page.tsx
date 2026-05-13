@@ -185,7 +185,7 @@ function FinalMessageLink() {
 				</Markdown>
 			</div>
 			<div className={cn(
-				"absolute inset-0 @4xl:right-1/4 rounded-2xl mask-r-from-40%",
+				"absolute inset-0 @4xl:right-1/4 rounded-[inherit] mask-r-from-40%",
 				"backdrop-blur-3xl backdrop-brightness-90 backdrop-saturate-200",
 			)} />
 		</Link>
@@ -198,7 +198,7 @@ function SevensRefLink({ title, href, icon: Icon }: SevensRefRoute) {
 			href={href}
 			variant="nothing"
 			className={cn(
-				"relative flex items-center size-full p-6 bg-card border overflow-clip",
+				"relative flex items-center size-full p-6 bg-card border-border overflow-clip",
 				"transition-transform ease-in-out will-change-transform",
 				"hover:scale-105 focus-visible:scale-105",
 			)}
@@ -208,7 +208,7 @@ function SevensRefLink({ title, href, icon: Icon }: SevensRefRoute) {
 			</h2>
 			<Icon className={cn(
 				"absolute -right-3 top-1/2 -translate-y-1/2",
-				"size-18 stroke-[0.3] text-border",
+				"size-16 stroke-[0.3] text-border",
 			)} />
 		</Link>
 	);

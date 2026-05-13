@@ -150,13 +150,13 @@
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
+		@apply scrollbar-thumb-muted-foreground scrollbar-track-transparent;
 		@apply selection:bg-primary selection:text-primary-foreground;
 	}
 
 	html {
 		@apply font-sans antialiased;
 		@apply motion-safe:scroll-smooth scroll-pt-24 overscroll-y-none;
-		scrollbar-color: var(--color-muted-foreground) transparent;
 	}
 
 	body {

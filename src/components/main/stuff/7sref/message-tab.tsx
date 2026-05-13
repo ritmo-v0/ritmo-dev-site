@@ -90,8 +90,9 @@ function SRMessage({
 								"font-bold xs:text-base text-[#446EBA]",
 								"will-change-transform active:scale-[0.975]",
 								match.includes("\n")
-									? "shrink inline-block whitespace-normal"
-									: "xs:min-w-60")}
+									? "shrink inline-block rounded-4xl whitespace-normal"
+									: "xs:min-w-60",
+							)}
 						>
 							<Markdown>{match}</Markdown>
 						</Button>

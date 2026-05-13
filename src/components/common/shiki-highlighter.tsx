@@ -73,7 +73,7 @@ export function Pre({
 				showLanguage={false}
 				showLineNumbers={!isPlaintext}
 				tabindex={-1}
-				className="*:px-4! *:py-2.5! *:rounded-none! *:[scrollbar-width:thin]"
+				className="*:px-4! *:py-2.5! *:rounded-none! *:scrollbar-thin"
 				{...props}
 			>
 				{code}

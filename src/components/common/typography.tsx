@@ -420,19 +420,17 @@ function Aside({
 
 const linkVariants = cva(
 	[
-		"outline-none rounded-md transition-colors",
-		"focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/30",
+		"border border-transparent outline-none rounded-full transition-all",
+		"focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30",
+		"[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
 	],
 	{
 		variants: {
 			variant: {
-				default: "font-medium text-primary underline-offset-4 underline hover:text-primary/60",
-				hover: [
-					"shrink-0 inline-flex items-center justify-center gap-2 w-max font-medium text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground",
-					"[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
-				],
-				ghost: "rounded-2xl hover:bg-muted dark:hover:bg-muted/50 hover:text-foreground",
-				nothing: "rounded-2xl",
+				default: "font-medium text-primary focus-visible:border-transparent ring-offset-2 ring-offset-background underline underline-offset-4 hover:text-primary/60",
+				hover: "shrink-0 inline-flex items-center justify-center gap-1.5 w-max font-medium text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground",
+				ghost: "rounded-4xl hover:bg-muted dark:hover:bg-muted/50 hover:text-foreground",
+				nothing: "rounded-4xl",
 			},
 		},
 		defaultVariants: {

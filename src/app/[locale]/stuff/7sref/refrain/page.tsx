@@ -474,7 +474,7 @@ function SongTitle() {
 						key={index}
 						className="grid size-8 xs:size-12 md:size-20 border border-foreground"
 					>
-						<span className="place-self-center block text-lg xs:text-3xl md:text-6xl -translate-y-[0.05em]">
+						<span className="place-self-center block text-lg xs:text-3xl md:text-6xl translate-y-[-0.05em]">
 							{char}
 						</span>
 					</div>

@@ -89,12 +89,12 @@ function Message({
 }
 
 const messageContentVariants = cva(
-	"relative grid items-center",
+	"relative grid items-center [corner-shape:round]",
 	{
 		variants: {
 			variant: {
 				default: "grow",
-				bubble: "px-4 py-2 bg-secondary text-secondary-foreground rounded-4xl",
+				bubble: "px-4 py-2 bg-secondary text-secondary-foreground rounded-2xl",
 			},
 		},
 		defaultVariants: {
