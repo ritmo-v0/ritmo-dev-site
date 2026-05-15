@@ -14,6 +14,7 @@ import { Link as NextLink } from "@/lib/i18n/navigation";
 
 // Icons & Images
 import {
+	ArrowUpRightIcon,
 	CheckCircleIcon,
 	DetectiveIcon,
 	InfoIcon,
@@ -440,6 +441,7 @@ const linkVariants = cva(
 );
 
 function Link({
+	children,
 	className,
 	variant = "default",
 	href,
@@ -455,7 +457,15 @@ function Link({
 			target={isExternal ? "_blank" : undefined}
 			rel={isExternal ? "noopener noreferrer" : undefined}
 			{...props}
-		/>
+		>
+			{children}
+			{variant === "default" && isExternal && (
+				<ArrowUpRightIcon
+					className="inline size-[1.1em] align-[-0.2em]"
+					aria-hidden="true"
+				/>
+			)}
+		</NextLink>
 	);
 }
 
