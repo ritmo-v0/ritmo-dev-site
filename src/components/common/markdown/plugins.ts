@@ -13,16 +13,21 @@ export function remarkTextDirective() {
 			node.data ??= {};
 			const data = node.data;
 
-			data.hName = match(node.name)
-				.with("abbr", () => "abbr")
-				.with("b", () => "strong")
-				.with("i", () => "em")
-				.with("br", () => "br")
-				.otherwise(() => "span");
-			data.hProperties = {
-				...(node.attributes || {}),
-				dataName: node.name,
-			};
+			match(node.name)
+				.with("abbr", "b", "i", "br", (hName) => {
+					Object.assign(data, {
+						hName,
+						hProperties: node.attributes,
+					});
+				})
+				.otherwise((nodeName) => {
+					const children = mdastToString(node);
+
+					Object.assign(node, {
+						type: "text",
+						value: `:${nodeName}${children ? `[${children}]` : ""}`,
+					});
+				});
 		});
 	};
 }
@@ -35,15 +40,17 @@ export function remarkLeafDirective() {
 			node.data ??= {};
 			const data = node.data;
 			const id = node.attributes?.id;
-			const title = mdastToString(node.children) || undefined;
+			const title = mdastToString(node) || undefined;
 
 			if (!id) return;
 
-			data.hName = "iframe";
-			data.hProperties = {
-				src: `https://www.youtube-nocookie.com/embed/${id}`,
-				title,
-			};
+			Object.assign(data, {
+				hName: "iframe",
+				hProperties: {
+					src: `https://www.youtube-nocookie.com/embed/${id}`,
+					title,
+				},
+			});
 		});
 	};
 }
@@ -54,11 +61,13 @@ export function remarkContainerDirective() {
 			node.data ??= {};
 			const data = node.data;
 
-			data.hName = "aside";
-			data.hProperties = {
-				...(node.attributes || {}),
-				variant: node.name,
-			};
+			Object.assign(data, {
+				hName: "aside",
+				hProperties: {
+					...(node.attributes || {}),
+					variant: node.name,
+				},
+			});
 		});
 	};
 }
