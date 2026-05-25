@@ -1,32 +1,33 @@
-import ky from "ky";
+import wretch from "wretch";
 import { ensureError } from "@/lib/fetch/response";
 
 // Types & Interfaces
 import type {
 	Article,
-	ArticleMetadata,
-	NoteInfo,
+	Note,
 	NoteMetadata,
 	NoteOverview,
-	NoteTag,
-	OverviewResponse,
+	NotesResponse,
 } from "./types";
 
 // Constants & Variables
-const ARTICLES_API_URL = "https://hackmd.io/api/@Ritmo/overview";
-const ARTICLE_TAGS = ["Arcaea", "替代役"] as const;
+import { ARTICLE_TAGS } from "./constants";
+const HACKMD_API_TOKEN = process.env.HACKMD_API_TOKEN as string;
+
+const HackMDInternalAPI = wretch("https://hackmd.io/api");
+const HackMDPublicAPI = wretch("https://api.hackmd.io/v1");
 
 
 
-/**
- * Fetches the list of articles.
- *
- * @returns An array of article overview objects
- */
 export async function getArticles(): Promise<NoteOverview[]> {
 	try {
-		const articles = await ky(ARTICLES_API_URL).json<OverviewResponse>();
-		return articles?.notes.sort((a, b) => b.createdAt.localeCompare(a.createdAt)) ?? [];
+		const articles = await HackMDInternalAPI
+			.get("/@Ritmo/notes")
+			.json<NotesResponse>();
+
+		return articles.notes.sort((a, b) =>
+			b.publishedAt.localeCompare(a.publishedAt)
+		) ?? [];
 	} catch (err) {
 		const error = ensureError(err);
 		console.error(`ERR::ARTICLES: ${error.message}`);
@@ -37,20 +38,25 @@ export async function getArticles(): Promise<NoteOverview[]> {
 	}
 }
 
-/**
- * Fetches a full article by ID, including its Markdown content and metadata.
- *
- * @param articleId - The unique ID of the article
- * @returns An article object containing Markdown content and metadata
- */
 export async function getArticle(articleId: string): Promise<Article> {
 	try {
-		const [content, metadata] = await Promise.all([
-			ky(getDownloadUrl(articleId)).text(),
-			getArticleMetadata(articleId),
+		const [note, image] = await Promise.all([
+			getNote(articleId),
+			getNoteImage(articleId),
 		]);
 
-		return { content, metadata };
+		return {
+			content: note.content,
+			metadata: {
+				title: note.title,
+				tags: note.tags,
+				description: note.description,
+				createdAt: note.createdAt,
+				updatedAt: note.lastChangedAt,
+				publishedAt: note.publishedAt,
+				image,
+			},
+		};
 	} catch (err) {
 		const error = ensureError(err);
 		console.error(`ERR::ARTICLE: ${error.message}`);
@@ -61,52 +67,39 @@ export async function getArticle(articleId: string): Promise<Article> {
 	}
 }
 
-/**
- * Fetches the metadata of an article by ID.
- *
- * @param articleId - The unique ID of the article
- * @returns A metadata object of the article
- */
-export async function getArticleMetadata(articleId: string): Promise<ArticleMetadata> {
+async function getNote(shortId: string): Promise<Note> {
 	try {
-		const [info, tags, metadata] = await Promise.all([
-			ky(getInfoUrl(articleId)).json<NoteInfo>(),
-			ky(getTagsUrl(articleId)).json<NoteTag[]>(),
-			ky(getMetadataUrl(articleId)).json<NoteMetadata>(),
-		]);
+		const note = await HackMDPublicAPI
+			.auth(`Bearer ${HACKMD_API_TOKEN}`)
+			.get(`/notes/${shortId}`)
+			.json<Note>();
 
-		return {
-			title: info.title,
-			description: info.description,
-			tags: tags?.map(tag => tag.name) ?? [],
-			image: metadata.image,
-			createdAt: info.createtime,
-			updatedAt: info.updatetime,
-		};
+		return note;
 	} catch (err) {
 		const error = ensureError(err);
-		console.error(`ERR::ARTICLE::METADATA: ${error.message}`);
+		console.error(`ERR::NOTE: ${error.message}`);
 
 		const status = error.status;
-		error.message = `[${status}] Failed to fetch metadata of article \`${articleId}\``;
+		error.message = `[${status}] Failed to fetch note \`${shortId}\``;
 		throw error;
 	}
 }
 
-export function getDownloadUrl(articleId: string) {
-	return `https://hackmd.io/${articleId}/download`;
-}
+async function getNoteImage(shortId: string): Promise<string | undefined> {
+	try {
+		const metadata = await HackMDInternalAPI
+			.get(`/_/noteMetadata/${shortId}`)
+			.json<NoteMetadata>();
 
-export function getInfoUrl(articleId: string) {
-	return `https://hackmd.io/${articleId}/info`;
-}
+		return metadata.image;
+	} catch (err) {
+		const error = ensureError(err);
+		console.error(`ERR::NOTE::IMAGE: ${error.message}`);
 
-export function getTagsUrl(articleId: string) {
-	return `https://hackmd.io/api/_/noteMetadata/tags/${articleId}`;
-}
-
-export function getMetadataUrl(articleId: string) {
-	return `https://hackmd.io/api/_/noteMetadata/${articleId}`;
+		const status = error.status;
+		error.message = `[${status}] Failed to fetch image of note \`${shortId}\``;
+		throw error;
+	}
 }
 
 export function isBadgeVariant(tag: string): tag is typeof ARTICLE_TAGS[number] {

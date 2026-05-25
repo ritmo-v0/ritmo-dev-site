@@ -51,7 +51,7 @@ export default async function ArticlePage(
 			<JsonLd data={ARTICLE_JSONLD} />
 			<div className="col-span-full lg:col-span-3">
 				<ArticleHeader metadata={article.metadata} />
-				<main className="mt-12">
+				<main className="mt-16">
 					<ArticleContent content={article.content} />
 				</main>
 			</div>

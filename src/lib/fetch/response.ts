@@ -1,17 +1,4 @@
-import { HTTPError } from "ky";
-export const ErrorMessage = Object.freeze({
-	// 4xx
-	BadRequest: "Bad request",
-	Unauthorized: "Unauthorized",
-	NotFound: "Not found",
-	MethodNotAllowed: "Method not allowed",
-	Conflict: "Conflict",
-	ContentTooLarge: "Content too large",
-
-	// 5xx
-	InternalServer: "Internal server error",
-	NotImplemented: "Not implemented",
-});
+import { WretchError } from "wretch/resolver";
 
 // Types & Interfaces
 type JSONable =
@@ -25,6 +12,17 @@ type BaseErrorOptions = {
 	status?: number;
 };
 type HttpErrorOptions = Omit<BaseErrorOptions, "status">;
+
+// Constants & Variables
+export const ErrorMessage = Object.freeze({
+	// 4xx
+	BadRequest: "Bad request",
+	Unauthorized: "Unauthorized",
+	NotFound: "Not found",
+
+	// 5xx
+	InternalServer: "Internal server error",
+});
 
 export class BaseError extends Error {
 	public readonly context?: JSONable;
@@ -43,9 +41,6 @@ export class BaseError extends Error {
 	}
 }
 
-
-
-// # ------------------------- Code 4xx ------------------------------
 export class BadRequestError extends BaseError {
 	constructor(
 		message: string = ErrorMessage.BadRequest,
@@ -73,35 +68,6 @@ export class NotFoundError extends BaseError {
 		this.name = new.target.name;
 	}
 }
-export class MethodNotAllowedError extends BaseError {
-	constructor(
-		message: string = ErrorMessage.MethodNotAllowed,
-		options: HttpErrorOptions = {}
-	) {
-		super(message, { status: 405, ...options });
-		this.name = new.target.name;
-	}
-}
-export class ConflictError extends BaseError {
-	constructor(
-		message: string = ErrorMessage.Conflict,
-		options: HttpErrorOptions = {}
-	) {
-		super(message, { status: 409, ...options });
-		this.name = new.target.name;
-	}
-}
-export class ContentTooLargeError extends BaseError {
-	constructor(
-		message: string = ErrorMessage.ContentTooLarge,
-		options: HttpErrorOptions = {}
-	) {
-		super(message, { status: 413, ...options });
-		this.name = new.target.name;
-	}
-}
-
-// # ------------------------- Code 5xx ------------------------------
 export class InternalServerError extends BaseError {
 	constructor(
 		message: string = ErrorMessage.InternalServer,
@@ -111,22 +77,13 @@ export class InternalServerError extends BaseError {
 		this.name = new.target.name;
 	}
 }
-export class NotImplementedError extends BaseError {
-	constructor(
-		message: string = ErrorMessage.NotImplemented,
-		options: HttpErrorOptions = {}
-	) {
-		super(message, { status: 501, ...options });
-		this.name = new.target.name;
-	}
-}
 
 // # Error Handler
 export function ensureError(value: unknown): BaseError {
 	if (value instanceof BaseError) return value;
-	if (value instanceof HTTPError) {
+	if (value instanceof WretchError) {
 		return new BaseError(value.message, {
-			status: value.response.status,
+			status: value.status,
 			cause: value,
 		});
 	}

@@ -1,0 +1,1 @@
+export const ARTICLE_TAGS = ["Arcaea", "替代役"] as const;

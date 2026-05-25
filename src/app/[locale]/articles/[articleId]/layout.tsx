@@ -1,31 +1,31 @@
 import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
-import { getArticles, getArticleMetadata } from "@/lib/article/utils";
+import { getArticle, getArticles } from "@/lib/article/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
 
 // Metadata
-export async function generateMetadata({
-	params
-}: LayoutProps<"/[locale]/articles/[articleId]">): Promise<Metadata> {
+export async function generateMetadata(
+	{ params }: LayoutProps<"/[locale]/articles/[articleId]">
+): Promise<Metadata> {
 	try {
 		const articleId = (await params).articleId;
-		const articleMetadata = await getArticleMetadata(articleId);
-		const title = articleMetadata.title;
-		const description = articleMetadata.description;
+		const article = await getArticle(articleId);
+		const title = article.metadata.title;
+		const description = article.metadata.description;
 
 		return {
 			title,
 			description,
-			keywords: articleMetadata.tags,
+			keywords: article.metadata.tags,
 			...generateSocialMetadata({
 				type: "article",
 				title: generatePageTitle({ title }),
 				description,
 				url: `/articles/${articleId}`,
 				locale: "zh_TW",
-				images: articleMetadata.image
+				images: article.metadata.image
 			}),
 		};
 	} catch {
@@ -34,7 +34,8 @@ export async function generateMetadata({
 }
 
 // Route Segment Config
-export const revalidate = 900;       // 15 min
+export const revalidate = 900;  // 15m
+
 export async function generateStaticParams() {
 	const articles = await getArticles();
 	return articles.map(article => ({ articleId: article.shortId }));

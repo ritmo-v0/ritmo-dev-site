@@ -1,5 +1,4 @@
-export interface OverviewResponse {
-	user: Record<string, unknown>;
+export interface NotesResponse {
 	notes: NoteOverview[];
 };
 
@@ -7,6 +6,7 @@ export interface NoteOverview {
 	id: string;
 	title: string;
 	content: string;  // description
+	image?: string;
 	tags: string[];
 	lastchangeAt: string;
 	createdAt: string;
@@ -14,38 +14,38 @@ export interface NoteOverview {
 	shortId: string;
 };
 
-export interface NoteInfo {
+export interface Note {
+	id: string;
 	title: string;
+	tags: string[];
 	description: string;
-	viewcount: number;
-	createtime: string;
-	updatetime: string;
-	brief: string;
+	createdAt: string;
+	publishedAt: string;
+	lastChangedAt: string;
+	shortId: string;
+	content: string;
 };
 
 export interface NoteMetadata {
 	title: string;
-	lang?: string;
 	description: string;
-	contributors: string;
 	image?: string;
+	lang?: string;
+	contributors: string;
 	breaks: string;
 };
 
-export interface NoteTag {
-	name: string;
-	createdAt: number;
-	lastUsedAt: number;
-};
-
 export interface Article {
-	metadata: ArticleMetadata;
 	content: string;
+	metadata: ArticleMetadata;
 };
 
 export type ArticleMetadata = {
+	title: string;
+	description: string;
 	tags: string[];
 	image?: string;
 	createdAt: string;
 	updatedAt: string;
-} & Pick<NoteInfo, "title" | "description">;
+	publishedAt: string;
+};

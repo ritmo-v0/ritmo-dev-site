@@ -52,7 +52,7 @@ export function ArticleList({ articles }: { articles: NoteOverview[] }) {
 function ArticleLink({ article }: { article: NoteOverview }) {
 	const tag = article.tags[0];
 	const variant = isBadgeVariant(tag) ? tag : "outline";
-	const createdAt = new Date(article.createdAt).toLocaleString("en-US", {
+	const createdAt = new Date(article.publishedAt).toLocaleString("en-US", {
 		month: "short",
 		year: "numeric",
 	}).replace(" ", ". ");
