@@ -12,6 +12,13 @@ export interface MotionButtonProps {
 	svgClassName?: string;
 };
 
+// Constants & Variables
+const ANIMATED_ICON_VARIANTS: Variants = {
+	initial: { scale: 0.5, opacity: 0, filter: "blur(2px)" },
+	animate: { scale: 1, opacity: 1, filter: "blur(0px)" },
+	exit: { scale: 0.5, opacity: 0, filter: "blur(2px)" },
+};
+
 
 
 /*
@@ -248,5 +255,22 @@ export function ResetButton(
 			</motion.svg>
 			{children}
 		</motion.button>
+	);
+}
+
+export function AnimatedIcon({
+	className,
+	...props
+}: React.ComponentProps<typeof motion.span>) {
+	return (
+		<motion.span
+			className={cn("inline-flex", className)}
+			variants={ANIMATED_ICON_VARIANTS}
+			initial="initial"
+			animate="animate"
+			exit="exit"
+			transition={{ duration: 0.2 }}
+			{...props}
+		/>
 	);
 }

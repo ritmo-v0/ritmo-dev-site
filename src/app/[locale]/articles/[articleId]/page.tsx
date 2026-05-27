@@ -4,8 +4,9 @@ import { getArticle } from "@/lib/article/utils";
 import { getBaseUrl } from "@/lib/utils";
 
 // Components & UI
-import { ArticleContent, ArticleHeader } from "@/components/main/articles";
 import { ArticleTOC } from "@/components/main/articles/toc";
+import { ArticleHeader } from "@/components/main/articles/header";
+import { ArticleContent } from "@/components/main/articles/content";
 import { Wrapper } from "@/components/common/typography";
 import { JsonLd } from "@/components/common/json-ld";
 
@@ -51,7 +52,7 @@ export default async function ArticlePage(
 			<JsonLd data={ARTICLE_JSONLD} />
 			<div className="col-span-full lg:col-span-3">
 				<ArticleHeader metadata={article.metadata} />
-				<main className="mt-16">
+				<main className="mt-12">
 					<ArticleContent content={article.content} />
 				</main>
 			</div>

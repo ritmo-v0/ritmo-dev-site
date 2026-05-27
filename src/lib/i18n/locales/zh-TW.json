@@ -27,7 +27,11 @@
 	},
 	"articles": {
 		"title": "文章",
-		"description": "遊記、開發筆記、作品雜感，以及其他種種。"
+		"description": "遊記、開發筆記、作品雜感，以及其他種種。",
+		"back": "返回",
+		"copy_link": "複製連結",
+		"share": "分享",
+		"share_via": "分享至…"
 	},
 	"stuff": {
 		"title": "雜項",
@@ -65,6 +69,11 @@
 			"metronome": {
 				"title": "節拍器"
 			}
+		}
+	},
+	"toast": {
+		"error": {
+			"copy": "複製失敗"
 		}
 	}
 }

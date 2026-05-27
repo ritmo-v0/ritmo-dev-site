@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Twemoji } from "@/components/common/twemoji";
 import {
+	Tooltip,
 	TooltipContent,
-	TooltipMultiple,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 
@@ -32,7 +32,7 @@ export const EmojiButton = memo(function EmojiButton({ emojiEntry }: { emojiEntr
 	}, [emoji, copy]);
 
 	return (
-		<TooltipMultiple>
+		<Tooltip>
 			<TooltipTrigger render={
 				<Button
 					variant="outline"
@@ -52,7 +52,7 @@ export const EmojiButton = memo(function EmojiButton({ emojiEntry }: { emojiEntr
 			<TooltipContent className="p-3 rounded-2xl">
 				<EmojiTooltipContent emojiEntry={emojiEntry} />
 			</TooltipContent>
-		</TooltipMultiple>
+		</Tooltip>
 	);
 });
 

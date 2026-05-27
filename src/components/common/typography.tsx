@@ -428,7 +428,7 @@ const linkVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "font-medium text-primary focus-visible:border-transparent ring-offset-2 ring-offset-background underline underline-offset-4 hover:text-primary/60",
+				default: "font-medium text-primary focus-visible:border-transparent ring-offset-2 ring-offset-background hover:text-primary/60",
 				hover: "shrink-0 inline-flex items-center justify-center gap-1.5 w-max font-medium text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground",
 				ghost: "rounded-4xl hover:bg-muted dark:hover:bg-muted/50 hover:text-foreground",
 				nothing: "rounded-4xl",
@@ -461,7 +461,7 @@ function Link({
 			{children}
 			{variant === "default" && isExternal && (
 				<ArrowUpRightIcon
-					className="inline size-[1.1em] align-[-0.2em]"
+					className="inline mx-px size-[1.1em] align-[-0.2em]"
 					aria-hidden="true"
 				/>
 			)}

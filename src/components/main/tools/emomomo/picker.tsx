@@ -14,8 +14,8 @@ import {
 	TabsTrigger,
 } from "@/components/ui/tabs";
 import {
+	Tooltip,
 	TooltipContent,
-	TooltipMultiple,
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
@@ -93,7 +93,7 @@ function EmojiGroupTabsTrigger({ title }: { title: string }) {
 	const GroupIcon = GROUP_ICON_MAP[title] || QuestionMarkIcon;
 
 	return (
-		<TooltipMultiple>
+		<Tooltip>
 			<TooltipTrigger
 				className="size-7"
 				render={<TabsTrigger value={title} />}
@@ -102,7 +102,7 @@ function EmojiGroupTabsTrigger({ title }: { title: string }) {
 				<GroupIcon weight="fill" />
 			</TooltipTrigger>
 			<TooltipContent>{title}</TooltipContent>
-		</TooltipMultiple>
+		</Tooltip>
 	);
 }
 
