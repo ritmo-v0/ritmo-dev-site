@@ -4,10 +4,9 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev --experimental-https",
-		"type": "next typegen",
 		"build": "next build",
 		"start": "next start",
-		"typecheck": "tsc --noEmit",
+		"typecheck": "next typegen && tsc --noEmit",
 		"lint": "biome check"
 	},
 	"dependencies": {
@@ -19,7 +18,7 @@
 		"@shikijs/engine-javascript": "^4.1.0",
 		"@shikijs/langs-precompiled": "^4.1.0",
 		"@shikijs/themes": "^4.1.0",
-		"@twemoji/parser": "^17.0.1",
+		"@twemoji/parser": "^17.0.2",
 		"@upstash/redis": "^1.38.0",
 		"@vercel/speed-insights": "^2.0.0",
 		"canvas-confetti": "^1.9.4",
@@ -27,16 +26,16 @@
 		"clsx": "^2.1.1",
 		"github-slugger": "^2.0.0",
 		"katex": "^0.17.0",
-		"lucide-react": "^1.16.0",
+		"lucide-react": "^1.17.0",
 		"mdast-util-to-string": "^4.0.0",
 		"micromark-extension-llm-math": "latest",
 		"motion": "^12.40.0",
 		"nanoid": "^5.1.11",
-		"next": "^16.2.6",
-		"next-intl": "^4.12.0",
+		"next": "^16.2.7",
+		"next-intl": "^4.13.0",
 		"next-themes": "^0.4.6",
-		"react": "^19.2.6",
-		"react-dom": "^19.2.6",
+		"react": "^19.2.7",
+		"react-dom": "^19.2.7",
 		"react-markdown": "^10.1.0",
 		"react-shiki": "^0.9.3",
 		"recharts": "^3.8.1",
@@ -56,15 +55,15 @@
 		"unist-util-visit": "^5.1.0",
 		"web-push": "^3.6.7",
 		"wretch": "^3.0.8",
-		"zustand": "^5.0.13"
+		"zustand": "^5.0.14"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.15",
+		"@biomejs/biome": "^2.4.16",
 		"@tailwindcss/postcss": "^4.3.0",
 		"@types/canvas-confetti": "^1.9.0",
 		"@types/mdast": "^4.0.4",
 		"@types/node": "^25.9.1",
-		"@types/react": "^19.2.15",
+		"@types/react": "^19.2.16",
 		"@types/react-dom": "^19.2.3",
 		"@types/serialize-javascript": "^5.0.4",
 		"mdast-util-directive": "^3.1.0",
@@ -78,5 +77,5 @@
 		"defaults",
 		"Safari >= 13"
 	],
-	"packageManager": "pnpm@11.2.2"
+	"packageManager": "pnpm@11.5.1"
 }

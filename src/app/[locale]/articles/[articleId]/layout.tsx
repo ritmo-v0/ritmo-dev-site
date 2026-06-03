@@ -33,13 +33,14 @@ export async function generateMetadata(
 	}
 }
 
-// Route Segment Config
-export const revalidate = 900;  // 15m
-
+// Static Params
 export async function generateStaticParams() {
 	const articles = await getArticles();
 	return articles.map(article => ({ articleId: article.shortId }));
 }
+
+// Route Segment Config
+export const revalidate = 900;  // 15m
 
 
 

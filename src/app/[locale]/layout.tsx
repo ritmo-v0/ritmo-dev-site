@@ -14,8 +14,8 @@ import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { routing } from "@/lib/i18n/routing";
 
 // Components & UI
-import { Providers } from "@/lib/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Providers } from "@/components/common/providers";
 import { JsonLd } from "@/components/common/json-ld";
 import { Navbar } from "@/components/main/navbar";
 import { Footer } from "@/components/main/footer";
@@ -107,6 +107,7 @@ export const metadata: Metadata = {
 	},
 };
 
+// Static Params
 export function generateStaticParams() {
 	return routing.locales.map(locale => ({ locale }));
 }
