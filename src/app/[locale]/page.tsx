@@ -19,7 +19,7 @@ export default function HomePage() {
 				<MuxVideo
 					className="absolute size-full object-cover pointer-events-none -z-1"
 					playbackId="y59sBUGIp00f9LNwFpbb5ikGzLfJLdOYT34dfHejsgjc"
-					autoPlay muted loop
+					autoPlay playsInline muted loop
 					onLoadedData={onLoadedData}
 				/>
 				<div className={cn(
