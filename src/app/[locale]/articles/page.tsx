@@ -5,7 +5,7 @@ import { getBaseUrl } from "@/lib/utils";
 // Components & UI
 import { ArticleList } from "@/components/main/articles/list";
 import { Code, Wrapper } from "@/components/common/typography";
-import { JsonLd } from "@/components/common/json-ld";
+import { JsonLd } from "@/components/ui/json-ld";
 
 // Types & Interfaces
 import type { ItemList } from "schema-dts";

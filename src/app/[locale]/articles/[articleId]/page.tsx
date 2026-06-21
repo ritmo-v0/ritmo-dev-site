@@ -7,13 +7,13 @@ import { getBaseUrl } from "@/lib/utils";
 import { ArticleHeader } from "@/components/main/articles/header";
 import { ArticleContent } from "@/components/main/articles/content";
 import { Wrapper } from "@/components/common/typography";
-import { JsonLd } from "@/components/common/json-ld";
+import { JsonLd } from "@/components/ui/json-ld";
 
 // Types & Interfaces
 import type { BlogPosting } from "schema-dts";
 
 // Constants & Variables
-import { PERSON_ID } from "@/lib/constants/socials";
+import { PERSON_ID } from "@/lib/seo/constants";
 
 
 

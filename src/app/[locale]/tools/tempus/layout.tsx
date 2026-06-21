@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { handleLayoutLocale } from "@/lib/i18n/utils";
-import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
+import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 
 // Components & UI
 import { H1 } from "@/components/common/typography";

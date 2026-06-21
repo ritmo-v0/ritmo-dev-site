@@ -1,5 +1,5 @@
 import { handleLayoutLocale } from "@/lib/i18n/utils";
-import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
+import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 import { getArticle, getArticles } from "@/lib/article/utils";
 
 // Types & Interfaces

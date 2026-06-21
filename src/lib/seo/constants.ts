@@ -22,7 +22,6 @@ export const SOCIAL_LINKS = [
 ];
 
 export const PERSON_ID = `${getBaseUrl().origin}/#person`;
-
 export const PERSON_JSON_LD: Person = {
 	"@type": "Person",
 	"@id": PERSON_ID,

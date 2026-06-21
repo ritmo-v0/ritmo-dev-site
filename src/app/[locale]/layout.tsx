@@ -1,12 +1,11 @@
 import "@/app/globals.css";
 import "katex/dist/katex.min.css";
+import { cn, getBaseUrl } from "@/lib/utils";
 import {
 	PAGE_TITLE_SUFFIX,
-	cn,
-	getBaseUrl,
 	generatePageTitle,
 	generateSocialMetadata,
-} from "@/lib/utils";
+} from "@/lib/seo/utils";
 
 // next-intl
 // import { getTranslations } from "next-intl/server";
@@ -15,10 +14,10 @@ import { routing } from "@/lib/i18n/routing";
 
 // Components & UI
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Providers } from "@/components/common/providers";
-import { JsonLd } from "@/components/common/json-ld";
+import { Providers } from "@/components/main/providers";
 import { Navbar } from "@/components/main/navbar";
 import { Footer } from "@/components/main/footer";
+import { JsonLd } from "@/components/ui/json-ld";
 
 // Fonts
 import {
@@ -76,7 +75,7 @@ const RethinkSans = Rethink_Sans({
 import type { Metadata } from "next";
 
 // Constants & Variables
-import { PERSON_JSON_LD } from "@/lib/constants/socials";
+import { PERSON_JSON_LD } from "@/lib/seo/constants";
 const title = PAGE_TITLE_SUFFIX;
 const description = "<PersonalWebsite />";
 const url = "/";

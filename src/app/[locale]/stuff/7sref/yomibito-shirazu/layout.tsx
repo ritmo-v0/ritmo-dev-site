@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { generateSocialMetadata, generatePageTitle } from "@/lib/utils";
+import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
