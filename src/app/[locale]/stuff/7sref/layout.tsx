@@ -1,9 +1,6 @@
 import { getTranslations } from "next-intl/server";
-import {
-	cn,
-	generateSocialMetadata,
-	generatePageTitle,
-} from "@/lib/utils";
+import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
+import { cn } from "@/lib/utils";
 
 // Fonts
 import { Doto, Shippori_Mincho } from "next/font/google";

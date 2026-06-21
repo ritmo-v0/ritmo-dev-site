@@ -1,5 +1,5 @@
 import { handleLayoutLocale } from "@/lib/i18n/utils";
-import { generateSocialMetadata } from "@/lib/utils";
+import { generateSocialMetadata } from "@/lib/seo/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";

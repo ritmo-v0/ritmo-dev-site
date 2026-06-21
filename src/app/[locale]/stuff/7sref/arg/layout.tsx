@@ -1,4 +1,4 @@
-import { generateSocialMetadata } from "@/lib/utils";
+import { generateSocialMetadata } from "@/lib/seo/utils";
 
 // Metadata
 const title = "アシッド";
