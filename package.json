@@ -27,6 +27,7 @@
 		"github-slugger": "^2.0.0",
 		"katex": "^0.17.0",
 		"lucide-react": "^1.21.0",
+		"maplibre-gl": "^5.24.0",
 		"mdast-util-to-string": "^4.0.0",
 		"micromark-extension-llm-math": "latest",
 		"motion": "^12.40.0",

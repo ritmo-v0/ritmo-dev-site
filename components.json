@@ -18,5 +18,8 @@
 		"hooks": "@/hooks"
 	},
 	"menuColor": "default-translucent",
-	"menuAccent": "subtle"
+	"menuAccent": "subtle",
+	"registries": {
+		"@mapcn": "https://mapcn.dev/r/{name}.json"
+	}
 }
