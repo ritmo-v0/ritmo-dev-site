@@ -29,4 +29,9 @@ export const PERSON_JSON_LD: Person = {
 	alternateName: ["Ritmo", "里莫"],
 	url: getBaseUrl().origin,
 	sameAs: SOCIAL_LINKS.map(link => link.url),
+	knowsAbout: [
+		"web development", "graphic design", "motion graphics", "rhythm games",
+		"網頁開發", "平面設計", "動態圖形設計", "節奏遊戲",
+		"ウェブ開発", "グラフィックデザイン", "モーショングラフィックス", "リズムゲーム",
+	]
 };
