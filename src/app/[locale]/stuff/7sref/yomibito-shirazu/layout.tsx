@@ -38,8 +38,13 @@ export async function generateMetadata(
 
 
 
-export default function YomibitoShirazuLayout({
-	children
-}: LayoutProps<"/[locale]/stuff/7sref/yomibito-shirazu">) {
-	return children;
+export default function YomibitoShirazuLayout(
+	{ children }: LayoutProps<"/[locale]/stuff/7sref/yomibito-shirazu">
+) {
+	return (
+		<>
+			<h1 className="sr-only">{title}</h1>
+			{children}
+		</>
+	);
 }

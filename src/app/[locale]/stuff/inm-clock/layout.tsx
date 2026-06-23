@@ -22,29 +22,6 @@ export async function generateMetadata(
 	return {
 		title: { absolute: title },
 		description,
-		keywords: [
-			// Main Keywords
-			"inm clock",
-			"時鐘工具",
-			"web clock widget",
-			"網頁時鐘元件",
-			"2025 時鐘",
-			"114 時鐘",
-			"114年 時鐘",
-
-			// Kuso Keywords
-			"inm",
-			"114514",
-			"淫夢",
-			"野獸先輩",
-			"野獣先輩",
-			"仲夏夜之淫夢",
-			"真夏の夜の淫夢",
-			"田所浩二",
-			"こ↑こ↓",
-			"homo",
-			"ホモ",
-		],
 		...generateSocialMetadata({
 			title,
 			description,

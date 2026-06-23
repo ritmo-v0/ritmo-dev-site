@@ -38,8 +38,13 @@ export async function generateMetadata(
 
 
 
-export default function RefrainLayout({
-	children
-}: LayoutProps<"/[locale]/stuff/7sref/refrain">) {
-	return children;
+export default function RefrainLayout(
+	{ children }: LayoutProps<"/[locale]/stuff/7sref/refrain">
+) {
+	return (
+		<>
+			<h1 className="sr-only">{title}</h1>
+			{children}
+		</>
+	);
 }

@@ -28,6 +28,9 @@ import { Wrapper } from "@/components/common/typography";
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
 
+// Constants & Variables
+const url = "/stuff/7sref";
+
 // Metadata
 export async function generateMetadata(
 	{ params }: LayoutProps<"/[locale]/stuff/7sref">
@@ -43,25 +46,16 @@ export async function generateMetadata(
 			absolute: title,
 			template: generatePageTitle({ suffix: title }),
 		},
-		description: description,
-		keywords: [
-			"maimai",
-			"7sRef",
-			"7sRef 4",
-		],
-		...generateSocialMetadata({
-			title: title,
-			description: description,
-			url: "/stuff/7sref",
-		}),
+		description,
+		...generateSocialMetadata({ title, description, url }),
 	};
 }
 
 
 
-export default function SevensRefLayout({
-	children
-}: LayoutProps<"/[locale]/stuff/7sref">) {
+export default function SevensRefLayout(
+	{ children }: LayoutProps<"/[locale]/stuff/7sref">
+) {
 	return (
 		<>
 			<Wrapper

@@ -20,16 +20,8 @@ export async function generateMetadata(
 	const description = t("description");
 
 	return {
-		title: { absolute: title },
+		title,
 		description,
-		keywords: [
-			"色づく世界の明日から",
-			"來自繽紛世界的明日",
-			"Iroduku: The World in Colors",
-			"アニメ 聖地巡礼",
-			"動畫 聖地巡禮",
-			"anime pilgrimage",
-		],
 		...generateSocialMetadata({
 			title: generatePageTitle({ title }),
 			description,
@@ -46,8 +38,11 @@ export default async function IrodukuPilgrimageLayout(
 	const { locale } = await params;
 	handleLayoutLocale(locale);
 
+	const t = await getTranslations("stuff.iroduku-pgm");
+
 	return (
 		<div className="my-16">
+			<h1 className="sr-only">{t("title")}</h1>
 			{children}
 		</div>
 	);

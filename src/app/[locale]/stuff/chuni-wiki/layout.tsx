@@ -7,10 +7,12 @@ import { Wrapper } from "@/components/common/typography";
 // Types & Interfaces
 import type { Metadata } from "next";
 
-// Metadata
+// Constants & Variables
 const title = "CHUNITHM【チュウニズム】攻略 Wiki";
 const description = "SEGAのアーケード音楽ゲーム「CHUNITHM」のファンサイトです。";
 const url = "/stuff/chuni-wiki";
+
+// Metadata
 export const metadata: Metadata = {
 	title: { absolute: title },
 	description: description,

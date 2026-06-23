@@ -51,12 +51,12 @@ export default async function ArticlePage(
 	};
 
 	return (
-		<div className="grid grid-cols-1 gap-12">
+		<main className="grid grid-cols-1 gap-12">
 			<JsonLd data={[WEBPAGE_JSONLD, ARTICLE_JSONLD]} />
 			<ArticleHeader metadata={article.metadata} />
 			<main>
 				<ArticleContent content={article.content} />
 			</main>
-		</div>
+		</main>
 	);
 }

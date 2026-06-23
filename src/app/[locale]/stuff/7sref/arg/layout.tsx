@@ -1,9 +1,11 @@
 import { generateSocialMetadata } from "@/lib/seo/utils";
 
-// Metadata
+// Constants & Variables
 const title = "アシッド";
 const description = "8 億年ぶりに女の子とライン交換出来て泣いてる";
 const url = "/stuff/7sref/arg";
+
+// Metadata
 export const metadata = {
 	title: { absolute: title },
 	description,
@@ -16,8 +18,8 @@ export const metadata = {
 
 
 
-export default function SevensRefArgLayout({
-	children
-}: LayoutProps<"/[locale]/stuff/7sref/arg">) {
+export default function SevensRefArgLayout(
+	{ children }: LayoutProps<"/[locale]/stuff/7sref/arg">
+) {
 	return children;
 }

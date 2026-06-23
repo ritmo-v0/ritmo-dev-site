@@ -2,9 +2,6 @@ import { getTranslations } from "next-intl/server";
 import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 
-// Components & UI
-import { H1 } from "@/components/common/typography";
-
 // Types & Interfaces
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
@@ -46,7 +43,7 @@ export default async function TempusLayout(
 
 	return (
 		<>
-			<H1 className="sr-only">{t("title")}</H1>
+			<h1 className="sr-only">{t("title")}</h1>
 			{children}
 		</>
 	);

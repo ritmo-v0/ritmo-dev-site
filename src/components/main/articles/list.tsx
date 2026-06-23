@@ -1,11 +1,10 @@
 "use client";
-import { useTranslations } from "next-intl";
 import { isBadgeVariant } from "@/lib/article/utils";
 
 // Components & UI
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
-import { H1, H5, Link, Muted } from "@/components/common/typography";
+import { H5, Link, Muted } from "@/components/common/typography";
 
 // Types & Interfaces
 import type { NoteOverview } from "@/lib/article/types";
@@ -25,27 +24,22 @@ const CHILDREN_VARIANTS = getChildVariants(
 
 
 export function ArticleList({ articles }: { articles: NoteOverview[] }) {
-	const t = useTranslations("articles");
-
 	return (
-		<>
-			<H1 className="sr-only">{t("title")}</H1>
-			<motion.ul
-				className="grid gap-1"
-				variants={CONTAINER_VARIANTS}
-				initial="hidden"
-				animate="visible"
-			>
-				{articles.map(article => (
-					<motion.li
-						key={article.shortId}
-						variants={CHILDREN_VARIANTS}
-					>
-						<ArticleLink article={article} />
-					</motion.li>
-				))}
-			</motion.ul>
-		</>
+		<motion.ul
+			className="grid gap-1"
+			variants={CONTAINER_VARIANTS}
+			initial="hidden"
+			animate="visible"
+		>
+			{articles.map(article => (
+				<motion.li
+					key={article.shortId}
+					variants={CHILDREN_VARIANTS}
+				>
+					<ArticleLink article={article} />
+				</motion.li>
+			))}
+		</motion.ul>
 	);
 }
 

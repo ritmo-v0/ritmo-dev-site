@@ -1,5 +1,5 @@
 "use client";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 // Components & UI
@@ -138,8 +138,11 @@ const ROUTES: SevensRefRoute[] = [
 
 
 export default function SevensRefPage() {
+	const t = useTranslations("stuff.7sref");
+
 	return (
 		<main>
+			<h1 className="sr-only">{t("title")}</h1>
 			<motion.ul
 				className="grid @xl:grid-cols-2 @4xl:grid-cols-4 gap-4"
 				variants={CONTAINER_VARIANTS}

@@ -4,10 +4,12 @@ import { generateSocialMetadata } from "@/lib/seo/utils";
 // Types & Interfaces
 import type { Metadata } from "next";
 
-// Metadata
+// Constants & Variables
 const title = "A full webpage's what I'm think'in of";
 const description = "You wouldn't get this from any other guy";
 const url = "/stuff/boss3";
+
+// Metadata
 export const metadata: Metadata = {
 	title: { absolute: "今天是我生日" },
 	description: description,

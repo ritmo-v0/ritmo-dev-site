@@ -37,8 +37,13 @@ export async function generateMetadata(
 
 
 
-export default function XaleidscopiXLayout({
-	children
-}: LayoutProps<"/[locale]/stuff/7sref/xaleidscopix">) {
-	return children;
+export default function XaleidscopiXLayout(
+	{ children }: LayoutProps<"/[locale]/stuff/7sref/xaleidscopix">
+) {
+	return (
+		<>
+			<h1 className="sr-only">{title}</h1>
+			{children}
+		</>
+	);
 }
