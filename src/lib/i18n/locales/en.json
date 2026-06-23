@@ -31,7 +31,12 @@
 		"back": "Back",
 		"copy_link": "Copy Link",
 		"share": "Share",
-		"share_via": "Share via…"
+		"share_via": "Share via…",
+		"error": {
+			"title": "Failed",
+			"retry": "Retry",
+			"back": "Back"
+		}
 	},
 	"stuff": {
 		"title": "Stuff",

@@ -89,7 +89,7 @@ export function ArticleHeader({ metadata }: { metadata: ArticleMetadata }) {
 			</div>
 			<div className="grid gap-3">
 				<H1 className="lg:text-4xl text-balance">{title}</H1>
-				<div className="text-muted-foreground">
+				<div id="article-description" className="text-muted-foreground">
 					<Markdown>{description}</Markdown>
 				</div>
 			</div>

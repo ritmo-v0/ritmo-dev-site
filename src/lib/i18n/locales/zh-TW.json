@@ -31,7 +31,12 @@
 		"back": "返回",
 		"copy_link": "複製連結",
 		"share": "分享",
-		"share_via": "分享至…"
+		"share_via": "分享至…",
+		"error": {
+			"title": "失敗",
+			"retry": "重試",
+			"back": "返回"
+		}
 	},
 	"stuff": {
 		"title": "雜項",

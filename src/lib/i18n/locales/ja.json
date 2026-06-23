@@ -31,7 +31,12 @@
 		"back": "戻る",
 		"copy_link": "リンクをコピー",
 		"share": "共有",
-		"share_via": "その他の方法で共有…"
+		"share_via": "その他の方法で共有…",
+		"error": {
+			"title": "失敗",
+			"retry": "再試行",
+			"back": "戻る"
+		}
 	},
 	"stuff": {
 		"title": "いろいろ",

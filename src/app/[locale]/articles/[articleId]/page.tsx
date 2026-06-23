@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { tryCatch } from "@/lib/try-catch";
 import { getArticle } from "@/lib/article/utils";
 import { getBaseUrl } from "@/lib/utils";
@@ -6,11 +5,10 @@ import { getBaseUrl } from "@/lib/utils";
 // Components & UI
 import { ArticleHeader } from "@/components/main/articles/header";
 import { ArticleContent } from "@/components/main/articles/content";
-import { Wrapper } from "@/components/common/typography";
 import { JsonLd } from "@/components/ui/json-ld";
 
 // Types & Interfaces
-import type { BlogPosting } from "schema-dts";
+import type { BlogPosting, WebPage } from "schema-dts";
 
 // Constants & Variables
 import { PERSON_ID } from "@/lib/seo/constants";
@@ -18,38 +16,47 @@ import { PERSON_ID } from "@/lib/seo/constants";
 
 
 export default async function ArticlePage(
-	props: PageProps<"/[locale]/articles/[articleId]">
+	{ params }: PageProps<"/[locale]/articles/[articleId]">
 ) {
-	const articleId = (await props.params).articleId;
+	const { locale, articleId } = await params;
+
 	const { data: article, error } = await tryCatch(getArticle(articleId));
+	if (error) throw error;
 
-	if (error) notFound();
-
+	const url = `${getBaseUrl().origin}/articles/${articleId}`;
+	const WEBPAGE_JSONLD: WebPage = {
+		"@type": "WebPage",
+		"@id": url,
+		url,
+		inLanguage: locale,
+	};
 	const ARTICLE_JSONLD: BlogPosting = {
 		"@type": "BlogPosting",
 		headline: article.metadata.title,
 		description: article.metadata.description,
 		image: article.metadata.image,
-		datePublished: article.metadata.createdAt,
-		dateModified: article.metadata.updatedAt,
-		url: `${getBaseUrl().origin}/articles/${articleId}`,
-		inLanguage: "zh-TW",
 		author: { "@id": PERSON_ID },
 		publisher: { "@id": PERSON_ID },
+		dateCreated: article.metadata.createdAt,
+		datePublished: article.metadata.publishedAt,
+		dateModified: article.metadata.updatedAt,
 		keywords: article.metadata.tags.join(","),
-		mainEntityOfPage: {
-			"@type": "WebPage",
-			"@id": `${getBaseUrl().origin}/articles/${articleId}`,
+		url,
+		inLanguage: "zh-TW",
+		mainEntityOfPage: { "@id": url },
+		speakable: {
+			"@type": "SpeakableSpecification",
+			cssSelector: ["h1", "#article-description"],
 		},
 	};
 
 	return (
-		<Wrapper className="grid grid-cols-1 gap-12" width={720}>
-			<JsonLd data={ARTICLE_JSONLD} />
+		<div className="grid grid-cols-1 gap-12">
+			<JsonLd data={[WEBPAGE_JSONLD, ARTICLE_JSONLD]} />
 			<ArticleHeader metadata={article.metadata} />
 			<main>
 				<ArticleContent content={article.content} />
 			</main>
-		</Wrapper>
+		</div>
 	);
 }

@@ -51,9 +51,9 @@ export async function getArticle(articleId: string): Promise<Article> {
 				title: note.title,
 				tags: note.tags,
 				description: note.description,
-				createdAt: note.createdAt,
-				updatedAt: note.lastChangedAt,
-				publishedAt: note.publishedAt,
+				createdAt: new Date(note.createdAt).toISOString(),
+				publishedAt: new Date(note.publishedAt).toISOString(),
+				updatedAt: new Date(note.lastChangedAt).toISOString(),
 				image,
 			},
 		};

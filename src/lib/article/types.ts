@@ -5,7 +5,11 @@ export interface NotesResponse {
 export interface NoteOverview {
 	id: string;
 	title: string;
-	content: string;  // description
+	/**
+	 * The note's description text.
+	 * @description HackMD's API returns this field as `content` instead of `description`.
+	 */
+	content: string;
 	image?: string;
 	tags: string[];
 	lastchangeAt: string;

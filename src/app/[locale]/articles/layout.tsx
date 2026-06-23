@@ -2,6 +2,9 @@ import { getTranslations } from "next-intl/server";
 import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 
+// Components & UI
+import { Wrapper } from "@/components/common/typography";
+
 // Types & Interfaces
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
@@ -43,8 +46,8 @@ export default async function ArticlesLayout(
 	handleLayoutLocale(locale);
 
 	return (
-		<div className="my-16">
+		<Wrapper className="my-16" width={720}>
 			{children}
-		</div>
+		</Wrapper>
 	);
 }
