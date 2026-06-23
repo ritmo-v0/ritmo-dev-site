@@ -38,6 +38,9 @@
 			"back": "Back"
 		}
 	},
+	"not_found": {
+		"back": "Back to Home"
+	},
 	"stuff": {
 		"title": "Stuff",
 		"7sref": {

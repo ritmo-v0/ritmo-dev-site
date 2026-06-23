@@ -38,6 +38,9 @@
 			"back": "返回"
 		}
 	},
+	"not_found": {
+		"back": "返回首頁"
+	},
 	"stuff": {
 		"title": "雜項",
 		"7sref": {

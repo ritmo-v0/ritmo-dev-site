@@ -1,11 +1,12 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 // Components & UI
 import { ButtonLink, Wrapper } from "@/components/common/typography";
 
 // Icons & Images
-import { ArrowLeft } from "lucide-react";
+import { ArrowUUpLeftIcon } from "@phosphor-icons/react";
 
 // Types & Interfaces
 type BeatDiceProps = {
@@ -17,8 +18,13 @@ type BeatDiceProps = {
 
 
 export default function NotFound() {
+	const t = useTranslations("not_found");
+
 	return (
-		<Wrapper boxSizing="border" className="py-16 justify-items-center content-center space-y-8 h-full">
+		<Wrapper
+			className="grid justify-items-center content-center gap-y-8 py-16 h-full"
+			boxSizing="border"
+		>
 			<div className="flex items-center gap-4">
 				<BeatDice className="bg-chart-1" pattern={[1, 1, 1]} currentBeat={2} isActive />
 				<BeatDice className="bg-chart-3" />
@@ -26,9 +32,9 @@ export default function NotFound() {
 				<BeatDice className="bg-chart-5" />
 			</div>
 			<div>
-				<ButtonLink href="/">
-					<ArrowLeft data-icon="inline-start" />
-					Back to Home
+				<ButtonLink href="/" size="lg">
+					<ArrowUUpLeftIcon data-icon="inline-start" />
+					{t("back")}
 				</ButtonLink>
 			</div>
 		</Wrapper>

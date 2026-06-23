@@ -38,6 +38,9 @@
 			"back": "戻る"
 		}
 	},
+	"not_found": {
+		"back": "ホームに戻る"
+	},
 	"stuff": {
 		"title": "いろいろ",
 		"7sref": {
