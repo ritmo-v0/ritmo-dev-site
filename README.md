@@ -66,6 +66,29 @@ Various data visualization of my _Iroduku: The World in Colors_ Pilgrimage (2026
 - 《來自繽紛世界的明日》聖地巡禮――長崎篇（上）
 - 《來自繽紛世界的明日》聖地巡禮――長崎篇（下）
 
+## shadcn/ui Registries
+
+Components I built and use across most of my projects. Add the registry to your `components.json` before installing:
+
+```bash
+shadcn@latest registry add @ritmo_v0=https://ritmo.dev/r/{name}.json
+```
+
+or manually:
+
+```json
+{
+	"registries": {
+		"@ritmo_v0": "https://ritmo.dev/r/{name}.json"
+	}
+}
+```
+
+| Component | Command | Description |
+| --------- | ------- | ----------- |
+| JSON-LD | `shadcn@latest add @ritmo_v0/json-ld` | Renders a JSON-LD script tag from schema-dts typed data. |
+| Twemoji | `shadcn@latest add @ritmo_v0/twemoji` | Renders emoji as Twemoji SVGs via Next Image, parsed from string children. |
+
 ## License
 
 Emoji Powered by Twemoji, used under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/

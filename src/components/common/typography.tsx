@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 // Components & UI
 import NextImage from "next/image";
 import { motion } from "motion/react";
-import { Twemoji } from "./twemoji";
+import { Twemoji } from "@/components/twemoji";
 import { buttonVariants } from "@/components/ui/button";
 import { Link as NextLink } from "@/lib/i18n/navigation";
 

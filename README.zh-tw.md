@@ -66,6 +66,29 @@
 - 《來自繽紛世界的明日》聖地巡禮――長崎篇（上）
 - 《來自繽紛世界的明日》聖地巡禮――長崎篇（下）
 
+## shadcn/ui 元件庫
+
+我自己開發、也在多數專案中使用的元件。安裝前，請先將此 registry 加入 `components.json`：
+
+```bash
+shadcn@latest registry add @ritmo_v0=https://ritmo.dev/r/{name}.json
+```
+
+或手動加入：
+
+```json
+{
+	"registries": {
+		"@ritmo_v0": "https://ritmo.dev/r/{name}.json"
+	}
+}
+```
+
+| 元件 | 指令 | 說明 |
+| --- | --- | --- |
+| JSON-LD | `shadcn@latest add @ritmo_v0/json-ld` | 從 schema-dts 型別化資料渲染 JSON-LD script 標籤。 |
+| Twemoji | `shadcn@latest add @ritmo_v0/twemoji` | 透過 Next Image 將字串子元素中的表情符號渲染為 Twemoji SVG。 |
+
 ## 授權
 
 表情符號由 Twemoji 提供，依 CC-BY 4.0 授權使用：https://creativecommons.org/licenses/by/4.0/

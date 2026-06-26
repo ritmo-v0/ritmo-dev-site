@@ -8,7 +8,7 @@ import { getArticles } from "@/lib/article/utils";
 
 // Components & UI
 import { ArticleList } from "@/components/main/articles/list";
-import { JsonLd } from "@/components/ui/json-ld";
+import { JsonLd } from "@/components/json-ld";
 
 // Types & Interfaces
 import type { ItemList } from "schema-dts";

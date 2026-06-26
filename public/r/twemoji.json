@@ -1,0 +1,20 @@
+{
+	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
+	"name": "twemoji",
+	"title": "Twemoji",
+	"description": "Renders emoji as Twemoji SVGs via Next Image, parsed from string children.",
+	"dependencies": [
+		"@twemoji/parser"
+	],
+	"registryDependencies": [
+		"utils"
+	],
+	"files": [
+		{
+			"path": "src/components/twemoji.tsx",
+			"content": "\"use client\";\nimport { parse } from \"@twemoji/parser\";\nimport { cn } from \"@/lib/utils\";\n\n// Components & UI\nimport NextImage from \"next/image\";\nimport { Fragment } from \"react\";\n\n// Types & Interfaces\nimport type { ParsingOptions } from \"@twemoji/parser\";\nexport type TwemojiParsingOptions = {\n\tclassName?: string;\n} & ParsingOptions;\n\n\n\nexport function Twemoji({\n\tchildren,\n\t...props\n}: TwemojiParsingOptions & { children?: React.ReactNode }) {\n\treturn <>{parseChildren(children, props)}</>;\n}\n\nfunction parseChildren(\n\tchildren?: React.ReactNode,\n\toptions?: TwemojiParsingOptions\n): React.ReactNode {\n\tif (typeof children === \"string\") return parseString(children, options);\n\tif (Array.isArray(children)) {\n\t\treturn children.map((child, index) => (\n\t\t\t<Fragment key={index}>\n\t\t\t\t{parseChildren(child, options)}\n\t\t\t</Fragment>\n\t\t))\n\t}\n\n\treturn children;\n}\n\nfunction parseString(\n\tstring: string,\n\toptions?: TwemojiParsingOptions\n): React.ReactNode {\n\tconst entities = parse(string, options);\n\tconst nodes: React.ReactNode[] = [];\n\n\tlet lastIndex = 0;\n\tfor (const entity of entities) {\n\t\tconst { text, url, indices } = entity;\n\n\t\tif (indices[0] > lastIndex) {\n\t\t\tnodes.push(string.slice(lastIndex, indices[0]));\n\t\t}\n\n\t\tif (url) {\n\t\t\tnodes.push(\n\t\t\t\t<NextImage\n\t\t\t\t\tkey={indices[0]}\n\t\t\t\t\tsrc={url}\n\t\t\t\t\talt={text}\n\t\t\t\t\twidth={24}\n\t\t\t\t\theight={24}\n\t\t\t\t\tdraggable={false}\n\t\t\t\t\tloading=\"lazy\"\n\t\t\t\t\tunoptimized\n\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\"inline size-[1.1em] mx-[0.15em] align-[-0.2em]\",\n\t\t\t\t\t\toptions?.className,\n\t\t\t\t\t)}\n\t\t\t\t/>\n\t\t\t);\n\t\t}\n\n\t\tlastIndex = indices[1];\n\t}\n\n\tif (lastIndex < string.length) {\n\t\tnodes.push(string.slice(lastIndex));\n\t}\n\n\treturn nodes;\n}",
+			"type": "registry:component"
+		}
+	],
+	"type": "registry:component"
+}

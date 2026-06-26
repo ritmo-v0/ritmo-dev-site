@@ -2,7 +2,7 @@
 import { useEmomomoStore } from "@/lib/store/emomomo";
 
 // Components & UI
-import { Twemoji } from "@/components/common/twemoji";
+import { Twemoji } from "@/components/twemoji";
 import {
 	Select,
 	SelectContent,

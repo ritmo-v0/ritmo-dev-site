@@ -6,8 +6,8 @@ import { getEmojiCodePoints } from "@/lib/emomomo/utils";
 import { cn } from "@/lib/utils";
 
 // Components & UI
+import { Twemoji } from "@/components/twemoji";
 import { Button } from "@/components/ui/button";
-import { Twemoji } from "@/components/common/twemoji";
 import {
 	Tooltip,
 	TooltipContent,

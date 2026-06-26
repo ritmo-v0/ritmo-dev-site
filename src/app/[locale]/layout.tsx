@@ -17,7 +17,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "@/components/main/providers";
 import { Navbar } from "@/components/main/navbar";
 import { Footer } from "@/components/main/footer";
-import { JsonLd } from "@/components/ui/json-ld";
+import { JsonLd } from "@/components/json-ld";
 
 // Fonts
 import {

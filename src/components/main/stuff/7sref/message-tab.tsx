@@ -5,6 +5,7 @@ import { match } from "ts-pattern";
 import { cn } from "@/lib/utils";
 
 // Components & UI
+import { Twemoji } from "@/components/twemoji";
 import { Button } from "@/components/ui/button";
 import { Markdown } from "@/components/common/markdown";
 import {
@@ -17,7 +18,6 @@ import { TabsContent } from "@/components/ui/tabs";
 
 // Types & Interfaces
 import type { SevensRefMessage } from "@/lib/7sref/types";
-import { Twemoji } from "@/components/common/twemoji";
 
 // Constants & Variables
 const MAIMAI_AVATAR_URL = "https://img.ritmo.dev/stuff/7sref/avatar-maimai.jpg";

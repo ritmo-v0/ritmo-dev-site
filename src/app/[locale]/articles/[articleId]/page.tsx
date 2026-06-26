@@ -5,7 +5,7 @@ import { getBaseUrl } from "@/lib/utils";
 // Components & UI
 import { ArticleHeader } from "@/components/main/articles/header";
 import { ArticleContent } from "@/components/main/articles/content";
-import { JsonLd } from "@/components/ui/json-ld";
+import { JsonLd } from "@/components/json-ld";
 
 // Types & Interfaces
 import type { BlogPosting, WebPage } from "schema-dts";

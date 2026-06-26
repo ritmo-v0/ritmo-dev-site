@@ -66,6 +66,29 @@ maimai DX の ARG イベント（7sRef と KALEIDXSCOPE の最終章、2025/07/1
 - 《來自繽紛世界的明日》聖地巡禮――長崎篇（上）
 - 《來自繽紛世界的明日》聖地巡禮――長崎篇（下）
 
+## shadcn/ui レジストリ
+
+自身が開発し、ほとんどのプロジェクトで使用しているコンポーネントです。インストール前に、`components.json` へ registry を追加してください：
+
+```bash
+shadcn@latest registry add @ritmo_v0=https://ritmo.dev/r/{name}.json
+```
+
+または手動で追加：
+
+```json
+{
+	"registries": {
+		"@ritmo_v0": "https://ritmo.dev/r/{name}.json"
+	}
+}
+```
+
+| コンポーネント | コマンド | 説明 |
+| ------------ | ------ | ---- |
+| JSON-LD | `shadcn@latest add @ritmo_v0/json-ld` | schema-dts の型付きデータから JSON-LD の script タグをレンダリングします。 |
+| Twemoji | `shadcn@latest add @ritmo_v0/twemoji` | 文字列の子要素の絵文字を Next Image 経由で Twemoji SVG としてレンダリングします。 |
+
 ## ライセンス
 
 絵文字は Twemoji によって提供されており、CC-BY 4.0 のもとで使用しています：https://creativecommons.org/licenses/by/4.0/
