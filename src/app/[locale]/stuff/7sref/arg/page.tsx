@@ -1,7 +1,6 @@
 "use client";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "@/lib/i18n/navigation";
 import { useLocale } from "next-intl";
+import { useQueryState, parseAsStringEnum } from "nuqs";
 
 // Components & UI
 import { Suspense } from "react";
@@ -24,19 +23,19 @@ export default function SevensRefArgPage() {
 }
 
 function MessageTabs() {
-	const router = useRouter();
 	const locale = useLocale();
-
-	const tabParam = useSearchParams().get("tab");
-	const activeTab = MESSAGE_TABS.find(t => t.id === tabParam)?.id ?? MESSAGE_TABS[0].id;
+	const [activeTab, setActiveTab] = useQueryState(
+		"tab",
+		parseAsStringEnum(MESSAGE_TABS.map(t => t.id))
+			.withDefault(MESSAGE_TABS[0].id)
+			.withOptions({ history: "replace", scroll: true }),
+	);
 
 	return (
 		<Tabs
 			className="gap-8 font-sans"
 			value={activeTab}
-			onValueChange={(value: string) => {
-				router.replace(`/stuff/7sref/arg?tab=${value}`);
-			}}
+			onValueChange={(value) => setActiveTab(value)}
 		>
 			<div className="sticky top-16 mx-auto z-1">
 				<TabsList className="shadow-lg">

@@ -1,7 +1,6 @@
 "use client";
-import { useCallback } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useQueryStates, parseAsStringEnum, parseAsArrayOf } from "nuqs";
 
 // Components & UI
 import { Suspense } from "react";
@@ -18,19 +17,6 @@ import type { DataType, DateKey } from "@/lib/iroduku-pgm/types";
 import { DATA_TYPES, DATE_KEYS } from "@/lib/iroduku-pgm/constants";
 const DEFAULT_TYPES: DataType[] = ["steps", "floors"];
 const DEFAULT_DATE: DateKey = "2026-03-17";
-
-function parseDate(v: string | null): DateKey {
-	return DATE_KEYS.includes(v as DateKey) ? (v as DateKey) : DEFAULT_DATE;
-}
-
-function parseTypes(v: string | null): DataType[] {
-	if (!v) return DEFAULT_TYPES;
-
-	const parts = v
-		.split(",")
-		.filter((p): p is DataType => DATA_TYPES.includes(p as DataType));
-	return parts.length > 0 ? parts : DEFAULT_TYPES;
-}
 
 
 
@@ -58,19 +44,21 @@ export default function IrodukuPilgrimagePage() {
 }
 
 function IrodukuPilgrimageCharts() {
-	const router = useRouter();
-	const params = useSearchParams();
-
-	const date = parseDate(params.get("date"));
-	const types = parseTypes(params.get("types"));
-
-	const push = useCallback(
-		(updates: Record<string, string>) => {
-			const next = new URLSearchParams(params.toString());
-			for (const [k, v] of Object.entries(updates)) next.set(k, v);
-			router.push(`?${next.toString()}`, { scroll: false });
+	const [{ date, types }, setParams] = useQueryStates(
+		{
+			date: parseAsStringEnum<DateKey>([...DATE_KEYS]).withDefault(DEFAULT_DATE),
+			types: parseAsArrayOf(
+				parseAsStringEnum<DataType>([...DATA_TYPES])
+			).withDefault(DEFAULT_TYPES),
 		},
-		[router, params],
+		{
+			history: "push",
+			scroll: false,
+			urlKeys: {
+				date: "d",
+				types: "t",
+			},
+		},
 	);
 
 	return (
@@ -81,11 +69,11 @@ function IrodukuPilgrimageCharts() {
 					<div className="flex items-center gap-3">
 						<DatePaginator
 							date={date}
-							onChange={(d) => push({ date: d })}
+							onChange={(d) => setParams({ date: d })}
 						/>
 						<DataTypeSelect
 							types={types}
-							onChange={(t) => push({ types: t.join(",") })}
+							onChange={(t) => setParams({ types: t })}
 						/>
 					</div>
 					<Muted className="text-xs">
@@ -101,7 +89,7 @@ function IrodukuPilgrimageCharts() {
 					<div className="flex items-center gap-3">
 						<DataTypeSelect
 							types={types}
-							onChange={(t) => push({ types: t.join(",") })}
+							onChange={(t) => setParams({ types: t })}
 						/>
 					</div>
 					<Muted className="text-xs">
