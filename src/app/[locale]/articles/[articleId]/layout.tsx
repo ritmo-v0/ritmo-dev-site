@@ -1,4 +1,3 @@
-import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 import { getArticle, getArticles } from "@/lib/article/utils";
 
@@ -44,11 +43,8 @@ export const revalidate = 900;  // 15m
 
 
 
-export default async function ArticleLayout(
-	{ children, params }: LayoutProps<"/[locale]/articles/[articleId]">
+export default function ArticleLayout(
+	{ children }: LayoutProps<"/[locale]/articles/[articleId]">
 ) {
-	const { locale } = await params;
-	handleLayoutLocale(locale);
-
 	return children;
 }

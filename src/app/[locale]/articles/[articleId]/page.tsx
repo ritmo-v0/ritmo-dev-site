@@ -46,7 +46,7 @@ export default async function ArticlePage(
 		mainEntityOfPage: { "@id": url },
 		speakable: {
 			"@type": "SpeakableSpecification",
-			cssSelector: ["h1", "#article-description"],
+			cssSelector: ["h1", "[data-description]"],
 		},
 	};
 

@@ -1,4 +1,3 @@
-import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generateSocialMetadata } from "@/lib/seo/utils";
 
 // Components & UI
@@ -34,12 +33,9 @@ export const metadata: Metadata = {
 
 
 
-export default async function ChuniWikiLayout(
-	{ children, params }: LayoutProps<"/[locale]/stuff/chuni-wiki">
+export default function ChuniWikiLayout(
+	{ children }: LayoutProps<"/[locale]/stuff/chuni-wiki">
 ) {
-	const { locale } = await params;
-	handleLayoutLocale(locale);
-
 	return (
 		<Wrapper className="my-16" width={720}>
 			{children}

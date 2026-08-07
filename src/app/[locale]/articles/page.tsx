@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server";
-import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { getBaseUrl } from "@/lib/utils";
 
 // Articles
@@ -15,12 +14,7 @@ import type { ItemList } from "schema-dts";
 
 
 
-export default async function ArticlesPage(
-	{ params }: PageProps<"/[locale]/articles">
-) {
-	const { locale } = await params;
-	handleLayoutLocale(locale);
-
+export default async function ArticlesPage() {
 	const t = await getTranslations("articles");
 
 	const { data: articles, error } = await tryCatch(getArticles());

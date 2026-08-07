@@ -9,7 +9,7 @@ import {
 
 // next-intl
 // import { getTranslations } from "next-intl/server";
-import { handleLayoutLocale } from "@/lib/i18n/utils";
+import { getLocale } from "next-intl/server";
 import { routing } from "@/lib/i18n/routing";
 
 // Components & UI
@@ -113,11 +113,8 @@ export function generateStaticParams() {
 
 
 
-export default async function RootLayout(
-	{ children, params }: LayoutProps<"/[locale]">
-) {
-	const { locale } = await params;
-	handleLayoutLocale(locale);
+export default async function RootLayout({ children }: LayoutProps<"/[locale]">) {
+	const locale = await getLocale();
 
 	return (
 		<html

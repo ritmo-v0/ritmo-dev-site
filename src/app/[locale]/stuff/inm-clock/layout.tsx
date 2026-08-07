@@ -1,21 +1,15 @@
 import { getTranslations } from "next-intl/server";
-import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generateSocialMetadata } from "@/lib/seo/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import type { Locale } from "next-intl";
 
 // Constants & Variables
 const url = "/stuff/inm-clock";
 
 // Metadata
-export async function generateMetadata(
-	{ params }: LayoutProps<"/[locale]/stuff/inm-clock">
-): Promise<Metadata> {
-	const locale = (await params).locale as Locale;
-	const t = await getTranslations({ locale, namespace: "stuff.inm-clock" });
-
+export async function generateMetadata(): Promise<Metadata> {
+	const t = await getTranslations("stuff.inm-clock");
 	const title = t("title");
 	const description = t("description");
 
@@ -37,11 +31,8 @@ export async function generateMetadata(
 
 
 
-export default async function InmClockLayout(
-	{ children, params }: LayoutProps<"/[locale]/stuff/inm-clock">
+export default function InmClockLayout(
+	{ children }: LayoutProps<"/[locale]/stuff/inm-clock">
 ) {
-	const { locale } = await params;
-	handleLayoutLocale(locale);
-
 	return children;
 }

@@ -3,7 +3,6 @@ import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import type { Locale } from "next-intl";
 
 // Constants & Variables
 const title = "Xaleid◆scopiX";
@@ -15,12 +14,8 @@ Please take a look at the next world and extra track woven by them who have over
 const url = "/stuff/7sref/xaleidscopix";
 
 // Metadata
-export async function generateMetadata(
-	{ params }: LayoutProps<"/[locale]/stuff/7sref/xaleidscopix">
-): Promise<Metadata> {
-	const locale = (await params).locale as Locale;
-	const t = await getTranslations({ locale, namespace: "stuff.7sref" });
-
+export async function generateMetadata(): Promise<Metadata> {
+	const t = await getTranslations("stuff.7sref");
 	const parentTitle = t("title");
 
 	return {

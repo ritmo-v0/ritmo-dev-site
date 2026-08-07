@@ -109,7 +109,7 @@ export function SummaryChart({ types }: SummaryChartProps) {
 					<ChartTooltipContent
 						indicator="dot"
 						labelFormatter={(value) => format.dateTime(
-							new Date(value),
+							new Date(value?.toString() || ""),
 							"2-digit",
 							{ timeZone: "UTC" }
 						)}

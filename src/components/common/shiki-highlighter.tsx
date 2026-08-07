@@ -68,7 +68,6 @@ export function Pre({
 					light: OneLight.name as string,
 					dark: OneDarkPro.name as string,
 				}}
-				as="div"
 				delay={100}
 				showLanguage={false}
 				showLineNumbers={!isPlaintext}
