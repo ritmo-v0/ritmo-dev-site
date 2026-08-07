@@ -1,3 +1,4 @@
+import * as rootParams from "next/root-params";
 import { getRequestConfig } from "next-intl/server";
 import { hasLocale } from "next-intl";
 
@@ -7,11 +8,13 @@ import { FORMATS } from "./constants";
 
 
 
-export default getRequestConfig(async ({ requestLocale }) => {
-	const requestedLocale = await requestLocale;
-	const locale = hasLocale(routing.locales, requestedLocale)
-		? requestedLocale
-		: routing.defaultLocale;
+export default getRequestConfig(async ({ locale }) => {
+	if (!locale) {
+		const paramValue = await rootParams.locale();
+		locale = hasLocale(routing.locales, paramValue)
+			? paramValue
+			: routing.defaultLocale;
+	}
 
 	return {
 		locale,

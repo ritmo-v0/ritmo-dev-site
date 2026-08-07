@@ -26,18 +26,13 @@ import { Wrapper } from "@/components/common/typography";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import type { Locale } from "next-intl";
 
 // Constants & Variables
 const url = "/stuff/7sref";
 
 // Metadata
-export async function generateMetadata(
-	{ params }: LayoutProps<"/[locale]/stuff/7sref">
-): Promise<Metadata> {
-	const locale = (await params).locale as Locale;
-	const t = await getTranslations({ locale, namespace: "stuff.7sref" });
-
+export async function generateMetadata(): Promise<Metadata> {
+	const t = await getTranslations("stuff.7sref");
 	const title = t("title");
 	const description = t("description");
 

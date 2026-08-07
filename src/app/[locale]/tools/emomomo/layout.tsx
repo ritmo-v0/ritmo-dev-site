@@ -1,21 +1,15 @@
 import { getTranslations } from "next-intl/server";
-import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import type { Locale } from "next-intl";
 
 // Constants & Variables
 const url = "/tools/emomomo";
 
 // Metadata
-export async function generateMetadata(
-	{ params }: LayoutProps<"/[locale]/tools/emomomo">
-): Promise<Metadata> {
-	const locale = (await params).locale as Locale;
-	const t = await getTranslations({ locale, namespace: "tools.emomomo" });
-
+export async function generateMetadata(): Promise<Metadata> {
+	const t = await getTranslations("tools.emomomo");
 	const title = t("title");
 	const description = t("description");
 
@@ -38,11 +32,8 @@ export async function generateMetadata(
 
 
 export default async function EmomomoLayout(
-	{ children, params }: LayoutProps<"/[locale]/tools/emomomo">
+	{ children }: LayoutProps<"/[locale]/tools/emomomo">
 ) {
-	const { locale } = await params;
-	handleLayoutLocale(locale);
-
 	const t = await getTranslations("tools.emomomo");
 
 	return (

@@ -14,7 +14,7 @@ import type { ErrorInfo } from "next/error";
 
 
 
-export default function ArticlesError({ unstable_retry }: ErrorInfo) {
+export default function ArticlesError({ retry }: ErrorInfo) {
 	const router = useRouter();
 	const t = useTranslations("articles.error");
 
@@ -33,7 +33,7 @@ export default function ArticlesError({ unstable_retry }: ErrorInfo) {
 					<ArrowUUpLeftIcon data-icon="inline-start" />
 					{t("back")}
 				</Button>
-				<Button size="lg" onClick={unstable_retry}>
+				<Button size="lg" onClick={retry}>
 					{t("retry")}
 					<ArrowClockwiseIcon data-icon="inline-end" />
 				</Button>

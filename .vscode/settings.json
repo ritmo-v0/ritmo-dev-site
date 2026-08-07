@@ -1,6 +1,10 @@
 {
-	"files.associations": { "*.css": "tailwindcss" },
-	"files.exclude": { "**/node_modules/*": true },
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"files.exclude": {
+		"**/node_modules/*": true
+	},
 	"tailwindCSS.classFunctions": ["cn", "cva"],
 	"tailwindCSS.experimental.configFile": "src/app/globals.css",
 	"i18n-ally.indent": 4,

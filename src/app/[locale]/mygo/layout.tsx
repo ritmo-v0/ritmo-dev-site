@@ -1,4 +1,3 @@
-import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generateSocialMetadata } from "@/lib/seo/utils";
 
 // Types & Interfaces
@@ -27,11 +26,8 @@ export const metadata: Metadata = {
 
 
 
-export default async function MyGOLayout(
-	{ children, params }: LayoutProps<"/[locale]/mygo">
+export default function MyGOLayout(
+	{ children }: LayoutProps<"/[locale]/mygo">
 ) {
-	const { locale } = await params;
-	handleLayoutLocale(locale);
-
 	return children;
 }

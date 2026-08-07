@@ -1,21 +1,15 @@
 import { getTranslations } from "next-intl/server";
-import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 
 // Types & Interfaces
 import type { Metadata } from "next";
-import type { Locale } from "next-intl";
 
 // Constants & Variables
 const url = "/tools/tempus";
 
 // Metadata
-export async function generateMetadata(
-	{ params }: LayoutProps<"/[locale]/tools/tempus">
-): Promise<Metadata> {
-	const locale = (await params).locale as Locale;
-	const t = await getTranslations({ locale, namespace: "tools.tempus" });
-
+export async function generateMetadata(): Promise<Metadata> {
+	const t = await getTranslations("tools.tempus");
 	const title = t("title");
 	const description = t("description");
 
@@ -34,11 +28,8 @@ export async function generateMetadata(
 
 
 export default async function TempusLayout(
-	{ children, params }: LayoutProps<"/[locale]/tools/tempus">
+	{ children }: LayoutProps<"/[locale]/tools/tempus">
 ) {
-	const { locale } = await params;
-	handleLayoutLocale(locale);
-
 	const t = await getTranslations("tools.tempus");
 
 	return (

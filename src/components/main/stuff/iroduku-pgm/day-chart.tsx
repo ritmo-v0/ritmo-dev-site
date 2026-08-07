@@ -142,7 +142,7 @@ export function DayChart({ date, types }: DayChartProps) {
 					<ChartTooltipContent
 						indicator="line"
 						labelFormatter={(value) => format.dateTime(
-							new Date(value),
+							new Date(value?.toString() || ""),
 							"time",
 							{ timeZone: "Asia/Tokyo" }
 						)}

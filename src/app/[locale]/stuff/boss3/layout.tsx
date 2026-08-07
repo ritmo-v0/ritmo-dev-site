@@ -1,4 +1,3 @@
-import { handleLayoutLocale } from "@/lib/i18n/utils";
 import { generateSocialMetadata } from "@/lib/seo/utils";
 
 // Types & Interfaces
@@ -31,11 +30,8 @@ export const metadata: Metadata = {
 
 
 
-export default async function Boss3Layout(
-	{ children, params }: LayoutProps<"/[locale]/stuff/boss3">
+export default function Boss3Layout(
+	{ children }: LayoutProps<"/[locale]/stuff/boss3">
 ) {
-	const { locale } = await params;
-	handleLayoutLocale(locale);
-
 	return children;
 }
