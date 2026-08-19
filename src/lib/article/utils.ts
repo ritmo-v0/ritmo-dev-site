@@ -1,4 +1,5 @@
 import wretch from "wretch";
+import { getArticleLegacy } from "./legacy";
 import { ensureError } from "@/lib/fetch/response";
 
 // Types & Interfaces
@@ -40,23 +41,26 @@ export async function getArticles(): Promise<NoteOverview[]> {
 
 export async function getArticle(articleId: string): Promise<Article> {
 	try {
-		const [note, image] = await Promise.all([
-			getNote(articleId),
-			getNoteImage(articleId),
-		]);
+		// const [note, image] = await Promise.all([
+		// 	getNote(articleId),
+		// 	getNoteImage(articleId),
+		// ]);
 
-		return {
-			content: note.content,
-			metadata: {
-				title: note.title,
-				tags: note.tags,
-				description: note.description,
-				createdAt: new Date(note.createdAt).toISOString(),
-				publishedAt: new Date(note.publishedAt).toISOString(),
-				updatedAt: new Date(note.lastChangedAt).toISOString(),
-				image,
-			},
-		};
+		// return {
+		// 	content: note.content,
+		// 	metadata: {
+		// 		title: note.title,
+		// 		tags: note.tags,
+		// 		description: note.description,
+		// 		createdAt: new Date(note.createdAt).toISOString(),
+		// 		publishedAt: new Date(note.publishedAt).toISOString(),
+		// 		updatedAt: new Date(note.lastChangedAt).toISOString(),
+		// 		image,
+		// 	},
+		// };
+
+		const article = await getArticleLegacy(articleId);
+		return article;
 	} catch (err) {
 		const error = ensureError(err);
 		console.error(`ERR::ARTICLE: ${error.message}`);
