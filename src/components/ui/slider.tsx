@@ -13,11 +13,8 @@ export function Slider<TValue extends number | readonly number[] = number>({
 	max = 100,
 	...props
 }: SliderPrimitive.Root.Props<TValue>) {
-	const _values = Array.isArray(value)
-		? value
-		: Array.isArray(defaultValue)
-			? defaultValue
-			: [min, max];
+	const _current = value ?? defaultValue ?? min;
+	const _values = Array.isArray(_current) ? _current : [_current];
 
 	return (
 		<SliderPrimitive.Root<TValue>
@@ -43,7 +40,7 @@ export function Slider<TValue extends number | readonly number[] = number>({
 					className={cn(
 						"grow relative bg-input/90 rounded-full overflow-hidden select-none",
 						"data-[orientation=horizontal]:w-full data-[orientation=horizontal]:h-2",
-						"data-[orientation=vertical]:w-3 data-[orientation=vertical]:h-full",
+						"data-[orientation=vertical]:w-2 data-[orientation=vertical]:h-full",
 					)}
 				>
 					<SliderPrimitive.Indicator
