@@ -1,6 +1,5 @@
 import { visit } from "unist-util-visit";
 import { toString as mdastToString } from "mdast-util-to-string";
-import { match } from "ts-pattern";
 
 // Types & Interfaces
 import type { Root } from "mdast";
@@ -9,48 +8,46 @@ import type { Root } from "mdast";
 
 export function remarkTextDirective() {
 	return (tree: Root) => {
-		visit(tree, "textDirective", (node) => {
-			node.data ??= {};
-			const data = node.data;
+		visit(tree, "textDirective", (node, index, parent) => {
+			if (!parent || index === undefined) return;
 
-			match(node.name)
-				.with("abbr", "b", "i", "br", (hName) => {
-					Object.assign(data, {
-						hName,
-						hProperties: node.attributes,
-					});
-				})
-				.otherwise((nodeName) => {
-					const children = mdastToString(node);
+			const text = mdastToString(node.children);
+			parent.children[index] = {
+				type: "text",
+				value: `:${node.name}${text ? `[${text}]` : ""}`,
+			};
 
-					Object.assign(node, {
-						type: "text",
-						value: `:${nodeName}${children ? `[${children}]` : ""}`,
-					});
-				});
+			return index + 1;
 		});
 	};
 }
 
 export function remarkLeafDirective() {
 	return (tree: Root) => {
-		visit(tree, "leafDirective", (node) => {
-			if (node.name !== "youtube") return;
+		visit(tree, "leafDirective", (node, index, parent) => {
+			const id = node.attributes?.id;
+			const title = mdastToString(node.children) || undefined;
+
+			if (node.name !== "youtube" || !id || !(/^[\w-]{11}$/).test(id)) {
+				if (!parent || index === undefined) return;
+
+				parent.children[index] = {
+					type: "paragraph",
+					children: [{
+						type: "text",
+						value: `::${node.name}${title ? `[${title}]` : ""}`,
+					}],
+				};
+
+				return index + 1;
+			}
 
 			node.data ??= {};
-			const data = node.data;
-			const id = node.attributes?.id;
-			const title = mdastToString(node) || undefined;
-
-			if (!id) return;
-
-			Object.assign(data, {
-				hName: "iframe",
-				hProperties: {
-					src: `https://www.youtube-nocookie.com/embed/${id}`,
-					title,
-				},
-			});
+			node.data.hName = "iframe";
+			node.data.hProperties = {
+				src: `https://www.youtube-nocookie.com/embed/${id}`,
+				title,
+			};
 		});
 	};
 }
@@ -59,15 +56,9 @@ export function remarkContainerDirective() {
 	return (tree: Root) => {
 		visit(tree, "containerDirective", (node) => {
 			node.data ??= {};
-			const data = node.data;
 
-			Object.assign(data, {
-				hName: "aside",
-				hProperties: {
-					...(node.attributes || {}),
-					variant: node.name,
-				},
-			});
+			node.data.hName = "aside";
+			node.data.hProperties = { variant: node.name };
 		});
 	};
 }

@@ -6,6 +6,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkBreaks from "remark-breaks";
+import remarkCjk from "remark-cjk-friendly";
+import remarkCjkGfmStrikethrough from "remark-cjk-friendly-gfm-strikethrough";
 import remarkDirective from "remark-directive";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
@@ -36,6 +38,25 @@ import {
 
 // Types & Interfaces
 import type { Route } from "next";
+import type { PluggableList } from "unified";
+
+// Constants & Variables
+const REMARK_PLUGINS: PluggableList = [
+	remarkBreaks,
+	[remarkGfm, { singleTilde: false }],
+	[remarkMath, { singleDollarTextMath: false }],
+	remarkCjk,
+	remarkCjkGfmStrikethrough,
+	remarkDirective,
+	remarkTextDirective,
+	remarkLeafDirective,
+	remarkContainerDirective,
+];
+const REHYPE_PLUGINS: PluggableList = [
+	rehypeRaw,
+	rehypeSlug,
+	rehypeKatex,
+];
 
 
 
@@ -48,22 +69,8 @@ export function Markdown({
 }: React.ComponentProps<typeof ReactMarkdown> & { renderH1?: boolean }) {
 	return (
 		<ReactMarkdown
-			remarkPlugins={[
-				[remarkMath, { singleDollarTextMath: false }],
-				remarkBreaks,
-				remarkDirective,
-				remarkTextDirective,
-				remarkLeafDirective,
-				remarkContainerDirective,
-				[remarkGfm, { singleTilde: false }],
-				...(remarkPlugins ?? []),
-			]}
-			rehypePlugins={[
-				rehypeRaw,
-				rehypeSlug,
-				rehypeKatex,
-				...(rehypePlugins ?? []),
-			]}
+			remarkPlugins={[...REMARK_PLUGINS, ...(remarkPlugins ?? [])]}
+			rehypePlugins={[...REHYPE_PLUGINS, ...(rehypePlugins ?? [])]}
 			components={{
 				...components,
 				h1: (props) => renderH1 ? <H1 {...props} /> : null,
