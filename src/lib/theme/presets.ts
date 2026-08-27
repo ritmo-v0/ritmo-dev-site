@@ -18,7 +18,7 @@ export const PRESETS = {
 			"card-foreground": "oklch(0.141 0.005 285.823)",
 			popover: "oklch(1 0 0)",
 			"popover-foreground": "oklch(0.141 0.005 285.823)",
-			primary: "oklch(0.58 0.21 258.04)",
+			primary: "oklch(0.55 0.18 235)",  /* Ocean Breeze - 3 */
 			"primary-foreground": "oklch(0.985 0 0)",
 			secondary: "oklch(0.967 0.001 286.375)",
 			"secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -64,7 +64,7 @@ export const PRESETS = {
 			"card-foreground": "oklch(0.985 0 0)",
 			popover: "oklch(0.21 0.006 285.885)",
 			"popover-foreground": "oklch(0.985 0 0)",
-			primary: "oklch(0.72 0.15 251.00)",
+			primary: "oklch(0.75 0.12 245)",  /* Ocean Breeze - 7 */
 			"primary-foreground": "oklch(0.21 0.006 285.885)",
 			secondary: "oklch(0.274 0.006 286.033)",
 			"secondary-foreground": "oklch(0.985 0 0)",
