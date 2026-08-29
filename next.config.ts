@@ -54,6 +54,10 @@ const config: NextConfig = {
 			new URL("https://img.ritmo.dev/**"),
 			new URL("https://hackmd.io/_uploads/**"),
 		],
+		deviceSizes: [640, 828, 1080, 1200],
+		formats: ["image/webp"],
+		minimumCacheTTL: 2678400,  // 31d
+		qualities: [75],
 	},
 	typedRoutes: true,
 };
