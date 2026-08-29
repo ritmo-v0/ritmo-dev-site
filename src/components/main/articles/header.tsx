@@ -71,6 +71,7 @@ export function ArticleHeader({ metadata }: { metadata: ArticleMetadata }) {
 				width={720}
 				height={405}
 				loading="eager"
+				unoptimized
 			/>
 
 			{/* Metadata */}

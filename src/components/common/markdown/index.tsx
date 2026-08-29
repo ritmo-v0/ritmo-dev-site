@@ -93,6 +93,7 @@ const BASE_COMPONENTS: Components = {
 					loading="lazy"
 					fill
 					{...props}
+					unoptimized
 				/>
 			</span>
 		)
