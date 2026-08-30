@@ -24,8 +24,9 @@ export function TapArea({ className }: React.ComponentProps<typeof Card>) {
 	return (
 		<Card
 			className={cn(
-				"flex items-center justify-center gap-4 w-full max-h-96 p-8 bg-secondary hover:bg-secondary/80 focus-visible:bg-secondary/80",
-				"text-secondary-foreground border-2 border-dashed aspect-square @3xl:aspect-square cursor-pointer select-none transition-all",
+				"flex items-center justify-center gap-4 w-full max-h-96 p-8 bg-secondary text-secondary-foreground",
+				"border-2 border-dashed outline-transparent outline-offset-2 ring-0 aspect-square cursor-pointer select-none transition-all",
+				"hover:bg-secondary/60 focus-visible:bg-secondary/60 focus-visible:outline-2 focus-visible:outline-primary",
 				className,
 			)}
 			tabIndex={0}

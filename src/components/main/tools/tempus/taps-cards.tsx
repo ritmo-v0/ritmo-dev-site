@@ -113,7 +113,7 @@ function TapsCard({
 					<Popover>
 						<PopoverTrigger openOnHover render={
 							<Button variant="nothing" size="icon-xs">
-								<Info className="text-primary" />
+								<Info className="text-muted-foreground" />
 							</Button>
 						}>
 						</PopoverTrigger>
