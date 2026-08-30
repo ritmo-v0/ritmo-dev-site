@@ -79,19 +79,16 @@ function SRMessage({
 			{...props}
 		>
 			{isOption ? (
-				<div className="flex flex-wrap items-center gap-4 py-10 overflow-hidden">
+				<div className="flex flex-wrap items-center gap-4 py-10">
 					{matches.map(match => (
 						<Button
 							key={match}
 							variant="nothing"
 							className={cn(
-								"h-auto px-4 py-2 inset-shadow-[0_-2px_2px_#7893C8]",
+								"shrink h-auto px-4 py-2 inset-shadow-[0_-2px_2px_#7893C8] whitespace-normal",
 								"bg-linear-to-b from-[#F9FAFE] to-[#D5E5FC]",
 								"font-bold xs:text-base text-[#446EBA]",
-								"will-change-transform active:scale-[0.975]",
-								match.includes("\n")
-									? "shrink inline-block rounded-4xl whitespace-normal"
-									: "xs:min-w-60",
+								match.includes("\n") ? "inline-block rounded-4xl" : "xs:min-w-60",
 							)}
 						>
 							<Markdown>{match}</Markdown>
@@ -102,7 +99,7 @@ function SRMessage({
 				<MessageContent
 					variant="bubble"
 					className={cn(
-						"@2xl/message-group:max-w-3/4 [&_rt]:mt-0.5",
+						"@2xl/message-group:max-w-3/4 [&_p]:text-wrap [&_rt]:mt-0.5",
 						message.role === "player" && "bg-primary text-primary-foreground",
 					)}
 				>

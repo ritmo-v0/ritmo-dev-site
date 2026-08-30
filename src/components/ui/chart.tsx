@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { createContext, useContext, useId, useMemo } from "react";
 import { cn } from "@/lib/utils";
 
@@ -69,7 +69,7 @@ function ChartContainer({
 				className={cn(
 					"flex justify-center text-xs aspect-video",
 					"[&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted",
-					"[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50",
+					"[&_.recharts-cartesian-axis-tick-value]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50",
 					"[&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border",
 					"[&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-dot[stroke='#fff']]:stroke-transparent",
 					"[&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden [&_.recharts-layer]:outline-hidden",

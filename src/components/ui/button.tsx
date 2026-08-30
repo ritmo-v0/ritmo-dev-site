@@ -8,19 +8,20 @@ import { Button as ButtonPrimitive } from "@base-ui/react/button";
 
 const buttonVariants = cva(
 	[
-		"group/button shrink-0 inline-flex items-center justify-center bg-clip-padding font-medium text-sm border border-transparent outline-none rounded-full transition select-none whitespace-nowrap",
-		"focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30",
-		"aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
+		"group/button shrink-0 inline-flex items-center justify-center bg-clip-padding font-medium text-sm outline-transparent outline-offset-2 rounded-full transition select-none whitespace-nowrap",
+		"active:not-aria-[haspopup]:translate-y-px",
+		"focus-visible:outline-2 focus-visible:outline-primary",
+		"aria-invalid:outline-2 aria-invalid:outline-destructive",
 		"disabled:opacity-50 disabled:pointer-events-none",
 		"[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
 	],
 	{
 		variants: {
 			variant: {
-				default: "bg-primary text-primary-foreground hover:bg-primary/80 inset-shadow-xs inset-shadow-white/40 will-change-transform active:scale-[0.975]",
-				secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground will-change-transform active:scale-[0.975]",
-				destructive: "bg-destructive/10 dark:bg-destructive/20 text-destructive hover:bg-destructive/20 dark:hover:bg-destructive/30 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 will-change-transform active:scale-[0.975]",
-				outline: "bg-background dark:bg-transparent border-border dark:border-input dark:backdrop-blur-md hover:bg-muted dark:hover:bg-input/30 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground will-change-transform active:scale-[0.975]",
+				default: "bg-primary text-primary-foreground hover:bg-primary/80",
+				secondary: "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+				destructive: "bg-destructive/10 dark:bg-destructive/20 text-destructive hover:bg-destructive/20 dark:hover:bg-destructive/30 focus-visible:outline-2 focus-visible:outline-destructive",
+				outline: "bg-background dark:bg-transparent border-border dark:border-input dark:backdrop-blur-md hover:bg-muted dark:hover:bg-input/30 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
 				ghost: "hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 data-active:bg-muted data-active:text-accent-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
 				link: "text-primary underline-offset-4 hover:underline",
 				nothing: "",
