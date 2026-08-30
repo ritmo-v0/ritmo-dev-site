@@ -60,7 +60,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 						value={bpm}
 						locales="en-US"
 						format={{ useGrouping: false }}
-						aria-hidden="true"
+						aria-hidden
 						animated
 						willChange
 					/>

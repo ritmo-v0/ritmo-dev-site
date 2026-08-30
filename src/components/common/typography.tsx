@@ -379,10 +379,10 @@ function Aside({
 	className,
 	children,
 	variant = "info",
-	icon,
-	...props
+	icon
 }: React.ComponentProps<"aside"> & { icon?: Icon } &
 	VariantProps<typeof asideVariants>) {
+	const isSpoiler = variant === "spoiler";
 	const AsideIcon: Icon = icon ?? match(variant)
 		.with("info", () => InfoIcon)
 		.with("success", () => CheckCircleIcon)
@@ -392,9 +392,9 @@ function Aside({
 		.otherwise(() => InfoIcon);
 
 	return (
-		<aside
+		<div
+			role="note"
 			className={cn(asideVariants({ variant, className }))}
-			{...props}
 		>
 			<div
 				data-slot="aside-handle"
@@ -404,18 +404,21 @@ function Aside({
 				data-slot="aside-icon"
 				weight="fill"
 				className="my-1"
+				aria-hidden
 			/>
 			<div
 				data-slot="aside-content"
 				className={cn(
-					"min-w-0 w-full",
-					variant === "spoiler" && "transition-[filter] ease-in-out duration-300",
-					variant === "spoiler" && "will-change-[filter] blur-sm hover:blur-none",
+					"min-w-0 w-full outline-transparent rounded-lg",
+					variant === "spoiler" && "transition-[outline-color,filter] ease-in-out blur-sm will-change-[filter]",
+					variant === "spoiler" && "hover:blur-none focus:blur-none focus-within:blur-none",
+					variant === "spoiler" && "focus-visible:outline-2 focus-visible:outline-primary"
 				)}
+				tabIndex={isSpoiler ? 0 : undefined}
 			>
 				<Twemoji>{children}</Twemoji>
 			</div>
-		</aside>
+		</div>
 	);
 };
 

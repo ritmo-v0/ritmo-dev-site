@@ -51,7 +51,7 @@ function SelectTrigger({
 			<SelectPrimitive.Icon>
 				<CaretDownIcon
 					className="text-muted-foreground"
-					aria-hidden="true"
+					aria-hidden
 				/>
 			</SelectPrimitive.Icon>
 		</SelectPrimitive.Trigger>
