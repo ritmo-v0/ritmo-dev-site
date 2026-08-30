@@ -92,13 +92,16 @@ export function Markdown({
 				img: ({ src, alt, width, height, ...props }) => (
 					typeof src !== "string" ? null : (
 						<span className={cn(
-							"relative",
-							"[&+br]:hidden [&+br+span]:block [&+br+span]:text-center [&+br+span]:text-sm [&+br+span]:text-muted-foreground",
+							"relative block [&+br]:hidden [&+br+span]:block [&+br+span]:-mt-4 [&+br+span]:mb-8",
+							"[&+br+span]:text-center [&+br+span]:text-sm [&+br+span]:text-muted-foreground [&+br+span]:leading-normal",
 						)}>
 							<Image
 								src={src}
 								alt={alt || ""}
-								className="relative! mx-auto my-3 max-w-3xl rounded-2xl shadow-lg object-cover not-only:first:mt-0"
+								className={cn(
+									"relative! mx-auto my-8 max-w-3xl rounded-2xl shadow-lg object-cover not-only:first:mt-0",
+									"ring-1 ring-foreground/5 dark:ring-foreground/10",
+								)}
 								sizes="(max-width: 64rem) 100vw, 768px"
 								loading="lazy"
 								fill
@@ -107,8 +110,8 @@ export function Markdown({
 						</span>
 					)
 				),
-				iframe: IFrame,
-				table: (props) => <Table className="mt-2" {...props} />,
+				iframe: (props) => <IFrame className="my-4 first:mt-0 last:mb-0" {...props} />,
+				table: (props) => <Table className="my-4 first:mt-0 last:mb-0" {...props} />,
 				thead: TableHeader,
 				tbody: TableBody,
 				tr: TableRow,
@@ -141,7 +144,7 @@ function MarkdownPre({
 
 	return (
 		<Pre
-			className={cn("my-2 first:mt-0 last:mb-0", className)}
+			className={cn("my-4 first:mt-0 last:mb-0", className)}
 			code={code}
 			language={language}
 			{...props}

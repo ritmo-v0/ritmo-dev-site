@@ -157,6 +157,7 @@
 	html {
 		@apply font-sans antialiased;
 		@apply motion-safe:scroll-smooth scroll-pt-24 overscroll-y-none;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	body {

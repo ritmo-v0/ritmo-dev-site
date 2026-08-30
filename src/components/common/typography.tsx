@@ -14,7 +14,6 @@ import { Link as NextLink } from "@/lib/i18n/navigation";
 
 // Icons & Images
 import {
-	ArrowUpRightIcon,
 	CheckCircleIcon,
 	DetectiveIcon,
 	InfoIcon,
@@ -91,7 +90,7 @@ function H1({
 			{
 				className: cn(
 					"font-heading font-bold text-3xl/tight tracking-tight scroll-m-20",
-					"mt-12 first:mt-0 [&>strong]:font-bold [&+p]:mt-4!",
+					"mt-16 first:mt-0 [&>strong]:font-bold [&+p]:mt-4!",
 					className,
 				),
 				children: <Twemoji>{children}</Twemoji>,
@@ -114,7 +113,7 @@ function H2({
 			{
 				className: cn(
 					"font-heading font-semibold text-2xl/tight tracking-tight scroll-m-20",
-					"mt-8 first:mt-0 [&>strong]:font-semibold [&+p]:mt-4!",
+					"mt-12 first:mt-0 [&>strong]:font-semibold [&+p]:mt-4!",
 					className,
 				),
 				children: <Twemoji>{children}</Twemoji>,
@@ -137,7 +136,7 @@ function H3({
 			{
 				className: cn(
 					"font-heading font-semibold text-xl/tight tracking-tight scroll-m-20",
-					"mt-6 first:mt-0 [&>strong]:font-semibold [&+p]:mt-4!",
+					"mt-8 first:mt-0 [&>strong]:font-semibold [&+p]:mt-4!",
 					className,
 				),
 				children: <Twemoji>{children}</Twemoji>,
@@ -224,7 +223,7 @@ function P({
 	return (
 		<p
 			className={cn(
-				"leading-relaxed wrap-break-word not-first:mt-8 [&+p]:mt-4!",
+				"text-pretty leading-relaxed wrap-break-word not-first:mt-8 [&+p]:mt-4!",
 				className,
 			)}
 			{...props}
@@ -256,7 +255,7 @@ function Muted({
 function HR({ className, ...props }: React.ComponentProps<"hr">) {
 	return (
 		<hr
-			className={cn("my-8 border-t has-[+h1]:mt-12", className)}
+			className={cn("my-8 border-t has-[+h1]:mt-16 has-[+h2]:mt-12", className)}
 			{...props}
 		/>
 	);
@@ -266,7 +265,7 @@ function UL({ className, children, ...props }: React.ComponentProps<"ul">) {
 	return (
 		<ul
 			className={cn(
-				"list-disc list-outside not-first:mt-2 pl-6 marker:text-primary",
+				"my-4 first:mt-0 last:mb-0 pl-6 list-disc list-outside marker:text-primary",
 				className,
 			)}
 			{...props}
@@ -280,7 +279,7 @@ function OL({ className, children, ...props }: React.ComponentProps<"ol">) {
 	return (
 		<ol
 			className={cn(
-				"list-decimal list-outside not-first:mt-2 pl-6 marker:text-primary",
+				"my-4 first:mt-0 last:mb-0 pl-6 list-decimal list-outside marker:text-primary",
 				className,
 			)}
 			{...props}
@@ -298,7 +297,8 @@ function LI({
 	return (
 		<li
 			className={cn(
-				"my-1.5 pl-1 leading-relaxed [&_ul]:mt-0! [&_ol]:mt-0!",
+				"my-1 first:mt-0 last:mb-0 pl-1 leading-relaxed",
+				"[&_ul]:mt-1! [&_ol]:mt-1! [&_img[srcset]]:my-4!",
 				className,
 			)}
 			{...props}
@@ -316,7 +316,8 @@ function Code({
 	return (
 		<code
 			className={cn(
-				"px-1.5 py-0.75 bg-muted font-mono text-[0.875em] text-foreground ring-1 ring-foreground/5 dark:ring-foreground/10 rounded-md",
+				"px-1 py-0.5 bg-muted font-mono text-[0.875em] text-foreground rounded-md",
+				"ring-1 ring-foreground/5 dark:ring-foreground/10",
 				className,
 			)}
 			{...props}
@@ -334,18 +335,14 @@ function Blockquote({
 	return (
 		<blockquote
 			className={cn(
-				"flex gap-6 my-12 first:mt-0 last:mb-0 font-serif italic",
+				"flex gap-6 my-12 first:mt-0 last:mb-0 font-serif text-center italic",
 				className,
 			)}
 			{...props}
 		>
 			<div
-				data-slot="blockquote-handle"
-				className="shrink-0 my-0.75 w-0.75 bg-primary rounded-full"
-			/>
-			<div
 				data-slot="blockquote-content"
-				className="min-w-0 w-full"
+				className="flex-1 min-w-0"
 			>
 				<Twemoji>{children}</Twemoji>
 			</div>
@@ -355,9 +352,8 @@ function Blockquote({
 
 const asideVariants = cva(
 	[
-		"flex gap-3 my-4 first:mt-0 last:mb-0 p-3 pl-2 bg-card text-card-foreground border rounded-2xl shadow-lg",
+		"flex gap-3 my-4 first:mt-0 last:mb-0 p-3 pl-1.5 bg-card text-sm text-card-foreground ring-1 ring-foreground/5 dark:ring-foreground/10 rounded-2xl shadow-md",
 		"[&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-5 [&>svg]:pointer-events-none",
-		"[--aside-color:var(--card-foreground)] *:data-[slot=aside-handle]:bg-(--aside-color) [&>svg]:text-(--aside-color)",
 	],
 	{
 		variants: {
@@ -397,26 +393,29 @@ function Aside({
 			className={cn(asideVariants({ variant, className }))}
 		>
 			<div
+				role="none"
 				data-slot="aside-handle"
-				className="shrink-0 my-1.5 w-0.5 rounded-full"
+				className="shrink-0 my-0.75 w-0.5 bg-(--aside-color)/50 rounded-full"
 			/>
 			<AsideIcon
 				data-slot="aside-icon"
 				weight="fill"
-				className="my-1"
+				className="mt-0.5 -mr-0.5 fill-(--aside-color)"
 				aria-hidden
 			/>
 			<div
 				data-slot="aside-content"
 				className={cn(
-					"min-w-0 w-full outline-transparent rounded-lg",
+					"flex-1 flex flex-col gap-2 min-w-0 outline-transparent rounded-lg",
 					variant === "spoiler" && "transition-[outline-color,filter] ease-in-out blur-sm will-change-[filter]",
 					variant === "spoiler" && "hover:blur-none focus:blur-none focus-within:blur-none",
 					variant === "spoiler" && "focus-visible:outline-2 focus-visible:outline-primary"
 				)}
 				tabIndex={isSpoiler ? 0 : undefined}
 			>
-				<Twemoji>{children}</Twemoji>
+				<div className="text-muted-foreground">
+					<Twemoji>{children}</Twemoji>
+				</div>
 			</div>
 		</div>
 	);
@@ -424,14 +423,14 @@ function Aside({
 
 const linkVariants = cva(
 	[
-		"border border-transparent outline-none rounded-full transition-all",
-		"focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30",
+		"outline-transparent outline-offset-2 rounded-full transition-all",
+		"focus-visible:outline-2 focus-visible:outline-primary",
 		"[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
 	],
 	{
 		variants: {
 			variant: {
-				default: "font-medium text-primary focus-visible:border-transparent ring-offset-2 ring-offset-background hover:text-primary/60",
+				default: "text-foreground underline underline-offset-2 [text-underline-position:from-font] decoration-foreground/40 hover:decoration-foreground",
 				hover: "shrink-0 inline-flex items-center justify-center gap-1.5 w-max font-medium text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground",
 				ghost: "rounded-4xl hover:bg-muted dark:hover:bg-muted/50 hover:text-foreground",
 				nothing: "rounded-4xl",
@@ -453,6 +452,8 @@ function Link({
 	const s = href.toString();
 	const isExternal = !(s.startsWith("/") || s.startsWith("#"));
 
+	const label = s.startsWith("#user-content-fn-") ? `[${children}]` : children;
+
 	return (
 		<NextLink
 			href={href}
@@ -461,13 +462,7 @@ function Link({
 			rel={isExternal ? "noopener noreferrer" : undefined}
 			{...props}
 		>
-			{children}
-			{variant === "default" && isExternal && (
-				<ArrowUpRightIcon
-					className="inline mx-px size-[1.1em] align-[-0.2em]"
-					aria-hidden="true"
-				/>
-			)}
+			{label}
 		</NextLink>
 	);
 }
