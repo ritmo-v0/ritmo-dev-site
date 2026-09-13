@@ -20,10 +20,12 @@
 }
 
 @theme inline {
-	--font-heading: var(--font-plus-jakarta-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
-	--font-sans: var(--font-rethink-sans), var(--font-noto-sans-tc), var(--font-noto-sans-jp), sans-serif;
-	--font-mono: var(--font-jetbrains-mono), var(--font-noto-sans-tc), var(--font-noto-sans-jp), monospace;
-	--font-mono-7sref: var(--font-doto), var(--font-noto-sans-tc), var(--font-noto-sans-jp), monospace;
+	--lang-font-stack: var(--font-noto-sans-tc), var(--font-noto-sans-jp);
+	--font-heading: var(--font-plus-jakarta-sans), var(--lang-font-stack), sans-serif;
+	--font-sans: var(--font-rethink-sans), var(--lang-font-stack), sans-serif;
+	--font-mono: var(--font-jetbrains-mono), var(--lang-font-stack), monospace;
+	--font-mono-7sref: var(--font-doto), var(--lang-font-stack), monospace;
+
 	--font-serif: var(--font-noto-serif-tc), serif;
 	--font-serif-7sref: var(--font-shippori-mincho), serif;
 
@@ -148,6 +150,10 @@
 
 /* ----------------------------- HTML ----------------------------- */
 @layer base {
+	:where([lang]) { @apply font-sans; }
+	:lang(zh) { --lang-font-stack: var(--font-noto-sans-tc), var(--font-noto-sans-jp); }
+	:lang(ja) { --lang-font-stack: var(--font-noto-sans-jp), var(--font-noto-sans-tc); }
+
 	* {
 		@apply border-border outline-ring/50;
 		@apply scrollbar-thumb-muted-foreground scrollbar-track-transparent;

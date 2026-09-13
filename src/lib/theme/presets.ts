@@ -1,14 +1,6 @@
 // Types & Interfaces
 import type { ThemeStyles } from "./types";
 
-// Constants & Variables
-export const DEFAULT_FONT_SANS =
-	'"Rethink Sans", "Rethink Sans Fallback", "Noto Sans TC", "Noto Sans TC Fallback", "Noto Sans JP", "Noto Sans JP Fallback", sans-serif';
-export const DEFAULT_FONT_SERIF =
-	'"Noto Serif TC", "Noto Serif TC Fallback", serif';
-export const DEFAULT_FONT_MONO =
-	'"JetBrains Mono", "JetBrains Mono Fallback", "Noto Sans TC", "Noto Sans TC Fallback", "Noto Sans JP", "Noto Sans JP Fallback", monospace';
-
 export const PRESETS = {
 	default: {
 		light: {
@@ -45,9 +37,6 @@ export const PRESETS = {
 			"sidebar-ring": "oklch(0.705 0.015 286.067)",
 
 			radius: "0.625rem",
-			"font-sans": DEFAULT_FONT_SANS,
-			"font-serif": DEFAULT_FONT_SERIF,
-			"font-mono": DEFAULT_FONT_MONO,
 			"shadow-color": "hsl(0 0% 0%)",
 			"shadow-opacity": "0.1",
 			"shadow-blur": "3px",
