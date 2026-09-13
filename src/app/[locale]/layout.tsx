@@ -21,41 +21,13 @@ import { JsonLd } from "@/components/json-ld";
 
 // Fonts
 import {
+	Plus_Jakarta_Sans,
+	Rethink_Sans,
 	JetBrains_Mono,
 	Noto_Sans_JP,
 	Noto_Sans_TC,
 	Noto_Serif_TC,
-	Plus_Jakarta_Sans,
-	Rethink_Sans,
 } from "next/font/google";
-const JetBrainsMono = JetBrains_Mono({
-	weight: "variable",
-	style: ["normal"],
-	display: "swap",
-	subsets: ["latin"],
-	variable: "--font-jetbrains-mono",
-});
-const NotoSansJP = Noto_Sans_JP({
-	weight: "variable",
-	style: ["normal"],
-	display: "swap",
-	subsets: ["latin"],
-	variable: "--font-noto-sans-jp",
-});
-const NotoSansTC = Noto_Sans_TC({
-	weight: "variable",
-	style: ["normal"],
-	display: "swap",
-	subsets: ["latin"],
-	variable: "--font-noto-sans-tc",
-});
-const NotoSerifTC = Noto_Serif_TC({
-	weight: "variable",
-	style: ["normal"],
-	display: "swap",
-	subsets: ["latin"],
-	variable: "--font-noto-serif-tc",
-});
 const PlusJakartaSans = Plus_Jakarta_Sans({
 	weight: "variable",
 	style: ["normal"],
@@ -69,6 +41,37 @@ const RethinkSans = Rethink_Sans({
 	display: "swap",
 	subsets: ["latin"],
 	variable: "--font-rethink-sans",
+});
+const JetBrainsMono = JetBrains_Mono({
+	weight: "variable",
+	style: ["normal"],
+	display: "swap",
+	subsets: ["latin"],
+	variable: "--font-jetbrains-mono",
+});
+const NotoSansJP = Noto_Sans_JP({
+	weight: "variable",
+	style: ["normal"],
+	display: "swap",
+	subsets: ["latin"],
+	variable: "--font-noto-sans-jp",
+	preload: false,
+});
+const NotoSansTC = Noto_Sans_TC({
+	weight: "variable",
+	style: ["normal"],
+	display: "swap",
+	subsets: ["latin"],
+	variable: "--font-noto-sans-tc",
+	preload: false,
+});
+const NotoSerifTC = Noto_Serif_TC({
+	weight: "variable",
+	style: ["normal"],
+	display: "swap",
+	subsets: ["latin"],
+	variable: "--font-noto-serif-tc",
+	preload: false,
 });
 
 // Types & Interfaces
@@ -121,12 +124,12 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
 			lang={locale}
 			data-scroll-behavior="smooth"
 			className={cn(
+				PlusJakartaSans.variable,
+				RethinkSans.variable,
 				JetBrainsMono.variable,
 				NotoSansJP.variable,
 				NotoSansTC.variable,
 				NotoSerifTC.variable,
-				PlusJakartaSans.variable,
-				RethinkSans.variable,
 			)}
 			suppressHydrationWarning
 		>

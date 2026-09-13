@@ -35,7 +35,7 @@ export default async function ArticlesPage() {
 	};
 
 	return (
-		<main className="pt-8 lg:pt-24">
+		<main lang="zh-TW" className="pt-8 lg:pt-24">
 			<JsonLd data={ARTICLES_JSONLD} />
 			<h1 className="sr-only">{t("title")}</h1>
 			<ArticleList articles={articles} />
