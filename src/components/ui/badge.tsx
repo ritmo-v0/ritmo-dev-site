@@ -1,5 +1,5 @@
 import { type VariantProps, cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { useRender } from "@base-ui/react/use-render";

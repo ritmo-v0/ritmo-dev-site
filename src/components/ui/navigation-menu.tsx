@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu";

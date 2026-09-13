@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import { renderSections } from "@/lib/7sref/utils";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { Pre } from "@/components/common/shiki-highlighter";

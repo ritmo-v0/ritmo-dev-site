@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";

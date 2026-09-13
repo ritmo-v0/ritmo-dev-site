@@ -2,7 +2,7 @@
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { useCopy } from "@/hooks/use-copy";
 import { isBadgeVariant } from "@/lib/article/utils";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import Image from "next/image";

@@ -1,6 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { ButtonLink, Wrapper } from "@/components/common/typography";

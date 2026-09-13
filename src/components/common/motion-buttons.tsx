@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components
 import { motion } from "motion/react";

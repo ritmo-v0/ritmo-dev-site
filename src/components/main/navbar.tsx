@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { Link } from "@/lib/i18n/navigation";

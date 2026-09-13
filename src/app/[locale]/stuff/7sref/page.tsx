@@ -1,6 +1,6 @@
 "use client";
 import { useLocale, useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { motion } from "motion/react";

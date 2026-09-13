@@ -1,6 +1,6 @@
 "use client"
 import { createContext, useContext, useId, useMemo } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import * as RechartsPrimitive from "recharts";

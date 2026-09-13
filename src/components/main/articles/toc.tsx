@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Markdown
 import GithubSlugger from "github-slugger";

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { Select as SelectPrimitive } from "@base-ui/react/select";

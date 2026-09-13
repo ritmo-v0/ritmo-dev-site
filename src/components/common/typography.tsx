@@ -3,7 +3,7 @@ import { useRender } from "@base-ui/react/use-render";
 import { mergeProps } from "@base-ui/react/merge-props";
 import { match } from "ts-pattern";
 import { cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import NextImage from "next/image";

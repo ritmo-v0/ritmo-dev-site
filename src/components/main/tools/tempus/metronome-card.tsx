@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useMetronome } from "@/hooks/use-metronome";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import NumberFlow from "@number-flow/react";
