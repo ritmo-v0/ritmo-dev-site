@@ -3,7 +3,7 @@ import { memo, useCallback } from "react";
 import { useEmomomoStore } from "@/lib/store/emomomo";
 import { useCopy } from "@/hooks/use-copy";
 import { getEmojiCodePoints } from "@/lib/emomomo/utils";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { Twemoji } from "@/components/twemoji";

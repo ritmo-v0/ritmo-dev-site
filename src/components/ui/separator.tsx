@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { Separator as SeparatorPrimitive } from "@base-ui/react/separator";

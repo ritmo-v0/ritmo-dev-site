@@ -1,7 +1,7 @@
 "use client";
 import { useThemeStore } from "@/lib/store/theme";
 import { getThemeColor } from "@/lib/theme/utils";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import {

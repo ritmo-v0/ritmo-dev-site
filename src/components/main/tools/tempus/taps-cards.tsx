@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useTempusStore } from "@/lib/store/tempus";
 import { calculateBpm, calculateRecentBpm } from "@/lib/tempus/utils";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { BpmButton } from "./bpm-button";

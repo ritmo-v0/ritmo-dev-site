@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useMyGOStore } from "@/lib/store/mygo";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import Image from "next/image";

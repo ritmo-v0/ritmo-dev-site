@@ -1,5 +1,5 @@
 import { isValidElement } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Markdown
 import ReactMarkdown from "react-markdown";

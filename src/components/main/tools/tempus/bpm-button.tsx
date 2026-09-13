@@ -1,6 +1,6 @@
 "use client";
 import { useCopy } from "@/hooks/use-copy";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { Button } from "@/components/ui/button";

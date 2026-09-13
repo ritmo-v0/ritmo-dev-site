@@ -1,6 +1,7 @@
 import "@/app/globals.css";
-import "katex/dist/katex.min.css";
-import { cn, getBaseUrl } from "@/lib/utils";
+import "katex/dist/katex-swap.min.css";
+import { cn } from "cn";
+import { getBaseUrl } from "@/lib/utils";
 import {
 	PAGE_TITLE_SUFFIX,
 	generatePageTitle,

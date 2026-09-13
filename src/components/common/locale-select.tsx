@@ -3,7 +3,7 @@ import { useTransition } from "react";
 import { useParams } from "next/navigation";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import {

@@ -1,6 +1,6 @@
 "use client";
 import { parse } from "@twemoji/parser";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import NextImage from "next/image";

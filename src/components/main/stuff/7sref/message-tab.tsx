@@ -2,7 +2,7 @@
 import { useLocale } from "next-intl";
 import { use7sRefStore } from "@/lib/store/7sref";
 import { match } from "ts-pattern";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { Twemoji } from "@/components/twemoji";

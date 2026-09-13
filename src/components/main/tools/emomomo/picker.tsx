@@ -2,7 +2,7 @@
 import { useMemo } from "react";
 import { useEmomomoStore } from "@/lib/store/emomomo";
 import { getEmojiGroupId, getEmojiSubgroupTitle } from "@/lib/emomomo/utils";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Components & UI
 import { EmojiButton } from "./emoji-button";

@@ -1,7 +1,7 @@
 "use client";
 import { useShiki } from "@/hooks/use-shiki";
 import { useCopy } from "@/hooks/use-copy";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 // Shiki
 import ShikiHighlighter from "react-shiki/core";
