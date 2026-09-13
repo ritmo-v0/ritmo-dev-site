@@ -56,6 +56,7 @@ function ArticleLink({ article }: { article: NoteOverview }) {
 			variant="ghost"
 			href={`/articles/${article.shortId}`}
 			className="flex max-sm:flex-col sm:items-center justify-between gap-2 p-4 transition-none"
+			prefetch={false}
 		>
 			<H5 className="text-balance" render={<h2 />}>
 				{article.title}
