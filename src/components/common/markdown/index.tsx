@@ -38,6 +38,7 @@ import {
 
 // Types & Interfaces
 import type { Route } from "next";
+import type { Components, ExtraProps } from "react-markdown";
 import type { PluggableList } from "unified";
 
 // Constants & Variables
@@ -58,6 +59,59 @@ const REHYPE_PLUGINS: PluggableList = [
 	rehypeKatex,
 ];
 
+const BASE_COMPONENTS: Components = {
+	h1: H1,
+	h2: H2,
+	h3: H3,
+	h4: H4,
+	h5: H5,
+	h6: H6,
+	p: P,
+	hr: HR,
+	ul: UL,
+	ol: OL,
+	li: LI,
+	code: Code,
+	pre: MarkdownPre,
+	blockquote: Blockquote,
+	aside: Aside,
+	a: ({ href, ...props }) => <Link href={href as Route || "#"} {...props} />,
+	img: ({ src, alt, width, height, ...props }) => (
+		typeof src !== "string" ? null : (
+			<span className={cn(
+				"relative block [&+br]:hidden [&+br+span]:block [&+br+span]:-mt-4 [&+br+span]:mb-8",
+				"[&+br+span]:text-center [&+br+span]:text-sm [&+br+span]:text-muted-foreground [&+br+span]:leading-normal",
+			)}>
+				<Image
+					src={src}
+					alt={alt || ""}
+					className={cn(
+						"relative! mx-auto my-8 max-w-3xl rounded-2xl shadow-lg object-cover not-only:first:mt-0",
+						"ring-1 ring-foreground/5 dark:ring-foreground/10",
+					)}
+					sizes="(max-width: 64rem) 100vw, 768px"
+					loading="lazy"
+					fill
+					{...props}
+				/>
+			</span>
+		)
+	),
+	iframe: (props) => <IFrame className="my-4 first:mt-0 last:mb-0" {...props} />,
+	table: (props) => <Table className="my-4 first:mt-0 last:mb-0" {...props} />,
+	thead: TableHeader,
+	tbody: TableBody,
+	tr: TableRow,
+	th: TableHead,
+	td: TableCell,
+};
+const COMPONENTS = Object.fromEntries(
+	Object.entries(BASE_COMPONENTS).map(([tag, Component]) => [
+		tag,
+		omitNode(Component as React.ComponentType<object>),
+	]),
+) as Components;
+
 
 
 export function Markdown({
@@ -71,53 +125,8 @@ export function Markdown({
 		<ReactMarkdown
 			remarkPlugins={[...REMARK_PLUGINS, ...(remarkPlugins ?? [])]}
 			rehypePlugins={[...REHYPE_PLUGINS, ...(rehypePlugins ?? [])]}
-			components={{
-				...components,
-				h1: (props) => renderH1 ? <H1 {...props} /> : null,
-				h2: H2,
-				h3: H3,
-				h4: H4,
-				h5: H5,
-				h6: H6,
-				p: P,
-				hr: HR,
-				ul: UL,
-				ol: OL,
-				li: LI,
-				code: Code,
-				pre: MarkdownPre,
-				blockquote: Blockquote,
-				aside: Aside,
-				a: ({ href, ...props }) => <Link href={href as Route || "#"} {...props} />,
-				img: ({ src, alt, width, height, ...props }) => (
-					typeof src !== "string" ? null : (
-						<span className={cn(
-							"relative block [&+br]:hidden [&+br+span]:block [&+br+span]:-mt-4 [&+br+span]:mb-8",
-							"[&+br+span]:text-center [&+br+span]:text-sm [&+br+span]:text-muted-foreground [&+br+span]:leading-normal",
-						)}>
-							<Image
-								src={src}
-								alt={alt || ""}
-								className={cn(
-									"relative! mx-auto my-8 max-w-3xl rounded-2xl shadow-lg object-cover not-only:first:mt-0",
-									"ring-1 ring-foreground/5 dark:ring-foreground/10",
-								)}
-								sizes="(max-width: 64rem) 100vw, 768px"
-								loading="lazy"
-								fill
-								{...props}
-							/>
-						</span>
-					)
-				),
-				iframe: (props) => <IFrame className="my-4 first:mt-0 last:mb-0" {...props} />,
-				table: (props) => <Table className="my-4 first:mt-0 last:mb-0" {...props} />,
-				thead: TableHeader,
-				tbody: TableBody,
-				tr: TableRow,
-				th: TableHead,
-				td: TableCell,
-			}}
+			components={components ? { ...COMPONENTS, ...components } : COMPONENTS}
+			disallowedElements={renderH1 ? undefined : ["h1"]}
 			{...props}
 		/>
 	);
@@ -150,4 +159,10 @@ function MarkdownPre({
 			{...props}
 		/>
 	);
+}
+
+function omitNode<P extends object>(Component: React.ComponentType<P>) {
+	return function WithoutNode({ node: _node, ...props }: P & ExtraProps) {
+		return <Component {...(props as P)} />;
+	};
 }
