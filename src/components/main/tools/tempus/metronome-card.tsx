@@ -16,12 +16,12 @@ import {
 } from "@/components/ui/card";
 
 // Icons & Images
-import { PauseIcon, PlayIcon } from "@phosphor-icons/react";
+import { IconPlayerPauseFilled, IconPlayerPlayFilled } from "@tabler/icons-react";
 
 // Constants & Variables
 const BPM_MIN = 40;
 const BPM_MAX = 400;
-const BPM_DEFAULT = 100;
+const BPM_DEFAULT = 120;
 
 
 
@@ -46,7 +46,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 
 	return (
 		<Card
-			className={cn("gap-0", className)}
+			className={cn("gap-2", className)}
 			onDragOver={onDragOver}
 			onDrop={onDrop}
 		>
@@ -56,7 +56,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 			<CardContent>
 				<div className="grid auto-rows-min justify-items-center gap-2">
 					<NumberFlow
-						className="font-bold text-5xl tabular-nums pointer-events-none"
+						className="font-bold text-3xl tabular-nums pointer-events-none"
 						value={bpm}
 						locales="en-US"
 						format={{ useGrouping: false }}
@@ -75,9 +75,14 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 						{...sliderPointerHandlers}
 					/>
 				</div>
-				<div className="w-max mx-auto mt-4">
-					<Button variant="ghost" size="icon" onClick={toggle}>
-						{isPlaying ? <PauseIcon /> : <PlayIcon />}
+				<div className="w-max mx-auto mt-3">
+					<Button
+						variant="ghost"
+						size="icon"
+						onClick={toggle}
+						aria-label={isPlaying ? t("pause") : t("play")}
+					>
+						{isPlaying ? <IconPlayerPauseFilled /> : <IconPlayerPlayFilled />}
 					</Button>
 				</div>
 			</CardContent>

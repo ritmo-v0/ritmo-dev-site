@@ -1,19 +1,10 @@
 "use client";
-import { useTempusStore } from "@/lib/store/tempus";
+import { useTranslations } from "next-intl";
+import { useTempusStore } from "@/lib/tempus/store";
 import { cn } from "cn";
 
 // Components & UI
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
-import { ResetButton } from "@/components/common/motion-buttons";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -21,29 +12,31 @@ import { Label } from "@/components/ui/label";
 
 
 export function ControlsCard({ className }: React.ComponentProps<typeof Card>) {
+	const t = useTranslations("tools.tempus.controls");
+
 	return (
 		<Card className={cn("@container/card", className)}>
 			<CardHeader>
-				<CardTitle>Controls</CardTitle>
+				<CardTitle>{t("title")}</CardTitle>
 			</CardHeader>
 			<CardContent className="grid auto-rows-min grid-cols-1 @xs/card:grid-cols-2 gap-8">
-				<div className="space-y-4">
+				<div className="flex flex-col gap-4">
 					<AutoResetControl />
 					<AutoResetDurationControl />
 				</div>
-				<OtherControls />
 			</CardContent>
 		</Card>
 	);
 }
 
 function AutoResetControl() {
+	const t = useTranslations("tools.tempus.controls");
 	const useAutoReset = useTempusStore(state => state.useAutoReset);
 	const toggleAutoReset = useTempusStore(state => state.toggleAutoReset);
 
 	return (
 		<div className="flex items-center justify-between">
-			<Label htmlFor="tempus-ar">Auto Reset</Label>
+			<Label htmlFor="tempus-ar">{t("auto_reset")}</Label>
 			<Switch
 				id="tempus-ar"
 				className="ml-auto"
@@ -55,13 +48,14 @@ function AutoResetControl() {
 }
 
 function AutoResetDurationControl() {
+	const t = useTranslations("tools.tempus.controls");
 	const useAutoReset = useTempusStore(state => state.useAutoReset);
 	const autoResetDuration = useTempusStore(state => state.autoResetDuration);
 	const setAutoResetDuration = useTempusStore(state => state.setAutoResetDuration);
 
 	return (
-		<div className="space-y-2">
-			<Label htmlFor="tempus-ard">Auto Reset Duration</Label>
+		<div className="flex flex-col gap-3">
+			<Label htmlFor="tempus-ard">{t("auto_reset_duration")}</Label>
 			<div className="flex items-center justify-between gap-4">
 				<Slider
 					id="tempus-ard"
@@ -72,61 +66,13 @@ function AutoResetDurationControl() {
 					onValueChange={setAutoResetDuration}
 					disabled={!useAutoReset}
 				/>
-				<span className={cn("font-mono text-sm transition-opacity", !useAutoReset && "opacity-50")}>
+				<span className={cn(
+					"text-sm transition-opacity tabular-nums",
+					!useAutoReset && "opacity-50",
+				)}>
 					{autoResetDuration}s
 				</span>
 			</div>
-		</div>
-	);
-}
-
-function OtherControls() {
-	const recentTapCount = useTempusStore(state => state.recentTapCount);
-	const setRecentTapCount = useTempusStore(state => state.setRecentTapCount);
-	const reset = useTempusStore(state => state.reset);
-
-	const RECENT_TAP_OPTIONS = [2, 4, 8, 16, 24, 32];
-
-	function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-		e.currentTarget.blur();
-		reset();
-	}
-
-	return (
-		<div className="grid grid-rows-[auto_1fr] gap-4">
-			{/* Recent Tap Count */}
-			<div className="flex items-center justify-between gap-4">
-				<Label>Recent Taps</Label>
-				<Select
-					value={recentTapCount}
-					onValueChange={setRecentTapCount}
-				>
-					<SelectTrigger size="sm" className="w-20">
-						<SelectValue />
-					</SelectTrigger>
-					<SelectContent>
-						<SelectGroup>
-							{RECENT_TAP_OPTIONS.map(option => (
-								<SelectItem
-									key={option}
-									value={option}
-								>
-									{option}
-								</SelectItem>
-							))}
-						</SelectGroup>
-					</SelectContent>
-				</Select>
-			</div>
-
-			{/* Reset Button */}
-			<Button
-				variant="destructive"
-				onClick={handleClick}
-				render={<ResetButton />}
-			>
-				Reset Taps
-			</Button>
 		</div>
 	);
 }

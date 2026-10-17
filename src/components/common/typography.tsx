@@ -44,7 +44,7 @@ function Wrapper({
 			{
 				style: { "--max-width": `${width}px` } as React.CSSProperties,
 				className: cn(
-					"@container mx-auto max-inline-(--max-width) px-4 md:px-8",
+					"@container/container mx-auto max-inline-(--max-width) px-4 md:px-8",
 					"data-[box-sizing=border]:box-border data-[box-sizing=content]:box-content",
 					className,
 				),

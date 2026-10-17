@@ -1,146 +1,126 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useTempusStore } from "@/lib/store/tempus";
-import { calculateBpm, calculateRecentBpm } from "@/lib/tempus/utils";
+import { useTranslations } from "next-intl";
+import { useTempusStore } from "@/lib/tempus/store";
+import { readBpm } from "@/lib/tempus/utils";
 import { cn } from "cn";
 
 // Components & UI
-import { BpmButton } from "./bpm-button";
-import { Button } from "@/components/ui/button";
-import { Muted } from "@/components/common/typography";
+import { BpmStat } from "./bpm-stat";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-
-// Icons & Images
-import { Info } from "lucide-react";
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
 
 // Types & Interfaces
-interface TapsCardProps {
-	title: string;
-	infotip: string;
-}
-
-interface TapsCardContentProps {
-	bpm: number | string;
-	wholeBpm: number | string;
-	shouldMute?: boolean;
-}
+import type { BpmReading } from "@/lib/tempus/types";
 
 
 
 export function AllTapsCard({ className }: React.ComponentProps<typeof Card>) {
-	return (
-		<TapsCard
-			className={className}
-			title="All Taps"
-			infotip="BPM is calculated from all taps"
-		>
-			<AllTapsCardContent />
-		</TapsCard>
-	);
-}
-
-function AllTapsCardContent() {
+	const t = useTranslations("tools.tempus.taps");
 	const taps = useTempusStore(state => state.taps);
-	const isFirstTap = useTempusStore(state => state.taps.length === 1);
-
-	const [avgBpm, setAvgBpm] = useState(0);
-	const [wholeBpm, setWholeBpm] = useState(0);
-
-	useEffect(() => {
-		const bpm = calculateBpm(taps);
-		setAvgBpm(bpm);
-		setWholeBpm(Math.round(bpm));
-	}, [taps]);
 
 	return (
-		<TapsCardContent
-			bpm={isFirstTap ? "-" : avgBpm}
-			wholeBpm={isFirstTap ? "-" : wholeBpm}
-			shouldMute={isFirstTap}
-		/>
-	);
-}
-
-export function RecentTapsCard({ className }: React.ComponentProps<typeof Card>) {
-	const recentTapCount = useTempusStore(state => state.recentTapCount);
-
-	return (
-		<TapsCard
-			className={className}
-			title="Recent Taps"
-			infotip={`BPM is calculated from the last ${recentTapCount} taps`}
-		>
-			<RecentTapsCardContent />
-		</TapsCard>
-	);
-}
-
-function RecentTapsCardContent() {
-	const taps = useTempusStore(state => state.taps);
-	const tapCount = taps.length;
-	const recentTapCount = useTempusStore(state => state.recentTapCount);
-
-	const [recentBpm, setRecentBpm] = useState(0);
-	const [recentWholeBpm, setRecentWholeBpm] = useState(0);
-
-	useEffect(() => {
-		const recentBpm = calculateRecentBpm(taps, recentTapCount);
-		setRecentBpm(recentBpm);
-		setRecentWholeBpm(Math.round(recentBpm));
-	}, [taps, recentTapCount]);
-
-	return (
-		<TapsCardContent
-			bpm={(tapCount !== 0 && tapCount < recentTapCount) ? "-" : recentBpm}
-			wholeBpm={(tapCount !== 0 && tapCount < recentTapCount) ? "-" : recentWholeBpm}
-			shouldMute={tapCount < recentTapCount}
-		/>
-	);
-}
-
-function TapsCard({
-	children,
-	className,
-	title,
-	infotip,
-}: React.ComponentProps<typeof Card> & TapsCardProps) {
-	return (
-		<Card className={cn("gap-4", className)}>
+		<Card className={cn(className)}>
 			<CardHeader>
-				<CardTitle className="flex gap-x-1">
-					{title}
-					<Popover>
-						<PopoverTrigger openOnHover render={
-							<Button variant="nothing" size="icon-xs">
-								<Info className="text-muted-foreground" />
-							</Button>
-						}>
-						</PopoverTrigger>
-						<PopoverContent side="top" variant="tooltip">
-							{infotip}
-						</PopoverContent>
-					</Popover>
+				<CardTitle className="tabular-nums break-keep">
+					{t.rich("all", {
+						count: taps.length,
+						wbr: () => <wbr />,
+					})}
 				</CardTitle>
 			</CardHeader>
-			{children}
+			<TapsCardContent reading={readBpm(taps)} />
 		</Card>
 	);
 }
 
-function TapsCardContent({ bpm, wholeBpm, shouldMute }: TapsCardContentProps) {
+export function LastTapsCard({ className }: React.ComponentProps<typeof Card>) {
+	const t = useTranslations("tools.tempus.taps");
+
 	return (
-		<CardContent>
-			<div className="grid md:grid-cols-2 gap-x-8 gap-y-1">
-				<div className="md:space-y-1">
-					<Muted>Avg. BPM</Muted>
-					<BpmButton bpm={bpm} shouldMute={shouldMute} />
-				</div>
-				<div className="md:space-y-1">
-					<Muted>Nearest Whole</Muted>
-					<BpmButton bpm={wholeBpm} shouldMute={shouldMute} />
-				</div>
-			</div>
+		<Card className={cn(className)}>
+			<CardHeader>
+				<CardTitle className="break-keep">
+					{t.rich("last", {
+						select: () => <LastTapsSelect className="font-sans mx-1" />,
+						wbr: () => <wbr />,
+					})}
+				</CardTitle>
+			</CardHeader>
+			<LastTapsCardContent />
+		</Card>
+	);
+}
+
+function LastTapsCardContent() {
+	const taps = useTempusStore(state => state.taps);
+	const lastTapCount = useTempusStore(state => state.lastTapCount);
+
+	return <TapsCardContent reading={readBpm(taps, lastTapCount)} />;
+}
+
+function TapsCardContent({ reading }: { reading: BpmReading }) {
+	const t = useTranslations("tools.tempus.taps");
+
+	const isReady = reading.status === "ready";
+	const placeholder = reading.status === "empty" ? "0" : "-";
+
+	return (
+		<CardContent className="grid xl:grid-cols-2 gap-x-6 gap-y-4 max-xs:mt-auto">
+			<BpmStat
+				label={t("avg_bpm")}
+				value={isReady ? reading.bpm : null}
+				placeholder={placeholder}
+				fractionDigits={2}
+			/>
+			<BpmStat
+				label={t("nearest_whole")}
+				value={isReady ? reading.whole : null}
+				placeholder={placeholder}
+				fractionDigits={0}
+			/>
 		</CardContent>
+	);
+}
+
+function LastTapsSelect({ className }: { className?: string }) {
+	const lastTapCount = useTempusStore(state => state.lastTapCount);
+	const setLastTapCount = useTempusStore(state => state.setLastTapCount);
+
+	const LAST_TAP_OPTIONS = [2, 4, 8, 16, 24, 32];
+
+	return (
+		<Select
+			value={lastTapCount}
+			onValueChange={setLastTapCount}
+		>
+			<SelectTrigger
+				className={cn(
+					"[--height:--spacing(7)] inline-flex px-2.5",
+					"my-[calc((1lh-var(--height))/2)] h-(--height)! text-[length:inherit]",
+					className,
+				)}
+			>
+				<SelectValue />
+			</SelectTrigger>
+			<SelectContent>
+				<SelectGroup>
+					{LAST_TAP_OPTIONS.map(option => (
+						<SelectItem
+							key={option}
+							value={option}
+						>
+							{option}
+						</SelectItem>
+					))}
+				</SelectGroup>
+			</SelectContent>
+		</Select>
 	);
 }

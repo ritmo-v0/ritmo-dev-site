@@ -216,48 +216,6 @@ export function DeleteButton(
 	);
 }
 
-export function ResetButton(
-	{ childrenBefore, children, svgClassName, ...props }: MotionButtonProps
-) {
-	return (
-		<motion.button
-			initial="normal"
-			whileHover="animate"
-			whileFocus="animate"
-			whileTap="tap"
-			{...props}
-		>
-			{childrenBefore}
-			<motion.svg
-				role="img"
-				aria-label="Refresh-CW"
-				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				className={cn("size-4", svgClassName)}
-				transition={{ type: "spring", stiffness: 250, damping: 25 }}
-				variants={{
-					normal: { rotate: "0deg" },
-					animate: { rotate: "50deg" },
-					tap: { rotate: "230deg", transition: { type: "spring", stiffness: 1200, damping: 80 } },
-				}}
-			>
-				<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
-				<path d="M21 3v5h-5" />
-				<path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
-				<path d="M8 16H3v5" />
-			</motion.svg>
-			{children}
-		</motion.button>
-	);
-}
-
 export function AnimatedIcon({
 	className,
 	...props

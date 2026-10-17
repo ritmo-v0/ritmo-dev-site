@@ -74,8 +74,31 @@
 		"tempus": {
 			"title": "Tempus",
 			"description": "音楽に合わせてタップするだけで正確な BPM を即座に取得、ワンクリックでコピー。メトロノーム機能も搭載。",
+			"reset": "リセット",
+			"tap_area": {
+				"to_start": "でスタート",
+				"aria_label_tap": "ビートに合わせてタップ",
+				"keys": {
+					"click": "クリック",
+					"space": "Space",
+					"enter": "Enter"
+				}
+			},
+			"taps": {
+				"all": "全 {count} タップ",
+				"last": "直近\u2060<select></select>\u2060タップ",
+				"avg_bpm": "平均 BPM",
+				"nearest_whole": "整数値"
+			},
+			"controls": {
+				"title": "コントロール",
+				"auto_reset": "自動リセット",
+				"auto_reset_duration": "自動リセットまでの時間"
+			},
 			"metronome": {
-				"title": "メトロノーム"
+				"title": "メトロノーム",
+				"play": "再生",
+				"pause": "一時停止"
 			}
 		}
 	},
