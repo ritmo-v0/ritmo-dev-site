@@ -1,77 +1,121 @@
 "use client";
-import { useTempusStore } from "@/lib/store/tempus";
+import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
+import { useTempusStore } from "@/lib/tempus/store";
 import { cn } from "cn";
 
 // Components & UI
+import { ResetTapsButton } from "./reset-taps-button";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-import { Muted } from "@/components/common/typography";
+import {
+	Empty,
+	EmptyContent,
+	EmptyDescription,
+	EmptyHeader,
+} from "@/components/ui/empty";
 
 // Icons & Images
 import {
-	CircleArrowOutUpLeft,
-	CornerDownLeft,
-	MousePointerClick,
-	Pointer,
-	Space,
-} from "lucide-react";
+	IconClickFilled,
+	IconCornerDownLeft,
+	IconSpace,
+} from "@tabler/icons-react";
+
+// Constants & Variables
+const SHORTCUT_KEYS = [
+	{
+		key: "click",
+		icon: IconClickFilled,
+		keyboardOnly: false,
+	},
+	{
+		key: "space",
+		icon: IconSpace,
+		keyboardOnly: true,
+	},
+	{
+		key: "enter",
+		icon: IconCornerDownLeft,
+		keyboardOnly: true,
+	},
+] as const;
 
 
 
-export function TapArea({ className }: React.ComponentProps<typeof Card>) {
+export function TapArea({ className, ...props }: React.ComponentProps<typeof Empty>) {
+	const tapRef = useRef<HTMLDivElement>(null);
+	const t = useTranslations("tools.tempus.tap_area");
+
 	const addTap = useTempusStore(state => state.addTap);
+	const reset = useTempusStore(state => state.reset);
+
+	useEffect(() => {
+		function handleKeyDown(e: KeyboardEvent) {
+			if (e.isComposing) return;
+
+			// Escape first
+			if (e.key === "Escape" && !e.repeat) return reset();
+
+			// Skip modifier keys
+			if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+
+			// Focus guard
+			const active = document.activeElement;
+			if (active && active !== document.body && active !== tapRef.current) return;
+
+			// Prevent scrolling
+			if (e.key === " ") e.preventDefault();
+
+			// Repeat guard
+			if (e.repeat) return;
+			if (e.key === " " || e.key === "Enter") return addTap();
+		}
+
+		window.addEventListener("keydown", handleKeyDown);
+		return () => window.removeEventListener("keydown", handleKeyDown);
+	}, [addTap, reset]);
 
 	return (
-		<Card
+		<Empty
 			className={cn(
-				"flex items-center justify-center gap-4 w-full max-h-96 p-8 bg-secondary text-secondary-foreground",
-				"border-2 border-dashed outline-transparent outline-offset-2 ring-0 aspect-square cursor-pointer select-none transition-all",
-				"hover:bg-secondary/60 focus-visible:bg-secondary/60 focus-visible:outline-2 focus-visible:outline-primary",
+				"relative max-h-100 bg-muted/50 rounded-4xl transition-colors aspect-2/1 select-none",
+				"border-2 outline-transparent outline-offset-2 has-[[data-tap]:hover]:bg-muted",
+				"has-[[data-tap]:focus-visible]:outline-2 has-[[data-tap]:focus-visible]:outline-primary",
 				className,
 			)}
-			tabIndex={0}
-			onClick={addTap}
+			{...props}
 		>
-			<div className="space-y-1">
-				<Muted className="text-center">
-					{"Tap: "}
-					<ShortcutKeyBadge>
-						<span className="hidden xs:inline">Click</span>
-						<MousePointerClick className="hidden xs:block" />
-						<Pointer className="xs:hidden" />
-					</ShortcutKeyBadge>{" "}
-					<ShortcutKeyBadge>
-						<span className="hidden xs:inline">Space</span>
-						<Space />
-					</ShortcutKeyBadge>{" "}
-					<ShortcutKeyBadge>
-						<span className="hidden xs:inline">Enter</span>
-						<CornerDownLeft />
-					</ShortcutKeyBadge>
-				</Muted>
-				<Muted className="text-center">
-					{"Reset: "}
-					<ShortcutKeyBadge>
-						<span className="hidden xs:inline">Esc</span>
-						<CircleArrowOutUpLeft />
-					</ShortcutKeyBadge>
-				</Muted>
-			</div>
-			<TapCount />
-		</Card>
-	);
-}
-
-function TapCount() {
-	const taps = useTempusStore(state => state.taps);
-
-	return <Muted className="tabular-nums">Taps: {taps.length}</Muted>;
-}
-
-function ShortcutKeyBadge({ children }: React.ComponentProps<typeof Badge>) {
-	return (
-		<Badge variant="outline" className="gap-2 text-secondary-foreground">
-			{children}
-		</Badge>
+			{/* biome-ignore lint/a11y/useSemanticElements: handleKeyDown */}
+			<div
+				ref={tapRef}
+				role="button"
+				data-tap
+				className="absolute inset-0 cursor-pointer rounded-[inherit] outline-none"
+				onPointerDown={addTap}
+				aria-label={t("aria_label_tap")}
+				aria-keyshortcuts="Space Enter"
+				tabIndex={0}
+			/>
+			<EmptyHeader>
+				<EmptyDescription className="text-pretty">
+					<span className="flex flex-wrap items-center justify-center gap-1.5">
+						{SHORTCUT_KEYS.map(({ key, icon: Icon, keyboardOnly }) => (
+							<Badge
+								key={key}
+								variant="outline"
+								className={cn(keyboardOnly && "pointer-coarse:hidden")}
+							>
+								<Icon data-icon="inline-start" aria-hidden />
+								<span>{t(`keys.${key}`)}</span>
+							</Badge>
+						))}
+						<span>{t("to_start")}</span>
+					</span>
+				</EmptyDescription>
+			</EmptyHeader>
+			<EmptyContent className="z-1">
+				<ResetTapsButton tapRef={tapRef} />
+			</EmptyContent>
+		</Empty>
 	);
 }

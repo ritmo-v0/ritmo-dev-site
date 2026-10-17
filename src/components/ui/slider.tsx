@@ -31,7 +31,7 @@ export function Slider<TValue extends number | readonly number[] = number>({
 			{...props}
 		>
 			<SliderPrimitive.Control className={cn(
-				"relative flex items-center w-full select-none touch-none",
+				"relative flex items-center w-full transition-opacity select-none touch-none",
 				"data-[orientation=vertical]:flex-col data-[orientation=vertical]:min-h-40 data-[orientation=vertical]:w-auto data-[orientation=vertical]:h-full",
 				"data-disabled:opacity-50",
 			)}>
@@ -54,7 +54,7 @@ export function Slider<TValue extends number | readonly number[] = number>({
 						index={index}
 						data-slot="slider-thumb"
 						className={cn(
-							"shrink-0 block bg-white not-dark:bg-clip-padding ring-1 ring-black/10 hover:ring-4 hover:ring-ring/30 rounded-full shadow-md transition-[color,box-shadow,background-color] select-none",
+							"shrink-0 block bg-white not-dark:bg-clip-padding ring-1 ring-black/10 hover:ring-4 hover:ring-ring/30 rounded-full shadow-md transition select-none",
 							"w-6 h-4 data-vertical:w-4 data-vertical:h-6",
 							"focus-visible:ring-4 focus-visible:ring-ring/30 focus-visible:outline-hidden",
 							"disabled:opacity-50 disabled:pointer-events-none",

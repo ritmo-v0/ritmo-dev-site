@@ -74,8 +74,31 @@
 		"tempus": {
 			"title": "Tempus",
 			"description": "跟著音樂點擊節拍，即時取得精準 BPM 並一鍵複製。內建節拍器，輕鬆掌握每一拍。",
+			"reset": "重設",
+			"tap_area": {
+				"to_start": "以開始",
+				"aria_label_tap": "跟著節拍點擊",
+				"keys": {
+					"click": "點擊",
+					"space": "Space",
+					"enter": "Enter"
+				}
+			},
+			"taps": {
+				"all": "全部 {count} 次<wbr></wbr>點擊",
+				"last": "最近\u2060<select></select>\u2060次<wbr></wbr>點擊",
+				"avg_bpm": "平均 BPM",
+				"nearest_whole": "整數值"
+			},
+			"controls": {
+				"title": "控制項",
+				"auto_reset": "自動重設",
+				"auto_reset_duration": "自動重設間隔"
+			},
 			"metronome": {
-				"title": "節拍器"
+				"title": "節拍器",
+				"play": "播放",
+				"pause": "暫停"
 			}
 		}
 	},

@@ -74,8 +74,31 @@
 		"tempus": {
 			"title": "Tempus",
 			"description": "Tap to the beat and instantly get your BPM — copy it with one click. Built-in metronome included.",
+			"reset": "Reset",
+			"tap_area": {
+				"to_start": "to start",
+				"aria_label_tap": "Tap the beat",
+				"keys": {
+					"click": "Click",
+					"space": "Space",
+					"enter": "Enter"
+				}
+			},
+			"taps": {
+				"all": "{count, plural, =0 {All Taps} one {# Tap} other {All # Taps}}",
+				"last": "Last\u2060<select></select>\u2060Taps",
+				"avg_bpm": "Avg. BPM",
+				"nearest_whole": "Nearest Whole"
+			},
+			"controls": {
+				"title": "Controls",
+				"auto_reset": "Auto Reset",
+				"auto_reset_duration": "Auto Reset Duration"
+			},
 			"metronome": {
-				"title": "Metronome"
+				"title": "Metronome",
+				"play": "Play",
+				"pause": "Pause"
 			}
 		}
 	},

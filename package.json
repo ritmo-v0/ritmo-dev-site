@@ -19,6 +19,7 @@
 		"@shikijs/engine-javascript": "^4.4.3",
 		"@shikijs/langs-precompiled": "^4.4.3",
 		"@shikijs/themes": "^4.4.3",
+		"@tabler/icons-react": "^3.49.0",
 		"@twemoji/parser": "^17.0.2",
 		"@upstash/redis": "^1.38.4",
 		"@vercel/speed-insights": "^2.0.0",

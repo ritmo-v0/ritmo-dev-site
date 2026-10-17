@@ -1,21 +1,24 @@
-export function calculateBpm(taps: number[]): number {
-	if (taps.length < 2) return 0;
+// Types & Interfaces
+import type { BpmReading } from "./types";
 
-	const intervals: number[] = [];
-	for (let i = 1; i < taps.length; i++) {
-		intervals.push(taps[i] - taps[i - 1]);
-	}
-	const avgInterval = intervals.reduce((a, b) => a + b, 0) / intervals.length;
-	return Number.parseFloat((60000 / avgInterval).toFixed(2));
+
+
+export function appendTap(taps: number[], now: number, autoResetMs?: number): number[] {
+	const lastTap = taps.at(-1);
+	const isNewSession = autoResetMs !== undefined
+		&& lastTap !== undefined
+		&& now - lastTap >= autoResetMs;
+
+	return isNewSession ? [now] : [...taps, now];
 }
 
-export function calculateRecentBpm(taps: number[], count: number): number {
-	if (taps.length < 2) return 0;
+export function readBpm(taps: number[], lastN?: number): BpmReading {
+	if (taps.length === 0) return { status: "empty" };
+	if (taps.length < Math.max(2, lastN ?? 2)) return { status: "insufficient" };
 
-	if (taps.length >= count) {
-		const recentTaps = taps.slice(-count);
-		return calculateBpm(recentTaps);
-	} else {
-		return 0;
-	}
+	const counted = lastN ? taps.slice(-lastN) : taps;
+	const avgInterval = (counted[counted.length - 1] - counted[0]) / (counted.length - 1);
+	const bpm = 60000 / avgInterval;
+
+	return { status: "ready", bpm, whole: Math.round(bpm) };
 }
