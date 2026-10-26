@@ -9,7 +9,7 @@
 /.next/
 /certificates/
 
-# Env files
+# Env Files
 .env*
 
 # Vercel
