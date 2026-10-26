@@ -21,27 +21,33 @@ import { Footer } from "@/components/main/footer";
 import { JsonLd } from "@/components/json-ld";
 
 // Fonts
+import localFont from "next/font/local";
 import {
-	Plus_Jakarta_Sans,
-	Rethink_Sans,
 	JetBrains_Mono,
 	Noto_Sans_JP,
 	Noto_Sans_TC,
 	Noto_Serif_TC,
 } from "next/font/google";
-const PlusJakartaSans = Plus_Jakarta_Sans({
-	weight: "variable",
-	style: ["normal"],
+const UncutSans = localFont({
+	src: "../fonts/UncutSans.woff2",
+	weight: "300 700",
 	display: "swap",
-	subsets: ["latin"],
-	variable: "--font-plus-jakarta-sans",
+	variable: "--font-uncut-sans",
 });
-const RethinkSans = Rethink_Sans({
-	weight: "variable",
-	style: ["normal", "italic"],
+const Inter = localFont({
+	src: [
+		{
+			path: "../fonts/Inter.woff2",
+			style: "normal",
+		},
+		{
+			path: "../fonts/Inter-Italic.woff2",
+			style: "italic",
+		},
+	],
+	weight: "100 900",
 	display: "swap",
-	subsets: ["latin"],
-	variable: "--font-rethink-sans",
+	variable: "--font-inter",
 });
 const JetBrainsMono = JetBrains_Mono({
 	weight: "variable",
@@ -49,6 +55,29 @@ const JetBrainsMono = JetBrains_Mono({
 	display: "swap",
 	subsets: ["latin"],
 	variable: "--font-jetbrains-mono",
+});
+const IbarraRealNova = localFont({
+	src: [
+		{
+			path: "../fonts/IbarraRealNova.woff2",
+			style: "normal",
+		},
+		{
+			path: "../fonts/IbarraRealNova-Italic.woff2",
+			style: "italic",
+		},
+	],
+	weight: "400 700",
+	display: "swap",
+	variable: "--font-ibarra-real-nova",
+	preload: false,
+	adjustFontFallback: false,
+	declarations: [
+		{ prop: "size-adjust", value: "114.5%" },
+		{ prop: "ascent-override", value: "100.52%" },  // 115.1 ÷ 1.145
+		{ prop: "descent-override", value: "24.98%" },  //  28.6 ÷ 1.145
+		{ prop: "line-gap-override", value: "0%" },
+	],
 });
 const NotoSansJP = Noto_Sans_JP({
 	weight: "variable",
@@ -125,9 +154,10 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
 			lang={locale}
 			data-scroll-behavior="smooth"
 			className={cn(
-				PlusJakartaSans.variable,
-				RethinkSans.variable,
+				UncutSans.variable,
+				Inter.variable,
 				JetBrainsMono.variable,
+				IbarraRealNova.variable,
 				NotoSansJP.variable,
 				NotoSansTC.variable,
 				NotoSerifTC.variable,

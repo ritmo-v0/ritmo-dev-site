@@ -8,6 +8,8 @@
 @theme {
 	--breakpoint-xs: 32rem;
 
+	--font-heading--font-feature-settings: "ss02", "ss03", "ss05", "ss06", "ss07", "ss09";
+	--font-sans--font-feature-settings: "cv01", "cv05", "ss03";
 	--default-mono-font-variation-settings: "ROND" 100;
 	--leading-relaxed: 1.8;
 
@@ -20,14 +22,12 @@
 }
 
 @theme inline {
-	--lang-font-stack: var(--font-noto-sans-tc), var(--font-noto-sans-jp);
-	--font-heading: var(--font-plus-jakarta-sans), var(--lang-font-stack), sans-serif;
-	--font-sans: var(--font-rethink-sans), var(--lang-font-stack), sans-serif;
+	--font-heading: var(--font-uncut-sans), var(--lang-font-stack), sans-serif;
+	--font-sans: var(--font-inter), var(--lang-font-stack), sans-serif;
+	--font-serif: var(--font-ibarra-real-nova), var(--font-noto-serif-tc), serif;
+	--font-serif-7sref: var(--font-shippori-mincho), serif;
 	--font-mono: var(--font-jetbrains-mono), var(--lang-font-stack), monospace;
 	--font-mono-7sref: var(--font-doto), var(--lang-font-stack), monospace;
-
-	--font-serif: var(--font-noto-serif-tc), serif;
-	--font-serif-7sref: var(--font-shippori-mincho), serif;
 
 	--radius-xs: calc(var(--radius) * 0.4);
 	--radius-sm: calc(var(--radius) * 0.6);
@@ -150,9 +150,10 @@
 
 /* ----------------------------- HTML ----------------------------- */
 @layer base {
-	:where([lang]) { @apply font-sans; }
+	:root { --lang-font-stack: var(--font-noto-sans-tc), var(--font-noto-sans-jp); }
 	:lang(zh) { --lang-font-stack: var(--font-noto-sans-tc), var(--font-noto-sans-jp); }
 	:lang(ja) { --lang-font-stack: var(--font-noto-sans-jp), var(--font-noto-sans-tc); }
+	:where([lang]) { @apply font-sans; }
 
 	* {
 		@apply border-border outline-ring/50;
