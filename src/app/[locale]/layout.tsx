@@ -14,6 +14,7 @@ import { getLocale } from "next-intl/server";
 import { routing } from "@/lib/i18n/routing";
 
 // Components & UI
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "@/components/main/providers";
 import { Navbar } from "@/components/main/navbar";
@@ -179,6 +180,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
 						<Footer />
 					</div>
 				</Providers>
+				<Analytics />
 				<SpeedInsights />
 			</body>
 		</html>
