@@ -335,7 +335,7 @@ function Blockquote({
 	return (
 		<blockquote
 			className={cn(
-				"flex gap-6 my-12 first:mt-0 last:mb-0 font-serif text-center italic",
+				"flex gap-6 my-12 first:mt-0 last:mb-0 font-serif text-center [&_p]:text-balance",
 				className,
 			)}
 			{...props}

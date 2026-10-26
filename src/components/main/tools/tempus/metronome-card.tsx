@@ -56,7 +56,7 @@ export function MetronomeCard({ className }: React.ComponentProps<typeof Card>) 
 			<CardContent>
 				<div className="grid auto-rows-min justify-items-center gap-2">
 					<NumberFlow
-						className="font-bold text-3xl tabular-nums pointer-events-none"
+						className="font-bold text-3xl tabular-nums font-features-['cv09'] pointer-events-none"
 						value={bpm}
 						locales="en-US"
 						format={{ useGrouping: false }}
