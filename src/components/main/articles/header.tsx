@@ -9,7 +9,6 @@ import Image from "next/image";
 import { AnimatePresence } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Markdown } from "@/components/common/markdown";
 import { H1, Link, Muted } from "@/components/common/typography";
 import { AnimatedIcon } from "@/components/common/motion-buttons";
 import {
@@ -32,12 +31,15 @@ import type { ArticleMetadata } from "@/lib/article/types";
 
 
 
-export function ArticleHeader({ metadata }: { metadata: ArticleMetadata }) {
+export function ArticleHeader({ metadata, description }: {
+	metadata: ArticleMetadata;
+	description: React.ReactNode;
+}) {
 	const locale = useLocale();
 	const format = useFormatter();
 	const t = useTranslations("articles");
 
-	const { tags, title, description } = metadata;
+	const { tags, title } = metadata;
 	const image = metadata.image || "https://img.ritmo.dev/placeholder.webp";
 	const publishedAt = format.dateTime(
 		new Date(metadata.publishedAt),
@@ -90,7 +92,7 @@ export function ArticleHeader({ metadata }: { metadata: ArticleMetadata }) {
 			<div className="grid gap-3">
 				<H1 className="lg:text-4xl text-balance">{title}</H1>
 				<div className="text-muted-foreground" data-description>
-					<Markdown>{description}</Markdown>
+					{description}
 				</div>
 			</div>
 		</header>

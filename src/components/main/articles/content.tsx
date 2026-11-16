@@ -1,7 +1,7 @@
 import { cn } from "cn";
 
 // Components & UI
-import { Markdown } from "@/components/common/markdown";
+import { MarkdownAsync } from "@/components/ui/markdown-async";
 
 
 
@@ -13,9 +13,9 @@ export function ArticleContent({ content }: { content: string }) {
 			"[&>section[data-footnotes]]:pt-8",
 			"[&>section[data-footnotes]]:border-t",
 		)}>
-			<Markdown renderH1={false}>
+			<MarkdownAsync renderH1={false}>
 				{content}
-			</Markdown>
+			</MarkdownAsync>
 		</article>
 	);
 }

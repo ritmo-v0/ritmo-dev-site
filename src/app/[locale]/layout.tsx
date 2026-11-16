@@ -1,5 +1,4 @@
 import "@/app/globals.css";
-import "katex/dist/katex-swap.min.css";
 import { cn } from "cn";
 import { getBaseUrl } from "@/lib/utils";
 import {

@@ -4,8 +4,8 @@ import { cn } from "cn";
 
 // Components & UI
 import { motion } from "motion/react";
+import { Markdown } from "@/components/ui/markdown";
 import { Link } from "@/components/common/typography";
-import { Markdown } from "@/components/common/markdown";
 
 // Icons & Images
 import { Droplets, Hexagon, Sparkles, MessagesSquare } from "lucide-react";

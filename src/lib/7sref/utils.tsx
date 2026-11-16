@@ -1,5 +1,5 @@
 // Components & UI
-import { Markdown } from "@/components/common/markdown";
+import { Markdown } from "@/components/ui/markdown";
 import { Section } from "@/components/common/typography";
 
 // Types & Interfaces

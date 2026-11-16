@@ -5,6 +5,7 @@ import { getBaseUrl } from "@/lib/utils";
 // Components & UI
 import { ArticleHeader } from "@/components/main/articles/header";
 import { ArticleContent } from "@/components/main/articles/content";
+import { Markdown } from "@/components/ui/markdown";
 import { JsonLd } from "@/components/json-ld";
 
 // Types & Interfaces
@@ -53,7 +54,10 @@ export default async function ArticlePage(
 	return (
 		<main lang="zh-TW" className="grid grid-cols-1 gap-12">
 			<JsonLd data={[WEBPAGE_JSONLD, ARTICLE_JSONLD]} />
-			<ArticleHeader metadata={article.metadata} />
+			<ArticleHeader
+				metadata={article.metadata}
+				description={<Markdown>{article.metadata.description}</Markdown>}
+			/>
 			<main>
 				<ArticleContent content={article.content} />
 			</main>

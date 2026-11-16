@@ -2,7 +2,7 @@ import { cn } from "cn";
 
 // Components & UI
 import Image from "next/image";
-import { Markdown } from "@/components/common/markdown";
+import { Markdown } from "@/components/ui/markdown";
 import { H1, Muted } from "@/components/common/typography";
 
 // Constants & Variables

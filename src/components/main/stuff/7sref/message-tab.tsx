@@ -7,7 +7,7 @@ import { cn } from "cn";
 // Components & UI
 import { Twemoji } from "@/components/twemoji";
 import { Button } from "@/components/ui/button";
-import { Markdown } from "@/components/common/markdown";
+import { Markdown } from "@/components/ui/markdown";
 import {
 	Message,
 	MessageContent,
