@@ -3,7 +3,8 @@ import { useTranslations } from "next-intl";
 import { cn } from "cn";
 
 // Components & UI
-import { ButtonLink, Wrapper } from "@/components/common/typography";
+import { Container } from "@/components/ui/container";
+import { ButtonLink } from "@/components/common/typography";
 
 // Icons & Images
 import { ArrowUUpLeftIcon } from "@phosphor-icons/react";
@@ -21,10 +22,7 @@ export default function NotFound() {
 	const t = useTranslations("not_found");
 
 	return (
-		<Wrapper
-			className="grid justify-items-center content-center gap-y-8 py-16 h-full"
-			boxSizing="border"
-		>
+		<Container className="grid justify-items-center content-center gap-y-8 py-16 h-full">
 			<div className="flex items-center gap-4">
 				<BeatDice className="bg-chart-1" pattern={[1, 1, 1]} currentBeat={2} isActive />
 				<BeatDice className="bg-chart-3" />
@@ -32,12 +30,12 @@ export default function NotFound() {
 				<BeatDice className="bg-chart-5" />
 			</div>
 			<div>
-				<ButtonLink href="/" size="lg">
+				<ButtonLink href="/" variant="ghost" size="lg">
 					<ArrowUUpLeftIcon data-icon="inline-start" />
 					{t("back")}
 				</ButtonLink>
 			</div>
-		</Wrapper>
+		</Container>
 	);
 }
 

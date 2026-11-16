@@ -3,14 +3,14 @@ import { RedisRO } from "@/lib/db/redis";
 // Components & UI
 import { EmomomoPicker } from "@/components/main/tools/emomomo/picker";
 import { EmomomoToolbar } from "@/components/main/tools/emomomo/toolbar";
-import { Wrapper } from "@/components/common/typography";
+import { Container } from "@/components/ui/container";
 
 // Types & Interfaces
 import type { EmojiData } from "@/lib/emomomo/types";
 
 // Constants & Variables
 import { EMOJI_DATA_REDIS_KEY } from "@/lib/emomomo/constants";
-const WRAPPER_WIDTH = 720;
+const CONTAINER_WIDTH = 720;
 
 
 
@@ -19,16 +19,16 @@ export default async function EmomomoPage() {
 
 	return (
 		<>
-			<Wrapper
+			<Container
 				className="sticky top-16 pb-6 z-10 bg-background"
-				width={WRAPPER_WIDTH}
+				width={CONTAINER_WIDTH}
 			>
 				<div className="absolute inset-0 h-16 bg-inherit -translate-y-full -z-1" />
 				<EmomomoToolbar />
-			</Wrapper>
-			<Wrapper width={WRAPPER_WIDTH}>
+			</Container>
+			<Container width={CONTAINER_WIDTH}>
 				{emojiData && <EmomomoPicker emojiData={emojiData} />}
-			</Wrapper>
+			</Container>
 		</>
 	);
 }

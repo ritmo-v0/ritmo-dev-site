@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { generatePageTitle, generateSocialMetadata } from "@/lib/seo/utils";
 
 // Components & UI
-import { Wrapper } from "@/components/common/typography";
+import { Container } from "@/components/ui/container";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -37,8 +37,8 @@ export default function ArticlesLayout(
 	{ children }: LayoutProps<"/[locale]/articles">
 ) {
 	return (
-		<Wrapper className="my-16" width={720}>
+		<Container className="my-16" width={720}>
 			{children}
-		</Wrapper>
+		</Container>
 	);
 }

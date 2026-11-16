@@ -22,7 +22,7 @@ const ShipporiMincho = Shippori_Mincho({
 
 // Components & UI
 import { Areas } from "@/components/main/stuff/7sref/areas";
-import { Wrapper } from "@/components/common/typography";
+import { Container } from "@/components/ui/container";
 
 // Types & Interfaces
 import type { Metadata } from "next";
@@ -53,7 +53,7 @@ export default function SevensRefLayout(
 ) {
 	return (
 		<>
-			<Wrapper
+			<Container
 				className={cn(
 					"my-16 font-serif-7sref",
 					DotoFont.variable,
@@ -62,7 +62,7 @@ export default function SevensRefLayout(
 				width={960}
 			>
 				{children}
-			</Wrapper>
+			</Container>
 			<Areas className="fixed inset-0 opacity-10 -z-1" />
 		</>
 	);

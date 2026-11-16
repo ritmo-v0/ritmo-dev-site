@@ -4,7 +4,8 @@ import { useQueryStates, parseAsStringEnum, parseAsArrayOf } from "nuqs";
 
 // Components & UI
 import { Suspense } from "react";
-import { H2, Muted, Wrapper } from "@/components/common/typography";
+import { Container } from "@/components/ui/container";
+import { H2, Muted } from "@/components/common/typography";
 import { DataTypeSelect } from "@/components/main/stuff/iroduku-pgm/data-type-select";
 import { DatePaginator } from "@/components/main/stuff/iroduku-pgm/date-paginator";
 import { DayChart } from "@/components/main/stuff/iroduku-pgm/day-chart";
@@ -24,7 +25,7 @@ export default function IrodukuPilgrimagePage() {
 	const t = useTranslations("stuff.iroduku-pgm.activity");
 
 	return (
-		<Wrapper>
+		<Container>
 			<header className="grid gap-2">
 				<H2 className="text-balance [&+p]:mt-0!">
 					{t("title")}
@@ -39,7 +40,7 @@ export default function IrodukuPilgrimagePage() {
 					<IrodukuPilgrimageCharts />
 				</Suspense>
 			</main>
-		</Wrapper>
+		</Container>
 	);
 }
 

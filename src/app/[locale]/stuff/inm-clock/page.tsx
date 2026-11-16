@@ -10,7 +10,8 @@ import {
 
 // Components & UI
 import { Button } from "@/components/ui/button";
-import { Muted, Wrapper } from "@/components/common/typography";
+import { Container } from "@/components/ui/container";
+import { Muted } from "@/components/common/typography";
 
 // Icons & Images
 import { RefreshCw } from "lucide-react";
@@ -87,7 +88,7 @@ export default function InmPage() {
 
 	return (
 		<div className="relative h-full overflow-clip selection:bg-[#114514] selection:text-background dark:selection:text-foreground isolate">
-			<Wrapper boxSizing="border" className="grid justify-items-center items-end gap-8 py-16 h-full">
+			<Container className="grid justify-items-center items-end gap-8 py-16 h-full">
 				{mounted && time && (
 					<>
 						<div className="grid justify-items-center gap-4">
@@ -97,7 +98,7 @@ export default function InmPage() {
 						<InmQuote />
 					</>
 				)}
-			</Wrapper>
+			</Container>
 			<div className="absolute-center size-full bg-radial from-transparent to-background xl:to-60% -z-1"></div>
 			<Muted className="absolute-center w-max font-mono font-extralight text-xs text-[#114514] leading-1.5 whitespace-pre-line scale-90 xl:scale-100 opacity-30 dark:opacity-100 select-none -z-2">
 				{ASCII_ART}

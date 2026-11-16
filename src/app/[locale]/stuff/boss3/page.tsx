@@ -5,7 +5,8 @@ import { celebrate, getRandomQuote } from "@/lib/inm-clock/utils";
 // Components & UI
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { Muted, Wrapper } from "@/components/common/typography";
+import { Container } from "@/components/ui/container";
+import { Muted } from "@/components/common/typography";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 // Icons & Images
@@ -59,13 +60,13 @@ export default function Boss3Page() {
 
 	return (
 		<div className="relative h-full overflow-clip isolate">
-			<Wrapper boxSizing="border" className="grid justify-items-center items-end gap-8 py-16 h-full">
+			<Container className="grid justify-items-center items-end gap-8 py-16 h-full">
 				<div className="grid justify-items-center gap-4">
 					<Title text="陳樂穎老大三號生日快樂" />
 					<Subtitle text="2025/08/07 謹製" />
 				</div>
 				{mounted && <Boss3Quote />}
-			</Wrapper>
+			</Container>
 			<div className="absolute-center size-full bg-radial from-transparent to-background to-80% xl:to-60% -z-1"></div>
 			<Muted className="absolute-center w-max font-mono font-extralight text-xs leading-1.5 whitespace-pre-line scale-90 xl:scale-100 opacity-40 select-none -z-2">
 				{ASCII_ART}

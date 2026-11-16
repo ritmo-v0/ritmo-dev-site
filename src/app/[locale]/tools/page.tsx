@@ -3,7 +3,8 @@ import { useTranslations } from "next-intl";
 
 // Components & UI
 import { ToolList } from "@/components/main/tools/list";
-import { H1, Link, Muted, Wrapper } from "@/components/common/typography";
+import { Container } from "@/components/ui/container";
+import { H1, Link, Muted } from "@/components/common/typography";
 
 // Constants & Variables
 const NUANCED_HREF = "https://github.com/nuance-dev#-im-building-26-native-macos-apps-one-for-each-letter-of-the-alphabet" as const;
@@ -14,7 +15,7 @@ export default function ToolsPage() {
 	const t = useTranslations("tools");
 
 	return (
-		<Wrapper className="grid gap-8">
+		<Container className="grid gap-8">
 			<header>
 				<div>
 					<H1 className="[&+p]:mt-2!">
@@ -34,6 +35,6 @@ export default function ToolsPage() {
 			<main>
 				<ToolList />
 			</main>
-		</Wrapper>
+		</Container>
 	);
 }

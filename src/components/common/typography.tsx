@@ -27,36 +27,6 @@ import type { VariantProps } from "class-variance-authority";
 
 
 
-function Wrapper({
-	className,
-	width = 1400,
-	boxSizing = "content",
-	render,
-	...props
-}: useRender.ComponentProps<"div"> & {
-	boxSizing?: "border" | "content";
-	width?: number;
-}) {
-	return useRender({
-		defaultTagName: "div",
-		render,
-		props: mergeProps<"div">(
-			{
-				style: { "--max-width": `${width}px` } as React.CSSProperties,
-				className: cn(
-					"@container/container mx-auto max-inline-(--max-width) px-4 md:px-8",
-					"data-[box-sizing=border]:box-border data-[box-sizing=content]:box-content",
-					className,
-				),
-			},
-			props
-		),
-		state: {
-			"box-sizing": boxSizing,
-		},
-	});
-}
-
 function Section({
 	className,
 	...props
@@ -503,7 +473,7 @@ function IFrame({
 const MotionImage = motion.create(NextImage);
 
 export {
-	Wrapper, Section,
+	Section,
 	H1, H2, H3, H4, H5, H6,
 	P, Muted, HR, UL, OL, LI,
 	Code, Blockquote, Aside,

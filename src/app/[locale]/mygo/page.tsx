@@ -6,7 +6,8 @@ import { cn } from "cn";
 // Components & UI
 import Image from "next/image";
 import { motion } from "motion/react";
-import { MotionImage, Wrapper } from "@/components/common/typography";
+import { Container } from "@/components/ui/container";
+import { MotionImage } from "@/components/common/typography";
 import { SettingsSheet } from "@/components/main/mygo/settings-sheet";
 
 // Types & Interfaces
@@ -46,7 +47,7 @@ export default function MyGOPage() {
 		)}>
 			<MyGOWallpaper />
 			<SettingsSheet className="absolute top-3.75 right-3.75 sm:top-8 sm:right-8" />
-			<Wrapper boxSizing="border" className="relative size-full content-center lg:px-16 py-16 pointer-events-none">
+			<Container className="relative size-full content-center lg:[--padding:--spacing(16)] py-16 pointer-events-none">
 				<motion.ul
 					className={cn(
 						"grid justify-items-center pointer-events-auto",
@@ -64,7 +65,7 @@ export default function MyGOPage() {
 						/>
 					))}
 				</motion.ul>
-			</Wrapper>
+			</Container>
 		</div>
 	);
 }
