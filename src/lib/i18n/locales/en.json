@@ -23,7 +23,8 @@
 		},
 		"theme": {
 			"label": "Theme"
-		}
+		},
+		"settings": "Settings"
 	},
 	"articles": {
 		"title": "Articles",

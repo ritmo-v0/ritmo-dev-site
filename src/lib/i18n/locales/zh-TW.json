@@ -23,7 +23,8 @@
 		},
 		"theme": {
 			"label": "主題"
-		}
+		},
+		"settings": "設定"
 	},
 	"articles": {
 		"title": "文章",

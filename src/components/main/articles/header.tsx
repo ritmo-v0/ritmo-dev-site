@@ -73,6 +73,7 @@ export function ArticleHeader({ metadata, description }: {
 				width={720}
 				height={405}
 				loading="eager"
+				fetchPriority="high"
 			/>
 
 			{/* Metadata */}
@@ -125,6 +126,7 @@ function ArticleActions() {
 							variant="ghost"
 							size="icon"
 							onClick={async () => await copy(location.href)}
+							aria-label={t("copy_link")}
 						/>
 					}>
 						<AnimatePresence mode="popLayout" initial={false}>
@@ -143,6 +145,7 @@ function ArticleActions() {
 							variant="ghost"
 							size="icon"
 							onClick={handleShare}
+							aria-label={t("share")}
 						/>
 					}>
 						<ExportIcon />

@@ -162,6 +162,7 @@ function NavMenuItem({ id, icon: Icon, items }: Required<NavItem>) {
 
 function Settings() {
 	const [open, setOpen] = useState(false);
+	const t = useTranslations("common");
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
@@ -170,6 +171,7 @@ function Settings() {
 					variant="ghost"
 					size="icon"
 					className="data-popup-open:[&_svg]:rotate-90"
+					aria-label={t("settings")}
 				>
 					<GearSixIcon className="transition-[rotate] ease-out duration-300" />
 				</Button>
